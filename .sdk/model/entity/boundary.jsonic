@@ -1,0 +1,692 @@
+# Entity: boundary
+
+main: kit: entity: boundary: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "boundary_set_name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "external_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "meta"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "metadata"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "object"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "url"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "boundary"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "callback"
+                orig: "callback"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "contain"
+                orig: "contain"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "external_id"
+                orig: "external_id"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "intersect"
+                orig: "intersect"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 20
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "name"
+                orig: "name"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "offset"
+                orig: "offset"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "pretty"
+                orig: "pretty"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "set"
+                orig: "set"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "touch"
+                orig: "touch"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/boundaries/"
+          parts: [
+            "boundaries"
+          ]
+          select: {
+            exist: [
+              "callback"
+              "contain"
+              "external_id"
+              "format"
+              "intersect"
+              "limit"
+              "name"
+              "offset"
+              "pretty"
+              "set"
+              "touch"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "boundary_set"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "callback"
+                orig: "callback"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "contain"
+                orig: "contain"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "external_id"
+                orig: "external_id"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 20
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "name"
+                orig: "name"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "offset"
+                orig: "offset"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "pretty"
+                orig: "pretty"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/boundaries/{boundarySet}/"
+          parts: [
+            "boundaries"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              boundarySet: "id"
+            }
+          }
+          select: {
+            exist: [
+              "callback"
+              "contain"
+              "external_id"
+              "format"
+              "id"
+              "limit"
+              "name"
+              "offset"
+              "pretty"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "boundary"
+                orig: "boundary"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "param"
+                name: "boundary_set"
+                orig: "boundary_set"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "callback"
+                orig: "callback"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "pretty"
+                orig: "pretty"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/boundaries/{boundarySet}/{boundary}/"
+          parts: [
+            "boundaries"
+            "{boundary_set}"
+            "{boundary}"
+          ]
+          rename: {
+            param: {
+              boundarySet: "boundary_set"
+            }
+          }
+          select: {
+            exist: [
+              "boundary"
+              "boundary_set"
+              "callback"
+              "format"
+              "pretty"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "boundary"
+                orig: "boundary"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "param"
+                name: "boundary_set"
+                orig: "boundary_set"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "callback"
+                orig: "callback"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/boundaries/{boundarySet}/{boundary}/centroid"
+          parts: [
+            "boundaries"
+            "{boundary_set}"
+            "{boundary}"
+            "centroid"
+          ]
+          rename: {
+            param: {
+              boundarySet: "boundary_set"
+            }
+          }
+          select: {
+            "$action": "centroid"
+            exist: [
+              "boundary"
+              "boundary_set"
+              "callback"
+              "format"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "boundary"
+                orig: "boundary"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "param"
+                name: "boundary_set"
+                orig: "boundary_set"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "callback"
+                orig: "callback"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/boundaries/{boundarySet}/{boundary}/shape"
+          parts: [
+            "boundaries"
+            "{boundary_set}"
+            "{boundary}"
+            "shape"
+          ]
+          rename: {
+            param: {
+              boundarySet: "boundary_set"
+            }
+          }
+          select: {
+            "$action": "shape"
+            exist: [
+              "boundary"
+              "boundary_set"
+              "callback"
+              "format"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "boundary"
+                orig: "boundary"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "param"
+                name: "boundary_set"
+                orig: "boundary_set"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "callback"
+                orig: "callback"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/boundaries/{boundarySet}/{boundary}/simple_shape"
+          parts: [
+            "boundaries"
+            "{boundary_set}"
+            "{boundary}"
+            "simple_shape"
+          ]
+          rename: {
+            param: {
+              boundarySet: "boundary_set"
+            }
+          }
+          select: {
+            "$action": "simple_shape"
+            exist: [
+              "boundary"
+              "boundary_set"
+              "callback"
+              "format"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "boundary_set"
+                orig: "boundary_set"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "callback"
+                orig: "callback"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/boundaries/{boundarySet}/centroid"
+          parts: [
+            "boundaries"
+            "{boundary_set}"
+            "centroid"
+          ]
+          rename: {
+            param: {
+              boundarySet: "boundary_set"
+            }
+          }
+          select: {
+            "$action": "centroid"
+            exist: [
+              "boundary_set"
+              "callback"
+              "format"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "boundary_set"
+                orig: "boundary_set"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "callback"
+                orig: "callback"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/boundaries/{boundarySet}/shape"
+          parts: [
+            "boundaries"
+            "{boundary_set}"
+            "shape"
+          ]
+          rename: {
+            param: {
+              boundarySet: "boundary_set"
+            }
+          }
+          select: {
+            "$action": "shape"
+            exist: [
+              "boundary_set"
+              "callback"
+              "format"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "boundary_set"
+                orig: "boundary_set"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "callback"
+                orig: "callback"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/boundaries/{boundarySet}/simple_shape"
+          parts: [
+            "boundaries"
+            "{boundary_set}"
+            "simple_shape"
+          ]
+          rename: {
+            param: {
+              boundarySet: "boundary_set"
+            }
+          }
+          select: {
+            "$action": "simple_shape"
+            exist: [
+              "boundary_set"
+              "callback"
+              "format"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "boundary"
+      ]
+    ]
+  }
+
+
+
+}

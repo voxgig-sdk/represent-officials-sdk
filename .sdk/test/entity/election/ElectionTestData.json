@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "election": {
+      "ELECTION00": {
+        "meta": {},
+        "object": []
+      },
+      "ELECTION01": {
+        "meta": {},
+        "object": []
+      },
+      "ELECTION02": {
+        "meta": {},
+        "object": []
+      }
+    }
+  },
+  "new": {
+    "election": {
+      "election_ref01": {
+        "meta": {},
+        "object": []
+      }
+    }
+  }
+}

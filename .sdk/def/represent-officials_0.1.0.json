@@ -1,0 +1,2042 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Represent Officials API",
+    "description": "This API provides access to information about elected officials and electoral districts in Canada. Users can find representatives based on postal codes or geographical coordinates, retrieve boundary sets, and explore details about elections and candidates.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Open North",
+      "url": "https://represent.opennorth.ca"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://represent.opennorth.ca",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/postcodes/{postalCode}/": {
+      "get": {
+        "summary": "Find representatives and boundaries by postal code",
+        "description": "Returns representatives and boundaries for a given postal code. Postal code must be in uppercase with no spaces. Results include both centroid-based and concordance-based matches.",
+        "operationId": "getByPostalCode",
+        "tags": [
+          "Postal Codes"
+        ],
+        "parameters": [
+          {
+            "name": "postalCode",
+            "in": "path",
+            "required": true,
+            "description": "Canadian postal code in uppercase with no spaces (e.g., L5G4L3)",
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Z][0-9][A-Z][0-9][A-Z][0-9]$"
+            }
+          },
+          {
+            "name": "sets",
+            "in": "query",
+            "description": "Limit results to specific boundary sets (comma-separated)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "apibrowser"
+              ]
+            }
+          },
+          {
+            "name": "pretty",
+            "in": "query",
+            "description": "Pretty print JSON output",
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "JSONP callback function name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "description": "The postal code"
+                    },
+                    "city": {
+                      "type": "string",
+                      "description": "City name"
+                    },
+                    "province": {
+                      "type": "string",
+                      "description": "Province code"
+                    },
+                    "centroid": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string"
+                        },
+                        "coordinates": {
+                          "type": "array",
+                          "items": {
+                            "type": "number"
+                          }
+                        }
+                      }
+                    },
+                    "boundaries_centroid": {
+                      "type": "array",
+                      "description": "Boundaries containing the postal code's centroid",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "boundaries_concordance": {
+                      "type": "array",
+                      "description": "Boundaries linked to postal code via official data",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "representatives_centroid": {
+                      "type": "array",
+                      "description": "Representatives for boundaries containing centroid",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "representatives_concordance": {
+                      "type": "array",
+                      "description": "Representatives for boundaries via concordance",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Rate limit exceeded"
+          }
+        }
+      }
+    },
+    "/boundary-sets/": {
+      "get": {
+        "summary": "Get boundary sets",
+        "description": "Returns a paginated list of boundary sets. A boundary set is a group of electoral districts.",
+        "operationId": "getBoundarySets",
+        "tags": [
+          "Boundary Sets"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of results per page (default: 20)",
+            "schema": {
+              "type": "integer",
+              "default": 20
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Offset for pagination",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Filter by boundary set name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "domain",
+            "in": "query",
+            "description": "Filter by domain (e.g., Canada)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "apibrowser"
+              ]
+            }
+          },
+          {
+            "name": "pretty",
+            "in": "query",
+            "description": "Pretty print JSON output",
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "JSONP callback function name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "next": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "previous": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "total_count": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "objects": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "domain": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/boundary-sets/{boundarySet}/": {
+      "get": {
+        "summary": "Get a specific boundary set",
+        "description": "Returns details about a specific boundary set.",
+        "operationId": "getBoundarySet",
+        "tags": [
+          "Boundary Sets"
+        ],
+        "parameters": [
+          {
+            "name": "boundarySet",
+            "in": "path",
+            "required": true,
+            "description": "Boundary set identifier (e.g., federal-electoral-districts)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "apibrowser"
+              ]
+            }
+          },
+          {
+            "name": "pretty",
+            "in": "query",
+            "description": "Pretty print JSON output",
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "JSONP callback function name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "domain": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/boundaries/": {
+      "get": {
+        "summary": "Get boundaries",
+        "description": "Returns a paginated list of boundaries. Can be filtered by various criteria including geospatial queries.",
+        "operationId": "getBoundaries",
+        "tags": [
+          "Boundaries"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of results per page (default: 20)",
+            "schema": {
+              "type": "integer",
+              "default": 20
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Offset for pagination",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "sets",
+            "in": "query",
+            "description": "Filter by boundary sets (comma-separated)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Filter by boundary name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "external_id",
+            "in": "query",
+            "description": "Filter by external ID",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "contains",
+            "in": "query",
+            "description": "Find boundaries containing latitude,longitude (e.g., 45.524,-73.596)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "touches",
+            "in": "query",
+            "description": "Find boundaries that touch the specified boundary",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "intersects",
+            "in": "query",
+            "description": "Find boundaries that intersect the specified boundary",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "apibrowser"
+              ]
+            }
+          },
+          {
+            "name": "pretty",
+            "in": "query",
+            "description": "Pretty print JSON output",
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "JSONP callback function name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "next": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "previous": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "total_count": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "objects": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "boundary_set_name": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "external_id": {
+                            "type": "string"
+                          },
+                          "metadata": {
+                            "type": "object"
+                          },
+                          "url": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/boundaries/{boundarySet}/": {
+      "get": {
+        "summary": "Get boundaries from a boundary set",
+        "description": "Returns boundaries from a specific boundary set.",
+        "operationId": "getBoundariesFromSet",
+        "tags": [
+          "Boundaries"
+        ],
+        "parameters": [
+          {
+            "name": "boundarySet",
+            "in": "path",
+            "required": true,
+            "description": "Boundary set identifier",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of results per page",
+            "schema": {
+              "type": "integer",
+              "default": 20
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Offset for pagination",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Filter by boundary name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "external_id",
+            "in": "query",
+            "description": "Filter by external ID",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "contains",
+            "in": "query",
+            "description": "Find boundaries containing latitude,longitude",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "apibrowser"
+              ]
+            }
+          },
+          {
+            "name": "pretty",
+            "in": "query",
+            "description": "Pretty print JSON output",
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "JSONP callback function name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "next": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "previous": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "total_count": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "objects": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/boundaries/{boundarySet}/{boundary}/": {
+      "get": {
+        "summary": "Get a specific boundary",
+        "description": "Returns details about a specific boundary.",
+        "operationId": "getBoundary",
+        "tags": [
+          "Boundaries"
+        ],
+        "parameters": [
+          {
+            "name": "boundarySet",
+            "in": "path",
+            "required": true,
+            "description": "Boundary set identifier",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "boundary",
+            "in": "path",
+            "required": true,
+            "description": "Boundary identifier",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "apibrowser"
+              ]
+            }
+          },
+          {
+            "name": "pretty",
+            "in": "query",
+            "description": "Pretty print JSON output",
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "JSONP callback function name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "boundary_set_name": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "external_id": {
+                      "type": "string"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/boundaries/{boundarySet}/simple_shape": {
+      "get": {
+        "summary": "Get simplified shapes for all boundaries in a set",
+        "description": "Returns simplified geometric shapes for all boundaries in the set (tolerance 0.002). Default format is GeoJSON.",
+        "operationId": "getBoundarySetSimpleShapes",
+        "tags": [
+          "Boundaries",
+          "Shapes"
+        ],
+        "parameters": [
+          {
+            "name": "boundarySet",
+            "in": "path",
+            "required": true,
+            "description": "Boundary set identifier",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "kml",
+                "wkt"
+              ]
+            }
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "JSONP callback function name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "GeoJSON FeatureCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/boundaries/{boundarySet}/shape": {
+      "get": {
+        "summary": "Get original shapes for all boundaries in a set",
+        "description": "Returns original geometric shapes for all boundaries in the set. Default format is GeoJSON.",
+        "operationId": "getBoundarySetShapes",
+        "tags": [
+          "Boundaries",
+          "Shapes"
+        ],
+        "parameters": [
+          {
+            "name": "boundarySet",
+            "in": "path",
+            "required": true,
+            "description": "Boundary set identifier",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "kml",
+                "wkt"
+              ]
+            }
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "JSONP callback function name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "GeoJSON FeatureCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/boundaries/{boundarySet}/centroid": {
+      "get": {
+        "summary": "Get centroids for all boundaries in a set",
+        "description": "Returns centroid points for all boundaries in the set. Default format is GeoJSON.",
+        "operationId": "getBoundarySetCentroids",
+        "tags": [
+          "Boundaries",
+          "Shapes"
+        ],
+        "parameters": [
+          {
+            "name": "boundarySet",
+            "in": "path",
+            "required": true,
+            "description": "Boundary set identifier",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "kml",
+                "wkt"
+              ]
+            }
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "JSONP callback function name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "GeoJSON FeatureCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/boundaries/{boundarySet}/{boundary}/simple_shape": {
+      "get": {
+        "summary": "Get a boundary's simplified shape",
+        "description": "Returns the simplified geometric shape for a specific boundary.",
+        "operationId": "getBoundarySimpleShape",
+        "tags": [
+          "Boundaries",
+          "Shapes"
+        ],
+        "parameters": [
+          {
+            "name": "boundarySet",
+            "in": "path",
+            "required": true,
+            "description": "Boundary set identifier",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "boundary",
+            "in": "path",
+            "required": true,
+            "description": "Boundary identifier",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "kml",
+                "wkt"
+              ]
+            }
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "JSONP callback function name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "GeoJSON Feature"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/boundaries/{boundarySet}/{boundary}/shape": {
+      "get": {
+        "summary": "Get a boundary's original shape",
+        "description": "Returns the original geometric shape for a specific boundary.",
+        "operationId": "getBoundaryShape",
+        "tags": [
+          "Boundaries",
+          "Shapes"
+        ],
+        "parameters": [
+          {
+            "name": "boundarySet",
+            "in": "path",
+            "required": true,
+            "description": "Boundary set identifier",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "boundary",
+            "in": "path",
+            "required": true,
+            "description": "Boundary identifier",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "kml",
+                "wkt"
+              ]
+            }
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "JSONP callback function name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "GeoJSON Feature"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/boundaries/{boundarySet}/{boundary}/centroid": {
+      "get": {
+        "summary": "Get a boundary's centroid",
+        "description": "Returns the centroid point for a specific boundary.",
+        "operationId": "getBoundaryCentroid",
+        "tags": [
+          "Boundaries",
+          "Shapes"
+        ],
+        "parameters": [
+          {
+            "name": "boundarySet",
+            "in": "path",
+            "required": true,
+            "description": "Boundary set identifier",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "boundary",
+            "in": "path",
+            "required": true,
+            "description": "Boundary identifier",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "kml",
+                "wkt"
+              ]
+            }
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "JSONP callback function name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "GeoJSON Feature with Point geometry"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/boundaries/{boundarySet}/{boundary}/representatives/": {
+      "get": {
+        "summary": "Get representatives for a boundary",
+        "description": "Returns all representatives for a specific boundary.",
+        "operationId": "getBoundaryRepresentatives",
+        "tags": [
+          "Representatives"
+        ],
+        "parameters": [
+          {
+            "name": "boundarySet",
+            "in": "path",
+            "required": true,
+            "description": "Boundary set identifier",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "boundary",
+            "in": "path",
+            "required": true,
+            "description": "Boundary identifier",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "apibrowser"
+              ]
+            }
+          },
+          {
+            "name": "pretty",
+            "in": "query",
+            "description": "Pretty print JSON output",
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "JSONP callback function name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "objects": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Representative"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/representative-sets/": {
+      "get": {
+        "summary": "Get representative sets",
+        "description": "Returns a paginated list of representative sets. A representative set is a group of elected officials.",
+        "operationId": "getRepresentativeSets",
+        "tags": [
+          "Representative Sets"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of results per page (default: 20)",
+            "schema": {
+              "type": "integer",
+              "default": 20
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Offset for pagination",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "apibrowser"
+              ]
+            }
+          },
+          {
+            "name": "pretty",
+            "in": "query",
+            "description": "Pretty print JSON output",
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "JSONP callback function name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "next": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "previous": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "total_count": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "objects": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/representative-sets/{representativeSet}/": {
+      "get": {
+        "summary": "Get a specific representative set",
+        "description": "Returns details about a specific representative set.",
+        "operationId": "getRepresentativeSet",
+        "tags": [
+          "Representative Sets"
+        ],
+        "parameters": [
+          {
+            "name": "representativeSet",
+            "in": "path",
+            "required": true,
+            "description": "Representative set identifier (e.g., ontario-legislature)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "apibrowser"
+              ]
+            }
+          },
+          {
+            "name": "pretty",
+            "in": "query",
+            "description": "Pretty print JSON output",
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "JSONP callback function name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/representatives/": {
+      "get": {
+        "summary": "Get representatives",
+        "description": "Returns a paginated list of representatives. Can be filtered by various criteria including geospatial queries.",
+        "operationId": "getRepresentatives",
+        "tags": [
+          "Representatives"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of results per page (default: 20)",
+            "schema": {
+              "type": "integer",
+              "default": 20
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Offset for pagination",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "point",
+            "in": "query",
+            "description": "Find representatives by latitude,longitude (e.g., 45.524,-73.596)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "districts",
+            "in": "query",
+            "description": "Filter by districts (comma-separated)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Filter by representative name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "first_name",
+            "in": "query",
+            "description": "Filter by first name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "last_name",
+            "in": "query",
+            "description": "Filter by last name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "gender",
+            "in": "query",
+            "description": "Filter by gender (M or F)",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "M",
+                "F"
+              ]
+            }
+          },
+          {
+            "name": "district_name",
+            "in": "query",
+            "description": "Filter by district name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "elected_office",
+            "in": "query",
+            "description": "Filter by elected office (e.g., MP, MLA, Mayor, Councillor)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "party_name",
+            "in": "query",
+            "description": "Filter by party name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "apibrowser"
+              ]
+            }
+          },
+          {
+            "name": "pretty",
+            "in": "query",
+            "description": "Pretty print JSON output",
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "JSONP callback function name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "next": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "previous": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "total_count": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "objects": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Representative"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/representatives/{representativeSet}/": {
+      "get": {
+        "summary": "Get representatives from a representative set",
+        "description": "Returns representatives from a specific representative set.",
+        "operationId": "getRepresentativesFromSet",
+        "tags": [
+          "Representatives"
+        ],
+        "parameters": [
+          {
+            "name": "representativeSet",
+            "in": "path",
+            "required": true,
+            "description": "Representative set identifier (e.g., house-of-commons)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of results per page",
+            "schema": {
+              "type": "integer",
+              "default": 20
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Offset for pagination",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "point",
+            "in": "query",
+            "description": "Find representatives by latitude,longitude",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Filter by representative name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "first_name",
+            "in": "query",
+            "description": "Filter by first name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "last_name",
+            "in": "query",
+            "description": "Filter by last name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "gender",
+            "in": "query",
+            "description": "Filter by gender",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "M",
+                "F"
+              ]
+            }
+          },
+          {
+            "name": "district_name",
+            "in": "query",
+            "description": "Filter by district name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "elected_office",
+            "in": "query",
+            "description": "Filter by elected office",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "party_name",
+            "in": "query",
+            "description": "Filter by party name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "apibrowser"
+              ]
+            }
+          },
+          {
+            "name": "pretty",
+            "in": "query",
+            "description": "Pretty print JSON output",
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "JSONP callback function name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "next": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "previous": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "total_count": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "objects": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Representative"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/elections/": {
+      "get": {
+        "summary": "Get elections",
+        "description": "Returns a paginated list of elections.",
+        "operationId": "getElections",
+        "tags": [
+          "Elections"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of results per page (default: 20)",
+            "schema": {
+              "type": "integer",
+              "default": 20
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Offset for pagination",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "apibrowser"
+              ]
+            }
+          },
+          {
+            "name": "pretty",
+            "in": "query",
+            "description": "Pretty print JSON output",
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "JSONP callback function name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "next": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "previous": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "total_count": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "objects": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/candidates/": {
+      "get": {
+        "summary": "Get electoral candidates",
+        "description": "Returns a paginated list of electoral candidates. Candidate lists may be incomplete or incorrect.",
+        "operationId": "getCandidates",
+        "tags": [
+          "Candidates"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of results per page (default: 20)",
+            "schema": {
+              "type": "integer",
+              "default": 20
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Offset for pagination",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "apibrowser"
+              ]
+            }
+          },
+          {
+            "name": "pretty",
+            "in": "query",
+            "description": "Pretty print JSON output",
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "JSONP callback function name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "next": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "previous": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "total_count": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "objects": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Representative": {
+        "type": "object",
+        "required": [
+          "name",
+          "district_name",
+          "elected_office"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Full name of the representative"
+          },
+          "district_name": {
+            "type": "string",
+            "description": "Name of the electoral district"
+          },
+          "elected_office": {
+            "type": "string",
+            "description": "Type of office (e.g., MP, MLA, Mayor, Councillor, Alderman)"
+          },
+          "source_url": {
+            "type": "string",
+            "description": "URL where the data is scraped from"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "First name"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "Last name"
+          },
+          "party_name": {
+            "type": "string",
+            "description": "Political party name"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "Email address"
+          },
+          "url": {
+            "type": "string",
+            "description": "Representative's page on official legislature site"
+          },
+          "photo_url": {
+            "type": "string",
+            "description": "URL to representative's photo"
+          },
+          "personal_url": {
+            "type": "string",
+            "description": "Personal website not on official legislature site"
+          },
+          "district_id": {
+            "type": "string",
+            "description": "District identifier if available"
+          },
+          "gender": {
+            "type": "string",
+            "enum": [
+              "M",
+              "F"
+            ],
+            "description": "Gender"
+          },
+          "offices": {
+            "type": "array",
+            "description": "Contact information for representative's offices",
+            "items": {
+              "type": "object",
+              "properties": {
+                "postal": {
+                  "type": "string",
+                  "description": "Mailing address"
+                },
+                "tel": {
+                  "type": "string",
+                  "description": "Telephone number"
+                },
+                "fax": {
+                  "type": "string",
+                  "description": "Fax number"
+                },
+                "type": {
+                  "type": "string",
+                  "description": "Office type (e.g., constituency, legislature)"
+                }
+              }
+            }
+          },
+          "extra": {
+            "type": "object",
+            "description": "Additional data not covered by standard fields"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Postal Codes",
+      "description": "Find representatives and boundaries by postal code"
+    },
+    {
+      "name": "Boundary Sets",
+      "description": "Access groups of electoral districts"
+    },
+    {
+      "name": "Boundaries",
+      "description": "Access individual electoral district boundaries"
+    },
+    {
+      "name": "Shapes",
+      "description": "Access geospatial boundary shapes in various formats"
+    },
+    {
+      "name": "Representative Sets",
+      "description": "Access groups of elected officials"
+    },
+    {
+      "name": "Representatives",
+      "description": "Access individual elected officials"
+    },
+    {
+      "name": "Elections",
+      "description": "Access election information"
+    },
+    {
+      "name": "Candidates",
+      "description": "Access electoral candidate information"
+    }
+  ]
+}

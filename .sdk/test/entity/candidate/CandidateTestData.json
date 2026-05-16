@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "candidate": {
+      "CANDIDATE00": {
+        "meta": {},
+        "object": []
+      },
+      "CANDIDATE01": {
+        "meta": {},
+        "object": []
+      },
+      "CANDIDATE02": {
+        "meta": {},
+        "object": []
+      }
+    }
+  },
+  "new": {
+    "candidate": {
+      "candidate_ref01": {
+        "meta": {},
+        "object": []
+      }
+    }
+  }
+}

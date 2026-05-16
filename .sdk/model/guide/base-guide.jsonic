@@ -1,0 +1,105 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 7
+  metrics: count: path: 19
+  metrics: count: method: 19
+
+  entity: boundary: {
+    path: "/boundaries/": {
+      op: list: method: *GET
+    }
+    path: "/boundaries/{boundarySet}/": {
+      rename: param: "boundarySet": *"id"
+      op: load: method: *GET
+    }
+    path: "/boundaries/{boundarySet}/centroid": {
+      action: "centroid": {}
+      rename: param: "boundarySet": *"boundary_set"
+      op: load: method: *GET
+    }
+    path: "/boundaries/{boundarySet}/shape": {
+      action: "shape": {}
+      rename: param: "boundarySet": *"boundary_set"
+      op: load: method: *GET
+    }
+    path: "/boundaries/{boundarySet}/simple_shape": {
+      action: "simple_shape": {}
+      rename: param: "boundarySet": *"boundary_set"
+      op: load: method: *GET
+    }
+    path: "/boundaries/{boundarySet}/{boundary}/": {
+      rename: param: "boundarySet": *"boundary_set"
+      op: load: method: *GET
+    }
+    path: "/boundaries/{boundarySet}/{boundary}/centroid": {
+      action: "centroid": {}
+      rename: param: "boundarySet": *"boundary_set"
+      op: load: method: *GET
+    }
+    path: "/boundaries/{boundarySet}/{boundary}/shape": {
+      action: "shape": {}
+      rename: param: "boundarySet": *"boundary_set"
+      op: load: method: *GET
+    }
+    path: "/boundaries/{boundarySet}/{boundary}/simple_shape": {
+      action: "simple_shape": {}
+      rename: param: "boundarySet": *"boundary_set"
+      op: load: method: *GET
+    }
+  }
+
+  entity: boundary_set: {
+    path: "/boundary-sets/": {
+      op: list: method: *GET
+    }
+    path: "/boundary-sets/{boundarySet}/": {
+      rename: param: "boundarySet": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: candidate: {
+    path: "/candidates/": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: election: {
+    path: "/elections/": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: postal_code: {
+    path: "/postcodes/{postalCode}/": {
+      rename: param: "postalCode": *"postal_code"
+      op: load: method: *GET
+    }
+  }
+
+  entity: representatif: {
+    path: "/boundaries/{boundarySet}/{boundary}/representatives/": {
+      rename: param: "boundarySet": *"boundary_set"
+      op: list: method: *GET
+    }
+    path: "/representatives/": {
+      op: list: method: *GET
+    }
+    path: "/representatives/{representativeSet}/": {
+      rename: param: "representativeSet": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: representative_set: {
+    path: "/representative-sets/": {
+      op: list: method: *GET
+    }
+    path: "/representative-sets/{representativeSet}/": {
+      rename: param: "representativeSet": *"id"
+      op: load: method: *GET
+    }
+  }
+
+}

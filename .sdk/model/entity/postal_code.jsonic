@@ -1,0 +1,136 @@
+# Entity: postal_code
+
+main: kit: entity: postal_code: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "boundaries_centroid"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "boundaries_concordance"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "centroid"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "city"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "code"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "province"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "representatives_centroid"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "representatives_concordance"
+      req: false
+      type: "`$ARRAY`"
+    }
+  ]
+
+  name: "postal_code"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "postal_code"
+                orig: "postal_code"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "callback"
+                orig: "callback"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "pretty"
+                orig: "pretty"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "set"
+                orig: "set"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/postcodes/{postalCode}/"
+          parts: [
+            "postcodes"
+            "{postal_code}"
+          ]
+          rename: {
+            param: {
+              postalCode: "postal_code"
+            }
+          }
+          select: {
+            exist: [
+              "callback"
+              "format"
+              "postal_code"
+              "pretty"
+              "set"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "postcode"
+      ]
+    ]
+  }
+
+
+
+}

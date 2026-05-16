@@ -1,0 +1,22 @@
+# BasicCandidateFlow
+
+main: kit: flow: BasicCandidateFlow:
+{
+  entity: "candidate",
+  kind: "basic",
+  name: "BasicCandidateFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "candidate_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCandidateFlow"
+}

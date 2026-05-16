@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "boundary_set": {
+      "BOUNDARY_SET00": {
+        "domain": "s1e",
+        "name": "s1f",
+        "url": "s20"
+      },
+      "BOUNDARY_SET01": {
+        "domain": "s3c",
+        "name": "s3d",
+        "url": "s3e"
+      },
+      "BOUNDARY_SET02": {
+        "domain": "s5a",
+        "name": "s5b",
+        "url": "s5c"
+      }
+    }
+  },
+  "new": {
+    "boundary_set": {
+      "boundary_set_ref01": {
+        "domain": "s78",
+        "name": "s79",
+        "url": "s7a"
+      }
+    }
+  }
+}

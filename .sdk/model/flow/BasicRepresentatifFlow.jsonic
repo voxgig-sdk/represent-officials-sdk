@@ -1,0 +1,49 @@
+# BasicRepresentatifFlow
+
+main: kit: flow: BasicRepresentatifFlow:
+{
+  entity: "representatif",
+  kind: "basic",
+  name: "BasicRepresentatifFlow",
+  step: [
+    {
+      match: {
+        boundary: "boundary01",
+        boundary_set: "boundary_set01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "representatif_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "representatif_ref01",
+        srcdatavar: "representatif_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "representatif01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-representatif_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRepresentatifFlow"
+}

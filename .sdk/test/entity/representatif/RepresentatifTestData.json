@@ -1,0 +1,92 @@
+{
+  "existing": {
+    "representatif": {
+      "REPRESENTATIF00": {
+        "district_id": "DISTRICT01",
+        "district_name": "sab",
+        "elected_office": "sac",
+        "email": "sad",
+        "extra": {},
+        "first_name": "saf",
+        "gender": "sb0",
+        "last_name": "sb1",
+        "meta": {},
+        "name": "sb3",
+        "object": [],
+        "office": [],
+        "party_name": "sb6",
+        "personal_url": "sb7",
+        "photo_url": "sb8",
+        "source_url": "sb9",
+        "url": "sba",
+        "boundary": "BOUNDARY01",
+        "boundary_set": "BOUNDARY_SET01"
+      },
+      "REPRESENTATIF01": {
+        "district_id": "DISTRICT01",
+        "district_name": "s155",
+        "elected_office": "s156",
+        "email": "s157",
+        "extra": {},
+        "first_name": "s159",
+        "gender": "s15a",
+        "last_name": "s15b",
+        "meta": {},
+        "name": "s15d",
+        "object": [],
+        "office": [],
+        "party_name": "s160",
+        "personal_url": "s161",
+        "photo_url": "s162",
+        "source_url": "s163",
+        "url": "s164",
+        "boundary": "BOUNDARY01",
+        "boundary_set": "BOUNDARY_SET01"
+      },
+      "REPRESENTATIF02": {
+        "district_id": "DISTRICT01",
+        "district_name": "s1ff",
+        "elected_office": "s200",
+        "email": "s201",
+        "extra": {},
+        "first_name": "s203",
+        "gender": "s204",
+        "last_name": "s205",
+        "meta": {},
+        "name": "s207",
+        "object": [],
+        "office": [],
+        "party_name": "s20a",
+        "personal_url": "s20b",
+        "photo_url": "s20c",
+        "source_url": "s20d",
+        "url": "s20e",
+        "boundary": "BOUNDARY01",
+        "boundary_set": "BOUNDARY_SET01"
+      }
+    }
+  },
+  "new": {
+    "representatif": {
+      "representatif_ref01": {
+        "district_id": "DISTRICT01",
+        "district_name": "s2a9",
+        "elected_office": "s2aa",
+        "email": "s2ab",
+        "extra": {},
+        "first_name": "s2ad",
+        "gender": "s2ae",
+        "last_name": "s2af",
+        "meta": {},
+        "name": "s2b1",
+        "object": [],
+        "office": [],
+        "party_name": "s2b4",
+        "personal_url": "s2b5",
+        "photo_url": "s2b6",
+        "source_url": "s2b7",
+        "url": "s2b8"
+      }
+    }
+  }
+}

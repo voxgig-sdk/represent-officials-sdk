@@ -1,0 +1,52 @@
+{
+  "existing": {
+    "boundary": {
+      "BOUNDARY00": {
+        "boundary_set_name": "s46",
+        "external_id": "EXTERNAL01",
+        "meta": {},
+        "metadata": {},
+        "name": "s4a",
+        "object": [],
+        "url": "s4c",
+        "boundary": "BOUNDARY01",
+        "boundary_set": "BOUNDARY_SET01"
+      },
+      "BOUNDARY01": {
+        "boundary_set_name": "s8c",
+        "external_id": "EXTERNAL01",
+        "meta": {},
+        "metadata": {},
+        "name": "s90",
+        "object": [],
+        "url": "s92",
+        "boundary": "BOUNDARY01",
+        "boundary_set": "BOUNDARY_SET01"
+      },
+      "BOUNDARY02": {
+        "boundary_set_name": "sd2",
+        "external_id": "EXTERNAL01",
+        "meta": {},
+        "metadata": {},
+        "name": "sd6",
+        "object": [],
+        "url": "sd8",
+        "boundary": "BOUNDARY01",
+        "boundary_set": "BOUNDARY_SET01"
+      }
+    }
+  },
+  "new": {
+    "boundary": {
+      "boundary_ref01": {
+        "boundary_set_name": "s118",
+        "external_id": "EXTERNAL01",
+        "meta": {},
+        "metadata": {},
+        "name": "s11c",
+        "object": [],
+        "url": "s11e"
+      }
+    }
+  }
+}

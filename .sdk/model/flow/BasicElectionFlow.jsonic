@@ -1,0 +1,22 @@
+# BasicElectionFlow
+
+main: kit: flow: BasicElectionFlow:
+{
+  entity: "election",
+  kind: "basic",
+  name: "BasicElectionFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "election_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicElectionFlow"
+}

@@ -1,0 +1,24 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "Open North"
+        url: "https://represent.opennorth.ca"
+      }
+      description: "This API provides access to information about elected officials and electoral districts in Canada. Users can find representatives based on postal codes or geographical coordinates, retrieve boundary sets, and explore details about elections and candidates."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://represent.opennorth.ca"
+        }
+      ]
+      title: "Represent Officials API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

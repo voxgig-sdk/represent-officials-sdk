@@ -1,0 +1,9 @@
+# Entity Models
+
+@"boundary.jsonic"
+@"boundary_set.jsonic"
+@"candidate.jsonic"
+@"election.jsonic"
+@"postal_code.jsonic"
+@"representatif.jsonic"
+@"representative_set.jsonic"

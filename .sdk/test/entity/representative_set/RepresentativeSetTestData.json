@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "representative_set": {
+      "REPRESENTATIVE_SET00": {
+        "name": "s14",
+        "url": "s15"
+      },
+      "REPRESENTATIVE_SET01": {
+        "name": "s28",
+        "url": "s29"
+      },
+      "REPRESENTATIVE_SET02": {
+        "name": "s3c",
+        "url": "s3d"
+      }
+    }
+  },
+  "new": {
+    "representative_set": {
+      "representative_set_ref01": {
+        "name": "s50",
+        "url": "s51"
+      }
+    }
+  }
+}
