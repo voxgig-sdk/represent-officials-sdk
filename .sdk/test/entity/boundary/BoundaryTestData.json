@@ -10,7 +10,8 @@
         "object": [],
         "url": "s4c",
         "boundary": "BOUNDARY01",
-        "boundary_set": "BOUNDARY_SET01"
+        "boundary_set": "BOUNDARY_SET01",
+        "id": "BOUNDARY00"
       },
       "BOUNDARY01": {
         "boundary_set_name": "s8c",
@@ -21,7 +22,8 @@
         "object": [],
         "url": "s92",
         "boundary": "BOUNDARY01",
-        "boundary_set": "BOUNDARY_SET01"
+        "boundary_set": "BOUNDARY_SET01",
+        "id": "BOUNDARY01"
       },
       "BOUNDARY02": {
         "boundary_set_name": "sd2",
@@ -32,7 +34,8 @@
         "object": [],
         "url": "sd8",
         "boundary": "BOUNDARY01",
-        "boundary_set": "BOUNDARY_SET01"
+        "boundary_set": "BOUNDARY_SET01",
+        "id": "BOUNDARY02"
       }
     }
   },

@@ -3,15 +3,18 @@
     "representative_set": {
       "REPRESENTATIVE_SET00": {
         "name": "s14",
-        "url": "s15"
+        "url": "s15",
+        "id": "REPRESENTATIVE_SET00"
       },
       "REPRESENTATIVE_SET01": {
         "name": "s28",
-        "url": "s29"
+        "url": "s29",
+        "id": "REPRESENTATIVE_SET01"
       },
       "REPRESENTATIVE_SET02": {
         "name": "s3c",
-        "url": "s3d"
+        "url": "s3d",
+        "id": "REPRESENTATIVE_SET02"
       }
     }
   },

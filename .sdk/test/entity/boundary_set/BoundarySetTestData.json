@@ -4,17 +4,20 @@
       "BOUNDARY_SET00": {
         "domain": "s1e",
         "name": "s1f",
-        "url": "s20"
+        "url": "s20",
+        "id": "BOUNDARY_SET00"
       },
       "BOUNDARY_SET01": {
         "domain": "s3c",
         "name": "s3d",
-        "url": "s3e"
+        "url": "s3e",
+        "id": "BOUNDARY_SET01"
       },
       "BOUNDARY_SET02": {
         "domain": "s5a",
         "name": "s5b",
-        "url": "s5c"
+        "url": "s5c",
+        "id": "BOUNDARY_SET02"
       }
     }
   },

@@ -1,10 +1,10 @@
 package voxgigrepresentofficialssdk
 
 import (
-	"github.com/voxgig-sdk/represent-officials-sdk/core"
-	"github.com/voxgig-sdk/represent-officials-sdk/entity"
-	"github.com/voxgig-sdk/represent-officials-sdk/feature"
-	_ "github.com/voxgig-sdk/represent-officials-sdk/utility"
+	"github.com/voxgig-sdk/represent-officials-sdk/go/core"
+	"github.com/voxgig-sdk/represent-officials-sdk/go/entity"
+	"github.com/voxgig-sdk/represent-officials-sdk/go/feature"
+	_ "github.com/voxgig-sdk/represent-officials-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

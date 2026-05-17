@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/represent-officials-sdk/core"
+import "github.com/voxgig-sdk/represent-officials-sdk/go/core"
 
 func featureAddUtil(ctx *core.Context, f core.Feature) {
 	client := ctx.Client

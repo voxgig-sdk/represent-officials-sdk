@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/represent-officials-sdk"
-	"github.com/voxgig-sdk/represent-officials-sdk/core"
+	sdk "github.com/voxgig-sdk/represent-officials-sdk/go"
+	"github.com/voxgig-sdk/represent-officials-sdk/go/core"
 )
 
 func TestBoundarySetDirect(t *testing.T) {

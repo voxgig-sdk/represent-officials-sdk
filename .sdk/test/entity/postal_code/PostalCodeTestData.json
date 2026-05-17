@@ -10,7 +10,8 @@
         "province": "s55",
         "representatives_centroid": [],
         "representatives_concordance": [],
-        "postal_code": "POSTAL_CODE01"
+        "postal_code": "POSTAL_CODE01",
+        "id": "POSTAL_CODE00"
       },
       "POSTAL_CODE01": {
         "boundaries_centroid": [],
@@ -21,7 +22,8 @@
         "province": "sa5",
         "representatives_centroid": [],
         "representatives_concordance": [],
-        "postal_code": "POSTAL_CODE01"
+        "postal_code": "POSTAL_CODE01",
+        "id": "POSTAL_CODE01"
       },
       "POSTAL_CODE02": {
         "boundaries_centroid": [],
@@ -32,7 +34,8 @@
         "province": "sf5",
         "representatives_centroid": [],
         "representatives_concordance": [],
-        "postal_code": "POSTAL_CODE01"
+        "postal_code": "POSTAL_CODE01",
+        "id": "POSTAL_CODE02"
       }
     }
   },
