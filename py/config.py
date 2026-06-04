@@ -15,9 +15,6 @@ def make_config():
         },
         "options": {
             "base": "https://represent.opennorth.ca",
-            "auth": {
-                "prefix": "Bearer",
-            },
             "headers": {
         "content-type": "application/json",
       },

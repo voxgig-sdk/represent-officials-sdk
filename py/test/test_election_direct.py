@@ -61,14 +61,12 @@ def _election_direct_setup(mockres):
     env = runner.env_override({
         "REPRESENTOFFICIALS_TEST_ELECTION_ENTID": {},
         "REPRESENTOFFICIALS_TEST_LIVE": "FALSE",
-        "REPRESENTOFFICIALS_APIKEY": "NONE",
     })
 
     live = env.get("REPRESENTOFFICIALS_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("REPRESENTOFFICIALS_APIKEY"),
         }
         client = RepresentOfficialsSDK(merged_opts)
         return {

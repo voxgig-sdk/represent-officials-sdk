@@ -114,7 +114,6 @@ function basicSetup(extra?: any) {
     'REPRESENT_OFFICIALS_TEST_BOUNDARY_SET_ENTID': idmap,
     'REPRESENT_OFFICIALS_TEST_LIVE': 'FALSE',
     'REPRESENT_OFFICIALS_TEST_EXPLAIN': 'FALSE',
-    'REPRESENT_OFFICIALS_APIKEY': 'NONE',
   })
 
   idmap = env['REPRESENT_OFFICIALS_TEST_BOUNDARY_SET_ENTID']
@@ -124,7 +123,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new RepresentOfficialsSDK(merge([
       {
-        apikey: env.REPRESENT_OFFICIALS_APIKEY,
       },
       extra
     ]))

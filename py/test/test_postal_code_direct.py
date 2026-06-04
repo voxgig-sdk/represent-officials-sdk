@@ -69,14 +69,12 @@ def _postal_code_direct_setup(mockres):
     env = runner.env_override({
         "REPRESENTOFFICIALS_TEST_POSTAL_CODE_ENTID": {},
         "REPRESENTOFFICIALS_TEST_LIVE": "FALSE",
-        "REPRESENTOFFICIALS_APIKEY": "NONE",
     })
 
     live = env.get("REPRESENTOFFICIALS_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("REPRESENTOFFICIALS_APIKEY"),
         }
         client = RepresentOfficialsSDK(merged_opts)
         return {

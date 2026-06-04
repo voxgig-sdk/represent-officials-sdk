@@ -15,9 +15,6 @@ module RepresentOfficialsConfig
       },
       "options" => {
         "base" => "https://represent.opennorth.ca",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },

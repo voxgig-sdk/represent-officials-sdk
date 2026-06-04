@@ -17,7 +17,23 @@
           }
         ],
         "title": "Represent Officials API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Look up Canadian elected officials and electoral districts at every level of government by postal code or coordinates",
+        "homepage": "https://represent.opennorth.ca",
+        "docs_url": "https://represent.opennorth.ca/api/",
+        "license_short": "Open project run by Open North; bulk data on GitHub, contact maintainers for high-volume use.",
+        "license_md": "- Run by [Open North](https://represent.opennorth.ca), a Canadian nonprofit focused on government transparency and civic participation.\n- Source code and bulk data are published via the `opennorth/represent-canada` GitHub organisation.\n- Free tier permits up to 60 requests per minute (approx. 86,400/day); higher volumes require contacting Open North.\n- Underlying boundary and representative data come from a mix of government and community-maintained sources; verify before using for official purposes.",
+        "about_md": "[Represent](https://represent.opennorth.ca) is a civic API maintained by [Open North](https://represent.opennorth.ca) that maps Canadian postal codes and geographic coordinates to the elected officials and electoral districts that cover them. It is widely used by nonprofits, unions, and advocacy groups to power tools like election guides, letter-writing campaigns, and canvassing apps.\n\nWhat you get from the API:\n\n- Lookups of representatives by postal code via `/postcodes/{postcode}/`.\n- Lists and searches of representatives across federal, provincial, and municipal levels via `/representatives/`.\n- Electoral district (riding) boundaries and simplified geometry via `/boundaries/`.\n- Groupings of related boundaries and representative bodies via `/boundary-sets/` and `/representative-sets/`.\n- Candidate and election records via `/candidates/` and `/elections/`.\n\nThe service covers Members of Parliament, MLAs/MPPs/MNAs/MHAs, and roughly 7,000+ mayors and councillors across 8,000+ municipal wards. No API key is required; requests are subject to a 60-per-minute rate limit, results are paginated (default 20 per page, adjustable with `limit`), and JSONP callbacks are supported for browser use. CORS is enabled.",
+        "entity_desc": {
+          "boundary": "An electoral district or ward polygon (federal riding, provincial riding, or municipal ward) exposed under `/boundaries/`.",
+          "boundary_set": "A named collection of related boundaries, such as all federal ridings or all wards in a given municipality, exposed under `/boundary-sets/`.",
+          "candidate": "A person running in an upcoming or recent Canadian election, exposed under `/candidates/`.",
+          "election": "A scheduled or past Canadian election at a given level of government, exposed under `/elections/`.",
+          "postal_code": "A Canadian postal code used as a lookup key to retrieve the matching representatives and districts via `/postcodes/{postcode}/`.",
+          "representatif": "An elected official (MP, MLA/MPP/MNA/MHA, mayor, or councillor) returned by `/representatives/`, searchable by name, district, or postal code.",
+          "representative_set": "A named collection of representatives such as the House of Commons or a specific municipal council, exposed under `/representative-sets/`."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -25,7 +41,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "boundary": {

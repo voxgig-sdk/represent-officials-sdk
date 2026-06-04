@@ -92,7 +92,6 @@ def _election_basic_setup(extra):
         "REPRESENTOFFICIALS_TEST_ELECTION_ENTID": idmap,
         "REPRESENTOFFICIALS_TEST_LIVE": "FALSE",
         "REPRESENTOFFICIALS_TEST_EXPLAIN": "FALSE",
-        "REPRESENTOFFICIALS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +102,6 @@ def _election_basic_setup(extra):
     if env.get("REPRESENTOFFICIALS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("REPRESENTOFFICIALS_APIKEY"),
             },
             extra or {},
         ])
