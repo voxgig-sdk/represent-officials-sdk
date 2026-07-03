@@ -1,6 +1,11 @@
 # RepresentOfficials Python SDK
 
-The Python SDK for the RepresentOfficials API. Provides an entity-oriented interface following Pythonic conventions.
+
+
+The Python SDK for the RepresentOfficials API — an entity-oriented client following Pythonic conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -23,15 +28,18 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
+import os
 from representofficials_sdk import RepresentOfficialsSDK
 
-client = RepresentOfficialsSDK({})
+client = RepresentOfficialsSDK({
+    "apikey": os.environ.get("REPRESENT-OFFICIALS_APIKEY"),
+})
 ```
 
 ### 2. List boundarys
 
 ```python
-result, err = client.Boundary(None).list(None, None)
+result, err = client.Boundary().list()
 if err:
     raise Exception(err)
 
@@ -44,7 +52,7 @@ if isinstance(result, list):
 ### 3. Load a boundary
 
 ```python
-result, err = client.Boundary(None).load({"id": "example_id"}, None)
+result, err = client.Boundary().load({"id": "example_id"})
 if err:
     raise Exception(err)
 print(result)
@@ -92,11 +100,9 @@ print(fetchdef["headers"])
 Create a mock client for unit testing — no server required:
 
 ```python
-client = RepresentOfficialsSDK.test(None, None)
+client = RepresentOfficialsSDK.test()
 
-result, err = client.RepresentOfficials(None).load(
-    {"id": "test01"}, None
-)
+result, err = client.RepresentOfficials().load({"id": "test01"})
 # result contains mock response data
 ```
 
@@ -127,6 +133,7 @@ Create a `.env.local` file at the project root:
 
 ```
 REPRESENT-OFFICIALS_TEST_LIVE=TRUE
+REPRESENT-OFFICIALS_APIKEY=<your-key>
 ```
 
 Then run:
@@ -150,6 +157,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |

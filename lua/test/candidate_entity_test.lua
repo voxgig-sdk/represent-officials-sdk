@@ -92,6 +92,7 @@ function candidate_basic_setup(extra)
     ["REPRESENTOFFICIALS_TEST_CANDIDATE_ENTID"] = idmap,
     ["REPRESENTOFFICIALS_TEST_LIVE"] = "FALSE",
     ["REPRESENTOFFICIALS_TEST_EXPLAIN"] = "FALSE",
+    ["REPRESENTOFFICIALS_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -103,6 +104,7 @@ function candidate_basic_setup(extra)
   if env["REPRESENTOFFICIALS_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["REPRESENTOFFICIALS_APIKEY"],
       },
       extra or {},
     })

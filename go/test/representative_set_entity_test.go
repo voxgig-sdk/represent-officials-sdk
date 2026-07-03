@@ -129,6 +129,7 @@ func representative_setBasicSetup(extra map[string]any) *entityTestSetup {
 		"REPRESENTOFFICIALS_TEST_REPRESENTATIVE_SET_ENTID": idmap,
 		"REPRESENTOFFICIALS_TEST_LIVE":      "FALSE",
 		"REPRESENTOFFICIALS_TEST_EXPLAIN":   "FALSE",
+		"REPRESENTOFFICIALS_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["REPRESENTOFFICIALS_TEST_REPRESENTATIVE_SET_ENTID"])
@@ -139,6 +140,7 @@ func representative_setBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["REPRESENTOFFICIALS_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["REPRESENTOFFICIALS_APIKEY"],
 			},
 			extra,
 		})

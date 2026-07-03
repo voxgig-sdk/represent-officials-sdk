@@ -1,22 +1,8 @@
 # RepresentOfficials SDK
 
-Look up Canadian elected officials and electoral districts at every level of government by postal code or coordinates
+Represent Officials API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Represent Officials API
-
-[Represent](https://represent.opennorth.ca) is a civic API maintained by [Open North](https://represent.opennorth.ca) that maps Canadian postal codes and geographic coordinates to the elected officials and electoral districts that cover them. It is widely used by nonprofits, unions, and advocacy groups to power tools like election guides, letter-writing campaigns, and canvassing apps.
-
-What you get from the API:
-
-- Lookups of representatives by postal code via `/postcodes/{postcode}/`.
-- Lists and searches of representatives across federal, provincial, and municipal levels via `/representatives/`.
-- Electoral district (riding) boundaries and simplified geometry via `/boundaries/`.
-- Groupings of related boundaries and representative bodies via `/boundary-sets/` and `/representative-sets/`.
-- Candidate and election records via `/candidates/` and `/elections/`.
-
-The service covers Members of Parliament, MLAs/MPPs/MNAs/MHAs, and roughly 7,000+ mayors and councillors across 8,000+ municipal wards. No API key is required; requests are subject to a 60-per-minute rate limit, results are paginated (default 20 per page, adjustable with `limit`), and JSONP callbacks are supported for browser use. CORS is enabled.
 
 ## Try it
 
@@ -50,29 +36,31 @@ gem install represent-officials-sdk
 luarocks install represent-officials-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { RepresentOfficialsSDK } from 'represent-officials'
 
-const client = new RepresentOfficialsSDK({})
+const client = new RepresentOfficialsSDK({
+  apikey: process.env.REPRESENT-OFFICIALS_APIKEY,
+})
 
 // List all boundarys
 const boundarys = await client.Boundary().list()
+console.log(boundarys.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -102,13 +90,13 @@ The API exposes 7 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Boundary** | An electoral district or ward polygon (federal riding, provincial riding, or municipal ward) exposed under `/boundaries/`. | `/boundaries/` |
-| **BoundarySet** | A named collection of related boundaries, such as all federal ridings or all wards in a given municipality, exposed under `/boundary-sets/`. | `/boundary-sets/` |
-| **Candidate** | A person running in an upcoming or recent Canadian election, exposed under `/candidates/`. | `/candidates/` |
-| **Election** | A scheduled or past Canadian election at a given level of government, exposed under `/elections/`. | `/elections/` |
-| **PostalCode** | A Canadian postal code used as a lookup key to retrieve the matching representatives and districts via `/postcodes/{postcode}/`. | `/postcodes/{postalCode}/` |
-| **Representatif** | An elected official (MP, MLA/MPP/MNA/MHA, mayor, or councillor) returned by `/representatives/`, searchable by name, district, or postal code. | `/representatives/` |
-| **RepresentativeSet** | A named collection of representatives such as the House of Commons or a specific municipal council, exposed under `/representative-sets/`. | `/representative-sets/` |
+| **Boundary** |  | `/boundaries/` |
+| **BoundarySet** |  | `/boundary-sets/` |
+| **Candidate** |  | `/candidates/` |
+| **Election** |  | `/elections/` |
+| **PostalCode** |  | `/postcodes/{postalCode}/` |
+| **Representatif** |  | `/representatives/` |
+| **RepresentativeSet** |  | `/representative-sets/` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -118,17 +106,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from representofficials_sdk import RepresentOfficialsSDK
 
-client = RepresentOfficialsSDK({})
+client = RepresentOfficialsSDK({
+    "apikey": os.environ.get("REPRESENT-OFFICIALS_APIKEY"),
+})
 
 # List all boundarys
-boundarys, err = client.Boundary(None).list(None, None)
+boundarys, err = client.Boundary().list()
+print(boundarys)
 
 # Load a specific boundary
-boundary, err = client.Boundary(None).load(
-    {"id": "example_id"}, None
-)
+boundary, err = client.Boundary().load({"id": "example_id"})
+print(boundary)
 ```
 
 ### PHP
@@ -137,15 +128,17 @@ boundary, err = client.Boundary(None).load(
 <?php
 require_once 'representofficials_sdk.php';
 
-$client = new RepresentOfficialsSDK([]);
+$client = new RepresentOfficialsSDK([
+    "apikey" => getenv("REPRESENT-OFFICIALS_APIKEY"),
+]);
 
 // List all boundarys
-[$boundarys, $err] = $client->Boundary(null)->list(null, null);
+[$boundarys, $err] = $client->Boundary()->list();
+print_r($boundarys);
 
 // Load a specific boundary
-[$boundary, $err] = $client->Boundary(null)->load(
-    ["id" => "example_id"], null
-);
+[$boundary, $err] = $client->Boundary()->load(["id" => "example_id"]);
+print_r($boundary);
 ```
 
 ### Golang
@@ -153,10 +146,13 @@ $client = new RepresentOfficialsSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/represent-officials-sdk/go"
 
-client := sdk.NewRepresentOfficialsSDK(map[string]any{})
+client := sdk.NewRepresentOfficialsSDK(map[string]any{
+    "apikey": os.Getenv("REPRESENT-OFFICIALS_APIKEY"),
+})
 
 // List all boundarys
 boundarys, err := client.Boundary(nil).List(nil, nil)
+fmt.Println(boundarys)
 ```
 
 ### Ruby
@@ -164,15 +160,17 @@ boundarys, err := client.Boundary(nil).List(nil, nil)
 ```ruby
 require_relative "RepresentOfficials_sdk"
 
-client = RepresentOfficialsSDK.new({})
+client = RepresentOfficialsSDK.new({
+  "apikey" => ENV["REPRESENT-OFFICIALS_APIKEY"],
+})
 
 # List all boundarys
-boundarys, err = client.Boundary(nil).list(nil, nil)
+boundarys, err = client.Boundary().list
+puts boundarys
 
 # Load a specific boundary
-boundary, err = client.Boundary(nil).load(
-  { "id" => "example_id" }, nil
-)
+boundary, err = client.Boundary().load({ "id" => "example_id" })
+puts boundary
 ```
 
 ### Lua
@@ -180,15 +178,17 @@ boundary, err = client.Boundary(nil).load(
 ```lua
 local sdk = require("represent-officials_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("REPRESENT-OFFICIALS_APIKEY"),
+})
 
 -- List all boundarys
-local boundarys, err = client:Boundary(nil):list(nil, nil)
+local boundarys, err = client:Boundary():list()
+print(boundarys)
 
 -- Load a specific boundary
-local boundary, err = client:Boundary(nil):load(
-  { id = "example_id" }, nil
-)
+local boundary, err = client:Boundary():load({ id = "example_id" })
+print(boundary)
 ```
 
 ## Unit testing in offline mode
@@ -207,25 +207,21 @@ const result = await client.Boundary().load({ id: 'test01' })
 ### Python
 
 ```python
-client = RepresentOfficialsSDK.test(None, None)
-result, err = client.Boundary(None).load(
-    {"id": "test01"}, None
-)
+client = RepresentOfficialsSDK.test()
+result, err = client.Boundary().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = RepresentOfficialsSDK::test(null, null);
-[$result, $err] = $client->Boundary(null)->load(
-    ["id" => "test01"], null
-);
+$client = RepresentOfficialsSDK::test();
+[$result, $err] = $client->Boundary()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Boundary(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -234,19 +230,15 @@ result, err := client.Boundary(nil).Load(
 ### Ruby
 
 ```ruby
-client = RepresentOfficialsSDK.test(nil, nil)
-result, err = client.Boundary(nil).load(
-  { "id" => "test01" }, nil
-)
+client = RepresentOfficialsSDK.test
+result, err = client.Boundary().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Boundary(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Boundary():load({ id = "test01" })
 ```
 
 ## How it works
@@ -350,16 +342,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Represent Officials API
-
-- Upstream: [https://represent.opennorth.ca](https://represent.opennorth.ca)
-- API docs: [https://represent.opennorth.ca/api/](https://represent.opennorth.ca/api/)
-
-- Run by [Open North](https://represent.opennorth.ca), a Canadian nonprofit focused on government transparency and civic participation.
-- Source code and bulk data are published via the `opennorth/represent-canada` GitHub organisation.
-- Free tier permits up to 60 requests per minute (approx. 86,400/day); higher volumes require contacting Open North.
-- Underlying boundary and representative data come from a mix of government and community-maintained sources; verify before using for official purposes.
 
 ---
 

@@ -1,6 +1,11 @@
 # RepresentOfficials PHP SDK
 
-The PHP SDK for the RepresentOfficials API. Provides an entity-oriented interface using PHP conventions.
+
+
+The PHP SDK for the RepresentOfficials API — an entity-oriented client using PHP conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -20,13 +25,15 @@ loading a specific record.
 <?php
 require_once 'representofficials_sdk.php';
 
-$client = new RepresentOfficialsSDK([]);
+$client = new RepresentOfficialsSDK([
+    "apikey" => getenv("REPRESENT-OFFICIALS_APIKEY"),
+]);
 ```
 
 ### 2. List boundarys
 
 ```php
-[$result, $err] = $client->Boundary(null)->list(null, null);
+[$result, $err] = $client->Boundary()->list();
 if ($err) { throw new \Exception($err); }
 
 if (is_array($result)) {
@@ -40,7 +47,7 @@ if (is_array($result)) {
 ### 3. Load a boundary
 
 ```php
-[$result, $err] = $client->Boundary(null)->load(["id" => "example_id"], null);
+[$result, $err] = $client->Boundary()->load(["id" => "example_id"]);
 if ($err) { throw new \Exception($err); }
 print_r($result);
 ```
@@ -86,11 +93,9 @@ print_r($fetchdef["headers"]);
 Create a mock client for unit testing — no server required:
 
 ```php
-$client = RepresentOfficialsSDK::test(null, null);
+$client = RepresentOfficialsSDK::test();
 
-[$result, $err] = $client->RepresentOfficials(null)->load(
-    ["id" => "test01"], null
-);
+[$result, $err] = $client->RepresentOfficials()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -125,6 +130,7 @@ Create a `.env.local` file at the project root:
 
 ```
 REPRESENT-OFFICIALS_TEST_LIVE=TRUE
+REPRESENT-OFFICIALS_APIKEY=<your-key>
 ```
 
 Then run:
@@ -147,6 +153,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
