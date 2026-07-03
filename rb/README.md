@@ -10,13 +10,13 @@ The Ruby SDK for the RepresentOfficials API — an entity-oriented client using 
 
 ## Install
 ```bash
-gem install represent-officials-sdk
+gem install voxgig-sdk-represent-officials
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "represent-officials-sdk"
+gem "voxgig-sdk-represent-officials"
 ```
 
 Then run:

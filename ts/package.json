@@ -1,7 +1,23 @@
 {
   "name": "@voxgig-sdk/represent-officials",
   "version": "0.0.1",
-  "description": "DESCRIPTION",
+  "description": "Unofficial generated TypeScript SDK for the Represent Officials public API. Not affiliated with or endorsed by the upstream API provider.",
+  "keywords": [
+    "voxgig",
+    "sdk",
+    "generated-sdk",
+    "openapi",
+    "api-client",
+    "represent-officials"
+  ],
+  "homepage": "https://github.com/voxgig-sdk/represent-officials-sdk#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/voxgig-sdk/represent-officials-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/voxgig-sdk/represent-officials-sdk/issues"
+  },
   "main": "dist/RepresentOfficialsSDK.js",
   "type": "commonjs",
   "types": "dist/RepresentOfficialsSDK.d.ts",
@@ -14,7 +30,10 @@
     "clean": "rm -rf node_modules yarn.lock package-lock.json",
     "reset": "npm run clean && npm i && npm run build && npm test"
   },
-  "author": "RepresentOfficials",
+  "author": {
+    "name": "Voxgig",
+    "url": "https://voxgig.com"
+  },
   "license": "MIT",
   "dependencies": {},
   "peerDependencies": {},

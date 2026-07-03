@@ -10,7 +10,7 @@ The TypeScript SDK for the RepresentOfficials API — a type-safe, entity-orient
 
 ## Install
 ```bash
-npm install represent-officials
+npm install @voxgig-sdk/represent-officials
 ```
 ## Tutorial: your first API call
 

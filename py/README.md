@@ -10,7 +10,7 @@ The Python SDK for the RepresentOfficials API — an entity-oriented client foll
 
 ## Install
 ```bash
-pip install represent-officials-sdk
+pip install voxgig-sdk-represent-officials
 ```
 
 Or install from source:

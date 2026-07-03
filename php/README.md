@@ -10,7 +10,7 @@ The PHP SDK for the RepresentOfficials API — an entity-oriented client using P
 
 ## Install
 ```bash
-composer require voxgig/represent-officials-sdk
+composer require voxgig-sdk/represent-officials
 ```
 
 
