@@ -29,18 +29,16 @@ require_once 'representofficials_sdk.php';
 $client = new RepresentOfficialsSDK();
 ```
 
-### 2. List boundarys
+### 2. List boundary records
 
 ```php
 try {
-    $result = $client->boundary()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Boundary records — iterate directly.
+    $boundarys = $client->Boundary()->list();
+    foreach ($boundarys as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -49,9 +47,10 @@ try {
 
 ```php
 try {
-    $result = $client->boundary()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Boundary record (throws on error).
+    $boundary = $client->Boundary()->load(["id" => "example_id"]);
+    print_r($boundary);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -97,13 +96,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = RepresentOfficialsSDK::test();
+$client = RepresentOfficialsSDK::test([
+    "entity" => ["boundary" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->boundary()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$boundary = $client->Boundary()->load(["id" => "test01"]);
+print_r($boundary);
 ```
 
 ### Use a custom fetch function
@@ -185,7 +188,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `Boundary` | `($data): BoundaryEntity` | Create a Boundary entity instance. |
 | `BoundarySet` | `($data): BoundarySetEntity` | Create a BoundarySet entity instance. |
 | `Candidate` | `($data): CandidateEntity` | Create a Candidate entity instance. |
-| `Election` | `($data): ElectionEntity` | Create a Election entity instance. |
+| `Election` | `($data): ElectionEntity` | Create an Election entity instance. |
 | `PostalCode` | `($data): PostalCodeEntity` | Create a PostalCode entity instance. |
 | `Representatif` | `($data): RepresentatifEntity` | Create a Representatif entity instance. |
 | `RepresentativeSet` | `($data): RepresentativeSetEntity` | Create a RepresentativeSet entity instance. |
@@ -339,7 +342,7 @@ API path: `/representative-sets/`
 
 ### Boundary
 
-Create an instance: `const boundary = client.boundary`
+Create an instance: `$boundary = $client->Boundary();`
 
 #### Operations
 
@@ -362,20 +365,22 @@ Create an instance: `const boundary = client.boundary`
 
 #### Example: Load
 
-```ts
-const boundary = await client.boundary.load({ id: 'boundary_id' })
+```php
+// load() returns the bare Boundary record (throws on error).
+$boundary = $client->Boundary()->load(["id" => "boundary_id"]);
 ```
 
 #### Example: List
 
-```ts
-const boundarys = await client.boundary.list()
+```php
+// list() returns an array of Boundary records (throws on error).
+$boundarys = $client->Boundary()->list();
 ```
 
 
 ### BoundarySet
 
-Create an instance: `const boundary_set = client.boundary_set`
+Create an instance: `$boundary_set = $client->BoundarySet();`
 
 #### Operations
 
@@ -394,20 +399,22 @@ Create an instance: `const boundary_set = client.boundary_set`
 
 #### Example: Load
 
-```ts
-const boundary_set = await client.boundary_set.load({ id: 'boundary_set_id' })
+```php
+// load() returns the bare BoundarySet record (throws on error).
+$boundary_set = $client->BoundarySet()->load(["id" => "boundary_set_id"]);
 ```
 
 #### Example: List
 
-```ts
-const boundary_sets = await client.boundary_set.list()
+```php
+// list() returns an array of BoundarySet records (throws on error).
+$boundary_sets = $client->BoundarySet()->list();
 ```
 
 
 ### Candidate
 
-Create an instance: `const candidate = client.candidate`
+Create an instance: `$candidate = $client->Candidate();`
 
 #### Operations
 
@@ -424,14 +431,15 @@ Create an instance: `const candidate = client.candidate`
 
 #### Example: List
 
-```ts
-const candidates = await client.candidate.list()
+```php
+// list() returns an array of Candidate records (throws on error).
+$candidates = $client->Candidate()->list();
 ```
 
 
 ### Election
 
-Create an instance: `const election = client.election`
+Create an instance: `$election = $client->Election();`
 
 #### Operations
 
@@ -448,14 +456,15 @@ Create an instance: `const election = client.election`
 
 #### Example: List
 
-```ts
-const elections = await client.election.list()
+```php
+// list() returns an array of Election records (throws on error).
+$elections = $client->Election()->list();
 ```
 
 
 ### PostalCode
 
-Create an instance: `const postal_code = client.postal_code`
+Create an instance: `$postal_code = $client->PostalCode();`
 
 #### Operations
 
@@ -478,14 +487,15 @@ Create an instance: `const postal_code = client.postal_code`
 
 #### Example: Load
 
-```ts
-const postal_code = await client.postal_code.load({ id: 'postal_code_id' })
+```php
+// load() returns the bare PostalCode record (throws on error).
+$postal_code = $client->PostalCode()->load(["id" => "postal_code_id"]);
 ```
 
 
 ### Representatif
 
-Create an instance: `const representatif = client.representatif`
+Create an instance: `$representatif = $client->Representatif();`
 
 #### Operations
 
@@ -518,20 +528,22 @@ Create an instance: `const representatif = client.representatif`
 
 #### Example: Load
 
-```ts
-const representatif = await client.representatif.load({ id: 'representatif_id' })
+```php
+// load() returns the bare Representatif record (throws on error).
+$representatif = $client->Representatif()->load(["id" => "representatif_id"]);
 ```
 
 #### Example: List
 
-```ts
-const representatifs = await client.representatif.list()
+```php
+// list() returns an array of Representatif records (throws on error).
+$representatifs = $client->Representatif()->list();
 ```
 
 
 ### RepresentativeSet
 
-Create an instance: `const representative_set = client.representative_set`
+Create an instance: `$representative_set = $client->RepresentativeSet();`
 
 #### Operations
 
@@ -549,14 +561,16 @@ Create an instance: `const representative_set = client.representative_set`
 
 #### Example: Load
 
-```ts
-const representative_set = await client.representative_set.load({ id: 'representative_set_id' })
+```php
+// load() returns the bare RepresentativeSet record (throws on error).
+$representative_set = $client->RepresentativeSet()->load(["id" => "representative_set_id"]);
 ```
 
 #### Example: List
 
-```ts
-const representative_sets = await client.representative_set.list()
+```php
+// list() returns an array of RepresentativeSet records (throws on error).
+$representative_sets = $client->RepresentativeSet()->list();
 ```
 
 
@@ -631,7 +645,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$boundary = $client->boundary();
+$boundary = $client->Boundary();
 $boundary->load(["id" => "example_id"]);
 
 // $boundary->dataGet() now returns the loaded boundary data

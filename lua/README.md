@@ -31,26 +31,26 @@ local sdk = require("represent-officials_sdk")
 local client = sdk.new()
 ```
 
-### 2. List boundarys
+### 2. List boundary records
+
+Entity operations return `(value, err)`. For `list`, `value` is the
+array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local result, err = client:boundary():list()
+local boundarys, err = client:Boundary():list()
 if err then error(err) end
 
-if type(result) == "table" then
-  for _, item in ipairs(result) do
-    local d = item:data_get()
-    print(d["id"], d["name"])
-  end
+for _, item in ipairs(boundarys) do
+  print(item["id"], item["name"])
 end
 ```
 
 ### 3. Load a boundary
 
 ```lua
-local result, err = client:boundary():load({ id = "example_id" })
+local boundary, err = client:Boundary():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(boundary)
 ```
 
 
@@ -96,8 +96,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:boundary():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Boundary():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -178,7 +178,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Boundary` | `(data) -> BoundaryEntity` | Create a Boundary entity instance. |
 | `BoundarySet` | `(data) -> BoundarySetEntity` | Create a BoundarySet entity instance. |
 | `Candidate` | `(data) -> CandidateEntity` | Create a Candidate entity instance. |
-| `Election` | `(data) -> ElectionEntity` | Create a Election entity instance. |
+| `Election` | `(data) -> ElectionEntity` | Create an Election entity instance. |
 | `PostalCode` | `(data) -> PostalCodeEntity` | Create a PostalCode entity instance. |
 | `Representatif` | `(data) -> RepresentatifEntity` | Create a Representatif entity instance. |
 | `RepresentativeSet` | `(data) -> RepresentativeSetEntity` | Create a RepresentativeSet entity instance. |
@@ -203,17 +203,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local boundary, err = client:Boundary():load({ id = "example_id" })
+    if err then error(err) end
+    -- boundary is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -328,7 +333,7 @@ API path: `/representative-sets/`
 
 ### Boundary
 
-Create an instance: `const boundary = client.boundary`
+Create an instance: `local boundary = client:Boundary(nil)`
 
 #### Operations
 
@@ -351,20 +356,20 @@ Create an instance: `const boundary = client.boundary`
 
 #### Example: Load
 
-```ts
-const boundary = await client.boundary.load({ id: 'boundary_id' })
+```lua
+local boundary, err = client:Boundary():load({ id = "boundary_id" })
 ```
 
 #### Example: List
 
-```ts
-const boundarys = await client.boundary.list()
+```lua
+local boundarys, err = client:Boundary():list()
 ```
 
 
 ### BoundarySet
 
-Create an instance: `const boundary_set = client.boundary_set`
+Create an instance: `local boundary_set = client:BoundarySet(nil)`
 
 #### Operations
 
@@ -383,20 +388,20 @@ Create an instance: `const boundary_set = client.boundary_set`
 
 #### Example: Load
 
-```ts
-const boundary_set = await client.boundary_set.load({ id: 'boundary_set_id' })
+```lua
+local boundary_set, err = client:BoundarySet():load({ id = "boundary_set_id" })
 ```
 
 #### Example: List
 
-```ts
-const boundary_sets = await client.boundary_set.list()
+```lua
+local boundary_sets, err = client:BoundarySet():list()
 ```
 
 
 ### Candidate
 
-Create an instance: `const candidate = client.candidate`
+Create an instance: `local candidate = client:Candidate(nil)`
 
 #### Operations
 
@@ -413,14 +418,14 @@ Create an instance: `const candidate = client.candidate`
 
 #### Example: List
 
-```ts
-const candidates = await client.candidate.list()
+```lua
+local candidates, err = client:Candidate():list()
 ```
 
 
 ### Election
 
-Create an instance: `const election = client.election`
+Create an instance: `local election = client:Election(nil)`
 
 #### Operations
 
@@ -437,14 +442,14 @@ Create an instance: `const election = client.election`
 
 #### Example: List
 
-```ts
-const elections = await client.election.list()
+```lua
+local elections, err = client:Election():list()
 ```
 
 
 ### PostalCode
 
-Create an instance: `const postal_code = client.postal_code`
+Create an instance: `local postal_code = client:PostalCode(nil)`
 
 #### Operations
 
@@ -467,14 +472,14 @@ Create an instance: `const postal_code = client.postal_code`
 
 #### Example: Load
 
-```ts
-const postal_code = await client.postal_code.load({ id: 'postal_code_id' })
+```lua
+local postal_code, err = client:PostalCode():load({ id = "postal_code_id" })
 ```
 
 
 ### Representatif
 
-Create an instance: `const representatif = client.representatif`
+Create an instance: `local representatif = client:Representatif(nil)`
 
 #### Operations
 
@@ -507,20 +512,20 @@ Create an instance: `const representatif = client.representatif`
 
 #### Example: Load
 
-```ts
-const representatif = await client.representatif.load({ id: 'representatif_id' })
+```lua
+local representatif, err = client:Representatif():load({ id = "representatif_id" })
 ```
 
 #### Example: List
 
-```ts
-const representatifs = await client.representatif.list()
+```lua
+local representatifs, err = client:Representatif():list()
 ```
 
 
 ### RepresentativeSet
 
-Create an instance: `const representative_set = client.representative_set`
+Create an instance: `local representative_set = client:RepresentativeSet(nil)`
 
 #### Operations
 
@@ -538,14 +543,14 @@ Create an instance: `const representative_set = client.representative_set`
 
 #### Example: Load
 
-```ts
-const representative_set = await client.representative_set.load({ id: 'representative_set_id' })
+```lua
+local representative_set, err = client:RepresentativeSet():load({ id = "representative_set_id" })
 ```
 
 #### Example: List
 
-```ts
-const representative_sets = await client.representative_set.list()
+```lua
+local representative_sets, err = client:RepresentativeSet():list()
 ```
 
 
@@ -620,7 +625,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local boundary = client:boundary()
+local boundary = client:Boundary()
 boundary:load({ id = "example_id" })
 
 -- boundary:data_get() now returns the loaded boundary data

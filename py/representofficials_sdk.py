@@ -220,121 +220,51 @@ class RepresentOfficialsSDK:
         }
 
 
-    @property
-    def boundary(self):
-        """Idiomatic facade: client.boundary.list() / client.boundary.load({"id": ...})."""
-        from entity.boundary_entity import BoundaryEntity
-        cached = getattr(self, "_boundary", None)
-        if cached is None:
-            cached = BoundaryEntity(self, None)
-            self._boundary = cached
-        return cached
-
-    def Boundary(self, data=None):
-        # Deprecated: use client.boundary instead.
+    def Boundary(self, data=None) -> "BoundaryEntity":
+        """Entity factory: client.Boundary().list({}) / client.Boundary().load({"id": ...})."""
         from entity.boundary_entity import BoundaryEntity
         return BoundaryEntity(self, data)
 
 
-    @property
-    def boundary_set(self):
-        """Idiomatic facade: client.boundary_set.list() / client.boundary_set.load({"id": ...})."""
-        from entity.boundary_set_entity import BoundarySetEntity
-        cached = getattr(self, "_boundary_set", None)
-        if cached is None:
-            cached = BoundarySetEntity(self, None)
-            self._boundary_set = cached
-        return cached
-
-    def BoundarySet(self, data=None):
-        # Deprecated: use client.boundary_set instead.
+    def BoundarySet(self, data=None) -> "BoundarySetEntity":
+        """Entity factory: client.BoundarySet().list({}) / client.BoundarySet().load({"id": ...})."""
         from entity.boundary_set_entity import BoundarySetEntity
         return BoundarySetEntity(self, data)
 
 
-    @property
-    def candidate(self):
-        """Idiomatic facade: client.candidate.list() / client.candidate.load({"id": ...})."""
-        from entity.candidate_entity import CandidateEntity
-        cached = getattr(self, "_candidate", None)
-        if cached is None:
-            cached = CandidateEntity(self, None)
-            self._candidate = cached
-        return cached
-
-    def Candidate(self, data=None):
-        # Deprecated: use client.candidate instead.
+    def Candidate(self, data=None) -> "CandidateEntity":
+        """Entity factory: client.Candidate().list({}) / client.Candidate().load({"id": ...})."""
         from entity.candidate_entity import CandidateEntity
         return CandidateEntity(self, data)
 
 
-    @property
-    def election(self):
-        """Idiomatic facade: client.election.list() / client.election.load({"id": ...})."""
-        from entity.election_entity import ElectionEntity
-        cached = getattr(self, "_election", None)
-        if cached is None:
-            cached = ElectionEntity(self, None)
-            self._election = cached
-        return cached
-
-    def Election(self, data=None):
-        # Deprecated: use client.election instead.
+    def Election(self, data=None) -> "ElectionEntity":
+        """Entity factory: client.Election().list({}) / client.Election().load({"id": ...})."""
         from entity.election_entity import ElectionEntity
         return ElectionEntity(self, data)
 
 
-    @property
-    def postal_code(self):
-        """Idiomatic facade: client.postal_code.list() / client.postal_code.load({"id": ...})."""
-        from entity.postal_code_entity import PostalCodeEntity
-        cached = getattr(self, "_postal_code", None)
-        if cached is None:
-            cached = PostalCodeEntity(self, None)
-            self._postal_code = cached
-        return cached
-
-    def PostalCode(self, data=None):
-        # Deprecated: use client.postal_code instead.
+    def PostalCode(self, data=None) -> "PostalCodeEntity":
+        """Entity factory: client.PostalCode().list({}) / client.PostalCode().load({"id": ...})."""
         from entity.postal_code_entity import PostalCodeEntity
         return PostalCodeEntity(self, data)
 
 
-    @property
-    def representatif(self):
-        """Idiomatic facade: client.representatif.list() / client.representatif.load({"id": ...})."""
-        from entity.representatif_entity import RepresentatifEntity
-        cached = getattr(self, "_representatif", None)
-        if cached is None:
-            cached = RepresentatifEntity(self, None)
-            self._representatif = cached
-        return cached
-
-    def Representatif(self, data=None):
-        # Deprecated: use client.representatif instead.
+    def Representatif(self, data=None) -> "RepresentatifEntity":
+        """Entity factory: client.Representatif().list({}) / client.Representatif().load({"id": ...})."""
         from entity.representatif_entity import RepresentatifEntity
         return RepresentatifEntity(self, data)
 
 
-    @property
-    def representative_set(self):
-        """Idiomatic facade: client.representative_set.list() / client.representative_set.load({"id": ...})."""
-        from entity.representative_set_entity import RepresentativeSetEntity
-        cached = getattr(self, "_representative_set", None)
-        if cached is None:
-            cached = RepresentativeSetEntity(self, None)
-            self._representative_set = cached
-        return cached
-
-    def RepresentativeSet(self, data=None):
-        # Deprecated: use client.representative_set instead.
+    def RepresentativeSet(self, data=None) -> "RepresentativeSetEntity":
+        """Entity factory: client.RepresentativeSet().list({}) / client.RepresentativeSet().load({"id": ...})."""
         from entity.representative_set_entity import RepresentativeSetEntity
         return RepresentativeSetEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "RepresentOfficialsSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -354,3 +284,15 @@ class RepresentOfficialsSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.boundary_entity import BoundaryEntity
+    from entity.boundary_set_entity import BoundarySetEntity
+    from entity.candidate_entity import CandidateEntity
+    from entity.election_entity import ElectionEntity
+    from entity.postal_code_entity import PostalCodeEntity
+    from entity.representatif_entity import RepresentatifEntity
+    from entity.representative_set_entity import RepresentativeSetEntity

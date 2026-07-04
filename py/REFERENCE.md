@@ -104,7 +104,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## BoundaryEntity
 
 ```python
-boundary = client.boundary
+boundary = client.Boundary()
 ```
 
 ### Fields
@@ -126,7 +126,9 @@ boundary = client.boundary
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.boundary.list({})
+results = client.Boundary().list({})
+for boundary in results:
+    print(boundary)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -134,7 +136,7 @@ results = client.boundary.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.boundary.load({"id": "boundary_id"})
+result = client.Boundary().load({"id": "boundary_id"})
 ```
 
 ### Common Methods
@@ -169,7 +171,7 @@ Return the entity name.
 ## BoundarySetEntity
 
 ```python
-boundary_set = client.boundary_set
+boundary_set = client.BoundarySet()
 ```
 
 ### Fields
@@ -187,7 +189,9 @@ boundary_set = client.boundary_set
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.boundary_set.list({})
+results = client.BoundarySet().list({})
+for boundary_set in results:
+    print(boundary_set)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -195,7 +199,7 @@ results = client.boundary_set.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.boundary_set.load({"id": "boundary_set_id"})
+result = client.BoundarySet().load({"id": "boundary_set_id"})
 ```
 
 ### Common Methods
@@ -230,7 +234,7 @@ Return the entity name.
 ## CandidateEntity
 
 ```python
-candidate = client.candidate
+candidate = client.Candidate()
 ```
 
 ### Fields
@@ -247,7 +251,9 @@ candidate = client.candidate
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.candidate.list({})
+results = client.Candidate().list({})
+for candidate in results:
+    print(candidate)
 ```
 
 ### Common Methods
@@ -282,7 +288,7 @@ Return the entity name.
 ## ElectionEntity
 
 ```python
-election = client.election
+election = client.Election()
 ```
 
 ### Fields
@@ -299,7 +305,9 @@ election = client.election
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.election.list({})
+results = client.Election().list({})
+for election in results:
+    print(election)
 ```
 
 ### Common Methods
@@ -334,7 +342,7 @@ Return the entity name.
 ## PostalCodeEntity
 
 ```python
-postal_code = client.postal_code
+postal_code = client.PostalCode()
 ```
 
 ### Fields
@@ -357,7 +365,7 @@ postal_code = client.postal_code
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.postal_code.load({"id": "postal_code_id"})
+result = client.PostalCode().load({"id": "postal_code_id"})
 ```
 
 ### Common Methods
@@ -392,7 +400,7 @@ Return the entity name.
 ## RepresentatifEntity
 
 ```python
-representatif = client.representatif
+representatif = client.Representatif()
 ```
 
 ### Fields
@@ -424,7 +432,9 @@ representatif = client.representatif
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.representatif.list({})
+results = client.Representatif().list({})
+for representatif in results:
+    print(representatif)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -432,7 +442,7 @@ results = client.representatif.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.representatif.load({"id": "representatif_id"})
+result = client.Representatif().load({"id": "representatif_id"})
 ```
 
 ### Common Methods
@@ -467,7 +477,7 @@ Return the entity name.
 ## RepresentativeSetEntity
 
 ```python
-representative_set = client.representative_set
+representative_set = client.RepresentativeSet()
 ```
 
 ### Fields
@@ -484,7 +494,9 @@ representative_set = client.representative_set
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.representative_set.list({})
+results = client.RepresentativeSet().list({})
+for representative_set in results:
+    print(representative_set)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -492,7 +504,7 @@ results = client.representative_set.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.representative_set.load({"id": "representative_set_id"})
+result = client.RepresentativeSet().load({"id": "representative_set_id"})
 ```
 
 ### Common Methods

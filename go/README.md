@@ -30,53 +30,39 @@ go mod edit -replace github.com/voxgig-sdk/represent-officials-sdk/go=../represe
 This tutorial walks through creating a client, listing entities, and
 loading a specific record.
 
-### 1. Create a client
+### Quickstart
+
+A complete program: create a client, then call the entity operations.
+Each operation returns `(value, error)` — the value is the data itself
+(there is no `{ok, data}` wrapper), so check `err` and use the value
+directly.
 
 ```go
 package main
 
 import (
     "fmt"
-
     sdk "github.com/voxgig-sdk/represent-officials-sdk/go"
-    "github.com/voxgig-sdk/represent-officials-sdk/go/core"
 )
 
 func main() {
     client := sdk.New()
-```
 
-### 2. List boundarys
-
-```go
-    result, err := client.Boundary(nil).List(nil, nil)
+    // List boundary records — the value is the array of records itself.
+    boundarys, err := client.Boundary(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
-
-    rm := core.ToMapAny(result)
-    if rm["ok"] == true {
-        for _, item := range rm["data"].([]any) {
-            p := core.ToMapAny(item)
-            fmt.Println(p["id"], p["name"])
-        }
+    for _, item := range boundarys.([]any) {
+        fmt.Println(item)
     }
-```
 
-### 3. Load a boundary
-
-```go
-    result, err = client.Boundary(nil).Load(
-        map[string]any{"id": "example_id"}, nil,
-    )
+    // Load a single boundary — the value is the loaded record.
+    boundary, err := client.Boundary(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
-
-    rm = core.ToMapAny(result)
-    if rm["ok"] == true {
-        fmt.Println(rm["data"])
-    }
+    fmt.Println(boundary)
 }
 ```
 
@@ -127,10 +113,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-result, err := client.Boundary(nil).Load(
+boundary, err := client.Boundary(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
-// result contains mock response data
+if err != nil {
+    panic(err)
+}
+fmt.Println(boundary) // the loaded mock data
 ```
 
 ### Use a custom fetch function
@@ -210,7 +199,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Boundary` | `(data map[string]any) RepresentOfficialsEntity` | Create a Boundary entity instance. |
 | `BoundarySet` | `(data map[string]any) RepresentOfficialsEntity` | Create a BoundarySet entity instance. |
 | `Candidate` | `(data map[string]any) RepresentOfficialsEntity` | Create a Candidate entity instance. |
-| `Election` | `(data map[string]any) RepresentOfficialsEntity` | Create a Election entity instance. |
+| `Election` | `(data map[string]any) RepresentOfficialsEntity` | Create an Election entity instance. |
 | `PostalCode` | `(data map[string]any) RepresentOfficialsEntity` | Create a PostalCode entity instance. |
 | `Representatif` | `(data map[string]any) RepresentOfficialsEntity` | Create a Representatif entity instance. |
 | `RepresentativeSet` | `(data map[string]any) RepresentOfficialsEntity` | Create a RepresentativeSet entity instance. |
@@ -233,17 +222,24 @@ All entities implement the `RepresentOfficialsEntity` interface.
 
 ### Result shape
 
-Entity operations return `(any, error)`. The `any` value is a
-`map[string]any` with these keys:
+Entity operations return `(value, error)`. The `value` is the
+operation's data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `"ok"` | `bool` | `true` if the HTTP status is 2xx. |
-| `"status"` | `int` | HTTP status code. |
-| `"headers"` | `map[string]any` | Response headers. |
-| `"data"` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `List` | a `[]any` of entity records |
 
-On error, `"ok"` is `false` and `"err"` contains the error value.
+Check `err` first, then use the value directly (or the typed
+`...Typed` variants, which return the entity's model struct and a typed
+slice):
+
+    boundary, err := client.Boundary(nil).Load(map[string]any{"id": "example_id"}, nil)
+    if err != nil { /* handle */ }
+    // boundary is the loaded record
+
+Only `Direct()` returns a response envelope — a `map[string]any` with
+`"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
 
@@ -382,13 +378,21 @@ Create an instance: `boundary := client.Boundary(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Boundary(nil).Load(map[string]any{"id": "boundary_id"}, nil)
+boundary, err := client.Boundary(nil).Load(map[string]any{"id": "boundary_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(boundary) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Boundary(nil).List(nil, nil)
+boundarys, err := client.Boundary(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(boundarys) // the array of records
 ```
 
 
@@ -414,13 +418,21 @@ Create an instance: `boundary_set := client.BoundarySet(nil)`
 #### Example: Load
 
 ```go
-result, err := client.BoundarySet(nil).Load(map[string]any{"id": "boundary_set_id"}, nil)
+boundary_set, err := client.BoundarySet(nil).Load(map[string]any{"id": "boundary_set_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(boundary_set) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.BoundarySet(nil).List(nil, nil)
+boundary_sets, err := client.BoundarySet(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(boundary_sets) // the array of records
 ```
 
 
@@ -444,7 +456,11 @@ Create an instance: `candidate := client.Candidate(nil)`
 #### Example: List
 
 ```go
-results, err := client.Candidate(nil).List(nil, nil)
+candidates, err := client.Candidate(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(candidates) // the array of records
 ```
 
 
@@ -468,7 +484,11 @@ Create an instance: `election := client.Election(nil)`
 #### Example: List
 
 ```go
-results, err := client.Election(nil).List(nil, nil)
+elections, err := client.Election(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(elections) // the array of records
 ```
 
 
@@ -498,7 +518,11 @@ Create an instance: `postal_code := client.PostalCode(nil)`
 #### Example: Load
 
 ```go
-result, err := client.PostalCode(nil).Load(map[string]any{"id": "postal_code_id"}, nil)
+postal_code, err := client.PostalCode(nil).Load(map[string]any{"id": "postal_code_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(postal_code) // the loaded record
 ```
 
 
@@ -538,13 +562,21 @@ Create an instance: `representatif := client.Representatif(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Representatif(nil).Load(map[string]any{"id": "representatif_id"}, nil)
+representatif, err := client.Representatif(nil).Load(map[string]any{"id": "representatif_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(representatif) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Representatif(nil).List(nil, nil)
+representatifs, err := client.Representatif(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(representatifs) // the array of records
 ```
 
 
@@ -569,13 +601,21 @@ Create an instance: `representative_set := client.RepresentativeSet(nil)`
 #### Example: Load
 
 ```go
-result, err := client.RepresentativeSet(nil).Load(map[string]any{"id": "representative_set_id"}, nil)
+representative_set, err := client.RepresentativeSet(nil).Load(map[string]any{"id": "representative_set_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(representative_set) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.RepresentativeSet(nil).List(nil, nil)
+representative_sets, err := client.RepresentativeSet(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(representative_sets) // the array of records
 ```
 
 

@@ -233,10 +233,10 @@ class RepresentOfficialsSDK
 
     private $_boundary = null;
 
-    // Idiomatic facade: $client->boundary()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Boundary() (PHP method
-    // names are case-insensitive).
-    public function boundary($data = null)
+    // Canonical facade: $client->Boundary()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->boundary()
+    // resolves here too.
+    public function Boundary($data = null)
     {
         require_once __DIR__ . '/entity/boundary_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class RepresentOfficialsSDK
 
     private $_boundary_set = null;
 
-    // Idiomatic facade: $client->boundary_set()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias BoundarySet() (PHP method
-    // names are case-insensitive).
-    public function boundary_set($data = null)
+    // Canonical facade: $client->BoundarySet()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->boundary_set()
+    // resolves here too.
+    public function BoundarySet($data = null)
     {
         require_once __DIR__ . '/entity/boundary_set_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class RepresentOfficialsSDK
 
     private $_candidate = null;
 
-    // Idiomatic facade: $client->candidate()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Candidate() (PHP method
-    // names are case-insensitive).
-    public function candidate($data = null)
+    // Canonical facade: $client->Candidate()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->candidate()
+    // resolves here too.
+    public function Candidate($data = null)
     {
         require_once __DIR__ . '/entity/candidate_entity.php';
         if ($data === null) {
@@ -287,10 +287,10 @@ class RepresentOfficialsSDK
 
     private $_election = null;
 
-    // Idiomatic facade: $client->election()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Election() (PHP method
-    // names are case-insensitive).
-    public function election($data = null)
+    // Canonical facade: $client->Election()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->election()
+    // resolves here too.
+    public function Election($data = null)
     {
         require_once __DIR__ . '/entity/election_entity.php';
         if ($data === null) {
@@ -305,10 +305,10 @@ class RepresentOfficialsSDK
 
     private $_postal_code = null;
 
-    // Idiomatic facade: $client->postal_code()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias PostalCode() (PHP method
-    // names are case-insensitive).
-    public function postal_code($data = null)
+    // Canonical facade: $client->PostalCode()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->postal_code()
+    // resolves here too.
+    public function PostalCode($data = null)
     {
         require_once __DIR__ . '/entity/postal_code_entity.php';
         if ($data === null) {
@@ -323,10 +323,10 @@ class RepresentOfficialsSDK
 
     private $_representatif = null;
 
-    // Idiomatic facade: $client->representatif()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Representatif() (PHP method
-    // names are case-insensitive).
-    public function representatif($data = null)
+    // Canonical facade: $client->Representatif()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->representatif()
+    // resolves here too.
+    public function Representatif($data = null)
     {
         require_once __DIR__ . '/entity/representatif_entity.php';
         if ($data === null) {
@@ -341,10 +341,10 @@ class RepresentOfficialsSDK
 
     private $_representative_set = null;
 
-    // Idiomatic facade: $client->representative_set()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias RepresentativeSet() (PHP method
-    // names are case-insensitive).
-    public function representative_set($data = null)
+    // Canonical facade: $client->RepresentativeSet()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->representative_set()
+    // resolves here too.
+    public function RepresentativeSet($data = null)
     {
         require_once __DIR__ . '/entity/representative_set_entity.php';
         if ($data === null) {

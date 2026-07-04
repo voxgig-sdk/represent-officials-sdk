@@ -4,147 +4,136 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Boundary:
-    boundary_set_name: Optional[str] = None
-    external_id: Optional[str] = None
-    meta: Optional[dict] = None
-    metadata: Optional[dict] = None
-    name: Optional[str] = None
-    object: Optional[list] = None
-    url: Optional[str] = None
+class Boundary(TypedDict, total=False):
+    boundary_set_name: str
+    external_id: str
+    meta: dict
+    metadata: dict
+    name: str
+    object: list
+    url: str
 
 
-@dataclass
-class BoundaryLoadMatch:
+class BoundaryLoadMatch(TypedDict):
     id: str
     boundary: str
     boundary_set: str
 
 
-@dataclass
-class BoundaryListMatch:
-    boundary_set_name: Optional[str] = None
-    external_id: Optional[str] = None
-    meta: Optional[dict] = None
-    metadata: Optional[dict] = None
-    name: Optional[str] = None
-    object: Optional[list] = None
-    url: Optional[str] = None
+class BoundaryListMatch(TypedDict, total=False):
+    boundary_set_name: str
+    external_id: str
+    meta: dict
+    metadata: dict
+    name: str
+    object: list
+    url: str
 
 
-@dataclass
-class BoundarySet:
-    domain: Optional[str] = None
-    name: Optional[str] = None
-    url: Optional[str] = None
+class BoundarySet(TypedDict, total=False):
+    domain: str
+    name: str
+    url: str
 
 
-@dataclass
-class BoundarySetLoadMatch:
+class BoundarySetLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class BoundarySetListMatch:
-    domain: Optional[str] = None
-    name: Optional[str] = None
-    url: Optional[str] = None
+class BoundarySetListMatch(TypedDict, total=False):
+    domain: str
+    name: str
+    url: str
 
 
-@dataclass
-class Candidate:
-    meta: Optional[dict] = None
-    object: Optional[list] = None
+class Candidate(TypedDict, total=False):
+    meta: dict
+    object: list
 
 
-@dataclass
-class CandidateListMatch:
-    meta: Optional[dict] = None
-    object: Optional[list] = None
+class CandidateListMatch(TypedDict, total=False):
+    meta: dict
+    object: list
 
 
-@dataclass
-class Election:
-    meta: Optional[dict] = None
-    object: Optional[list] = None
+class Election(TypedDict, total=False):
+    meta: dict
+    object: list
 
 
-@dataclass
-class ElectionListMatch:
-    meta: Optional[dict] = None
-    object: Optional[list] = None
+class ElectionListMatch(TypedDict, total=False):
+    meta: dict
+    object: list
 
 
-@dataclass
-class PostalCode:
-    boundaries_centroid: Optional[list] = None
-    boundaries_concordance: Optional[list] = None
-    centroid: Optional[dict] = None
-    city: Optional[str] = None
-    code: Optional[str] = None
-    province: Optional[str] = None
-    representatives_centroid: Optional[list] = None
-    representatives_concordance: Optional[list] = None
+class PostalCode(TypedDict, total=False):
+    boundaries_centroid: list
+    boundaries_concordance: list
+    centroid: dict
+    city: str
+    code: str
+    province: str
+    representatives_centroid: list
+    representatives_concordance: list
 
 
-@dataclass
-class PostalCodeLoadMatch:
+class PostalCodeLoadMatch(TypedDict):
     postal_code: str
 
 
-@dataclass
-class Representatif:
+class RepresentatifRequired(TypedDict):
     district_name: str
     elected_office: str
     name: str
-    district_id: Optional[str] = None
-    email: Optional[str] = None
-    extra: Optional[dict] = None
-    first_name: Optional[str] = None
-    gender: Optional[str] = None
-    last_name: Optional[str] = None
-    meta: Optional[dict] = None
-    object: Optional[list] = None
-    office: Optional[list] = None
-    party_name: Optional[str] = None
-    personal_url: Optional[str] = None
-    photo_url: Optional[str] = None
-    source_url: Optional[str] = None
-    url: Optional[str] = None
 
 
-@dataclass
-class RepresentatifLoadMatch:
+class Representatif(RepresentatifRequired, total=False):
+    district_id: str
+    email: str
+    extra: dict
+    first_name: str
+    gender: str
+    last_name: str
+    meta: dict
+    object: list
+    office: list
+    party_name: str
+    personal_url: str
+    photo_url: str
+    source_url: str
+    url: str
+
+
+class RepresentatifLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class RepresentatifListMatch:
+class RepresentatifListMatch(TypedDict):
     boundary: str
     boundary_set: str
 
 
-@dataclass
-class RepresentativeSet:
-    name: Optional[str] = None
-    url: Optional[str] = None
+class RepresentativeSet(TypedDict, total=False):
+    name: str
+    url: str
 
 
-@dataclass
-class RepresentativeSetLoadMatch:
+class RepresentativeSetLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class RepresentativeSetListMatch:
-    name: Optional[str] = None
-    url: Optional[str] = None
-
+class RepresentativeSetListMatch(TypedDict, total=False):
+    name: str
+    url: str

@@ -31,24 +31,28 @@ from representofficials_sdk import RepresentOfficialsSDK
 client = RepresentOfficialsSDK()
 ```
 
-### 2. List boundarys
+### 2. List boundary records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.boundary.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    boundarys = client.Boundary().list({})
+    for boundary in boundarys:
+        print(boundary)
 except Exception as err:
     print(f"list failed: {err}")
 ```
 
 ### 3. Load a boundary
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.boundary.load({"id": "example_id"})
-    print(result)
+    boundary = client.Boundary().load({"id": "example_id"})
+    print(boundary)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -96,8 +100,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = RepresentOfficialsSDK.test()
 
-result = client.boundary.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+boundary = client.Boundary().load({"id": "test01"})
+# boundary contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -176,7 +181,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `Boundary` | `(data) -> BoundaryEntity` | Create a Boundary entity instance. |
 | `BoundarySet` | `(data) -> BoundarySetEntity` | Create a BoundarySet entity instance. |
 | `Candidate` | `(data) -> CandidateEntity` | Create a Candidate entity instance. |
-| `Election` | `(data) -> ElectionEntity` | Create a Election entity instance. |
+| `Election` | `(data) -> ElectionEntity` | Create an Election entity instance. |
 | `PostalCode` | `(data) -> PostalCodeEntity` | Create a PostalCode entity instance. |
 | `Representatif` | `(data) -> RepresentatifEntity` | Create a Representatif entity instance. |
 | `RepresentativeSet` | `(data) -> RepresentativeSetEntity` | Create a RepresentativeSet entity instance. |
@@ -330,7 +335,7 @@ API path: `/representative-sets/`
 
 ### Boundary
 
-Create an instance: `const boundary = client.boundary`
+Create an instance: `boundary = client.Boundary()`
 
 #### Operations
 
@@ -353,20 +358,20 @@ Create an instance: `const boundary = client.boundary`
 
 #### Example: Load
 
-```ts
-const boundary = await client.boundary.load({ id: 'boundary_id' })
+```python
+boundary = client.Boundary().load({"id": "boundary_id"})
 ```
 
 #### Example: List
 
-```ts
-const boundarys = await client.boundary.list()
+```python
+boundarys = client.Boundary().list({})
 ```
 
 
 ### BoundarySet
 
-Create an instance: `const boundary_set = client.boundary_set`
+Create an instance: `boundary_set = client.BoundarySet()`
 
 #### Operations
 
@@ -385,20 +390,20 @@ Create an instance: `const boundary_set = client.boundary_set`
 
 #### Example: Load
 
-```ts
-const boundary_set = await client.boundary_set.load({ id: 'boundary_set_id' })
+```python
+boundary_set = client.BoundarySet().load({"id": "boundary_set_id"})
 ```
 
 #### Example: List
 
-```ts
-const boundary_sets = await client.boundary_set.list()
+```python
+boundary_sets = client.BoundarySet().list({})
 ```
 
 
 ### Candidate
 
-Create an instance: `const candidate = client.candidate`
+Create an instance: `candidate = client.Candidate()`
 
 #### Operations
 
@@ -415,14 +420,14 @@ Create an instance: `const candidate = client.candidate`
 
 #### Example: List
 
-```ts
-const candidates = await client.candidate.list()
+```python
+candidates = client.Candidate().list({})
 ```
 
 
 ### Election
 
-Create an instance: `const election = client.election`
+Create an instance: `election = client.Election()`
 
 #### Operations
 
@@ -439,14 +444,14 @@ Create an instance: `const election = client.election`
 
 #### Example: List
 
-```ts
-const elections = await client.election.list()
+```python
+elections = client.Election().list({})
 ```
 
 
 ### PostalCode
 
-Create an instance: `const postal_code = client.postal_code`
+Create an instance: `postal_code = client.PostalCode()`
 
 #### Operations
 
@@ -469,14 +474,14 @@ Create an instance: `const postal_code = client.postal_code`
 
 #### Example: Load
 
-```ts
-const postal_code = await client.postal_code.load({ id: 'postal_code_id' })
+```python
+postal_code = client.PostalCode().load({"id": "postal_code_id"})
 ```
 
 
 ### Representatif
 
-Create an instance: `const representatif = client.representatif`
+Create an instance: `representatif = client.Representatif()`
 
 #### Operations
 
@@ -509,20 +514,20 @@ Create an instance: `const representatif = client.representatif`
 
 #### Example: Load
 
-```ts
-const representatif = await client.representatif.load({ id: 'representatif_id' })
+```python
+representatif = client.Representatif().load({"id": "representatif_id"})
 ```
 
 #### Example: List
 
-```ts
-const representatifs = await client.representatif.list()
+```python
+representatifs = client.Representatif().list({})
 ```
 
 
 ### RepresentativeSet
 
-Create an instance: `const representative_set = client.representative_set`
+Create an instance: `representative_set = client.RepresentativeSet()`
 
 #### Operations
 
@@ -540,14 +545,14 @@ Create an instance: `const representative_set = client.representative_set`
 
 #### Example: Load
 
-```ts
-const representative_set = await client.representative_set.load({ id: 'representative_set_id' })
+```python
+representative_set = client.RepresentativeSet().load({"id": "representative_set_id"})
 ```
 
 #### Example: List
 
-```ts
-const representative_sets = await client.representative_set.list()
+```python
+representative_sets = client.RepresentativeSet().list({})
 ```
 
 
@@ -621,7 +626,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-boundary = client.boundary
+boundary = client.Boundary()
 boundary.load({"id": "example_id"})
 
 # boundary.data_get() now returns the loaded boundary data

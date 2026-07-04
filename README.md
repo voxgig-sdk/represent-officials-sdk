@@ -26,9 +26,11 @@ import { RepresentOfficialsSDK } from '@voxgig-sdk/represent-officials'
 
 const client = new RepresentOfficialsSDK()
 
-// List all boundarys
-const boundarys = await client.boundary.list()
-console.log(boundarys.data)
+// List all boundarys (returns Boundary[])
+const boundarys = await client.Boundary().list()
+for (const boundary of boundarys) {
+  console.log(boundary)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -89,12 +91,13 @@ from representofficials_sdk import RepresentOfficialsSDK
 
 client = RepresentOfficialsSDK()
 
-# List all boundarys
-boundarys = client.boundary.list()
-print(boundarys)
+# List all boundarys (returns a list, raises on error)
+boundarys = client.Boundary().list({})
+for boundary in boundarys:
+    print(boundary)
 
-# Load a specific boundary
-boundary = client.boundary.load({"id": "example_id"})
+# Load a specific boundary (returns the record, raises on error)
+boundary = client.Boundary().load({"id": "example_id"})
 print(boundary)
 ```
 
@@ -106,12 +109,12 @@ require_once 'representofficials_sdk.php';
 
 $client = new RepresentOfficialsSDK();
 
-// List all boundarys (throws on error)
-$boundarys = $client->boundary()->list();
+// List all boundarys (returns an array; throws on error)
+$boundarys = $client->Boundary()->list();
 print_r($boundarys);
 
-// Load a specific boundary
-$boundary = $client->boundary()->load(["id" => "example_id"]);
+// Load a specific boundary (returns the bare record; throws on error)
+$boundary = $client->Boundary()->load(["id" => "example_id"]);
 print_r($boundary);
 ```
 
@@ -134,12 +137,12 @@ require_relative "RepresentOfficials_sdk"
 
 client = RepresentOfficialsSDK.new
 
-# List all boundarys
-boundarys = client.boundary.list
+# List all boundarys (returns an Array; raises on error)
+boundarys = client.Boundary.list
 puts boundarys
 
-# Load a specific boundary
-boundary = client.boundary.load({ "id" => "example_id" })
+# Load a specific boundary (returns the bare record; raises on error)
+boundary = client.Boundary.load({ "id" => "example_id" })
 puts boundary
 ```
 
@@ -151,11 +154,11 @@ local sdk = require("represent-officials_sdk")
 local client = sdk.new()
 
 -- List all boundarys
-local boundarys, err = client:boundary():list()
+local boundarys, err = client:Boundary():list()
 print(boundarys)
 
 -- Load a specific boundary
-local boundary, err = client:boundary():load({ id = "example_id" })
+local boundary, err = client:Boundary():load({ id = "example_id" })
 print(boundary)
 ```
 
@@ -168,22 +171,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = RepresentOfficialsSDK.test()
-const result = await client.boundary.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const boundary = await client.Boundary().load({ id: 'test01' })
+// boundary is a bare Boundary populated with mock data
+console.log(boundary)
 ```
 
 ### Python
 
 ```python
 client = RepresentOfficialsSDK.test()
-result = client.boundary.load({"id": "test01"})
+boundary = client.Boundary().load({"id": "test01"})
+print(boundary)
 ```
 
 ### PHP
 
 ```php
-$client = RepresentOfficialsSDK::test();
-$result = $client->boundary()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = RepresentOfficialsSDK::test([
+    "entity" => ["boundary" => ["test01" => ["id" => "test01"]]],
+]);
+$boundary = $client->Boundary()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -198,15 +206,18 @@ result, err := client.Boundary(nil).Load(
 ### Ruby
 
 ```ruby
-client = RepresentOfficialsSDK.test
-result = client.boundary.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = RepresentOfficialsSDK.test({
+  "entity" => { "boundary" => { "test01" => { "id" => "test01" } } },
+})
+boundary = client.Boundary.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:boundary():load({ id = "test01" })
+local result, err = client:Boundary():load({ id = "test01" })
 ```
 
 ## How it works
@@ -254,6 +265,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

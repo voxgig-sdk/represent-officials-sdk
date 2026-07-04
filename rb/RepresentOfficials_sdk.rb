@@ -208,91 +208,49 @@ class RepresentOfficialsSDK
   end
 
 
-  # Idiomatic facade: client.boundary.list / client.boundary.load({ "id" => ... })
-  def boundary
-    require_relative 'entity/boundary_entity'
-    @boundary ||= BoundaryEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.boundary instead.
+  # Canonical facade: client.Boundary.list / client.Boundary.load({ "id" => ... })
   def Boundary(data = nil)
     require_relative 'entity/boundary_entity'
     BoundaryEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.boundary_set.list / client.boundary_set.load({ "id" => ... })
-  def boundary_set
-    require_relative 'entity/boundary_set_entity'
-    @boundary_set ||= BoundarySetEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.boundary_set instead.
+  # Canonical facade: client.BoundarySet.list / client.BoundarySet.load({ "id" => ... })
   def BoundarySet(data = nil)
     require_relative 'entity/boundary_set_entity'
     BoundarySetEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.candidate.list / client.candidate.load({ "id" => ... })
-  def candidate
-    require_relative 'entity/candidate_entity'
-    @candidate ||= CandidateEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.candidate instead.
+  # Canonical facade: client.Candidate.list / client.Candidate.load({ "id" => ... })
   def Candidate(data = nil)
     require_relative 'entity/candidate_entity'
     CandidateEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.election.list / client.election.load({ "id" => ... })
-  def election
-    require_relative 'entity/election_entity'
-    @election ||= ElectionEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.election instead.
+  # Canonical facade: client.Election.list / client.Election.load({ "id" => ... })
   def Election(data = nil)
     require_relative 'entity/election_entity'
     ElectionEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.postal_code.list / client.postal_code.load({ "id" => ... })
-  def postal_code
-    require_relative 'entity/postal_code_entity'
-    @postal_code ||= PostalCodeEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.postal_code instead.
+  # Canonical facade: client.PostalCode.list / client.PostalCode.load({ "id" => ... })
   def PostalCode(data = nil)
     require_relative 'entity/postal_code_entity'
     PostalCodeEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.representatif.list / client.representatif.load({ "id" => ... })
-  def representatif
-    require_relative 'entity/representatif_entity'
-    @representatif ||= RepresentatifEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.representatif instead.
+  # Canonical facade: client.Representatif.list / client.Representatif.load({ "id" => ... })
   def Representatif(data = nil)
     require_relative 'entity/representatif_entity'
     RepresentatifEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.representative_set.list / client.representative_set.load({ "id" => ... })
-  def representative_set
-    require_relative 'entity/representative_set_entity'
-    @representative_set ||= RepresentativeSetEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.representative_set instead.
+  # Canonical facade: client.RepresentativeSet.list / client.RepresentativeSet.load({ "id" => ... })
   def RepresentativeSet(data = nil)
     require_relative 'entity/representative_set_entity'
     RepresentativeSetEntity.new(self, data)

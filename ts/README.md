@@ -28,25 +28,28 @@ import { RepresentOfficialsSDK } from '@voxgig-sdk/represent-officials'
 const client = new RepresentOfficialsSDK()
 ```
 
-### 2. List boundarys
+### 2. List boundary records
+
+`list()` resolves to an array of Boundary objects — iterate it directly:
 
 ```ts
-const result = await client.boundary.list()
+const boundarys = await client.Boundary().list()
 
-if (result.ok) {
-  for (const item of result.data) {
-    console.log(item.id, item.name)
-  }
+for (const boundary of boundarys) {
+  console.log(boundary)
 }
 ```
 
 ### 3. Load a boundary
 
-```ts
-const result = await client.boundary.load({ id: 'example_id' })
+`load()` returns the entity directly and throws on failure:
 
-if (result.ok) {
-  console.log(result.data)
+```ts
+try {
+  const boundary = await client.Boundary().load({ id: 'example_id' })
+  console.log(boundary)
+} catch (err) {
+  console.error('load failed:', err)
 }
 ```
 
@@ -64,6 +67,9 @@ const result = await client.direct({
   params: { id: 'example' },
 })
 
+if (result instanceof Error) {
+  throw result
+}
 if (result.ok) {
   console.log(result.status)  // 200
   console.log(result.data)    // response body
@@ -92,9 +98,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = RepresentOfficialsSDK.test()
 
-const result = await client.boundary.load({ id: 'test01' })
-// result.ok === true
-// result.data contains mock response data
+const boundary = await client.Boundary().load({ id: 'test01' })
+// boundary is a bare entity populated with mock response data
+console.log(boundary)
 ```
 
 You can also use the instance method:
@@ -109,7 +115,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.boundary
+const entity = client.Boundary()
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -190,7 +196,7 @@ new RepresentOfficialsSDK(options?: {
 | `Boundary(data?)` | `BoundaryEntity` | Create a Boundary entity instance. |
 | `BoundarySet(data?)` | `BoundarySetEntity` | Create a BoundarySet entity instance. |
 | `Candidate(data?)` | `CandidateEntity` | Create a Candidate entity instance. |
-| `Election(data?)` | `ElectionEntity` | Create a Election entity instance. |
+| `Election(data?)` | `ElectionEntity` | Create an Election entity instance. |
 | `PostalCode(data?)` | `PostalCodeEntity` | Create a PostalCode entity instance. |
 | `Representatif(data?)` | `RepresentatifEntity` | Create a Representatif entity instance. |
 | `RepresentativeSet(data?)` | `RepresentativeSetEntity` | Create a RepresentativeSet entity instance. |
@@ -210,29 +216,30 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `load(reqmatch?, ctrl?): Promise<Result>` | Load a single entity by match criteria. |
-| `list` | `list(reqmatch?, ctrl?): Promise<Result>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Result>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Result>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<Result>` | Remove an entity. |
+| `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
+| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
+| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
+| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
+| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
 | `data` | `data(data?): any` | Get or set entity data. |
 | `match` | `match(match?): any` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): RepresentOfficialsSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
 
-#### Result shape
+#### Return values
 
-All entity operations return a Result object:
+Entity operations resolve to the entity data directly — there is no
+result envelope:
 
-```ts
-{
-  ok: boolean      // true if the HTTP status is 2xx
-  status: number   // HTTP status code
-  headers: object  // response headers
-  data: any        // parsed JSON response body
-}
-```
+- `load`, `create` and `update` resolve to a single entity object.
+- `list` resolves to an **array** of entity objects (iterate it directly;
+  there is no `.data` and no `.ok`).
+- `remove` resolves to `void`.
+
+On a failed request these methods **throw**, so wrap calls in
+`try`/`catch` to handle errors. Only `direct()` returns the result
+envelope described below.
 
 ### DirectResult shape
 
@@ -375,7 +382,7 @@ API path: `/representative-sets/`
 
 ### Boundary
 
-Create an instance: `const boundary = client.boundary`
+Create an instance: `const boundary = client.Boundary()`
 
 #### Operations
 
@@ -399,19 +406,19 @@ Create an instance: `const boundary = client.boundary`
 #### Example: Load
 
 ```ts
-const boundary = await client.boundary.load({ id: 'boundary_id' })
+const boundary = await client.Boundary().load({ id: 'boundary_id' })
 ```
 
 #### Example: List
 
 ```ts
-const boundarys = await client.boundary.list()
+const boundarys = await client.Boundary().list()
 ```
 
 
 ### BoundarySet
 
-Create an instance: `const boundary_set = client.boundary_set`
+Create an instance: `const boundary_set = client.BoundarySet()`
 
 #### Operations
 
@@ -431,19 +438,19 @@ Create an instance: `const boundary_set = client.boundary_set`
 #### Example: Load
 
 ```ts
-const boundary_set = await client.boundary_set.load({ id: 'boundary_set_id' })
+const boundary_set = await client.BoundarySet().load({ id: 'boundary_set_id' })
 ```
 
 #### Example: List
 
 ```ts
-const boundary_sets = await client.boundary_set.list()
+const boundary_sets = await client.BoundarySet().list()
 ```
 
 
 ### Candidate
 
-Create an instance: `const candidate = client.candidate`
+Create an instance: `const candidate = client.Candidate()`
 
 #### Operations
 
@@ -461,13 +468,13 @@ Create an instance: `const candidate = client.candidate`
 #### Example: List
 
 ```ts
-const candidates = await client.candidate.list()
+const candidates = await client.Candidate().list()
 ```
 
 
 ### Election
 
-Create an instance: `const election = client.election`
+Create an instance: `const election = client.Election()`
 
 #### Operations
 
@@ -485,13 +492,13 @@ Create an instance: `const election = client.election`
 #### Example: List
 
 ```ts
-const elections = await client.election.list()
+const elections = await client.Election().list()
 ```
 
 
 ### PostalCode
 
-Create an instance: `const postal_code = client.postal_code`
+Create an instance: `const postal_code = client.PostalCode()`
 
 #### Operations
 
@@ -515,13 +522,13 @@ Create an instance: `const postal_code = client.postal_code`
 #### Example: Load
 
 ```ts
-const postal_code = await client.postal_code.load({ id: 'postal_code_id' })
+const postal_code = await client.PostalCode().load({ id: 'postal_code_id' })
 ```
 
 
 ### Representatif
 
-Create an instance: `const representatif = client.representatif`
+Create an instance: `const representatif = client.Representatif()`
 
 #### Operations
 
@@ -555,19 +562,19 @@ Create an instance: `const representatif = client.representatif`
 #### Example: Load
 
 ```ts
-const representatif = await client.representatif.load({ id: 'representatif_id' })
+const representatif = await client.Representatif().load({ id: 'representatif_id' })
 ```
 
 #### Example: List
 
 ```ts
-const representatifs = await client.representatif.list()
+const representatifs = await client.Representatif().list()
 ```
 
 
 ### RepresentativeSet
 
-Create an instance: `const representative_set = client.representative_set`
+Create an instance: `const representative_set = client.RepresentativeSet()`
 
 #### Operations
 
@@ -586,13 +593,13 @@ Create an instance: `const representative_set = client.representative_set`
 #### Example: Load
 
 ```ts
-const representative_set = await client.representative_set.load({ id: 'representative_set_id' })
+const representative_set = await client.RepresentativeSet().load({ id: 'representative_set_id' })
 ```
 
 #### Example: List
 
 ```ts
-const representative_sets = await client.representative_set.list()
+const representative_sets = await client.RepresentativeSet().list()
 ```
 
 
@@ -663,7 +670,7 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const boundary = client.boundary
+const boundary = client.Boundary()
 await boundary.load({ id: "example_id" })
 
 // boundary.data() now returns the loaded boundary data

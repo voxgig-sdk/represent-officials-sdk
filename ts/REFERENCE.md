@@ -181,7 +181,7 @@ Alias for `RepresentOfficialsSDK.test()`.
 ## BoundaryEntity
 
 ```ts
-const boundary = client.boundary
+const boundary = client.Boundary()
 ```
 
 ### Fields
@@ -203,7 +203,7 @@ const boundary = client.boundary
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.boundary.list()
+const results = await client.Boundary().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -211,7 +211,7 @@ const results = await client.boundary.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.boundary.load({ id: 'boundary_id' })
+const result = await client.Boundary().load({ id: 'boundary_id' })
 ```
 
 ### Common Methods
@@ -245,7 +245,7 @@ Return a copy of the entity options.
 ## BoundarySetEntity
 
 ```ts
-const boundary_set = client.boundary_set
+const boundary_set = client.BoundarySet()
 ```
 
 ### Fields
@@ -263,7 +263,7 @@ const boundary_set = client.boundary_set
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.boundary_set.list()
+const results = await client.BoundarySet().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -271,7 +271,7 @@ const results = await client.boundary_set.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.boundary_set.load({ id: 'boundary_set_id' })
+const result = await client.BoundarySet().load({ id: 'boundary_set_id' })
 ```
 
 ### Common Methods
@@ -305,7 +305,7 @@ Return a copy of the entity options.
 ## CandidateEntity
 
 ```ts
-const candidate = client.candidate
+const candidate = client.Candidate()
 ```
 
 ### Fields
@@ -322,7 +322,7 @@ const candidate = client.candidate
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.candidate.list()
+const results = await client.Candidate().list()
 ```
 
 ### Common Methods
@@ -356,7 +356,7 @@ Return a copy of the entity options.
 ## ElectionEntity
 
 ```ts
-const election = client.election
+const election = client.Election()
 ```
 
 ### Fields
@@ -373,7 +373,7 @@ const election = client.election
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.election.list()
+const results = await client.Election().list()
 ```
 
 ### Common Methods
@@ -407,7 +407,7 @@ Return a copy of the entity options.
 ## PostalCodeEntity
 
 ```ts
-const postal_code = client.postal_code
+const postal_code = client.PostalCode()
 ```
 
 ### Fields
@@ -430,7 +430,7 @@ const postal_code = client.postal_code
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.postal_code.load({ id: 'postal_code_id' })
+const result = await client.PostalCode().load({ id: 'postal_code_id' })
 ```
 
 ### Common Methods
@@ -464,7 +464,7 @@ Return a copy of the entity options.
 ## RepresentatifEntity
 
 ```ts
-const representatif = client.representatif
+const representatif = client.Representatif()
 ```
 
 ### Fields
@@ -496,7 +496,7 @@ const representatif = client.representatif
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.representatif.list()
+const results = await client.Representatif().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -504,7 +504,7 @@ const results = await client.representatif.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.representatif.load({ id: 'representatif_id' })
+const result = await client.Representatif().load({ id: 'representatif_id' })
 ```
 
 ### Common Methods
@@ -538,7 +538,7 @@ Return a copy of the entity options.
 ## RepresentativeSetEntity
 
 ```ts
-const representative_set = client.representative_set
+const representative_set = client.RepresentativeSet()
 ```
 
 ### Fields
@@ -555,7 +555,7 @@ const representative_set = client.representative_set
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.representative_set.list()
+const results = await client.RepresentativeSet().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -563,7 +563,7 @@ const results = await client.representative_set.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.representative_set.load({ id: 'representative_set_id' })
+const result = await client.RepresentativeSet().load({ id: 'representative_set_id' })
 ```
 
 ### Common Methods
