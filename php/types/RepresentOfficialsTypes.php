@@ -1,0 +1,170 @@
+<?php
+declare(strict_types=1);
+
+// Typed models for the RepresentOfficials SDK.
+//
+// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
+// params (op.<name>.points[].args.params[]). Field/param types come from the
+// canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
+// @voxgig/apidef VALID_CANON). Do not edit by hand.
+//
+// These are documentation-grade value objects (PHP 8 typed properties),
+// registered on the composer classmap autoload. The SDK boundary exchanges
+// assoc-arrays; these classes name the shapes for tooling and typed callers.
+
+/** Boundary entity data model. */
+class Boundary
+{
+    public ?string $boundary_set_name = null;
+    public ?string $external_id = null;
+    public ?array $meta = null;
+    public ?array $metadata = null;
+    public ?string $name = null;
+    public ?array $object = null;
+    public ?string $url = null;
+}
+
+/** Request payload for Boundary#load. */
+class BoundaryLoadMatch
+{
+    public string $id;
+    public string $boundary;
+    public string $boundary_set;
+}
+
+/** Match filter for Boundary#list (any subset of Boundary fields). */
+class BoundaryListMatch
+{
+    public ?string $boundary_set_name = null;
+    public ?string $external_id = null;
+    public ?array $meta = null;
+    public ?array $metadata = null;
+    public ?string $name = null;
+    public ?array $object = null;
+    public ?string $url = null;
+}
+
+/** BoundarySet entity data model. */
+class BoundarySet
+{
+    public ?string $domain = null;
+    public ?string $name = null;
+    public ?string $url = null;
+}
+
+/** Request payload for BoundarySet#load. */
+class BoundarySetLoadMatch
+{
+    public string $id;
+}
+
+/** Match filter for BoundarySet#list (any subset of BoundarySet fields). */
+class BoundarySetListMatch
+{
+    public ?string $domain = null;
+    public ?string $name = null;
+    public ?string $url = null;
+}
+
+/** Candidate entity data model. */
+class Candidate
+{
+    public ?array $meta = null;
+    public ?array $object = null;
+}
+
+/** Match filter for Candidate#list (any subset of Candidate fields). */
+class CandidateListMatch
+{
+    public ?array $meta = null;
+    public ?array $object = null;
+}
+
+/** Election entity data model. */
+class Election
+{
+    public ?array $meta = null;
+    public ?array $object = null;
+}
+
+/** Match filter for Election#list (any subset of Election fields). */
+class ElectionListMatch
+{
+    public ?array $meta = null;
+    public ?array $object = null;
+}
+
+/** PostalCode entity data model. */
+class PostalCode
+{
+    public ?array $boundaries_centroid = null;
+    public ?array $boundaries_concordance = null;
+    public ?array $centroid = null;
+    public ?string $city = null;
+    public ?string $code = null;
+    public ?string $province = null;
+    public ?array $representatives_centroid = null;
+    public ?array $representatives_concordance = null;
+}
+
+/** Request payload for PostalCode#load. */
+class PostalCodeLoadMatch
+{
+    public string $postal_code;
+}
+
+/** Representatif entity data model. */
+class Representatif
+{
+    public ?string $district_id = null;
+    public string $district_name;
+    public string $elected_office;
+    public ?string $email = null;
+    public ?array $extra = null;
+    public ?string $first_name = null;
+    public ?string $gender = null;
+    public ?string $last_name = null;
+    public ?array $meta = null;
+    public string $name;
+    public ?array $object = null;
+    public ?array $office = null;
+    public ?string $party_name = null;
+    public ?string $personal_url = null;
+    public ?string $photo_url = null;
+    public ?string $source_url = null;
+    public ?string $url = null;
+}
+
+/** Request payload for Representatif#load. */
+class RepresentatifLoadMatch
+{
+    public string $id;
+}
+
+/** Request payload for Representatif#list. */
+class RepresentatifListMatch
+{
+    public string $boundary;
+    public string $boundary_set;
+}
+
+/** RepresentativeSet entity data model. */
+class RepresentativeSet
+{
+    public ?string $name = null;
+    public ?string $url = null;
+}
+
+/** Request payload for RepresentativeSet#load. */
+class RepresentativeSetLoadMatch
+{
+    public string $id;
+}
+
+/** Match filter for RepresentativeSet#list (any subset of RepresentativeSet fields). */
+class RepresentativeSetListMatch
+{
+    public ?string $name = null;
+    public ?string $url = null;
+}
+

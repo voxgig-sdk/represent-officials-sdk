@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://represent.opennorth.ca',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -271,7 +267,8 @@ class Config {
                     "name": "id",
                     "orig": "boundary_set",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ],
                 "query": [
@@ -383,7 +380,8 @@ class Config {
                     "name": "boundary",
                     "orig": "boundary",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   },
                   {
                     "active": true,
@@ -391,7 +389,8 @@ class Config {
                     "name": "boundary_set",
                     "orig": "boundary_set",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 1
                   }
                 ],
                 "query": [
@@ -458,7 +457,8 @@ class Config {
                     "name": "boundary",
                     "orig": "boundary",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   },
                   {
                     "active": true,
@@ -466,7 +466,8 @@ class Config {
                     "name": "boundary_set",
                     "orig": "boundary_set",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 1
                   }
                 ],
                 "query": [
@@ -526,7 +527,8 @@ class Config {
                     "name": "boundary",
                     "orig": "boundary",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   },
                   {
                     "active": true,
@@ -534,7 +536,8 @@ class Config {
                     "name": "boundary_set",
                     "orig": "boundary_set",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 1
                   }
                 ],
                 "query": [
@@ -594,7 +597,8 @@ class Config {
                     "name": "boundary",
                     "orig": "boundary",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   },
                   {
                     "active": true,
@@ -602,7 +606,8 @@ class Config {
                     "name": "boundary_set",
                     "orig": "boundary_set",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 1
                   }
                 ],
                 "query": [
@@ -662,7 +667,8 @@ class Config {
                     "name": "boundary_set",
                     "orig": "boundary_set",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ],
                 "query": [
@@ -720,7 +726,8 @@ class Config {
                     "name": "boundary_set",
                     "orig": "boundary_set",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ],
                 "query": [
@@ -778,7 +785,8 @@ class Config {
                     "name": "boundary_set",
                     "orig": "boundary_set",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ],
                 "query": [
@@ -971,7 +979,8 @@ class Config {
                     "name": "id",
                     "orig": "boundary_set",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ],
                 "query": [
@@ -1307,7 +1316,8 @@ class Config {
                     "name": "postal_code",
                     "orig": "postal_code",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ],
                 "query": [
@@ -1670,7 +1680,8 @@ class Config {
                     "name": "boundary",
                     "orig": "boundary",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   },
                   {
                     "active": true,
@@ -1678,7 +1689,8 @@ class Config {
                     "name": "boundary_set",
                     "orig": "boundary_set",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 1
                   }
                 ],
                 "query": [
@@ -1753,7 +1765,8 @@ class Config {
                     "name": "id",
                     "orig": "representative_set",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ],
                 "query": [
@@ -2020,7 +2033,8 @@ class Config {
                     "name": "id",
                     "orig": "representative_set",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ],
                 "query": [

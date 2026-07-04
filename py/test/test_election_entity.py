@@ -50,8 +50,7 @@ class TestElectionEntity:
         election_ref01_ent = client.Election(None)
         election_ref01_match = {}
 
-        election_ref01_list_result, err = election_ref01_ent.list(election_ref01_match, None)
-        assert err is None
+        election_ref01_list_result = election_ref01_ent.list(election_ref01_match, None)
         assert isinstance(election_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _election_basic_setup(extra):
         "REPRESENTOFFICIALS_TEST_ELECTION_ENTID": idmap,
         "REPRESENTOFFICIALS_TEST_LIVE": "FALSE",
         "REPRESENTOFFICIALS_TEST_EXPLAIN": "FALSE",
-        "REPRESENTOFFICIALS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _election_basic_setup(extra):
     if env.get("REPRESENTOFFICIALS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("REPRESENTOFFICIALS_APIKEY"),
             },
             extra or {},
         ])

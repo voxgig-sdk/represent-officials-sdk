@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch CandidateListMatch
+---@param ctrl? table
+---@return Candidate[]
+---@return string? err
 function CandidateEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

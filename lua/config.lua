@@ -14,9 +14,6 @@ local function make_config()
     },
     options = {
       base = "https://represent.opennorth.ca",
-      auth = {
-        prefix = "Bearer",
-      },
       headers = {
         ["content-type"] = "application/json",
       },
@@ -229,6 +226,7 @@ local function make_config()
                       ["orig"] = "boundary_set",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
@@ -341,6 +339,7 @@ local function make_config()
                       ["orig"] = "boundary",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                     {
                       ["active"] = true,
@@ -349,6 +348,7 @@ local function make_config()
                       ["orig"] = "boundary_set",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 1,
                     },
                   },
                   ["query"] = {
@@ -416,6 +416,7 @@ local function make_config()
                       ["orig"] = "boundary",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                     {
                       ["active"] = true,
@@ -424,6 +425,7 @@ local function make_config()
                       ["orig"] = "boundary_set",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 1,
                     },
                   },
                   ["query"] = {
@@ -484,6 +486,7 @@ local function make_config()
                       ["orig"] = "boundary",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                     {
                       ["active"] = true,
@@ -492,6 +495,7 @@ local function make_config()
                       ["orig"] = "boundary_set",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 1,
                     },
                   },
                   ["query"] = {
@@ -552,6 +556,7 @@ local function make_config()
                       ["orig"] = "boundary",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                     {
                       ["active"] = true,
@@ -560,6 +565,7 @@ local function make_config()
                       ["orig"] = "boundary_set",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 1,
                     },
                   },
                   ["query"] = {
@@ -620,6 +626,7 @@ local function make_config()
                       ["orig"] = "boundary_set",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
@@ -678,6 +685,7 @@ local function make_config()
                       ["orig"] = "boundary_set",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
@@ -736,6 +744,7 @@ local function make_config()
                       ["orig"] = "boundary_set",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
@@ -929,6 +938,7 @@ local function make_config()
                       ["orig"] = "boundary_set",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
@@ -1265,6 +1275,7 @@ local function make_config()
                       ["orig"] = "postal_code",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
@@ -1628,6 +1639,7 @@ local function make_config()
                       ["orig"] = "boundary",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                     {
                       ["active"] = true,
@@ -1636,6 +1648,7 @@ local function make_config()
                       ["orig"] = "boundary_set",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 1,
                     },
                   },
                   ["query"] = {
@@ -1711,6 +1724,7 @@ local function make_config()
                       ["orig"] = "representative_set",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
@@ -1978,6 +1992,7 @@ local function make_config()
                       ["orig"] = "representative_set",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {

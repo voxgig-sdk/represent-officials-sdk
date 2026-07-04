@@ -43,8 +43,7 @@ class ElectionEntityTest < Minitest::Test
     election_ref01_ent = client.Election(nil)
     election_ref01_match = {}
 
-    election_ref01_list_result, err = election_ref01_ent.list(election_ref01_match, nil)
-    assert_nil err
+    election_ref01_list_result = election_ref01_ent.list(election_ref01_match, nil)
     assert election_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def election_basic_setup(extra)
     "REPRESENTOFFICIALS_TEST_ELECTION_ENTID" => idmap,
     "REPRESENTOFFICIALS_TEST_LIVE" => "FALSE",
     "REPRESENTOFFICIALS_TEST_EXPLAIN" => "FALSE",
-    "REPRESENTOFFICIALS_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def election_basic_setup(extra)
   if env["REPRESENTOFFICIALS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["REPRESENTOFFICIALS_APIKEY"],
       },
       extra || {},
     ])

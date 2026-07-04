@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         name: "Open North"
         url: "https://represent.opennorth.ca"

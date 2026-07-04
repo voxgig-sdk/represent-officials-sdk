@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch ElectionListMatch
+---@param ctrl? table
+---@return Election[]
+---@return string? err
 function ElectionEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

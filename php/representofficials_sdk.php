@@ -103,7 +103,7 @@ class RepresentOfficialsSDK
         return $this->_rootctx;
     }
 
-    public function prepare(array $fetchargs = []): array
+    public function prepare(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
         $fetchargs = $fetchargs ?? [];
@@ -149,19 +149,27 @@ class RepresentOfficialsSDK
 
         [$_, $err] = ($utility->prepare_auth)($ctx);
         if ($err) {
-            return [null, $err];
+            return ($utility->make_error)($ctx, $err);
         }
 
-        return ($utility->make_fetch_def)($ctx);
+        [$fetchdef, $fd_err] = ($utility->make_fetch_def)($ctx);
+        if ($fd_err) {
+            return ($utility->make_error)($ctx, $fd_err);
+        }
+        return $fetchdef;
     }
 
-    public function direct(array $fetchargs = []): array
+    public function direct(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
 
-        [$fetchdef, $err] = $this->prepare($fetchargs);
-        if ($err) {
-            return [["ok" => false, "err" => $err], null];
+        // direct() is the raw-HTTP escape hatch: it never throws, it returns
+        // an {ok, err, ...} dict. prepare() now raises on error, so catch it
+        // and surface the failure through the dict instead.
+        try {
+            $fetchdef = $this->prepare($fetchargs);
+        } catch (\Throwable $err) {
+            return ["ok" => false, "err" => $err];
         }
 
         $fetchargs = $fetchargs ?? [];
@@ -176,14 +184,14 @@ class RepresentOfficialsSDK
         [$fetched, $fetch_err] = ($utility->fetcher)($ctx, $url, $fetchdef);
 
         if ($fetch_err) {
-            return [["ok" => false, "err" => $fetch_err], null];
+            return ["ok" => false, "err" => $fetch_err];
         }
 
         if ($fetched === null) {
-            return [[
+            return [
                 "ok" => false,
                 "err" => $ctx->make_error("direct_no_response", "response: undefined"),
-            ], null];
+            ];
         }
 
         if (is_array($fetched)) {
@@ -208,66 +216,143 @@ class RepresentOfficialsSDK
                 }
             }
 
-            return [[
+            return [
                 "ok" => $status >= 200 && $status < 300,
                 "status" => $status,
                 "headers" => Struct::getprop($fetched, "headers"),
                 "data" => $json_data,
-            ], null];
+            ];
         }
 
-        return [[
+        return [
             "ok" => false,
             "err" => $ctx->make_error("direct_invalid", "invalid response type"),
-        ], null];
+        ];
     }
 
 
-    public function Boundary($data = null)
+    private $_boundary = null;
+
+    // Idiomatic facade: $client->boundary()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Boundary() (PHP method
+    // names are case-insensitive).
+    public function boundary($data = null)
     {
         require_once __DIR__ . '/entity/boundary_entity.php';
+        if ($data === null) {
+            if ($this->_boundary === null) {
+                $this->_boundary = new BoundaryEntity($this, null);
+            }
+            return $this->_boundary;
+        }
         return new BoundaryEntity($this, $data);
     }
 
 
-    public function BoundarySet($data = null)
+    private $_boundary_set = null;
+
+    // Idiomatic facade: $client->boundary_set()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias BoundarySet() (PHP method
+    // names are case-insensitive).
+    public function boundary_set($data = null)
     {
         require_once __DIR__ . '/entity/boundary_set_entity.php';
+        if ($data === null) {
+            if ($this->_boundary_set === null) {
+                $this->_boundary_set = new BoundarySetEntity($this, null);
+            }
+            return $this->_boundary_set;
+        }
         return new BoundarySetEntity($this, $data);
     }
 
 
-    public function Candidate($data = null)
+    private $_candidate = null;
+
+    // Idiomatic facade: $client->candidate()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Candidate() (PHP method
+    // names are case-insensitive).
+    public function candidate($data = null)
     {
         require_once __DIR__ . '/entity/candidate_entity.php';
+        if ($data === null) {
+            if ($this->_candidate === null) {
+                $this->_candidate = new CandidateEntity($this, null);
+            }
+            return $this->_candidate;
+        }
         return new CandidateEntity($this, $data);
     }
 
 
-    public function Election($data = null)
+    private $_election = null;
+
+    // Idiomatic facade: $client->election()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Election() (PHP method
+    // names are case-insensitive).
+    public function election($data = null)
     {
         require_once __DIR__ . '/entity/election_entity.php';
+        if ($data === null) {
+            if ($this->_election === null) {
+                $this->_election = new ElectionEntity($this, null);
+            }
+            return $this->_election;
+        }
         return new ElectionEntity($this, $data);
     }
 
 
-    public function PostalCode($data = null)
+    private $_postal_code = null;
+
+    // Idiomatic facade: $client->postal_code()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias PostalCode() (PHP method
+    // names are case-insensitive).
+    public function postal_code($data = null)
     {
         require_once __DIR__ . '/entity/postal_code_entity.php';
+        if ($data === null) {
+            if ($this->_postal_code === null) {
+                $this->_postal_code = new PostalCodeEntity($this, null);
+            }
+            return $this->_postal_code;
+        }
         return new PostalCodeEntity($this, $data);
     }
 
 
-    public function Representatif($data = null)
+    private $_representatif = null;
+
+    // Idiomatic facade: $client->representatif()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Representatif() (PHP method
+    // names are case-insensitive).
+    public function representatif($data = null)
     {
         require_once __DIR__ . '/entity/representatif_entity.php';
+        if ($data === null) {
+            if ($this->_representatif === null) {
+                $this->_representatif = new RepresentatifEntity($this, null);
+            }
+            return $this->_representatif;
+        }
         return new RepresentatifEntity($this, $data);
     }
 
 
-    public function RepresentativeSet($data = null)
+    private $_representative_set = null;
+
+    // Idiomatic facade: $client->representative_set()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias RepresentativeSet() (PHP method
+    // names are case-insensitive).
+    public function representative_set($data = null)
     {
         require_once __DIR__ . '/entity/representative_set_entity.php';
+        if ($data === null) {
+            if ($this->_representative_set === null) {
+                $this->_representative_set = new RepresentativeSetEntity($this, null);
+            }
+            return $this->_representative_set;
+        }
         return new RepresentativeSetEntity($this, $data);
     }
 

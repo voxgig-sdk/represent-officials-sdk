@@ -245,36 +245,57 @@ func (sdk *RepresentOfficialsSDK) Direct(fetchargs map[string]any) (map[string]a
 }
 
 
+// Boundary returns a Boundary entity bound to this client.
+// Idiomatic usage: client.Boundary(nil).List(nil, nil) or
+// client.Boundary(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *RepresentOfficialsSDK) Boundary(data map[string]any) RepresentOfficialsEntity {
 	return NewBoundaryEntityFunc(sdk, data)
 }
 
 
+// BoundarySet returns a BoundarySet entity bound to this client.
+// Idiomatic usage: client.BoundarySet(nil).List(nil, nil) or
+// client.BoundarySet(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *RepresentOfficialsSDK) BoundarySet(data map[string]any) RepresentOfficialsEntity {
 	return NewBoundarySetEntityFunc(sdk, data)
 }
 
 
+// Candidate returns a Candidate entity bound to this client.
+// Idiomatic usage: client.Candidate(nil).List(nil, nil) or
+// client.Candidate(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *RepresentOfficialsSDK) Candidate(data map[string]any) RepresentOfficialsEntity {
 	return NewCandidateEntityFunc(sdk, data)
 }
 
 
+// Election returns a Election entity bound to this client.
+// Idiomatic usage: client.Election(nil).List(nil, nil) or
+// client.Election(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *RepresentOfficialsSDK) Election(data map[string]any) RepresentOfficialsEntity {
 	return NewElectionEntityFunc(sdk, data)
 }
 
 
+// PostalCode returns a PostalCode entity bound to this client.
+// Idiomatic usage: client.PostalCode(nil).List(nil, nil) or
+// client.PostalCode(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *RepresentOfficialsSDK) PostalCode(data map[string]any) RepresentOfficialsEntity {
 	return NewPostalCodeEntityFunc(sdk, data)
 }
 
 
+// Representatif returns a Representatif entity bound to this client.
+// Idiomatic usage: client.Representatif(nil).List(nil, nil) or
+// client.Representatif(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *RepresentOfficialsSDK) Representatif(data map[string]any) RepresentOfficialsEntity {
 	return NewRepresentatifEntityFunc(sdk, data)
 }
 
 
+// RepresentativeSet returns a RepresentativeSet entity bound to this client.
+// Idiomatic usage: client.RepresentativeSet(nil).List(nil, nil) or
+// client.RepresentativeSet(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *RepresentOfficialsSDK) RepresentativeSet(data map[string]any) RepresentOfficialsEntity {
 	return NewRepresentativeSetEntityFunc(sdk, data)
 }

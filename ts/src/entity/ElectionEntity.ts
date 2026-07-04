@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Election,
+  ElectionListMatch,
+} from '../RepresentOfficialsTypes'
 
 // TODO: needs Entity superclass
-class ElectionEntity extends RepresentOfficialsEntityBase {
+class ElectionEntity extends RepresentOfficialsEntityBase<Election> {
 
   constructor(client: RepresentOfficialsSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class ElectionEntity extends RepresentOfficialsEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: ElectionListMatch, ctrl?: Control): Promise<Election[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class ElectionEntity extends RepresentOfficialsEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Election[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

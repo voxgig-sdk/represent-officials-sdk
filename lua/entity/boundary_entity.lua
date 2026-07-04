@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch BoundaryLoadMatch
+---@param ctrl? table
+---@return Boundary
+---@return string? err
 function BoundaryEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch BoundaryListMatch
+---@param ctrl? table
+---@return Boundary[]
+---@return string? err
 function BoundaryEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

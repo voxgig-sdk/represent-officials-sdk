@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `dict` | SDK configuration options. |
-| `options["apikey"]` | `str` | API key for authentication. |
 | `options["base"]` | `str` | Base URL for API requests. |
 | `options["prefix"]` | `str` | URL prefix appended after base. |
 | `options["suffix"]` | `str` | URL suffix appended after path. |
@@ -78,9 +77,9 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs=None) -> tuple`
+#### `direct(fetchargs=None) -> dict`
 
-Make a direct HTTP request to any API endpoint. Returns `(result, err)`.
+Make a direct HTTP request to any API endpoint. Returns a result `dict` with `ok`, `status`, `headers`, and `data` (or `err` on failure). This escape hatch never raises — branch on `result["ok"]`.
 
 **Parameters:**
 
@@ -93,11 +92,11 @@ Make a direct HTTP request to any API endpoint. Returns `(result, err)`.
 | `fetchargs["headers"]` | `dict` | Request headers (merged with defaults). |
 | `fetchargs["body"]` | `any` | Request body (dicts are JSON-serialized). |
 
-**Returns:** `(result_dict, err)`
+**Returns:** `result_dict`
 
-#### `prepare(fetchargs=None) -> tuple`
+#### `prepare(fetchargs=None) -> dict`
 
-Prepare a fetch definition without sending. Returns `(fetchdef, err)`.
+Prepare a fetch definition without sending. Returns the `fetchdef` and raises on error.
 
 
 ---
@@ -105,7 +104,7 @@ Prepare a fetch definition without sending. Returns `(fetchdef, err)`.
 ## BoundaryEntity
 
 ```python
-boundary = client.Boundary()
+boundary = client.boundary
 ```
 
 ### Fields
@@ -122,20 +121,20 @@ boundary = client.Boundary()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Boundary().list({})
+results = client.boundary.list({})
 ```
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.Boundary().load({"id": "boundary_id"})
+result = client.boundary.load({"id": "boundary_id"})
 ```
 
 ### Common Methods
@@ -170,7 +169,7 @@ Return the entity name.
 ## BoundarySetEntity
 
 ```python
-boundary_set = client.BoundarySet()
+boundary_set = client.boundary_set
 ```
 
 ### Fields
@@ -183,20 +182,20 @@ boundary_set = client.BoundarySet()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.BoundarySet().list({})
+results = client.boundary_set.list({})
 ```
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.BoundarySet().load({"id": "boundary_set_id"})
+result = client.boundary_set.load({"id": "boundary_set_id"})
 ```
 
 ### Common Methods
@@ -231,7 +230,7 @@ Return the entity name.
 ## CandidateEntity
 
 ```python
-candidate = client.Candidate()
+candidate = client.candidate
 ```
 
 ### Fields
@@ -243,12 +242,12 @@ candidate = client.Candidate()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Candidate().list({})
+results = client.candidate.list({})
 ```
 
 ### Common Methods
@@ -283,7 +282,7 @@ Return the entity name.
 ## ElectionEntity
 
 ```python
-election = client.Election()
+election = client.election
 ```
 
 ### Fields
@@ -295,12 +294,12 @@ election = client.Election()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Election().list({})
+results = client.election.list({})
 ```
 
 ### Common Methods
@@ -335,7 +334,7 @@ Return the entity name.
 ## PostalCodeEntity
 
 ```python
-postal_code = client.PostalCode()
+postal_code = client.postal_code
 ```
 
 ### Fields
@@ -353,12 +352,12 @@ postal_code = client.PostalCode()
 
 ### Operations
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.PostalCode().load({"id": "postal_code_id"})
+result = client.postal_code.load({"id": "postal_code_id"})
 ```
 
 ### Common Methods
@@ -393,7 +392,7 @@ Return the entity name.
 ## RepresentatifEntity
 
 ```python
-representatif = client.Representatif()
+representatif = client.representatif
 ```
 
 ### Fields
@@ -420,20 +419,20 @@ representatif = client.Representatif()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Representatif().list({})
+results = client.representatif.list({})
 ```
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.Representatif().load({"id": "representatif_id"})
+result = client.representatif.load({"id": "representatif_id"})
 ```
 
 ### Common Methods
@@ -468,7 +467,7 @@ Return the entity name.
 ## RepresentativeSetEntity
 
 ```python
-representative_set = client.RepresentativeSet()
+representative_set = client.representative_set
 ```
 
 ### Fields
@@ -480,20 +479,20 @@ representative_set = client.RepresentativeSet()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.RepresentativeSet().list({})
+results = client.representative_set.list({})
 ```
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.RepresentativeSet().load({"id": "representative_set_id"})
+result = client.representative_set.load({"id": "representative_set_id"})
 ```
 
 ### Common Methods

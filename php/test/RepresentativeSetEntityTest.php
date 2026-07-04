@@ -50,14 +50,12 @@ class RepresentativeSetEntityTest extends TestCase
         $representative_set_ref01_ent = $client->RepresentativeSet(null);
         $representative_set_ref01_match = [];
 
-        [$representative_set_ref01_list_result, $err] = $representative_set_ref01_ent->list($representative_set_ref01_match, null);
-        $this->assertNull($err);
+        $representative_set_ref01_list_result = $representative_set_ref01_ent->list($representative_set_ref01_match, null);
         $this->assertIsArray($representative_set_ref01_list_result);
 
         // LOAD
         $representative_set_ref01_match_dt0 = [];
-        [$representative_set_ref01_data_dt0_loaded, $err] = $representative_set_ref01_ent->load($representative_set_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $representative_set_ref01_data_dt0_loaded = $representative_set_ref01_ent->load($representative_set_ref01_match_dt0, null);
         $this->assertNotNull($representative_set_ref01_data_dt0_loaded);
 
     }
@@ -92,7 +90,6 @@ function representative_set_basic_setup($extra)
         "REPRESENTOFFICIALS_TEST_REPRESENTATIVE_SET_ENTID" => $idmap,
         "REPRESENTOFFICIALS_TEST_LIVE" => "FALSE",
         "REPRESENTOFFICIALS_TEST_EXPLAIN" => "FALSE",
-        "REPRESENTOFFICIALS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -104,7 +101,6 @@ function representative_set_basic_setup($extra)
     if ($env["REPRESENTOFFICIALS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["REPRESENTOFFICIALS_APIKEY"],
             ],
             $extra ?? [],
         ]);

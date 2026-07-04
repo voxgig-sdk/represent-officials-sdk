@@ -46,14 +46,12 @@ class RepresentatifEntityTest < Minitest::Test
       "boundary_set" => setup[:idmap]["boundary_set01"],
     }
 
-    representatif_ref01_list_result, err = representatif_ref01_ent.list(representatif_ref01_match, nil)
-    assert_nil err
+    representatif_ref01_list_result = representatif_ref01_ent.list(representatif_ref01_match, nil)
     assert representatif_ref01_list_result.is_a?(Array)
 
     # LOAD
     representatif_ref01_match_dt0 = {}
-    representatif_ref01_data_dt0_loaded, err = representatif_ref01_ent.load(representatif_ref01_match_dt0, nil)
-    assert_nil err
+    representatif_ref01_data_dt0_loaded = representatif_ref01_ent.load(representatif_ref01_match_dt0, nil)
     assert !representatif_ref01_data_dt0_loaded.nil?
 
   end
@@ -92,7 +90,6 @@ def representatif_basic_setup(extra)
     "REPRESENTOFFICIALS_TEST_REPRESENTATIF_ENTID" => idmap,
     "REPRESENTOFFICIALS_TEST_LIVE" => "FALSE",
     "REPRESENTOFFICIALS_TEST_EXPLAIN" => "FALSE",
-    "REPRESENTOFFICIALS_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -104,7 +101,6 @@ def representatif_basic_setup(extra)
   if env["REPRESENTOFFICIALS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["REPRESENTOFFICIALS_APIKEY"],
       },
       extra || {},
     ])

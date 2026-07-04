@@ -9,12 +9,9 @@ The Lua SDK for the RepresentOfficials API — an entity-oriented client using L
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-represent-officials
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/represent-officials-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("represent-officials_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("REPRESENT-OFFICIALS_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 2. List boundarys
 
 ```lua
-local result, err = client:Boundary():list()
+local result, err = client:boundary():list()
 if err then error(err) end
 
 if type(result) == "table" then
@@ -53,7 +48,7 @@ end
 ### 3. Load a boundary
 
 ```lua
-local result, err = client:Boundary():load({ id = "example_id" })
+local result, err = client:boundary():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -101,7 +96,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:RepresentOfficials():load({ id = "test01" })
+local result, err = client:boundary():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -134,8 +129,7 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-REPRESENT-OFFICIALS_TEST_LIVE=TRUE
-REPRESENT-OFFICIALS_APIKEY=<your-key>
+REPRESENT_OFFICIALS_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -158,7 +152,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -335,7 +328,7 @@ API path: `/representative-sets/`
 
 ### Boundary
 
-Create an instance: `const boundary = client.Boundary()`
+Create an instance: `const boundary = client.boundary`
 
 #### Operations
 
@@ -359,19 +352,19 @@ Create an instance: `const boundary = client.Boundary()`
 #### Example: Load
 
 ```ts
-const boundary = await client.Boundary().load({ id: 'boundary_id' })
+const boundary = await client.boundary.load({ id: 'boundary_id' })
 ```
 
 #### Example: List
 
 ```ts
-const boundarys = await client.Boundary().list()
+const boundarys = await client.boundary.list()
 ```
 
 
 ### BoundarySet
 
-Create an instance: `const boundary_set = client.BoundarySet()`
+Create an instance: `const boundary_set = client.boundary_set`
 
 #### Operations
 
@@ -391,19 +384,19 @@ Create an instance: `const boundary_set = client.BoundarySet()`
 #### Example: Load
 
 ```ts
-const boundary_set = await client.BoundarySet().load({ id: 'boundary_set_id' })
+const boundary_set = await client.boundary_set.load({ id: 'boundary_set_id' })
 ```
 
 #### Example: List
 
 ```ts
-const boundary_sets = await client.BoundarySet().list()
+const boundary_sets = await client.boundary_set.list()
 ```
 
 
 ### Candidate
 
-Create an instance: `const candidate = client.Candidate()`
+Create an instance: `const candidate = client.candidate`
 
 #### Operations
 
@@ -421,13 +414,13 @@ Create an instance: `const candidate = client.Candidate()`
 #### Example: List
 
 ```ts
-const candidates = await client.Candidate().list()
+const candidates = await client.candidate.list()
 ```
 
 
 ### Election
 
-Create an instance: `const election = client.Election()`
+Create an instance: `const election = client.election`
 
 #### Operations
 
@@ -445,13 +438,13 @@ Create an instance: `const election = client.Election()`
 #### Example: List
 
 ```ts
-const elections = await client.Election().list()
+const elections = await client.election.list()
 ```
 
 
 ### PostalCode
 
-Create an instance: `const postal_code = client.PostalCode()`
+Create an instance: `const postal_code = client.postal_code`
 
 #### Operations
 
@@ -475,13 +468,13 @@ Create an instance: `const postal_code = client.PostalCode()`
 #### Example: Load
 
 ```ts
-const postal_code = await client.PostalCode().load({ id: 'postal_code_id' })
+const postal_code = await client.postal_code.load({ id: 'postal_code_id' })
 ```
 
 
 ### Representatif
 
-Create an instance: `const representatif = client.Representatif()`
+Create an instance: `const representatif = client.representatif`
 
 #### Operations
 
@@ -515,19 +508,19 @@ Create an instance: `const representatif = client.Representatif()`
 #### Example: Load
 
 ```ts
-const representatif = await client.Representatif().load({ id: 'representatif_id' })
+const representatif = await client.representatif.load({ id: 'representatif_id' })
 ```
 
 #### Example: List
 
 ```ts
-const representatifs = await client.Representatif().list()
+const representatifs = await client.representatif.list()
 ```
 
 
 ### RepresentativeSet
 
-Create an instance: `const representative_set = client.RepresentativeSet()`
+Create an instance: `const representative_set = client.representative_set`
 
 #### Operations
 
@@ -546,13 +539,13 @@ Create an instance: `const representative_set = client.RepresentativeSet()`
 #### Example: Load
 
 ```ts
-const representative_set = await client.RepresentativeSet().load({ id: 'representative_set_id' })
+const representative_set = await client.representative_set.load({ id: 'representative_set_id' })
 ```
 
 #### Example: List
 
 ```ts
-const representative_sets = await client.RepresentativeSet().list()
+const representative_sets = await client.representative_set.list()
 ```
 
 
@@ -627,11 +620,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local boundary = client:boundary()
+boundary:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- boundary:data_get() now returns the loaded boundary data
+-- boundary:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

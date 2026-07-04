@@ -117,14 +117,12 @@ function representatif_direct_setup(mockres)
   local env = runner.env_override({
     ["REPRESENTOFFICIALS_TEST_REPRESENTATIF_ENTID"] = {},
     ["REPRESENTOFFICIALS_TEST_LIVE"] = "FALSE",
-    ["REPRESENTOFFICIALS_APIKEY"] = "NONE",
   })
 
   local live = env["REPRESENTOFFICIALS_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["REPRESENTOFFICIALS_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

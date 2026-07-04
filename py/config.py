@@ -15,9 +15,6 @@ def make_config():
         },
         "options": {
             "base": "https://represent.opennorth.ca",
-            "auth": {
-                "prefix": "Bearer",
-            },
             "headers": {
         "content-type": "application/json",
       },
@@ -230,6 +227,7 @@ def make_config():
                       "orig": "boundary_set",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                   "query": [
@@ -342,6 +340,7 @@ def make_config():
                       "orig": "boundary",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                     {
                       "active": True,
@@ -350,6 +349,7 @@ def make_config():
                       "orig": "boundary_set",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 1,
                     },
                   ],
                   "query": [
@@ -417,6 +417,7 @@ def make_config():
                       "orig": "boundary",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                     {
                       "active": True,
@@ -425,6 +426,7 @@ def make_config():
                       "orig": "boundary_set",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 1,
                     },
                   ],
                   "query": [
@@ -485,6 +487,7 @@ def make_config():
                       "orig": "boundary",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                     {
                       "active": True,
@@ -493,6 +496,7 @@ def make_config():
                       "orig": "boundary_set",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 1,
                     },
                   ],
                   "query": [
@@ -553,6 +557,7 @@ def make_config():
                       "orig": "boundary",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                     {
                       "active": True,
@@ -561,6 +566,7 @@ def make_config():
                       "orig": "boundary_set",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 1,
                     },
                   ],
                   "query": [
@@ -621,6 +627,7 @@ def make_config():
                       "orig": "boundary_set",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                   "query": [
@@ -679,6 +686,7 @@ def make_config():
                       "orig": "boundary_set",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                   "query": [
@@ -737,6 +745,7 @@ def make_config():
                       "orig": "boundary_set",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                   "query": [
@@ -930,6 +939,7 @@ def make_config():
                       "orig": "boundary_set",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                   "query": [
@@ -1266,6 +1276,7 @@ def make_config():
                       "orig": "postal_code",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                   "query": [
@@ -1629,6 +1640,7 @@ def make_config():
                       "orig": "boundary",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                     {
                       "active": True,
@@ -1637,6 +1649,7 @@ def make_config():
                       "orig": "boundary_set",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 1,
                     },
                   ],
                   "query": [
@@ -1712,6 +1725,7 @@ def make_config():
                       "orig": "representative_set",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                   "query": [
@@ -1979,6 +1993,7 @@ def make_config():
                       "orig": "representative_set",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                   "query": [

@@ -50,14 +50,12 @@ class TestBoundaryEntity:
         boundary_ref01_ent = client.Boundary(None)
         boundary_ref01_match = {}
 
-        boundary_ref01_list_result, err = boundary_ref01_ent.list(boundary_ref01_match, None)
-        assert err is None
+        boundary_ref01_list_result = boundary_ref01_ent.list(boundary_ref01_match, None)
         assert isinstance(boundary_ref01_list_result, list)
 
         # LOAD
         boundary_ref01_match_dt0 = {}
-        boundary_ref01_data_dt0_loaded, err = boundary_ref01_ent.load(boundary_ref01_match_dt0, None)
-        assert err is None
+        boundary_ref01_data_dt0_loaded = boundary_ref01_ent.load(boundary_ref01_match_dt0, None)
         assert boundary_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _boundary_basic_setup(extra):
         "REPRESENTOFFICIALS_TEST_BOUNDARY_ENTID": idmap,
         "REPRESENTOFFICIALS_TEST_LIVE": "FALSE",
         "REPRESENTOFFICIALS_TEST_EXPLAIN": "FALSE",
-        "REPRESENTOFFICIALS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _boundary_basic_setup(extra):
     if env.get("REPRESENTOFFICIALS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("REPRESENTOFFICIALS_APIKEY"),
             },
             extra or {},
         ])

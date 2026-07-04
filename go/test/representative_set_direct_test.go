@@ -194,14 +194,12 @@ func representative_setDirectSetup(mockres any) *representative_setDirectSetupRe
 	env := envOverride(map[string]any{
 		"REPRESENTOFFICIALS_TEST_REPRESENTATIVE_SET_ENTID": map[string]any{},
 		"REPRESENTOFFICIALS_TEST_LIVE":    "FALSE",
-		"REPRESENTOFFICIALS_APIKEY":       "NONE",
 	})
 
 	live := env["REPRESENTOFFICIALS_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["REPRESENTOFFICIALS_APIKEY"],
 		}
 		client := sdk.NewRepresentOfficialsSDK(mergedOpts)
 

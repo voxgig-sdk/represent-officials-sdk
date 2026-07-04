@@ -136,14 +136,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'REPRESENTOFFICIALS_TEST_REPRESENTATIF_ENTID': {},
     'REPRESENTOFFICIALS_TEST_LIVE': 'FALSE',
-    'REPRESENTOFFICIALS_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.REPRESENTOFFICIALS_TEST_LIVE
 
   if (live) {
     const client = new RepresentOfficialsSDK({
-      apikey: env.REPRESENTOFFICIALS_APIKEY,
     })
 
     let idmap: any = env['REPRESENTOFFICIALS_TEST_REPRESENTATIF_ENTID']

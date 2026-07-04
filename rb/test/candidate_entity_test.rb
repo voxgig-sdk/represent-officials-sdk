@@ -43,8 +43,7 @@ class CandidateEntityTest < Minitest::Test
     candidate_ref01_ent = client.Candidate(nil)
     candidate_ref01_match = {}
 
-    candidate_ref01_list_result, err = candidate_ref01_ent.list(candidate_ref01_match, nil)
-    assert_nil err
+    candidate_ref01_list_result = candidate_ref01_ent.list(candidate_ref01_match, nil)
     assert candidate_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def candidate_basic_setup(extra)
     "REPRESENTOFFICIALS_TEST_CANDIDATE_ENTID" => idmap,
     "REPRESENTOFFICIALS_TEST_LIVE" => "FALSE",
     "REPRESENTOFFICIALS_TEST_EXPLAIN" => "FALSE",
-    "REPRESENTOFFICIALS_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def candidate_basic_setup(extra)
   if env["REPRESENTOFFICIALS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["REPRESENTOFFICIALS_APIKEY"],
       },
       extra || {},
     ])

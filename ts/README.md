@@ -9,9 +9,12 @@ The TypeScript SDK for the RepresentOfficials API — a type-safe, entity-orient
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/represent-officials
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/represent-officials-sdk/releases](https://github.com/voxgig-sdk/represent-officials-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { RepresentOfficialsSDK } from 'represent-officials'
+import { RepresentOfficialsSDK } from '@voxgig-sdk/represent-officials'
 
-const client = new RepresentOfficialsSDK({
-  apikey: process.env.REPRESENT-OFFICIALS_APIKEY,
-})
+const client = new RepresentOfficialsSDK()
 ```
 
 ### 2. List boundarys
 
 ```ts
-const result = await client.Boundary().list()
+const result = await client.boundary.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -42,7 +43,7 @@ if (result.ok) {
 ### 3. Load a boundary
 
 ```ts
-const result = await client.Boundary().load({ id: 'example_id' })
+const result = await client.boundary.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -91,7 +92,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = RepresentOfficialsSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.boundary.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -99,7 +100,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new RepresentOfficialsSDK({ apikey: '...' })
+const client = new RepresentOfficialsSDK()
 const testClient = client.tester()
 ```
 
@@ -108,7 +109,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.boundary
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -135,7 +136,6 @@ const logger = {
 }
 
 const client = new RepresentOfficialsSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -145,8 +145,7 @@ const client = new RepresentOfficialsSDK({
 Create a `.env.local` file at the project root:
 
 ```
-REPRESENT-OFFICIALS_TEST_LIVE=TRUE
-REPRESENT-OFFICIALS_APIKEY=<your-key>
+REPRESENT_OFFICIALS_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -164,7 +163,6 @@ cd ts && npm test
 
 ```ts
 new RepresentOfficialsSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -175,7 +173,6 @@ new RepresentOfficialsSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -378,7 +375,7 @@ API path: `/representative-sets/`
 
 ### Boundary
 
-Create an instance: `const boundary = client.Boundary()`
+Create an instance: `const boundary = client.boundary`
 
 #### Operations
 
@@ -402,19 +399,19 @@ Create an instance: `const boundary = client.Boundary()`
 #### Example: Load
 
 ```ts
-const boundary = await client.Boundary().load({ id: 'boundary_id' })
+const boundary = await client.boundary.load({ id: 'boundary_id' })
 ```
 
 #### Example: List
 
 ```ts
-const boundarys = await client.Boundary().list()
+const boundarys = await client.boundary.list()
 ```
 
 
 ### BoundarySet
 
-Create an instance: `const boundary_set = client.BoundarySet()`
+Create an instance: `const boundary_set = client.boundary_set`
 
 #### Operations
 
@@ -434,19 +431,19 @@ Create an instance: `const boundary_set = client.BoundarySet()`
 #### Example: Load
 
 ```ts
-const boundary_set = await client.BoundarySet().load({ id: 'boundary_set_id' })
+const boundary_set = await client.boundary_set.load({ id: 'boundary_set_id' })
 ```
 
 #### Example: List
 
 ```ts
-const boundary_sets = await client.BoundarySet().list()
+const boundary_sets = await client.boundary_set.list()
 ```
 
 
 ### Candidate
 
-Create an instance: `const candidate = client.Candidate()`
+Create an instance: `const candidate = client.candidate`
 
 #### Operations
 
@@ -464,13 +461,13 @@ Create an instance: `const candidate = client.Candidate()`
 #### Example: List
 
 ```ts
-const candidates = await client.Candidate().list()
+const candidates = await client.candidate.list()
 ```
 
 
 ### Election
 
-Create an instance: `const election = client.Election()`
+Create an instance: `const election = client.election`
 
 #### Operations
 
@@ -488,13 +485,13 @@ Create an instance: `const election = client.Election()`
 #### Example: List
 
 ```ts
-const elections = await client.Election().list()
+const elections = await client.election.list()
 ```
 
 
 ### PostalCode
 
-Create an instance: `const postal_code = client.PostalCode()`
+Create an instance: `const postal_code = client.postal_code`
 
 #### Operations
 
@@ -518,13 +515,13 @@ Create an instance: `const postal_code = client.PostalCode()`
 #### Example: Load
 
 ```ts
-const postal_code = await client.PostalCode().load({ id: 'postal_code_id' })
+const postal_code = await client.postal_code.load({ id: 'postal_code_id' })
 ```
 
 
 ### Representatif
 
-Create an instance: `const representatif = client.Representatif()`
+Create an instance: `const representatif = client.representatif`
 
 #### Operations
 
@@ -558,19 +555,19 @@ Create an instance: `const representatif = client.Representatif()`
 #### Example: Load
 
 ```ts
-const representatif = await client.Representatif().load({ id: 'representatif_id' })
+const representatif = await client.representatif.load({ id: 'representatif_id' })
 ```
 
 #### Example: List
 
 ```ts
-const representatifs = await client.Representatif().list()
+const representatifs = await client.representatif.list()
 ```
 
 
 ### RepresentativeSet
 
-Create an instance: `const representative_set = client.RepresentativeSet()`
+Create an instance: `const representative_set = client.representative_set`
 
 #### Operations
 
@@ -589,13 +586,13 @@ Create an instance: `const representative_set = client.RepresentativeSet()`
 #### Example: Load
 
 ```ts
-const representative_set = await client.RepresentativeSet().load({ id: 'representative_set_id' })
+const representative_set = await client.representative_set.load({ id: 'representative_set_id' })
 ```
 
 #### Example: List
 
 ```ts
-const representative_sets = await client.RepresentativeSet().list()
+const representative_sets = await client.representative_set.list()
 ```
 
 
@@ -656,7 +653,7 @@ represent-officials/
 Import the SDK from the package root:
 
 ```ts
-import { RepresentOfficialsSDK } from 'represent-officials'
+import { RepresentOfficialsSDK } from '@voxgig-sdk/represent-officials'
 ```
 
 ### Entity state
@@ -666,11 +663,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const boundary = client.boundary
+await boundary.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// boundary.data() now returns the loaded boundary data
+// boundary.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

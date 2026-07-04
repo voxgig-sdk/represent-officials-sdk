@@ -50,8 +50,7 @@ class CandidateEntityTest extends TestCase
         $candidate_ref01_ent = $client->Candidate(null);
         $candidate_ref01_match = [];
 
-        [$candidate_ref01_list_result, $err] = $candidate_ref01_ent->list($candidate_ref01_match, null);
-        $this->assertNull($err);
+        $candidate_ref01_list_result = $candidate_ref01_ent->list($candidate_ref01_match, null);
         $this->assertIsArray($candidate_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function candidate_basic_setup($extra)
         "REPRESENTOFFICIALS_TEST_CANDIDATE_ENTID" => $idmap,
         "REPRESENTOFFICIALS_TEST_LIVE" => "FALSE",
         "REPRESENTOFFICIALS_TEST_EXPLAIN" => "FALSE",
-        "REPRESENTOFFICIALS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function candidate_basic_setup($extra)
     if ($env["REPRESENTOFFICIALS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["REPRESENTOFFICIALS_APIKEY"],
             ],
             $extra ?? [],
         ]);

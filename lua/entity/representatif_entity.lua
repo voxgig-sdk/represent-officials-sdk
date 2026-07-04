@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch RepresentatifLoadMatch
+---@param ctrl? table
+---@return Representatif
+---@return string? err
 function RepresentatifEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch RepresentatifListMatch
+---@param ctrl? table
+---@return Representatif[]
+---@return string? err
 function RepresentatifEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

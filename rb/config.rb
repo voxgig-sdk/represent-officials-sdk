@@ -15,9 +15,6 @@ module RepresentOfficialsConfig
       },
       "options" => {
         "base" => "https://represent.opennorth.ca",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -230,6 +227,7 @@ module RepresentOfficialsConfig
                         "orig" => "boundary_set",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [
@@ -342,6 +340,7 @@ module RepresentOfficialsConfig
                         "orig" => "boundary",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                       {
                         "active" => true,
@@ -350,6 +349,7 @@ module RepresentOfficialsConfig
                         "orig" => "boundary_set",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 1,
                       },
                     ],
                     "query" => [
@@ -417,6 +417,7 @@ module RepresentOfficialsConfig
                         "orig" => "boundary",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                       {
                         "active" => true,
@@ -425,6 +426,7 @@ module RepresentOfficialsConfig
                         "orig" => "boundary_set",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 1,
                       },
                     ],
                     "query" => [
@@ -485,6 +487,7 @@ module RepresentOfficialsConfig
                         "orig" => "boundary",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                       {
                         "active" => true,
@@ -493,6 +496,7 @@ module RepresentOfficialsConfig
                         "orig" => "boundary_set",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 1,
                       },
                     ],
                     "query" => [
@@ -553,6 +557,7 @@ module RepresentOfficialsConfig
                         "orig" => "boundary",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                       {
                         "active" => true,
@@ -561,6 +566,7 @@ module RepresentOfficialsConfig
                         "orig" => "boundary_set",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 1,
                       },
                     ],
                     "query" => [
@@ -621,6 +627,7 @@ module RepresentOfficialsConfig
                         "orig" => "boundary_set",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [
@@ -679,6 +686,7 @@ module RepresentOfficialsConfig
                         "orig" => "boundary_set",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [
@@ -737,6 +745,7 @@ module RepresentOfficialsConfig
                         "orig" => "boundary_set",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [
@@ -930,6 +939,7 @@ module RepresentOfficialsConfig
                         "orig" => "boundary_set",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [
@@ -1266,6 +1276,7 @@ module RepresentOfficialsConfig
                         "orig" => "postal_code",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [
@@ -1629,6 +1640,7 @@ module RepresentOfficialsConfig
                         "orig" => "boundary",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                       {
                         "active" => true,
@@ -1637,6 +1649,7 @@ module RepresentOfficialsConfig
                         "orig" => "boundary_set",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 1,
                       },
                     ],
                     "query" => [
@@ -1712,6 +1725,7 @@ module RepresentOfficialsConfig
                         "orig" => "representative_set",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [
@@ -1979,6 +1993,7 @@ module RepresentOfficialsConfig
                         "orig" => "representative_set",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [

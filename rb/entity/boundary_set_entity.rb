@@ -45,6 +45,7 @@ class BoundarySetEntity
     end
   end
 
+  # @return [BoundarySet, Hash] the current BoundarySet data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class BoundarySetEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of BoundarySet fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single BoundarySet.
+  #
+  # @param reqmatch [BoundarySetLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [BoundarySet, Hash] the loaded BoundarySet; raises RepresentOfficialsError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class BoundarySetEntity
 
 
   
+  # List BoundarySet items matching the given filter.
+  #
+  # @param reqmatch [BoundarySetListMatch, Hash, nil] match filter (any subset of BoundarySet fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<BoundarySet>, Array] the matching BoundarySet items; raises RepresentOfficialsError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

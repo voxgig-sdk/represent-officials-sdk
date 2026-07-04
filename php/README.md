@@ -9,9 +9,10 @@ The PHP SDK for the RepresentOfficials API — an entity-oriented client using P
 
 
 ## Install
-```bash
-composer require voxgig-sdk/represent-officials
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/represent-officials-sdk/releases](https://github.com/voxgig-sdk/represent-officials-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -25,31 +26,34 @@ loading a specific record.
 <?php
 require_once 'representofficials_sdk.php';
 
-$client = new RepresentOfficialsSDK([
-    "apikey" => getenv("REPRESENT-OFFICIALS_APIKEY"),
-]);
+$client = new RepresentOfficialsSDK();
 ```
 
 ### 2. List boundarys
 
 ```php
-[$result, $err] = $client->Boundary()->list();
-if ($err) { throw new \Exception($err); }
-
-if (is_array($result)) {
-    foreach ($result as $item) {
-        $d = $item->data_get();
-        echo $d["id"] . " " . $d["name"] . "\n";
+try {
+    $result = $client->boundary()->list();
+    if (is_array($result)) {
+        foreach ($result as $item) {
+            $d = $item->data_get();
+            echo $d["id"] . " " . $d["name"] . "\n";
+        }
     }
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
 }
 ```
 
 ### 3. Load a boundary
 
 ```php
-[$result, $err] = $client->Boundary()->load(["id" => "example_id"]);
-if ($err) { throw new \Exception($err); }
-print_r($result);
+try {
+    $result = $client->boundary()->load(["id" => "example_id"]);
+    print_r($result);
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
+}
 ```
 
 
@@ -60,28 +64,31 @@ print_r($result);
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -95,7 +102,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = RepresentOfficialsSDK::test();
 
-[$result, $err] = $client->RepresentOfficials()->load(["id" => "test01"]);
+$result = $client->boundary()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -129,8 +136,7 @@ $client = new RepresentOfficialsSDK([
 Create a `.env.local` file at the project root:
 
 ```
-REPRESENT-OFFICIALS_TEST_LIVE=TRUE
-REPRESENT-OFFICIALS_APIKEY=<your-key>
+REPRESENT_OFFICIALS_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -153,7 +159,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -205,8 +210,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -330,7 +339,7 @@ API path: `/representative-sets/`
 
 ### Boundary
 
-Create an instance: `const boundary = client.Boundary()`
+Create an instance: `const boundary = client.boundary`
 
 #### Operations
 
@@ -354,19 +363,19 @@ Create an instance: `const boundary = client.Boundary()`
 #### Example: Load
 
 ```ts
-const boundary = await client.Boundary().load({ id: 'boundary_id' })
+const boundary = await client.boundary.load({ id: 'boundary_id' })
 ```
 
 #### Example: List
 
 ```ts
-const boundarys = await client.Boundary().list()
+const boundarys = await client.boundary.list()
 ```
 
 
 ### BoundarySet
 
-Create an instance: `const boundary_set = client.BoundarySet()`
+Create an instance: `const boundary_set = client.boundary_set`
 
 #### Operations
 
@@ -386,19 +395,19 @@ Create an instance: `const boundary_set = client.BoundarySet()`
 #### Example: Load
 
 ```ts
-const boundary_set = await client.BoundarySet().load({ id: 'boundary_set_id' })
+const boundary_set = await client.boundary_set.load({ id: 'boundary_set_id' })
 ```
 
 #### Example: List
 
 ```ts
-const boundary_sets = await client.BoundarySet().list()
+const boundary_sets = await client.boundary_set.list()
 ```
 
 
 ### Candidate
 
-Create an instance: `const candidate = client.Candidate()`
+Create an instance: `const candidate = client.candidate`
 
 #### Operations
 
@@ -416,13 +425,13 @@ Create an instance: `const candidate = client.Candidate()`
 #### Example: List
 
 ```ts
-const candidates = await client.Candidate().list()
+const candidates = await client.candidate.list()
 ```
 
 
 ### Election
 
-Create an instance: `const election = client.Election()`
+Create an instance: `const election = client.election`
 
 #### Operations
 
@@ -440,13 +449,13 @@ Create an instance: `const election = client.Election()`
 #### Example: List
 
 ```ts
-const elections = await client.Election().list()
+const elections = await client.election.list()
 ```
 
 
 ### PostalCode
 
-Create an instance: `const postal_code = client.PostalCode()`
+Create an instance: `const postal_code = client.postal_code`
 
 #### Operations
 
@@ -470,13 +479,13 @@ Create an instance: `const postal_code = client.PostalCode()`
 #### Example: Load
 
 ```ts
-const postal_code = await client.PostalCode().load({ id: 'postal_code_id' })
+const postal_code = await client.postal_code.load({ id: 'postal_code_id' })
 ```
 
 
 ### Representatif
 
-Create an instance: `const representatif = client.Representatif()`
+Create an instance: `const representatif = client.representatif`
 
 #### Operations
 
@@ -510,19 +519,19 @@ Create an instance: `const representatif = client.Representatif()`
 #### Example: Load
 
 ```ts
-const representatif = await client.Representatif().load({ id: 'representatif_id' })
+const representatif = await client.representatif.load({ id: 'representatif_id' })
 ```
 
 #### Example: List
 
 ```ts
-const representatifs = await client.Representatif().list()
+const representatifs = await client.representatif.list()
 ```
 
 
 ### RepresentativeSet
 
-Create an instance: `const representative_set = client.RepresentativeSet()`
+Create an instance: `const representative_set = client.representative_set`
 
 #### Operations
 
@@ -541,13 +550,13 @@ Create an instance: `const representative_set = client.RepresentativeSet()`
 #### Example: Load
 
 ```ts
-const representative_set = await client.RepresentativeSet().load({ id: 'representative_set_id' })
+const representative_set = await client.representative_set.load({ id: 'representative_set_id' })
 ```
 
 #### Example: List
 
 ```ts
-const representative_sets = await client.RepresentativeSet().list()
+const representative_sets = await client.representative_set.list()
 ```
 
 
@@ -622,11 +631,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$boundary = $client->boundary();
+$boundary->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $boundary->dataGet() now returns the loaded boundary data
+// $boundary->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

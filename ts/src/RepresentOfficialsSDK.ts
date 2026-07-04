@@ -8,6 +8,8 @@ import { PostalCodeEntity } from './entity/PostalCodeEntity'
 import { RepresentatifEntity } from './entity/RepresentatifEntity'
 import { RepresentativeSetEntity } from './entity/RepresentativeSetEntity'
 
+export type * from './RepresentOfficialsTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -208,42 +210,98 @@ class RepresentOfficialsSDK {
 
 
 
+  _boundary?: BoundaryEntity
+
+  // Idiomatic facade: `client.boundary.list()` / `client.boundary.load({ id })`.
+  get boundary(): BoundaryEntity {
+    return (this._boundary ??= new BoundaryEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.boundary` instead. */
   Boundary(data?: any) {
     const self = this
     return new BoundaryEntity(self,data)
   }
 
 
+  _boundary_set?: BoundarySetEntity
+
+  // Idiomatic facade: `client.boundary_set.list()` / `client.boundary_set.load({ id })`.
+  get boundary_set(): BoundarySetEntity {
+    return (this._boundary_set ??= new BoundarySetEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.boundary_set` instead. */
   BoundarySet(data?: any) {
     const self = this
     return new BoundarySetEntity(self,data)
   }
 
 
+  _candidate?: CandidateEntity
+
+  // Idiomatic facade: `client.candidate.list()` / `client.candidate.load({ id })`.
+  get candidate(): CandidateEntity {
+    return (this._candidate ??= new CandidateEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.candidate` instead. */
   Candidate(data?: any) {
     const self = this
     return new CandidateEntity(self,data)
   }
 
 
+  _election?: ElectionEntity
+
+  // Idiomatic facade: `client.election.list()` / `client.election.load({ id })`.
+  get election(): ElectionEntity {
+    return (this._election ??= new ElectionEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.election` instead. */
   Election(data?: any) {
     const self = this
     return new ElectionEntity(self,data)
   }
 
 
+  _postal_code?: PostalCodeEntity
+
+  // Idiomatic facade: `client.postal_code.list()` / `client.postal_code.load({ id })`.
+  get postal_code(): PostalCodeEntity {
+    return (this._postal_code ??= new PostalCodeEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.postal_code` instead. */
   PostalCode(data?: any) {
     const self = this
     return new PostalCodeEntity(self,data)
   }
 
 
+  _representatif?: RepresentatifEntity
+
+  // Idiomatic facade: `client.representatif.list()` / `client.representatif.load({ id })`.
+  get representatif(): RepresentatifEntity {
+    return (this._representatif ??= new RepresentatifEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.representatif` instead. */
   Representatif(data?: any) {
     const self = this
     return new RepresentatifEntity(self,data)
   }
 
 
+  _representative_set?: RepresentativeSetEntity
+
+  // Idiomatic facade: `client.representative_set.list()` / `client.representative_set.load({ id })`.
+  get representative_set(): RepresentativeSetEntity {
+    return (this._representative_set ??= new RepresentativeSetEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.representative_set` instead. */
   RepresentativeSet(data?: any) {
     const self = this
     return new RepresentativeSetEntity(self,data)

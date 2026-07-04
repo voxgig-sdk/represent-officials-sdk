@@ -244,42 +244,133 @@ end
 
 
 
+-- Idiomatic facade: client:boundary():list() / client:boundary():load({ id = ... })
+function RepresentOfficialsSDK:boundary(data)
+  local EntityMod = require("entity.boundary_entity")
+  if data == nil then
+    if self._boundary == nil then
+      self._boundary = EntityMod.new(self, nil)
+    end
+    return self._boundary
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:boundary() instead.
 function RepresentOfficialsSDK:Boundary(data)
   local EntityMod = require("entity.boundary_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:boundary_set():list() / client:boundary_set():load({ id = ... })
+function RepresentOfficialsSDK:boundary_set(data)
+  local EntityMod = require("entity.boundary_set_entity")
+  if data == nil then
+    if self._boundary_set == nil then
+      self._boundary_set = EntityMod.new(self, nil)
+    end
+    return self._boundary_set
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:boundary_set() instead.
 function RepresentOfficialsSDK:BoundarySet(data)
   local EntityMod = require("entity.boundary_set_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:candidate():list() / client:candidate():load({ id = ... })
+function RepresentOfficialsSDK:candidate(data)
+  local EntityMod = require("entity.candidate_entity")
+  if data == nil then
+    if self._candidate == nil then
+      self._candidate = EntityMod.new(self, nil)
+    end
+    return self._candidate
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:candidate() instead.
 function RepresentOfficialsSDK:Candidate(data)
   local EntityMod = require("entity.candidate_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:election():list() / client:election():load({ id = ... })
+function RepresentOfficialsSDK:election(data)
+  local EntityMod = require("entity.election_entity")
+  if data == nil then
+    if self._election == nil then
+      self._election = EntityMod.new(self, nil)
+    end
+    return self._election
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:election() instead.
 function RepresentOfficialsSDK:Election(data)
   local EntityMod = require("entity.election_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:postal_code():list() / client:postal_code():load({ id = ... })
+function RepresentOfficialsSDK:postal_code(data)
+  local EntityMod = require("entity.postal_code_entity")
+  if data == nil then
+    if self._postal_code == nil then
+      self._postal_code = EntityMod.new(self, nil)
+    end
+    return self._postal_code
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:postal_code() instead.
 function RepresentOfficialsSDK:PostalCode(data)
   local EntityMod = require("entity.postal_code_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:representatif():list() / client:representatif():load({ id = ... })
+function RepresentOfficialsSDK:representatif(data)
+  local EntityMod = require("entity.representatif_entity")
+  if data == nil then
+    if self._representatif == nil then
+      self._representatif = EntityMod.new(self, nil)
+    end
+    return self._representatif
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:representatif() instead.
 function RepresentOfficialsSDK:Representatif(data)
   local EntityMod = require("entity.representatif_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:representative_set():list() / client:representative_set():load({ id = ... })
+function RepresentOfficialsSDK:representative_set(data)
+  local EntityMod = require("entity.representative_set_entity")
+  if data == nil then
+    if self._representative_set == nil then
+      self._representative_set = EntityMod.new(self, nil)
+    end
+    return self._representative_set
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:representative_set() instead.
 function RepresentOfficialsSDK:RepresentativeSet(data)
   local EntityMod = require("entity.representative_set_entity")
   return EntityMod.new(self, data)

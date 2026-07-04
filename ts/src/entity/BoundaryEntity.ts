@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Boundary,
+  BoundaryLoadMatch,
+  BoundaryListMatch,
+} from '../RepresentOfficialsTypes'
 
 // TODO: needs Entity superclass
-class BoundaryEntity extends RepresentOfficialsEntityBase {
+class BoundaryEntity extends RepresentOfficialsEntityBase<Boundary> {
 
   constructor(client: RepresentOfficialsSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class BoundaryEntity extends RepresentOfficialsEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: BoundaryLoadMatch, ctrl?: Control): Promise<Boundary> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class BoundaryEntity extends RepresentOfficialsEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Boundary> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: BoundaryListMatch, ctrl?: Control): Promise<Boundary[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class BoundaryEntity extends RepresentOfficialsEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Boundary[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

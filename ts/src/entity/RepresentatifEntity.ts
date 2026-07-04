@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Representatif,
+  RepresentatifLoadMatch,
+  RepresentatifListMatch,
+} from '../RepresentOfficialsTypes'
 
 // TODO: needs Entity superclass
-class RepresentatifEntity extends RepresentOfficialsEntityBase {
+class RepresentatifEntity extends RepresentOfficialsEntityBase<Representatif> {
 
   constructor(client: RepresentOfficialsSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class RepresentatifEntity extends RepresentOfficialsEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: RepresentatifLoadMatch, ctrl?: Control): Promise<Representatif> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class RepresentatifEntity extends RepresentOfficialsEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Representatif> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: RepresentatifListMatch, ctrl?: Control): Promise<Representatif[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class RepresentatifEntity extends RepresentOfficialsEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Representatif[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

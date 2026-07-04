@@ -53,14 +53,12 @@ class RepresentatifEntityTest extends TestCase
             "boundary_set" => $setup["idmap"]["boundary_set01"],
         ];
 
-        [$representatif_ref01_list_result, $err] = $representatif_ref01_ent->list($representatif_ref01_match, null);
-        $this->assertNull($err);
+        $representatif_ref01_list_result = $representatif_ref01_ent->list($representatif_ref01_match, null);
         $this->assertIsArray($representatif_ref01_list_result);
 
         // LOAD
         $representatif_ref01_match_dt0 = [];
-        [$representatif_ref01_data_dt0_loaded, $err] = $representatif_ref01_ent->load($representatif_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $representatif_ref01_data_dt0_loaded = $representatif_ref01_ent->load($representatif_ref01_match_dt0, null);
         $this->assertNotNull($representatif_ref01_data_dt0_loaded);
 
     }
@@ -95,7 +93,6 @@ function representatif_basic_setup($extra)
         "REPRESENTOFFICIALS_TEST_REPRESENTATIF_ENTID" => $idmap,
         "REPRESENTOFFICIALS_TEST_LIVE" => "FALSE",
         "REPRESENTOFFICIALS_TEST_EXPLAIN" => "FALSE",
-        "REPRESENTOFFICIALS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -107,7 +104,6 @@ function representatif_basic_setup($extra)
     if ($env["REPRESENTOFFICIALS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["REPRESENTOFFICIALS_APIKEY"],
             ],
             $extra ?? [],
         ]);

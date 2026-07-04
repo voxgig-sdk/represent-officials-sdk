@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -108,7 +107,7 @@ same parameters as `direct()`.
 ## BoundaryEntity
 
 ```lua
-local boundary = client:Boundary(nil)
+local boundary = client:boundary(nil)
 ```
 
 ### Fields
@@ -130,7 +129,7 @@ local boundary = client:Boundary(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Boundary():list()
+local results, err = client:boundary():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -138,7 +137,7 @@ local results, err = client:Boundary():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Boundary():load({ id = "boundary_id" })
+local result, err = client:boundary():load({ id = "boundary_id" })
 ```
 
 ### Common Methods
@@ -174,7 +173,7 @@ Return the entity name.
 ## BoundarySetEntity
 
 ```lua
-local boundary_set = client:BoundarySet(nil)
+local boundary_set = client:boundary_set(nil)
 ```
 
 ### Fields
@@ -192,7 +191,7 @@ local boundary_set = client:BoundarySet(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:BoundarySet():list()
+local results, err = client:boundary_set():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -200,7 +199,7 @@ local results, err = client:BoundarySet():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:BoundarySet():load({ id = "boundary_set_id" })
+local result, err = client:boundary_set():load({ id = "boundary_set_id" })
 ```
 
 ### Common Methods
@@ -236,7 +235,7 @@ Return the entity name.
 ## CandidateEntity
 
 ```lua
-local candidate = client:Candidate(nil)
+local candidate = client:candidate(nil)
 ```
 
 ### Fields
@@ -253,7 +252,7 @@ local candidate = client:Candidate(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Candidate():list()
+local results, err = client:candidate():list()
 ```
 
 ### Common Methods
@@ -289,7 +288,7 @@ Return the entity name.
 ## ElectionEntity
 
 ```lua
-local election = client:Election(nil)
+local election = client:election(nil)
 ```
 
 ### Fields
@@ -306,7 +305,7 @@ local election = client:Election(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Election():list()
+local results, err = client:election():list()
 ```
 
 ### Common Methods
@@ -342,7 +341,7 @@ Return the entity name.
 ## PostalCodeEntity
 
 ```lua
-local postal_code = client:PostalCode(nil)
+local postal_code = client:postal_code(nil)
 ```
 
 ### Fields
@@ -365,7 +364,7 @@ local postal_code = client:PostalCode(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:PostalCode():load({ id = "postal_code_id" })
+local result, err = client:postal_code():load({ id = "postal_code_id" })
 ```
 
 ### Common Methods
@@ -401,7 +400,7 @@ Return the entity name.
 ## RepresentatifEntity
 
 ```lua
-local representatif = client:Representatif(nil)
+local representatif = client:representatif(nil)
 ```
 
 ### Fields
@@ -433,7 +432,7 @@ local representatif = client:Representatif(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Representatif():list()
+local results, err = client:representatif():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -441,7 +440,7 @@ local results, err = client:Representatif():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Representatif():load({ id = "representatif_id" })
+local result, err = client:representatif():load({ id = "representatif_id" })
 ```
 
 ### Common Methods
@@ -477,7 +476,7 @@ Return the entity name.
 ## RepresentativeSetEntity
 
 ```lua
-local representative_set = client:RepresentativeSet(nil)
+local representative_set = client:representative_set(nil)
 ```
 
 ### Fields
@@ -494,7 +493,7 @@ local representative_set = client:RepresentativeSet(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:RepresentativeSet():list()
+local results, err = client:representative_set():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -502,7 +501,7 @@ local results, err = client:RepresentativeSet():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:RepresentativeSet():load({ id = "representative_set_id" })
+local result, err = client:representative_set():load({ id = "representative_set_id" })
 ```
 
 ### Common Methods

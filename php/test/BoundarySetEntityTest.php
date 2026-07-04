@@ -50,14 +50,12 @@ class BoundarySetEntityTest extends TestCase
         $boundary_set_ref01_ent = $client->BoundarySet(null);
         $boundary_set_ref01_match = [];
 
-        [$boundary_set_ref01_list_result, $err] = $boundary_set_ref01_ent->list($boundary_set_ref01_match, null);
-        $this->assertNull($err);
+        $boundary_set_ref01_list_result = $boundary_set_ref01_ent->list($boundary_set_ref01_match, null);
         $this->assertIsArray($boundary_set_ref01_list_result);
 
         // LOAD
         $boundary_set_ref01_match_dt0 = [];
-        [$boundary_set_ref01_data_dt0_loaded, $err] = $boundary_set_ref01_ent->load($boundary_set_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $boundary_set_ref01_data_dt0_loaded = $boundary_set_ref01_ent->load($boundary_set_ref01_match_dt0, null);
         $this->assertNotNull($boundary_set_ref01_data_dt0_loaded);
 
     }
@@ -92,7 +90,6 @@ function boundary_set_basic_setup($extra)
         "REPRESENTOFFICIALS_TEST_BOUNDARY_SET_ENTID" => $idmap,
         "REPRESENTOFFICIALS_TEST_LIVE" => "FALSE",
         "REPRESENTOFFICIALS_TEST_EXPLAIN" => "FALSE",
-        "REPRESENTOFFICIALS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -104,7 +101,6 @@ function boundary_set_basic_setup($extra)
     if ($env["REPRESENTOFFICIALS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["REPRESENTOFFICIALS_APIKEY"],
             ],
             $extra ?? [],
         ]);

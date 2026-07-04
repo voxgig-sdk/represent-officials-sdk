@@ -13,6 +13,9 @@ require_relative 'config'
 require_relative 'feature/base_feature'
 require_relative 'features'
 
+# Load typed models (Struct value objects).
+require_relative 'RepresentOfficials_types'
+
 
 class RepresentOfficialsSDK
   attr_accessor :mode, :features, :options
@@ -131,7 +134,7 @@ class RepresentOfficialsSDK
     end
 
     _, err = utility.prepare_auth.call(ctx)
-    return nil, err if err
+    raise err if err
 
     utility.make_fetch_def.call(ctx)
   end
@@ -139,8 +142,14 @@ class RepresentOfficialsSDK
   def direct(fetchargs = {})
     utility = @_utility
 
-    fetchdef, err = prepare(fetchargs)
-    return { "ok" => false, "err" => err }, nil if err
+    # direct() is the raw-HTTP escape hatch: it always returns a result hash
+    # ({ "ok" => ..., ... }) and never raises. prepare() raises on error, so
+    # trap that and surface it in the hash.
+    begin
+      fetchdef = prepare(fetchargs)
+    rescue RepresentOfficialsError => err
+      return { "ok" => false, "err" => err }
+    end
 
     fetchargs ||= {}
     ctrl = RepresentOfficialsHelpers.to_map(VoxgigStruct.getprop(fetchargs, "ctrl")) || {}
@@ -153,13 +162,13 @@ class RepresentOfficialsSDK
     url = fetchdef["url"] || ""
     fetched, fetch_err = utility.fetcher.call(ctx, url, fetchdef)
 
-    return { "ok" => false, "err" => fetch_err }, nil if fetch_err
+    return { "ok" => false, "err" => fetch_err } if fetch_err
 
     if fetched.nil?
       return {
         "ok" => false,
         "err" => ctx.make_error("direct_no_response", "response: undefined"),
-      }, nil
+      }
     end
 
     if fetched.is_a?(Hash)
@@ -189,52 +198,101 @@ class RepresentOfficialsSDK
         "status" => status,
         "headers" => headers,
         "data" => json_data,
-      }, nil
+      }
     end
 
     return {
       "ok" => false,
       "err" => ctx.make_error("direct_invalid", "invalid response type"),
-    }, nil
+    }
   end
 
 
+  # Idiomatic facade: client.boundary.list / client.boundary.load({ "id" => ... })
+  def boundary
+    require_relative 'entity/boundary_entity'
+    @boundary ||= BoundaryEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.boundary instead.
   def Boundary(data = nil)
     require_relative 'entity/boundary_entity'
     BoundaryEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.boundary_set.list / client.boundary_set.load({ "id" => ... })
+  def boundary_set
+    require_relative 'entity/boundary_set_entity'
+    @boundary_set ||= BoundarySetEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.boundary_set instead.
   def BoundarySet(data = nil)
     require_relative 'entity/boundary_set_entity'
     BoundarySetEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.candidate.list / client.candidate.load({ "id" => ... })
+  def candidate
+    require_relative 'entity/candidate_entity'
+    @candidate ||= CandidateEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.candidate instead.
   def Candidate(data = nil)
     require_relative 'entity/candidate_entity'
     CandidateEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.election.list / client.election.load({ "id" => ... })
+  def election
+    require_relative 'entity/election_entity'
+    @election ||= ElectionEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.election instead.
   def Election(data = nil)
     require_relative 'entity/election_entity'
     ElectionEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.postal_code.list / client.postal_code.load({ "id" => ... })
+  def postal_code
+    require_relative 'entity/postal_code_entity'
+    @postal_code ||= PostalCodeEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.postal_code instead.
   def PostalCode(data = nil)
     require_relative 'entity/postal_code_entity'
     PostalCodeEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.representatif.list / client.representatif.load({ "id" => ... })
+  def representatif
+    require_relative 'entity/representatif_entity'
+    @representatif ||= RepresentatifEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.representatif instead.
   def Representatif(data = nil)
     require_relative 'entity/representatif_entity'
     RepresentatifEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.representative_set.list / client.representative_set.load({ "id" => ... })
+  def representative_set
+    require_relative 'entity/representative_set_entity'
+    @representative_set ||= RepresentativeSetEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.representative_set instead.
   def RepresentativeSet(data = nil)
     require_relative 'entity/representative_set_entity'
     RepresentativeSetEntity.new(self, data)

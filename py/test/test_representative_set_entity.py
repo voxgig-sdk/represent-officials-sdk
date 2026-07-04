@@ -50,14 +50,12 @@ class TestRepresentativeSetEntity:
         representative_set_ref01_ent = client.RepresentativeSet(None)
         representative_set_ref01_match = {}
 
-        representative_set_ref01_list_result, err = representative_set_ref01_ent.list(representative_set_ref01_match, None)
-        assert err is None
+        representative_set_ref01_list_result = representative_set_ref01_ent.list(representative_set_ref01_match, None)
         assert isinstance(representative_set_ref01_list_result, list)
 
         # LOAD
         representative_set_ref01_match_dt0 = {}
-        representative_set_ref01_data_dt0_loaded, err = representative_set_ref01_ent.load(representative_set_ref01_match_dt0, None)
-        assert err is None
+        representative_set_ref01_data_dt0_loaded = representative_set_ref01_ent.load(representative_set_ref01_match_dt0, None)
         assert representative_set_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _representative_set_basic_setup(extra):
         "REPRESENTOFFICIALS_TEST_REPRESENTATIVE_SET_ENTID": idmap,
         "REPRESENTOFFICIALS_TEST_LIVE": "FALSE",
         "REPRESENTOFFICIALS_TEST_EXPLAIN": "FALSE",
-        "REPRESENTOFFICIALS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _representative_set_basic_setup(extra):
     if env.get("REPRESENTOFFICIALS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("REPRESENTOFFICIALS_APIKEY"),
             },
             extra or {},
         ])

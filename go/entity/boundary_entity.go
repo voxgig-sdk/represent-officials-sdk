@@ -85,6 +85,27 @@ func (e *BoundaryEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Boundary; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *BoundaryEntity) DataTyped(data ...Boundary) Boundary {
+	if len(data) > 0 {
+		return typedFrom[Boundary](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Boundary](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Boundary (all fields
+// optional at the wire level).
+func (e *BoundaryEntity) MatchTyped(match ...Boundary) Boundary {
+	if len(match) > 0 {
+		return typedFrom[Boundary](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Boundary](e.Match())
+}
+
 
 func (e *BoundaryEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -111,6 +132,17 @@ func (e *BoundaryEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any
 	})
 }
 
+// LoadTyped is the statically-typed variant of Load: it takes an
+// BoundaryLoadMatch and returns an Boundary. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *BoundaryEntity) LoadTyped(reqmatch BoundaryLoadMatch, ctrl map[string]any) (Boundary, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return Boundary{}, err
+	}
+	return typedFrom[Boundary](res), nil
+}
+
 
 
 
@@ -131,6 +163,17 @@ func (e *BoundaryEntity) List(reqmatch map[string]any, ctrl map[string]any) (any
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// BoundaryListMatch and returns []Boundary. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *BoundaryEntity) ListTyped(reqmatch BoundaryListMatch, ctrl map[string]any) ([]Boundary, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[Boundary](res), nil
 }
 
 

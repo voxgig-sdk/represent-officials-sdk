@@ -117,14 +117,12 @@ func postal_codeDirectSetup(mockres any) *postal_codeDirectSetupResult {
 	env := envOverride(map[string]any{
 		"REPRESENTOFFICIALS_TEST_POSTAL_CODE_ENTID": map[string]any{},
 		"REPRESENTOFFICIALS_TEST_LIVE":    "FALSE",
-		"REPRESENTOFFICIALS_APIKEY":       "NONE",
 	})
 
 	live := env["REPRESENTOFFICIALS_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["REPRESENTOFFICIALS_APIKEY"],
 		}
 		client := sdk.NewRepresentOfficialsSDK(mergedOpts)
 

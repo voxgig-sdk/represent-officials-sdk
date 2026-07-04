@@ -45,6 +45,7 @@ class CandidateEntity
     end
   end
 
+  # @return [Candidate, Hash] the current Candidate data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class CandidateEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Candidate fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class CandidateEntity
   
 
   
+  # List Candidate items matching the given filter.
+  #
+  # @param reqmatch [CandidateListMatch, Hash, nil] match filter (any subset of Candidate fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Candidate>, Array] the matching Candidate items; raises RepresentOfficialsError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
