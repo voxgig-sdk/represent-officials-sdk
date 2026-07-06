@@ -4,6 +4,11 @@
 
 The TypeScript SDK for the RepresentOfficials API — a type-safe, entity-oriented client with full async/await support.
 
+The API is exposed as capitalised, semantic **Entities** — e.g.
+`client.Boundary()` — each with a small set of operations (`list`, `load`)
+instead of raw URL paths and query parameters. This keeps the surface
+predictable and low-friction for both humans and AI agents.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -54,6 +59,35 @@ try {
 ```
 
 
+## Error handling
+
+Entity operations reject on failure, so wrap them in `try` / `catch`:
+
+```ts
+try {
+  const boundarys = await client.Boundary().list()
+  console.log(boundarys)
+} catch (err) {
+  console.error('list failed:', err)
+}
+```
+
+The low-level `direct()` method does **not** throw — it returns the
+value or an `Error`, so check the result before using it:
+
+```ts
+const result = await client.direct({
+  path: '/api/resource/{id}',
+  method: 'GET',
+  params: { id: 'example_id' },
+})
+
+if (result instanceof Error) {
+  throw result
+}
+```
+
+
 ## How-to guides
 
 ### Make a direct HTTP request
@@ -98,7 +132,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = RepresentOfficialsSDK.test()
 
-const boundary = await client.Boundary().load({ id: 'test01' })
+const boundary = await client.Boundary().list()
 // boundary is a bare entity populated with mock response data
 console.log(boundary)
 ```
@@ -117,12 +151,12 @@ Entity instances remember their last match and data:
 ```ts
 const entity = client.Boundary()
 
-// First call sets internal match
-await entity.load({ id: 'example' })
+// First call runs the operation and stores its result
+await entity.list()
 
-// Subsequent calls reuse the stored match
+// Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data.id) // 'example'
+console.log(data)
 ```
 
 ### Add custom middleware
@@ -218,11 +252,8 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
 | `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
-| `data` | `data(data?): any` | Get or set entity data. |
-| `match` | `match(match?): any` | Get or set entity match criteria. |
+| `data` | `data(data?: Partial<Entity>): Entity` | Get or set entity data. |
+| `match` | `match(match?: Partial<Entity>): Partial<Entity>` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): RepresentOfficialsSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
@@ -232,10 +263,9 @@ All entities share the same interface.
 Entity operations resolve to the entity data directly — there is no
 result envelope:
 
-- `load`, `create` and `update` resolve to a single entity object.
+- `load` resolves to a single entity object.
 - `list` resolves to an **array** of entity objects (iterate it directly;
   there is no `.data` and no `.ok`).
-- `remove` resolves to `void`.
 
 On a failed request these methods **throw**, so wrap calls in
 `try`/`catch` to handle errors. Only `direct()` returns the result
@@ -395,13 +425,13 @@ Create an instance: `const boundary = client.Boundary()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `boundary_set_name` | ``$STRING`` |  |
-| `external_id` | ``$STRING`` |  |
-| `meta` | ``$OBJECT`` |  |
-| `metadata` | ``$OBJECT`` |  |
-| `name` | ``$STRING`` |  |
-| `object` | ``$ARRAY`` |  |
-| `url` | ``$STRING`` |  |
+| `boundary_set_name` | `string` |  |
+| `external_id` | `string` |  |
+| `meta` | `Record<string, any>` |  |
+| `metadata` | `Record<string, any>` |  |
+| `name` | `string` |  |
+| `object` | `any[]` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -431,9 +461,9 @@ Create an instance: `const boundary_set = client.BoundarySet()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `domain` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `domain` | `string` |  |
+| `name` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -462,8 +492,8 @@ Create an instance: `const candidate = client.Candidate()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `meta` | ``$OBJECT`` |  |
-| `object` | ``$ARRAY`` |  |
+| `meta` | `Record<string, any>` |  |
+| `object` | `any[]` |  |
 
 #### Example: List
 
@@ -486,8 +516,8 @@ Create an instance: `const election = client.Election()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `meta` | ``$OBJECT`` |  |
-| `object` | ``$ARRAY`` |  |
+| `meta` | `Record<string, any>` |  |
+| `object` | `any[]` |  |
 
 #### Example: List
 
@@ -510,19 +540,19 @@ Create an instance: `const postal_code = client.PostalCode()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `boundaries_centroid` | ``$ARRAY`` |  |
-| `boundaries_concordance` | ``$ARRAY`` |  |
-| `centroid` | ``$OBJECT`` |  |
-| `city` | ``$STRING`` |  |
-| `code` | ``$STRING`` |  |
-| `province` | ``$STRING`` |  |
-| `representatives_centroid` | ``$ARRAY`` |  |
-| `representatives_concordance` | ``$ARRAY`` |  |
+| `boundaries_centroid` | `any[]` |  |
+| `boundaries_concordance` | `any[]` |  |
+| `centroid` | `Record<string, any>` |  |
+| `city` | `string` |  |
+| `code` | `string` |  |
+| `province` | `string` |  |
+| `representatives_centroid` | `any[]` |  |
+| `representatives_concordance` | `any[]` |  |
 
 #### Example: Load
 
 ```ts
-const postal_code = await client.PostalCode().load({ id: 'postal_code_id' })
+const postal_code = await client.PostalCode().load()
 ```
 
 
@@ -541,23 +571,23 @@ Create an instance: `const representatif = client.Representatif()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `district_id` | ``$STRING`` |  |
-| `district_name` | ``$STRING`` |  |
-| `elected_office` | ``$STRING`` |  |
-| `email` | ``$STRING`` |  |
-| `extra` | ``$OBJECT`` |  |
-| `first_name` | ``$STRING`` |  |
-| `gender` | ``$STRING`` |  |
-| `last_name` | ``$STRING`` |  |
-| `meta` | ``$OBJECT`` |  |
-| `name` | ``$STRING`` |  |
-| `object` | ``$ARRAY`` |  |
-| `office` | ``$ARRAY`` |  |
-| `party_name` | ``$STRING`` |  |
-| `personal_url` | ``$STRING`` |  |
-| `photo_url` | ``$STRING`` |  |
-| `source_url` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `district_id` | `string` |  |
+| `district_name` | `string` |  |
+| `elected_office` | `string` |  |
+| `email` | `string` |  |
+| `extra` | `Record<string, any>` |  |
+| `first_name` | `string` |  |
+| `gender` | `string` |  |
+| `last_name` | `string` |  |
+| `meta` | `Record<string, any>` |  |
+| `name` | `string` |  |
+| `object` | `any[]` |  |
+| `office` | `any[]` |  |
+| `party_name` | `string` |  |
+| `personal_url` | `string` |  |
+| `photo_url` | `string` |  |
+| `source_url` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -587,8 +617,8 @@ Create an instance: `const representative_set = client.RepresentativeSet()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `name` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `name` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -603,12 +633,16 @@ const representative_sets = await client.RepresentativeSet().list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -625,11 +659,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller.
-
-An unexpected exception triggers the `PreUnexpected` hook before
-propagating.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -665,16 +697,16 @@ import { RepresentOfficialsSDK } from '@voxgig-sdk/represent-officials'
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
 const boundary = client.Boundary()
-await boundary.load({ id: "example_id" })
+await boundary.list()
 
-// boundary.data() now returns the loaded boundary data
-// boundary.match() returns { id: "example_id" }
+// boundary.data() now returns the boundary data from the last `list`
+// boundary.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

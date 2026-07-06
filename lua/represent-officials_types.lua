@@ -21,6 +21,13 @@
 ---@field boundary_set string
 
 ---@class BoundaryListMatch
+---@field boundary_set_name? string
+---@field external_id? string
+---@field meta? table
+---@field metadata? table
+---@field name? string
+---@field object? table
+---@field url? string
 
 ---@class BoundarySet
 ---@field domain? string
@@ -31,18 +38,25 @@
 ---@field id string
 
 ---@class BoundarySetListMatch
+---@field domain? string
+---@field name? string
+---@field url? string
 
 ---@class Candidate
 ---@field meta? table
 ---@field object? table
 
 ---@class CandidateListMatch
+---@field meta? table
+---@field object? table
 
 ---@class Election
 ---@field meta? table
 ---@field object? table
 
 ---@class ElectionListMatch
+---@field meta? table
+---@field object? table
 
 ---@class PostalCode
 ---@field boundaries_centroid? table
@@ -91,6 +105,8 @@
 ---@field id string
 
 ---@class RepresentativeSetListMatch
+---@field name? string
+---@field url? string
 
 local M = {}
 

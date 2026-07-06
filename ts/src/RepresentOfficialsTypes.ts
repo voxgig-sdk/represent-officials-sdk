@@ -21,7 +21,15 @@ export interface BoundaryLoadMatch {
   boundary_set: string
 }
 
-export type BoundaryListMatch = Partial<Boundary>
+export interface BoundaryListMatch {
+  boundary_set_name?: string
+  external_id?: string
+  meta?: Record<string, any>
+  metadata?: Record<string, any>
+  name?: string
+  object?: any[]
+  url?: string
+}
 
 export interface BoundarySet {
   domain?: string
@@ -33,21 +41,31 @@ export interface BoundarySetLoadMatch {
   id: string
 }
 
-export type BoundarySetListMatch = Partial<BoundarySet>
+export interface BoundarySetListMatch {
+  domain?: string
+  name?: string
+  url?: string
+}
 
 export interface Candidate {
   meta?: Record<string, any>
   object?: any[]
 }
 
-export type CandidateListMatch = Partial<Candidate>
+export interface CandidateListMatch {
+  meta?: Record<string, any>
+  object?: any[]
+}
 
 export interface Election {
   meta?: Record<string, any>
   object?: any[]
 }
 
-export type ElectionListMatch = Partial<Election>
+export interface ElectionListMatch {
+  meta?: Record<string, any>
+  object?: any[]
+}
 
 export interface PostalCode {
   boundaries_centroid?: any[]
@@ -102,5 +120,8 @@ export interface RepresentativeSetLoadMatch {
   id: string
 }
 
-export type RepresentativeSetListMatch = Partial<RepresentativeSet>
+export interface RepresentativeSetListMatch {
+  name?: string
+  url?: string
+}
 

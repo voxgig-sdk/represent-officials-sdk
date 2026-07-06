@@ -8,7 +8,7 @@ Complete API reference for the RepresentOfficials Python SDK.
 ### Constructor
 
 ```python
-from represent-officials_sdk import RepresentOfficialsSDK
+from representofficials_sdk import RepresentOfficialsSDK
 
 client = RepresentOfficialsSDK(options)
 ```
@@ -111,22 +111,22 @@ boundary = client.Boundary()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `boundary_set_name` | ``$STRING`` | No |  |
-| `external_id` | ``$STRING`` | No |  |
-| `meta` | ``$OBJECT`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `object` | ``$ARRAY`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `boundary_set_name` | `str` | No |  |
+| `external_id` | `str` | No |  |
+| `meta` | `dict` | No |  |
+| `metadata` | `dict` | No |  |
+| `name` | `str` | No |  |
+| `object` | `list` | No |  |
+| `url` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Boundary().list({})
+results = client.Boundary().list()
 for boundary in results:
     print(boundary)
 ```
@@ -178,18 +178,18 @@ boundary_set = client.BoundarySet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `domain` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `domain` | `str` | No |  |
+| `name` | `str` | No |  |
+| `url` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.BoundarySet().list({})
+results = client.BoundarySet().list()
 for boundary_set in results:
     print(boundary_set)
 ```
@@ -241,17 +241,17 @@ candidate = client.Candidate()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `object` | ``$ARRAY`` | No |  |
+| `meta` | `dict` | No |  |
+| `object` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Candidate().list({})
+results = client.Candidate().list()
 for candidate in results:
     print(candidate)
 ```
@@ -295,17 +295,17 @@ election = client.Election()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `object` | ``$ARRAY`` | No |  |
+| `meta` | `dict` | No |  |
+| `object` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Election().list({})
+results = client.Election().list()
 for election in results:
     print(election)
 ```
@@ -349,14 +349,14 @@ postal_code = client.PostalCode()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `boundaries_centroid` | ``$ARRAY`` | No |  |
-| `boundaries_concordance` | ``$ARRAY`` | No |  |
-| `centroid` | ``$OBJECT`` | No |  |
-| `city` | ``$STRING`` | No |  |
-| `code` | ``$STRING`` | No |  |
-| `province` | ``$STRING`` | No |  |
-| `representatives_centroid` | ``$ARRAY`` | No |  |
-| `representatives_concordance` | ``$ARRAY`` | No |  |
+| `boundaries_centroid` | `list` | No |  |
+| `boundaries_concordance` | `list` | No |  |
+| `centroid` | `dict` | No |  |
+| `city` | `str` | No |  |
+| `code` | `str` | No |  |
+| `province` | `str` | No |  |
+| `representatives_centroid` | `list` | No |  |
+| `representatives_concordance` | `list` | No |  |
 
 ### Operations
 
@@ -365,7 +365,7 @@ postal_code = client.PostalCode()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.PostalCode().load({"id": "postal_code_id"})
+result = client.PostalCode().load()
 ```
 
 ### Common Methods
@@ -407,32 +407,32 @@ representatif = client.Representatif()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `district_id` | ``$STRING`` | No |  |
-| `district_name` | ``$STRING`` | Yes |  |
-| `elected_office` | ``$STRING`` | Yes |  |
-| `email` | ``$STRING`` | No |  |
-| `extra` | ``$OBJECT`` | No |  |
-| `first_name` | ``$STRING`` | No |  |
-| `gender` | ``$STRING`` | No |  |
-| `last_name` | ``$STRING`` | No |  |
-| `meta` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | Yes |  |
-| `object` | ``$ARRAY`` | No |  |
-| `office` | ``$ARRAY`` | No |  |
-| `party_name` | ``$STRING`` | No |  |
-| `personal_url` | ``$STRING`` | No |  |
-| `photo_url` | ``$STRING`` | No |  |
-| `source_url` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `district_id` | `str` | No |  |
+| `district_name` | `str` | Yes |  |
+| `elected_office` | `str` | Yes |  |
+| `email` | `str` | No |  |
+| `extra` | `dict` | No |  |
+| `first_name` | `str` | No |  |
+| `gender` | `str` | No |  |
+| `last_name` | `str` | No |  |
+| `meta` | `dict` | No |  |
+| `name` | `str` | Yes |  |
+| `object` | `list` | No |  |
+| `office` | `list` | No |  |
+| `party_name` | `str` | No |  |
+| `personal_url` | `str` | No |  |
+| `photo_url` | `str` | No |  |
+| `source_url` | `str` | No |  |
+| `url` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Representatif().list({})
+results = client.Representatif().list()
 for representatif in results:
     print(representatif)
 ```
@@ -484,17 +484,17 @@ representative_set = client.RepresentativeSet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `name` | `str` | No |  |
+| `url` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.RepresentativeSet().list({})
+results = client.RepresentativeSet().list()
 for representative_set in results:
     print(representative_set)
 ```

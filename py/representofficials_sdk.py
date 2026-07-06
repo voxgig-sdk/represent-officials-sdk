@@ -221,43 +221,43 @@ class RepresentOfficialsSDK:
 
 
     def Boundary(self, data=None) -> "BoundaryEntity":
-        """Entity factory: client.Boundary().list({}) / client.Boundary().load({"id": ...})."""
+        """Entity factory: client.Boundary().list() / client.Boundary().load({"id": ...})."""
         from entity.boundary_entity import BoundaryEntity
         return BoundaryEntity(self, data)
 
 
     def BoundarySet(self, data=None) -> "BoundarySetEntity":
-        """Entity factory: client.BoundarySet().list({}) / client.BoundarySet().load({"id": ...})."""
+        """Entity factory: client.BoundarySet().list() / client.BoundarySet().load({"id": ...})."""
         from entity.boundary_set_entity import BoundarySetEntity
         return BoundarySetEntity(self, data)
 
 
     def Candidate(self, data=None) -> "CandidateEntity":
-        """Entity factory: client.Candidate().list({}) / client.Candidate().load({"id": ...})."""
+        """Entity factory: client.Candidate().list() / client.Candidate().load({"id": ...})."""
         from entity.candidate_entity import CandidateEntity
         return CandidateEntity(self, data)
 
 
     def Election(self, data=None) -> "ElectionEntity":
-        """Entity factory: client.Election().list({}) / client.Election().load({"id": ...})."""
+        """Entity factory: client.Election().list() / client.Election().load({"id": ...})."""
         from entity.election_entity import ElectionEntity
         return ElectionEntity(self, data)
 
 
     def PostalCode(self, data=None) -> "PostalCodeEntity":
-        """Entity factory: client.PostalCode().list({}) / client.PostalCode().load({"id": ...})."""
+        """Entity factory: client.PostalCode().list() / client.PostalCode().load({"id": ...})."""
         from entity.postal_code_entity import PostalCodeEntity
         return PostalCodeEntity(self, data)
 
 
     def Representatif(self, data=None) -> "RepresentatifEntity":
-        """Entity factory: client.Representatif().list({}) / client.Representatif().load({"id": ...})."""
+        """Entity factory: client.Representatif().list() / client.Representatif().load({"id": ...})."""
         from entity.representatif_entity import RepresentatifEntity
         return RepresentatifEntity(self, data)
 
 
     def RepresentativeSet(self, data=None) -> "RepresentativeSetEntity":
-        """Entity factory: client.RepresentativeSet().list({}) / client.RepresentativeSet().load({"id": ...})."""
+        """Entity factory: client.RepresentativeSet().list() / client.RepresentativeSet().load({"id": ...})."""
         from entity.representative_set_entity import RepresentativeSetEntity
         return RepresentativeSetEntity(self, data)
 

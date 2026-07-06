@@ -58,7 +58,7 @@ BoundaryLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Boundary#list (any subset of Boundary fields).
+# Request payload for Boundary#list.
 #
 # @!attribute [rw] boundary_set_name
 #   @return [String, nil]
@@ -117,7 +117,7 @@ BoundarySetLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for BoundarySet#list (any subset of BoundarySet fields).
+# Request payload for BoundarySet#list.
 #
 # @!attribute [rw] domain
 #   @return [String, nil]
@@ -147,7 +147,7 @@ Candidate = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Candidate#list (any subset of Candidate fields).
+# Request payload for Candidate#list.
 #
 # @!attribute [rw] meta
 #   @return [Hash, nil]
@@ -173,7 +173,7 @@ Election = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Election#list (any subset of Election fields).
+# Request payload for Election#list.
 #
 # @!attribute [rw] meta
 #   @return [Hash, nil]
@@ -349,7 +349,7 @@ RepresentativeSetLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for RepresentativeSet#list (any subset of RepresentativeSet fields).
+# Request payload for RepresentativeSet#list.
 #
 # @!attribute [rw] name
 #   @return [String, nil]

@@ -8,7 +8,7 @@ Complete API reference for the RepresentOfficials PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/represent-officials_sdk.php';
+require_once __DIR__ . '/representofficials_sdk.php';
 
 $client = new RepresentOfficialsSDK($options);
 ```
@@ -69,11 +69,11 @@ Create a new `RepresentatifEntity` instance. Pass `null` for no initial data.
 
 Create a new `RepresentativeSetEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): RepresentOfficialsUtility`
 
 Return a copy of the SDK utility object.
 
@@ -116,22 +116,22 @@ $boundary = $client->Boundary();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `boundary_set_name` | ``$STRING`` | No |  |
-| `external_id` | ``$STRING`` | No |  |
-| `meta` | ``$OBJECT`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `object` | ``$ARRAY`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `boundary_set_name` | `string` | No |  |
+| `external_id` | `string` | No |  |
+| `meta` | `array` | No |  |
+| `metadata` | `array` | No |  |
+| `name` | `string` | No |  |
+| `object` | `array` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Boundary()->list([]);
+$results = $client->Boundary()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -144,19 +144,19 @@ $result = $client->Boundary()->load(["id" => "boundary_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -165,7 +165,7 @@ Set the entity match criteria.
 Create a new `BoundaryEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -182,18 +182,18 @@ $boundary_set = $client->BoundarySet();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `domain` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `domain` | `string` | No |  |
+| `name` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->BoundarySet()->list([]);
+$results = $client->BoundarySet()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -206,19 +206,19 @@ $result = $client->BoundarySet()->load(["id" => "boundary_set_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -227,7 +227,7 @@ Set the entity match criteria.
 Create a new `BoundarySetEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -244,34 +244,34 @@ $candidate = $client->Candidate();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `object` | ``$ARRAY`` | No |  |
+| `meta` | `array` | No |  |
+| `object` | `array` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Candidate()->list([]);
+$results = $client->Candidate()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -280,7 +280,7 @@ Set the entity match criteria.
 Create a new `CandidateEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -297,34 +297,34 @@ $election = $client->Election();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `object` | ``$ARRAY`` | No |  |
+| `meta` | `array` | No |  |
+| `object` | `array` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Election()->list([]);
+$results = $client->Election()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -333,7 +333,7 @@ Set the entity match criteria.
 Create a new `ElectionEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -350,14 +350,14 @@ $postal_code = $client->PostalCode();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `boundaries_centroid` | ``$ARRAY`` | No |  |
-| `boundaries_concordance` | ``$ARRAY`` | No |  |
-| `centroid` | ``$OBJECT`` | No |  |
-| `city` | ``$STRING`` | No |  |
-| `code` | ``$STRING`` | No |  |
-| `province` | ``$STRING`` | No |  |
-| `representatives_centroid` | ``$ARRAY`` | No |  |
-| `representatives_concordance` | ``$ARRAY`` | No |  |
+| `boundaries_centroid` | `array` | No |  |
+| `boundaries_concordance` | `array` | No |  |
+| `centroid` | `array` | No |  |
+| `city` | `string` | No |  |
+| `code` | `string` | No |  |
+| `province` | `string` | No |  |
+| `representatives_centroid` | `array` | No |  |
+| `representatives_concordance` | `array` | No |  |
 
 ### Operations
 
@@ -366,24 +366,24 @@ $postal_code = $client->PostalCode();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->PostalCode()->load(["id" => "postal_code_id"]);
+$result = $client->PostalCode()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -392,7 +392,7 @@ Set the entity match criteria.
 Create a new `PostalCodeEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -409,32 +409,32 @@ $representatif = $client->Representatif();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `district_id` | ``$STRING`` | No |  |
-| `district_name` | ``$STRING`` | Yes |  |
-| `elected_office` | ``$STRING`` | Yes |  |
-| `email` | ``$STRING`` | No |  |
-| `extra` | ``$OBJECT`` | No |  |
-| `first_name` | ``$STRING`` | No |  |
-| `gender` | ``$STRING`` | No |  |
-| `last_name` | ``$STRING`` | No |  |
-| `meta` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | Yes |  |
-| `object` | ``$ARRAY`` | No |  |
-| `office` | ``$ARRAY`` | No |  |
-| `party_name` | ``$STRING`` | No |  |
-| `personal_url` | ``$STRING`` | No |  |
-| `photo_url` | ``$STRING`` | No |  |
-| `source_url` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `district_id` | `string` | No |  |
+| `district_name` | `string` | Yes |  |
+| `elected_office` | `string` | Yes |  |
+| `email` | `string` | No |  |
+| `extra` | `array` | No |  |
+| `first_name` | `string` | No |  |
+| `gender` | `string` | No |  |
+| `last_name` | `string` | No |  |
+| `meta` | `array` | No |  |
+| `name` | `string` | Yes |  |
+| `object` | `array` | No |  |
+| `office` | `array` | No |  |
+| `party_name` | `string` | No |  |
+| `personal_url` | `string` | No |  |
+| `photo_url` | `string` | No |  |
+| `source_url` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Representatif()->list([]);
+$results = $client->Representatif()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -447,19 +447,19 @@ $result = $client->Representatif()->load(["id" => "representatif_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -468,7 +468,7 @@ Set the entity match criteria.
 Create a new `RepresentatifEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -485,17 +485,17 @@ $representative_set = $client->RepresentativeSet();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `name` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->RepresentativeSet()->list([]);
+$results = $client->RepresentativeSet()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -508,19 +508,19 @@ $result = $client->RepresentativeSet()->load(["id" => "representative_set_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -529,7 +529,7 @@ Set the entity match criteria.
 Create a new `RepresentativeSetEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

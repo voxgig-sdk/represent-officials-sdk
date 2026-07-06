@@ -188,13 +188,13 @@ const boundary = client.Boundary()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `boundary_set_name` | ``$STRING`` | No |  |
-| `external_id` | ``$STRING`` | No |  |
-| `meta` | ``$OBJECT`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `object` | ``$ARRAY`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `boundary_set_name` | `string` | No |  |
+| `external_id` | `string` | No |  |
+| `meta` | `Record<string, any>` | No |  |
+| `metadata` | `Record<string, any>` | No |  |
+| `name` | `string` | No |  |
+| `object` | `any[]` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -252,9 +252,9 @@ const boundary_set = client.BoundarySet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `domain` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `domain` | `string` | No |  |
+| `name` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -312,8 +312,8 @@ const candidate = client.Candidate()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `object` | ``$ARRAY`` | No |  |
+| `meta` | `Record<string, any>` | No |  |
+| `object` | `any[]` | No |  |
 
 ### Operations
 
@@ -363,8 +363,8 @@ const election = client.Election()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `object` | ``$ARRAY`` | No |  |
+| `meta` | `Record<string, any>` | No |  |
+| `object` | `any[]` | No |  |
 
 ### Operations
 
@@ -414,14 +414,14 @@ const postal_code = client.PostalCode()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `boundaries_centroid` | ``$ARRAY`` | No |  |
-| `boundaries_concordance` | ``$ARRAY`` | No |  |
-| `centroid` | ``$OBJECT`` | No |  |
-| `city` | ``$STRING`` | No |  |
-| `code` | ``$STRING`` | No |  |
-| `province` | ``$STRING`` | No |  |
-| `representatives_centroid` | ``$ARRAY`` | No |  |
-| `representatives_concordance` | ``$ARRAY`` | No |  |
+| `boundaries_centroid` | `any[]` | No |  |
+| `boundaries_concordance` | `any[]` | No |  |
+| `centroid` | `Record<string, any>` | No |  |
+| `city` | `string` | No |  |
+| `code` | `string` | No |  |
+| `province` | `string` | No |  |
+| `representatives_centroid` | `any[]` | No |  |
+| `representatives_concordance` | `any[]` | No |  |
 
 ### Operations
 
@@ -430,7 +430,7 @@ const postal_code = client.PostalCode()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.PostalCode().load({ id: 'postal_code_id' })
+const result = await client.PostalCode().load()
 ```
 
 ### Common Methods
@@ -471,23 +471,23 @@ const representatif = client.Representatif()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `district_id` | ``$STRING`` | No |  |
-| `district_name` | ``$STRING`` | Yes |  |
-| `elected_office` | ``$STRING`` | Yes |  |
-| `email` | ``$STRING`` | No |  |
-| `extra` | ``$OBJECT`` | No |  |
-| `first_name` | ``$STRING`` | No |  |
-| `gender` | ``$STRING`` | No |  |
-| `last_name` | ``$STRING`` | No |  |
-| `meta` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | Yes |  |
-| `object` | ``$ARRAY`` | No |  |
-| `office` | ``$ARRAY`` | No |  |
-| `party_name` | ``$STRING`` | No |  |
-| `personal_url` | ``$STRING`` | No |  |
-| `photo_url` | ``$STRING`` | No |  |
-| `source_url` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `district_id` | `string` | No |  |
+| `district_name` | `string` | Yes |  |
+| `elected_office` | `string` | Yes |  |
+| `email` | `string` | No |  |
+| `extra` | `Record<string, any>` | No |  |
+| `first_name` | `string` | No |  |
+| `gender` | `string` | No |  |
+| `last_name` | `string` | No |  |
+| `meta` | `Record<string, any>` | No |  |
+| `name` | `string` | Yes |  |
+| `object` | `any[]` | No |  |
+| `office` | `any[]` | No |  |
+| `party_name` | `string` | No |  |
+| `personal_url` | `string` | No |  |
+| `photo_url` | `string` | No |  |
+| `source_url` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -545,8 +545,8 @@ const representative_set = client.RepresentativeSet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `name` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 

@@ -32,7 +32,7 @@ class BoundaryLoadMatch
     public string $boundary_set;
 }
 
-/** Match filter for Boundary#list (any subset of Boundary fields). */
+/** Request payload for Boundary#list. */
 class BoundaryListMatch
 {
     public ?string $boundary_set_name = null;
@@ -58,7 +58,7 @@ class BoundarySetLoadMatch
     public string $id;
 }
 
-/** Match filter for BoundarySet#list (any subset of BoundarySet fields). */
+/** Request payload for BoundarySet#list. */
 class BoundarySetListMatch
 {
     public ?string $domain = null;
@@ -73,7 +73,7 @@ class Candidate
     public ?array $object = null;
 }
 
-/** Match filter for Candidate#list (any subset of Candidate fields). */
+/** Request payload for Candidate#list. */
 class CandidateListMatch
 {
     public ?array $meta = null;
@@ -87,7 +87,7 @@ class Election
     public ?array $object = null;
 }
 
-/** Match filter for Election#list (any subset of Election fields). */
+/** Request payload for Election#list. */
 class ElectionListMatch
 {
     public ?array $meta = null;
@@ -161,7 +161,7 @@ class RepresentativeSetLoadMatch
     public string $id;
 }
 
-/** Match filter for RepresentativeSet#list (any subset of RepresentativeSet fields). */
+/** Request payload for RepresentativeSet#list. */
 class RepresentativeSetListMatch
 {
     public ?string $name = null;

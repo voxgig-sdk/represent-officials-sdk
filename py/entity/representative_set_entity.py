@@ -65,8 +65,13 @@ class RepresentativeSetEntity:
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch: RepresentativeSetLoadMatch, ctrl=None) -> RepresentativeSet:
+    def load(self, reqmatch=None, ctrl=None) -> RepresentativeSet:
         utility = self._utility
+        # reqmatch is optional: an entity with no id-like key loads with no
+        # match. Treat None as an empty match so client.RepresentativeSet().load()
+        # works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "load",
             "ctrl": ctrl,
@@ -87,8 +92,12 @@ class RepresentativeSetEntity:
 
 
     
-    def list(self, reqmatch: RepresentativeSetListMatch, ctrl=None) -> list[RepresentativeSet]:
+    def list(self, reqmatch=None, ctrl=None) -> list[RepresentativeSet]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.RepresentativeSet().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

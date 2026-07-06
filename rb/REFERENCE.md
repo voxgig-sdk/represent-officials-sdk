@@ -8,7 +8,7 @@ Complete API reference for the RepresentOfficials Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'represent-officials_sdk'
+require_relative 'RepresentOfficials_sdk'
 
 client = RepresentOfficialsSDK.new(options)
 ```
@@ -117,22 +117,22 @@ boundary = client.Boundary
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `boundary_set_name` | ``$STRING`` | No |  |
-| `external_id` | ``$STRING`` | No |  |
-| `meta` | ``$OBJECT`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `object` | ``$ARRAY`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `boundary_set_name` | `String` | No |  |
+| `external_id` | `String` | No |  |
+| `meta` | `Hash` | No |  |
+| `metadata` | `Hash` | No |  |
+| `name` | `String` | No |  |
+| `object` | `Array` | No |  |
+| `url` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Boundary.list(nil)
+results = client.Boundary.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -183,18 +183,18 @@ boundary_set = client.BoundarySet
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `domain` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `domain` | `String` | No |  |
+| `name` | `String` | No |  |
+| `url` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.BoundarySet.list(nil)
+results = client.BoundarySet.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -245,17 +245,17 @@ candidate = client.Candidate
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `object` | ``$ARRAY`` | No |  |
+| `meta` | `Hash` | No |  |
+| `object` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Candidate.list(nil)
+results = client.Candidate.list
 ```
 
 ### Common Methods
@@ -298,17 +298,17 @@ election = client.Election
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `object` | ``$ARRAY`` | No |  |
+| `meta` | `Hash` | No |  |
+| `object` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Election.list(nil)
+results = client.Election.list
 ```
 
 ### Common Methods
@@ -351,14 +351,14 @@ postal_code = client.PostalCode
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `boundaries_centroid` | ``$ARRAY`` | No |  |
-| `boundaries_concordance` | ``$ARRAY`` | No |  |
-| `centroid` | ``$OBJECT`` | No |  |
-| `city` | ``$STRING`` | No |  |
-| `code` | ``$STRING`` | No |  |
-| `province` | ``$STRING`` | No |  |
-| `representatives_centroid` | ``$ARRAY`` | No |  |
-| `representatives_concordance` | ``$ARRAY`` | No |  |
+| `boundaries_centroid` | `Array` | No |  |
+| `boundaries_concordance` | `Array` | No |  |
+| `centroid` | `Hash` | No |  |
+| `city` | `String` | No |  |
+| `code` | `String` | No |  |
+| `province` | `String` | No |  |
+| `representatives_centroid` | `Array` | No |  |
+| `representatives_concordance` | `Array` | No |  |
 
 ### Operations
 
@@ -367,7 +367,7 @@ postal_code = client.PostalCode
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.PostalCode.load({ "id" => "postal_code_id" })
+result = client.PostalCode.load()
 ```
 
 ### Common Methods
@@ -410,32 +410,32 @@ representatif = client.Representatif
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `district_id` | ``$STRING`` | No |  |
-| `district_name` | ``$STRING`` | Yes |  |
-| `elected_office` | ``$STRING`` | Yes |  |
-| `email` | ``$STRING`` | No |  |
-| `extra` | ``$OBJECT`` | No |  |
-| `first_name` | ``$STRING`` | No |  |
-| `gender` | ``$STRING`` | No |  |
-| `last_name` | ``$STRING`` | No |  |
-| `meta` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | Yes |  |
-| `object` | ``$ARRAY`` | No |  |
-| `office` | ``$ARRAY`` | No |  |
-| `party_name` | ``$STRING`` | No |  |
-| `personal_url` | ``$STRING`` | No |  |
-| `photo_url` | ``$STRING`` | No |  |
-| `source_url` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `district_id` | `String` | No |  |
+| `district_name` | `String` | Yes |  |
+| `elected_office` | `String` | Yes |  |
+| `email` | `String` | No |  |
+| `extra` | `Hash` | No |  |
+| `first_name` | `String` | No |  |
+| `gender` | `String` | No |  |
+| `last_name` | `String` | No |  |
+| `meta` | `Hash` | No |  |
+| `name` | `String` | Yes |  |
+| `object` | `Array` | No |  |
+| `office` | `Array` | No |  |
+| `party_name` | `String` | No |  |
+| `personal_url` | `String` | No |  |
+| `photo_url` | `String` | No |  |
+| `source_url` | `String` | No |  |
+| `url` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Representatif.list(nil)
+results = client.Representatif.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -486,17 +486,17 @@ representative_set = client.RepresentativeSet
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `name` | `String` | No |  |
+| `url` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.RepresentativeSet.list(nil)
+results = client.RepresentativeSet.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`

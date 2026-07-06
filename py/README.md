@@ -4,6 +4,11 @@
 
 The Python SDK for the RepresentOfficials API — an entity-oriented client following Pythonic conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Boundary()` — each
+carrying a small, uniform set of operations (`list`, `load`) instead of raw URL
+paths and query strings. You work with named resources and verbs, which
+keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -38,7 +43,7 @@ error — iterate it directly.
 
 ```python
 try:
-    boundarys = client.Boundary().list({})
+    boundarys = client.Boundary().list()
     for boundary in boundarys:
         print(boundary)
 except Exception as err:
@@ -55,6 +60,34 @@ try:
     print(boundary)
 except Exception as err:
     print(f"load failed: {err}")
+```
+
+
+## Error handling
+
+Entity operations raise on failure, so wrap them in `try` / `except`:
+
+```python
+try:
+    boundarys = client.Boundary().list()
+    print(boundarys)
+except Exception as err:
+    print(f"list failed: {err}")
+```
+
+`direct()` does **not** raise — it returns the result envelope. Branch
+on `ok`; on failure `status` holds the HTTP status (for error responses)
+and `err` holds a transport error, so read both defensively:
+
+```python
+result = client.direct({
+    "path": "/api/resource/{id}",
+    "method": "GET",
+    "params": {"id": "example_id"},
+})
+
+if not result["ok"]:
+    print("request failed:", result.get("status"), result.get("err"))
 ```
 
 
@@ -75,7 +108,10 @@ if result["ok"]:
     print(result["status"])  # 200
     print(result["data"])    # response body
 else:
-    print(result["err"])     # error value
+    # A non-2xx response carries status + data (the error body); a
+    # transport-level failure carries err instead. Only one is present, so
+    # read both with .get() rather than indexing a key that may be absent.
+    print(result.get("status"), result.get("err"))
 ```
 
 ### Prepare a request without sending it
@@ -101,7 +137,7 @@ Create a mock client for unit testing — no server required:
 client = RepresentOfficialsSDK.test()
 
 # Entity ops return the bare record and raise on error.
-boundary = client.Boundary().load({"id": "test01"})
+boundary = client.Boundary().list()
 # boundary contains the mock response record
 ```
 
@@ -194,9 +230,6 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
 | `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -341,20 +374,20 @@ Create an instance: `boundary = client.Boundary()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `boundary_set_name` | ``$STRING`` |  |
-| `external_id` | ``$STRING`` |  |
-| `meta` | ``$OBJECT`` |  |
-| `metadata` | ``$OBJECT`` |  |
-| `name` | ``$STRING`` |  |
-| `object` | ``$ARRAY`` |  |
-| `url` | ``$STRING`` |  |
+| `boundary_set_name` | `str` |  |
+| `external_id` | `str` |  |
+| `meta` | `dict` |  |
+| `metadata` | `dict` |  |
+| `name` | `str` |  |
+| `object` | `list` |  |
+| `url` | `str` |  |
 
 #### Example: Load
 
@@ -365,7 +398,7 @@ boundary = client.Boundary().load({"id": "boundary_id"})
 #### Example: List
 
 ```python
-boundarys = client.Boundary().list({})
+boundarys = client.Boundary().list()
 ```
 
 
@@ -377,16 +410,16 @@ Create an instance: `boundary_set = client.BoundarySet()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `domain` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `domain` | `str` |  |
+| `name` | `str` |  |
+| `url` | `str` |  |
 
 #### Example: Load
 
@@ -397,7 +430,7 @@ boundary_set = client.BoundarySet().load({"id": "boundary_set_id"})
 #### Example: List
 
 ```python
-boundary_sets = client.BoundarySet().list({})
+boundary_sets = client.BoundarySet().list()
 ```
 
 
@@ -409,19 +442,19 @@ Create an instance: `candidate = client.Candidate()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `meta` | ``$OBJECT`` |  |
-| `object` | ``$ARRAY`` |  |
+| `meta` | `dict` |  |
+| `object` | `list` |  |
 
 #### Example: List
 
 ```python
-candidates = client.Candidate().list({})
+candidates = client.Candidate().list()
 ```
 
 
@@ -433,19 +466,19 @@ Create an instance: `election = client.Election()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `meta` | ``$OBJECT`` |  |
-| `object` | ``$ARRAY`` |  |
+| `meta` | `dict` |  |
+| `object` | `list` |  |
 
 #### Example: List
 
 ```python
-elections = client.Election().list({})
+elections = client.Election().list()
 ```
 
 
@@ -463,19 +496,19 @@ Create an instance: `postal_code = client.PostalCode()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `boundaries_centroid` | ``$ARRAY`` |  |
-| `boundaries_concordance` | ``$ARRAY`` |  |
-| `centroid` | ``$OBJECT`` |  |
-| `city` | ``$STRING`` |  |
-| `code` | ``$STRING`` |  |
-| `province` | ``$STRING`` |  |
-| `representatives_centroid` | ``$ARRAY`` |  |
-| `representatives_concordance` | ``$ARRAY`` |  |
+| `boundaries_centroid` | `list` |  |
+| `boundaries_concordance` | `list` |  |
+| `centroid` | `dict` |  |
+| `city` | `str` |  |
+| `code` | `str` |  |
+| `province` | `str` |  |
+| `representatives_centroid` | `list` |  |
+| `representatives_concordance` | `list` |  |
 
 #### Example: Load
 
 ```python
-postal_code = client.PostalCode().load({"id": "postal_code_id"})
+postal_code = client.PostalCode().load()
 ```
 
 
@@ -487,30 +520,30 @@ Create an instance: `representatif = client.Representatif()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `district_id` | ``$STRING`` |  |
-| `district_name` | ``$STRING`` |  |
-| `elected_office` | ``$STRING`` |  |
-| `email` | ``$STRING`` |  |
-| `extra` | ``$OBJECT`` |  |
-| `first_name` | ``$STRING`` |  |
-| `gender` | ``$STRING`` |  |
-| `last_name` | ``$STRING`` |  |
-| `meta` | ``$OBJECT`` |  |
-| `name` | ``$STRING`` |  |
-| `object` | ``$ARRAY`` |  |
-| `office` | ``$ARRAY`` |  |
-| `party_name` | ``$STRING`` |  |
-| `personal_url` | ``$STRING`` |  |
-| `photo_url` | ``$STRING`` |  |
-| `source_url` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `district_id` | `str` |  |
+| `district_name` | `str` |  |
+| `elected_office` | `str` |  |
+| `email` | `str` |  |
+| `extra` | `dict` |  |
+| `first_name` | `str` |  |
+| `gender` | `str` |  |
+| `last_name` | `str` |  |
+| `meta` | `dict` |  |
+| `name` | `str` |  |
+| `object` | `list` |  |
+| `office` | `list` |  |
+| `party_name` | `str` |  |
+| `personal_url` | `str` |  |
+| `photo_url` | `str` |  |
+| `source_url` | `str` |  |
+| `url` | `str` |  |
 
 #### Example: Load
 
@@ -521,7 +554,7 @@ representatif = client.Representatif().load({"id": "representatif_id"})
 #### Example: List
 
 ```python
-representatifs = client.Representatif().list({})
+representatifs = client.Representatif().list()
 ```
 
 
@@ -533,15 +566,15 @@ Create an instance: `representative_set = client.RepresentativeSet()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `name` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `name` | `str` |  |
+| `url` | `str` |  |
 
 #### Example: Load
 
@@ -552,16 +585,20 @@ representative_set = client.RepresentativeSet().load({"id": "representative_set_
 #### Example: List
 
 ```python
-representative_sets = client.RepresentativeSet().list({})
+representative_sets = client.RepresentativeSet().list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -578,8 +615,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return tuple.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -622,14 +660,14 @@ Import entity or utility modules directly only when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
 boundary = client.Boundary()
-boundary.load({"id": "example_id"})
+boundary.list()
 
-# boundary.data_get() now returns the loaded boundary data
+# boundary.data_get() now returns the boundary data from the last list
 # boundary.match_get() returns the last match criteria
 ```
 

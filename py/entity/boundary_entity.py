@@ -65,8 +65,13 @@ class BoundaryEntity:
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch: BoundaryLoadMatch, ctrl=None) -> Boundary:
+    def load(self, reqmatch=None, ctrl=None) -> Boundary:
         utility = self._utility
+        # reqmatch is optional: an entity with no id-like key loads with no
+        # match. Treat None as an empty match so client.Boundary().load()
+        # works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "load",
             "ctrl": ctrl,
@@ -87,8 +92,12 @@ class BoundaryEntity:
 
 
     
-    def list(self, reqmatch: BoundaryListMatch, ctrl=None) -> list[Boundary]:
+    def list(self, reqmatch=None, ctrl=None) -> list[Boundary]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.Boundary().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

@@ -114,13 +114,13 @@ local boundary = client:Boundary(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `boundary_set_name` | ``$STRING`` | No |  |
-| `external_id` | ``$STRING`` | No |  |
-| `meta` | ``$OBJECT`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `object` | ``$ARRAY`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `boundary_set_name` | `string` | No |  |
+| `external_id` | `string` | No |  |
+| `meta` | `table` | No |  |
+| `metadata` | `table` | No |  |
+| `name` | `string` | No |  |
+| `object` | `table` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -180,9 +180,9 @@ local boundary_set = client:BoundarySet(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `domain` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `domain` | `string` | No |  |
+| `name` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -242,8 +242,8 @@ local candidate = client:Candidate(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `object` | ``$ARRAY`` | No |  |
+| `meta` | `table` | No |  |
+| `object` | `table` | No |  |
 
 ### Operations
 
@@ -295,8 +295,8 @@ local election = client:Election(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `object` | ``$ARRAY`` | No |  |
+| `meta` | `table` | No |  |
+| `object` | `table` | No |  |
 
 ### Operations
 
@@ -348,14 +348,14 @@ local postal_code = client:PostalCode(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `boundaries_centroid` | ``$ARRAY`` | No |  |
-| `boundaries_concordance` | ``$ARRAY`` | No |  |
-| `centroid` | ``$OBJECT`` | No |  |
-| `city` | ``$STRING`` | No |  |
-| `code` | ``$STRING`` | No |  |
-| `province` | ``$STRING`` | No |  |
-| `representatives_centroid` | ``$ARRAY`` | No |  |
-| `representatives_concordance` | ``$ARRAY`` | No |  |
+| `boundaries_centroid` | `table` | No |  |
+| `boundaries_concordance` | `table` | No |  |
+| `centroid` | `table` | No |  |
+| `city` | `string` | No |  |
+| `code` | `string` | No |  |
+| `province` | `string` | No |  |
+| `representatives_centroid` | `table` | No |  |
+| `representatives_concordance` | `table` | No |  |
 
 ### Operations
 
@@ -364,7 +364,7 @@ local postal_code = client:PostalCode(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:PostalCode():load({ id = "postal_code_id" })
+local result, err = client:PostalCode():load()
 ```
 
 ### Common Methods
@@ -407,23 +407,23 @@ local representatif = client:Representatif(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `district_id` | ``$STRING`` | No |  |
-| `district_name` | ``$STRING`` | Yes |  |
-| `elected_office` | ``$STRING`` | Yes |  |
-| `email` | ``$STRING`` | No |  |
-| `extra` | ``$OBJECT`` | No |  |
-| `first_name` | ``$STRING`` | No |  |
-| `gender` | ``$STRING`` | No |  |
-| `last_name` | ``$STRING`` | No |  |
-| `meta` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | Yes |  |
-| `object` | ``$ARRAY`` | No |  |
-| `office` | ``$ARRAY`` | No |  |
-| `party_name` | ``$STRING`` | No |  |
-| `personal_url` | ``$STRING`` | No |  |
-| `photo_url` | ``$STRING`` | No |  |
-| `source_url` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `district_id` | `string` | No |  |
+| `district_name` | `string` | Yes |  |
+| `elected_office` | `string` | Yes |  |
+| `email` | `string` | No |  |
+| `extra` | `table` | No |  |
+| `first_name` | `string` | No |  |
+| `gender` | `string` | No |  |
+| `last_name` | `string` | No |  |
+| `meta` | `table` | No |  |
+| `name` | `string` | Yes |  |
+| `object` | `table` | No |  |
+| `office` | `table` | No |  |
+| `party_name` | `string` | No |  |
+| `personal_url` | `string` | No |  |
+| `photo_url` | `string` | No |  |
+| `source_url` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -483,8 +483,8 @@ local representative_set = client:RepresentativeSet(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `name` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 

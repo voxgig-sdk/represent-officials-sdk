@@ -26,8 +26,7 @@ type BoundaryLoadMatch struct {
 	BoundarySet string `json:"boundary_set"`
 }
 
-// BoundaryListMatch mirrors the boundary fields as an all-optional match
-// filter (Go analog of Partial<Boundary>).
+// BoundaryListMatch is the typed request payload for Boundary.ListTyped.
 type BoundaryListMatch struct {
 	BoundarySetName *string `json:"boundary_set_name,omitempty"`
 	ExternalId *string `json:"external_id,omitempty"`
@@ -50,8 +49,7 @@ type BoundarySetLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// BoundarySetListMatch mirrors the boundary_set fields as an all-optional match
-// filter (Go analog of Partial<BoundarySet>).
+// BoundarySetListMatch is the typed request payload for BoundarySet.ListTyped.
 type BoundarySetListMatch struct {
 	Domain *string `json:"domain,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -64,8 +62,7 @@ type Candidate struct {
 	Object *[]any `json:"object,omitempty"`
 }
 
-// CandidateListMatch mirrors the candidate fields as an all-optional match
-// filter (Go analog of Partial<Candidate>).
+// CandidateListMatch is the typed request payload for Candidate.ListTyped.
 type CandidateListMatch struct {
 	Meta *map[string]any `json:"meta,omitempty"`
 	Object *[]any `json:"object,omitempty"`
@@ -77,8 +74,7 @@ type Election struct {
 	Object *[]any `json:"object,omitempty"`
 }
 
-// ElectionListMatch mirrors the election fields as an all-optional match
-// filter (Go analog of Partial<Election>).
+// ElectionListMatch is the typed request payload for Election.ListTyped.
 type ElectionListMatch struct {
 	Meta *map[string]any `json:"meta,omitempty"`
 	Object *[]any `json:"object,omitempty"`
@@ -144,8 +140,7 @@ type RepresentativeSetLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// RepresentativeSetListMatch mirrors the representative_set fields as an all-optional match
-// filter (Go analog of Partial<RepresentativeSet>).
+// RepresentativeSetListMatch is the typed request payload for RepresentativeSet.ListTyped.
 type RepresentativeSetListMatch struct {
 	Name *string `json:"name,omitempty"`
 	Url *string `json:"url,omitempty"`

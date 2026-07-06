@@ -4,6 +4,8 @@
 
 The Lua SDK for the RepresentOfficials API — an entity-oriented client using Lua conventions.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client:Boundary()` — each with the same small set of operations (`list`, `load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -41,7 +43,7 @@ local boundarys, err = client:Boundary():list()
 if err then error(err) end
 
 for _, item in ipairs(boundarys) do
-  print(item["id"], item["name"])
+  print(item["boundary_set_name"])
 end
 ```
 
@@ -51,6 +53,28 @@ end
 local boundary, err = client:Boundary():load({ id = "example_id" })
 if err then error(err) end
 print(boundary)
+```
+
+
+## Error handling
+
+Entity operations return `(value, err)`. Check `err` before using
+the value:
+
+```lua
+local boundarys, err = client:Boundary():list()
+if err then error(err) end
+```
+
+`direct` follows the same `(value, err)` convention:
+
+```lua
+local result, err = client:direct({
+  path = "/api/resource/{id}",
+  method = "GET",
+  params = { id = "example_id" },
+})
+if err then error(err) end
 ```
 
 
@@ -96,8 +120,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Boundary():load({ id = "test01" })
--- result is the loaded data; err is set on failure
+local result, err = client:Boundary():list()
+-- result is the returned data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -191,9 +215,6 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any, err` | Load a single entity by match criteria. |
 | `list` | `(reqmatch, ctrl) -> any, err` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> any, err` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> any, err` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> any, err` | Remove an entity. |
 | `data_get` | `() -> table` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> table` | Get entity match criteria. |
@@ -208,7 +229,7 @@ data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `load` | the entity record (a `table`) |
 | `list` | an array (`table`) of entity records |
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
@@ -346,13 +367,13 @@ Create an instance: `local boundary = client:Boundary(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `boundary_set_name` | ``$STRING`` |  |
-| `external_id` | ``$STRING`` |  |
-| `meta` | ``$OBJECT`` |  |
-| `metadata` | ``$OBJECT`` |  |
-| `name` | ``$STRING`` |  |
-| `object` | ``$ARRAY`` |  |
-| `url` | ``$STRING`` |  |
+| `boundary_set_name` | `string` |  |
+| `external_id` | `string` |  |
+| `meta` | `table` |  |
+| `metadata` | `table` |  |
+| `name` | `string` |  |
+| `object` | `table` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -382,9 +403,9 @@ Create an instance: `local boundary_set = client:BoundarySet(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `domain` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `domain` | `string` |  |
+| `name` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -413,8 +434,8 @@ Create an instance: `local candidate = client:Candidate(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `meta` | ``$OBJECT`` |  |
-| `object` | ``$ARRAY`` |  |
+| `meta` | `table` |  |
+| `object` | `table` |  |
 
 #### Example: List
 
@@ -437,8 +458,8 @@ Create an instance: `local election = client:Election(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `meta` | ``$OBJECT`` |  |
-| `object` | ``$ARRAY`` |  |
+| `meta` | `table` |  |
+| `object` | `table` |  |
 
 #### Example: List
 
@@ -461,19 +482,19 @@ Create an instance: `local postal_code = client:PostalCode(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `boundaries_centroid` | ``$ARRAY`` |  |
-| `boundaries_concordance` | ``$ARRAY`` |  |
-| `centroid` | ``$OBJECT`` |  |
-| `city` | ``$STRING`` |  |
-| `code` | ``$STRING`` |  |
-| `province` | ``$STRING`` |  |
-| `representatives_centroid` | ``$ARRAY`` |  |
-| `representatives_concordance` | ``$ARRAY`` |  |
+| `boundaries_centroid` | `table` |  |
+| `boundaries_concordance` | `table` |  |
+| `centroid` | `table` |  |
+| `city` | `string` |  |
+| `code` | `string` |  |
+| `province` | `string` |  |
+| `representatives_centroid` | `table` |  |
+| `representatives_concordance` | `table` |  |
 
 #### Example: Load
 
 ```lua
-local postal_code, err = client:PostalCode():load({ id = "postal_code_id" })
+local postal_code, err = client:PostalCode():load()
 ```
 
 
@@ -492,23 +513,23 @@ Create an instance: `local representatif = client:Representatif(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `district_id` | ``$STRING`` |  |
-| `district_name` | ``$STRING`` |  |
-| `elected_office` | ``$STRING`` |  |
-| `email` | ``$STRING`` |  |
-| `extra` | ``$OBJECT`` |  |
-| `first_name` | ``$STRING`` |  |
-| `gender` | ``$STRING`` |  |
-| `last_name` | ``$STRING`` |  |
-| `meta` | ``$OBJECT`` |  |
-| `name` | ``$STRING`` |  |
-| `object` | ``$ARRAY`` |  |
-| `office` | ``$ARRAY`` |  |
-| `party_name` | ``$STRING`` |  |
-| `personal_url` | ``$STRING`` |  |
-| `photo_url` | ``$STRING`` |  |
-| `source_url` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `district_id` | `string` |  |
+| `district_name` | `string` |  |
+| `elected_office` | `string` |  |
+| `email` | `string` |  |
+| `extra` | `table` |  |
+| `first_name` | `string` |  |
+| `gender` | `string` |  |
+| `last_name` | `string` |  |
+| `meta` | `table` |  |
+| `name` | `string` |  |
+| `object` | `table` |  |
+| `office` | `table` |  |
+| `party_name` | `string` |  |
+| `personal_url` | `string` |  |
+| `photo_url` | `string` |  |
+| `source_url` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -538,8 +559,8 @@ Create an instance: `local representative_set = client:RepresentativeSet(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `name` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `name` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -554,12 +575,16 @@ local representative_sets, err = client:RepresentativeSet():list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -576,8 +601,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as a second return value.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -621,14 +647,14 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
 local boundary = client:Boundary()
-boundary:load({ id = "example_id" })
+boundary:list()
 
--- boundary:data_get() now returns the loaded boundary data
+-- boundary:data_get() now returns the boundary data from the last list
 -- boundary:match_get() returns the last match criteria
 ```
 
