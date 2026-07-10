@@ -44,13 +44,13 @@ Boundary = Struct.new(
 # Request payload for Boundary#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] boundary
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] boundary_set
-#   @return [String]
+#   @return [String, nil]
 BoundaryLoadMatch = Struct.new(
   :id,
   :boundary,
@@ -317,10 +317,10 @@ RepresentatifLoadMatch = Struct.new(
 # Request payload for Representatif#list.
 #
 # @!attribute [rw] boundary
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] boundary_set
-#   @return [String]
+#   @return [String, nil]
 RepresentatifListMatch = Struct.new(
   :boundary,
   :boundary_set,

@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -2370,14 +2367,17 @@
           "url": "https://represent.opennorth.ca"
         },
         "description": "This API provides access to information about elected officials and electoral districts in Canada. Users can find representatives based on postal codes or geographical coordinates, retrieve boundary sets, and explore details about elections and candidates.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://represent.opennorth.ca"
           }
         ],
+        "summary": "This API provides access to information about elected officials and electoral districts in Canada.",
         "title": "Represent Officials API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://represent.opennorth.ca"
       },
       "option": {},
       "target": {
@@ -2430,6 +2430,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -2480,6 +2483,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

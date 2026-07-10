@@ -115,6 +115,7 @@ same parameters as `Direct()`.
 
 ```go
 boundary := client.Boundary(nil)
+fmt.Println(boundary.GetName()) // "boundary"
 ```
 
 ### Fields
@@ -137,6 +138,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Boundary(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -145,6 +150,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Boundary(nil).Load(map[string]any{"id": "boundary_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -174,7 +183,8 @@ Return the entity name.
 ## BoundarySetEntity
 
 ```go
-boundary_set := client.BoundarySet(nil)
+boundarySet := client.BoundarySet(nil)
+fmt.Println(boundarySet.GetName()) // "boundary_set"
 ```
 
 ### Fields
@@ -193,6 +203,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.BoundarySet(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -201,6 +215,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.BoundarySet(nil).Load(map[string]any{"id": "boundary_set_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -231,6 +249,7 @@ Return the entity name.
 
 ```go
 candidate := client.Candidate(nil)
+fmt.Println(candidate.GetName()) // "candidate"
 ```
 
 ### Fields
@@ -248,6 +267,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Candidate(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -278,6 +301,7 @@ Return the entity name.
 
 ```go
 election := client.Election(nil)
+fmt.Println(election.GetName()) // "election"
 ```
 
 ### Fields
@@ -295,6 +319,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Election(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -324,7 +352,8 @@ Return the entity name.
 ## PostalCodeEntity
 
 ```go
-postal_code := client.PostalCode(nil)
+postalCode := client.PostalCode(nil)
+fmt.Println(postalCode.GetName()) // "postal_code"
 ```
 
 ### Fields
@@ -347,7 +376,11 @@ postal_code := client.PostalCode(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.PostalCode(nil).Load(nil, nil)
+result, err := client.PostalCode(nil).Load(map[string]any{"postal_code": "postal_code"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -378,6 +411,7 @@ Return the entity name.
 
 ```go
 representatif := client.Representatif(nil)
+fmt.Println(representatif.GetName()) // "representatif"
 ```
 
 ### Fields
@@ -410,6 +444,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Representatif(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -418,6 +456,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Representatif(nil).Load(map[string]any{"id": "representatif_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -447,7 +489,8 @@ Return the entity name.
 ## RepresentativeSetEntity
 
 ```go
-representative_set := client.RepresentativeSet(nil)
+representativeSet := client.RepresentativeSet(nil)
+fmt.Println(representativeSet.GetName()) // "representative_set"
 ```
 
 ### Fields
@@ -465,6 +508,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.RepresentativeSet(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -473,6 +520,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.RepresentativeSet(nil).Load(map[string]any{"id": "representative_set_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

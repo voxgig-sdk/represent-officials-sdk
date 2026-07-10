@@ -45,14 +45,17 @@ for (const boundary of boundarys) {
 }
 ```
 
-### 3. Load a boundary
+### 3. Load a postalcode
 
+PostalCode is nested under postal_code, so provide the `postal_code`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
-  const boundary = await client.Boundary().load({ id: 'example_id' })
-  console.log(boundary)
+  const postalcode = await client.PostalCode().load({
+    postal_code: 'example_postal_code',
+  })
+  console.log(postalcode)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -552,7 +555,7 @@ Create an instance: `const postal_code = client.PostalCode()`
 #### Example: Load
 
 ```ts
-const postal_code = await client.PostalCode().load()
+const postal_code = await client.PostalCode().load({ postal_code: 'postal_code' })
 ```
 
 

@@ -1,0 +1,9 @@
+# Entity Models
+
+@"boundary.aontu"
+@"boundary_set.aontu"
+@"candidate.aontu"
+@"election.aontu"
+@"postal_code.aontu"
+@"representatif.aontu"
+@"representative_set.aontu"

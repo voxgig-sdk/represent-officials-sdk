@@ -1,0 +1,9 @@
+# Flows
+
+@"BasicBoundaryFlow.aontu"
+@"BasicBoundarySetFlow.aontu"
+@"BasicCandidateFlow.aontu"
+@"BasicElectionFlow.aontu"
+@"BasicPostalCodeFlow.aontu"
+@"BasicRepresentatifFlow.aontu"
+@"BasicRepresentativeSetFlow.aontu"

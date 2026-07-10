@@ -44,13 +44,15 @@ rescue => err
 end
 ```
 
-### 3. Load a boundary
+### 3. Load a postalcode
+
+PostalCode is nested under postal_code, so provide the `postal_code`.
 
 ```ruby
 begin
-  # load returns the bare Boundary record (raises on error).
-  boundary = client.Boundary.load({ "id" => "example_id" })
-  puts boundary
+  # load returns the bare PostalCode record (raises on error).
+  postalcode = client.PostalCode.load({ "postal_code" => "example_postal_code" })
+  puts postalcode
 rescue => err
   warn "load failed: #{err}"
 end
@@ -512,7 +514,7 @@ Create an instance: `postal_code = client.PostalCode`
 
 ```ruby
 # load returns the bare PostalCode record (raises on error).
-postal_code = client.PostalCode.load()
+postal_code = client.PostalCode.load({ "postal_code" => "postal_code" })
 ```
 
 

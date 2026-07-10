@@ -416,7 +416,6 @@ func MakeConfig() map[string]any {
 											"orig": "boundary",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 0,
 										},
 										map[string]any{
 											"active": true,
@@ -425,7 +424,6 @@ func MakeConfig() map[string]any {
 											"orig": "boundary_set",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 1,
 										},
 									},
 									"query": []any{
@@ -486,7 +484,6 @@ func MakeConfig() map[string]any {
 											"orig": "boundary",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 0,
 										},
 										map[string]any{
 											"active": true,
@@ -495,7 +492,6 @@ func MakeConfig() map[string]any {
 											"orig": "boundary_set",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 1,
 										},
 									},
 									"query": []any{
@@ -556,7 +552,6 @@ func MakeConfig() map[string]any {
 											"orig": "boundary",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 0,
 										},
 										map[string]any{
 											"active": true,
@@ -565,7 +560,6 @@ func MakeConfig() map[string]any {
 											"orig": "boundary_set",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 1,
 										},
 									},
 									"query": []any{
@@ -626,7 +620,6 @@ func MakeConfig() map[string]any {
 											"orig": "boundary_set",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 0,
 										},
 									},
 									"query": []any{
@@ -685,7 +678,6 @@ func MakeConfig() map[string]any {
 											"orig": "boundary_set",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 0,
 										},
 									},
 									"query": []any{
@@ -744,7 +736,6 @@ func MakeConfig() map[string]any {
 											"orig": "boundary_set",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 0,
 										},
 									},
 									"query": []any{

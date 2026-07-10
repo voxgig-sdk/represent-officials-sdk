@@ -457,8 +457,7 @@ class Config {
                     "name": "boundary",
                     "orig": "boundary",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
                     "active": true,
@@ -466,8 +465,7 @@ class Config {
                     "name": "boundary_set",
                     "orig": "boundary_set",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   }
                 ],
                 "query": [
@@ -527,8 +525,7 @@ class Config {
                     "name": "boundary",
                     "orig": "boundary",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
                     "active": true,
@@ -536,8 +533,7 @@ class Config {
                     "name": "boundary_set",
                     "orig": "boundary_set",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   }
                 ],
                 "query": [
@@ -597,8 +593,7 @@ class Config {
                     "name": "boundary",
                     "orig": "boundary",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
                     "active": true,
@@ -606,8 +601,7 @@ class Config {
                     "name": "boundary_set",
                     "orig": "boundary_set",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   }
                 ],
                 "query": [
@@ -667,8 +661,7 @@ class Config {
                     "name": "boundary_set",
                     "orig": "boundary_set",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ],
                 "query": [
@@ -726,8 +719,7 @@ class Config {
                     "name": "boundary_set",
                     "orig": "boundary_set",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ],
                 "query": [
@@ -785,8 +777,7 @@ class Config {
                     "name": "boundary_set",
                     "orig": "boundary_set",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ],
                 "query": [

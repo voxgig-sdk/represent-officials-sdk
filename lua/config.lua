@@ -416,7 +416,6 @@ local function make_config()
                       ["orig"] = "boundary",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                     {
                       ["active"] = true,
@@ -425,7 +424,6 @@ local function make_config()
                       ["orig"] = "boundary_set",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 1,
                     },
                   },
                   ["query"] = {
@@ -486,7 +484,6 @@ local function make_config()
                       ["orig"] = "boundary",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                     {
                       ["active"] = true,
@@ -495,7 +492,6 @@ local function make_config()
                       ["orig"] = "boundary_set",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 1,
                     },
                   },
                   ["query"] = {
@@ -556,7 +552,6 @@ local function make_config()
                       ["orig"] = "boundary",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                     {
                       ["active"] = true,
@@ -565,7 +560,6 @@ local function make_config()
                       ["orig"] = "boundary_set",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 1,
                     },
                   },
                   ["query"] = {
@@ -626,7 +620,6 @@ local function make_config()
                       ["orig"] = "boundary_set",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
@@ -685,7 +678,6 @@ local function make_config()
                       ["orig"] = "boundary_set",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
@@ -744,7 +736,6 @@ local function make_config()
                       ["orig"] = "boundary_set",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {

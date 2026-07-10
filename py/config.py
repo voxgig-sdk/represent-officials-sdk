@@ -417,7 +417,6 @@ def make_config():
                       "orig": "boundary",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                     {
                       "active": True,
@@ -426,7 +425,6 @@ def make_config():
                       "orig": "boundary_set",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 1,
                     },
                   ],
                   "query": [
@@ -487,7 +485,6 @@ def make_config():
                       "orig": "boundary",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                     {
                       "active": True,
@@ -496,7 +493,6 @@ def make_config():
                       "orig": "boundary_set",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 1,
                     },
                   ],
                   "query": [
@@ -557,7 +553,6 @@ def make_config():
                       "orig": "boundary",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                     {
                       "active": True,
@@ -566,7 +561,6 @@ def make_config():
                       "orig": "boundary_set",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 1,
                     },
                   ],
                   "query": [
@@ -627,7 +621,6 @@ def make_config():
                       "orig": "boundary_set",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                   "query": [
@@ -686,7 +679,6 @@ def make_config():
                       "orig": "boundary_set",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                   "query": [
@@ -745,7 +737,6 @@ def make_config():
                       "orig": "boundary_set",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                   "query": [

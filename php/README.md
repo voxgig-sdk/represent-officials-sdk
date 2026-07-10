@@ -45,13 +45,15 @@ try {
 }
 ```
 
-### 3. Load a boundary
+### 3. Load a postalcode
+
+PostalCode is nested under postal_code, so provide the `postal_code`.
 
 ```php
 try {
-    // load() returns the bare Boundary record (throws on error).
-    $boundary = $client->Boundary()->load(["id" => "example_id"]);
-    print_r($boundary);
+    // load() returns the bare PostalCode record (throws on error).
+    $postalcode = $client->PostalCode()->load(["postal_code" => "example_postal_code"]);
+    print_r($postalcode);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -522,7 +524,7 @@ Create an instance: `$postal_code = $client->PostalCode();`
 
 ```php
 // load() returns the bare PostalCode record (throws on error).
-$postal_code = $client->PostalCode()->load();
+$postal_code = $client->PostalCode()->load(["postal_code" => "postal_code"]);
 ```
 
 

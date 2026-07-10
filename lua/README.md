@@ -47,12 +47,14 @@ for _, item in ipairs(boundarys) do
 end
 ```
 
-### 3. Load a boundary
+### 3. Load a postalcode
+
+PostalCode is nested under postal_code, so provide the `postal_code`.
 
 ```lua
-local boundary, err = client:Boundary():load({ id = "example_id" })
+local postalcode, err = client:PostalCode():load({ postal_code = "example_postal_code" })
 if err then error(err) end
-print(boundary)
+print(postalcode)
 ```
 
 
@@ -494,7 +496,7 @@ Create an instance: `local postal_code = client:PostalCode(nil)`
 #### Example: Load
 
 ```lua
-local postal_code, err = client:PostalCode():load()
+local postal_code, err = client:PostalCode():load({ postal_code = "postal_code" })
 ```
 
 

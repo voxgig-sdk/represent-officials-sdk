@@ -60,7 +60,7 @@ func main() {
     }
 
     // Load a single boundary — the value is the loaded record.
-    boundary, err := client.Boundary(nil).Load(map[string]any{"id": "example"}, nil)
+    boundary, err := client.Boundary(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
@@ -426,7 +426,7 @@ fmt.Println(boundarys) // the array of records
 
 ### BoundarySet
 
-Create an instance: `boundary_set := client.BoundarySet(nil)`
+Create an instance: `boundarySet := client.BoundarySet(nil)`
 
 #### Operations
 
@@ -446,21 +446,21 @@ Create an instance: `boundary_set := client.BoundarySet(nil)`
 #### Example: Load
 
 ```go
-boundary_set, err := client.BoundarySet(nil).Load(map[string]any{"id": "boundary_set_id"}, nil)
+boundarySet, err := client.BoundarySet(nil).Load(map[string]any{"id": "boundary_set_id"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(boundary_set) // the loaded record
+fmt.Println(boundarySet) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-boundary_sets, err := client.BoundarySet(nil).List(nil, nil)
+boundarySets, err := client.BoundarySet(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(boundary_sets) // the array of records
+fmt.Println(boundarySets) // the array of records
 ```
 
 
@@ -522,7 +522,7 @@ fmt.Println(elections) // the array of records
 
 ### PostalCode
 
-Create an instance: `postal_code := client.PostalCode(nil)`
+Create an instance: `postalCode := client.PostalCode(nil)`
 
 #### Operations
 
@@ -546,11 +546,11 @@ Create an instance: `postal_code := client.PostalCode(nil)`
 #### Example: Load
 
 ```go
-postal_code, err := client.PostalCode(nil).Load(nil, nil)
+postalCode, err := client.PostalCode(nil).Load(map[string]any{"postal_code": "postal_code"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(postal_code) // the loaded record
+fmt.Println(postalCode) // the loaded record
 ```
 
 
@@ -610,7 +610,7 @@ fmt.Println(representatifs) // the array of records
 
 ### RepresentativeSet
 
-Create an instance: `representative_set := client.RepresentativeSet(nil)`
+Create an instance: `representativeSet := client.RepresentativeSet(nil)`
 
 #### Operations
 
@@ -629,21 +629,21 @@ Create an instance: `representative_set := client.RepresentativeSet(nil)`
 #### Example: Load
 
 ```go
-representative_set, err := client.RepresentativeSet(nil).Load(map[string]any{"id": "representative_set_id"}, nil)
+representativeSet, err := client.RepresentativeSet(nil).Load(map[string]any{"id": "representative_set_id"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(representative_set) // the loaded record
+fmt.Println(representativeSet) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-representative_sets, err := client.RepresentativeSet(nil).List(nil, nil)
+representativeSets, err := client.RepresentativeSet(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(representative_sets) // the array of records
+fmt.Println(representativeSets) // the array of records
 ```
 
 

@@ -1,9 +1,0 @@
-# Flows
-
-@"BasicBoundaryFlow.jsonic"
-@"BasicBoundarySetFlow.jsonic"
-@"BasicCandidateFlow.jsonic"
-@"BasicElectionFlow.jsonic"
-@"BasicPostalCodeFlow.jsonic"
-@"BasicRepresentatifFlow.jsonic"
-@"BasicRepresentativeSetFlow.jsonic"

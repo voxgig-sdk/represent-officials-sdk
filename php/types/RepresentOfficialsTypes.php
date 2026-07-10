@@ -27,9 +27,9 @@ class Boundary
 /** Request payload for Boundary#load. */
 class BoundaryLoadMatch
 {
-    public string $id;
-    public string $boundary;
-    public string $boundary_set;
+    public ?string $id = null;
+    public ?string $boundary = null;
+    public ?string $boundary_set = null;
 }
 
 /** Request payload for Boundary#list. */
@@ -144,8 +144,8 @@ class RepresentatifLoadMatch
 /** Request payload for Representatif#list. */
 class RepresentatifListMatch
 {
-    public string $boundary;
-    public string $boundary_set;
+    public ?string $boundary = null;
+    public ?string $boundary_set = null;
 }
 
 /** RepresentativeSet entity data model. */

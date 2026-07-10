@@ -16,9 +16,9 @@ export interface Boundary {
 }
 
 export interface BoundaryLoadMatch {
-  id: string
-  boundary: string
-  boundary_set: string
+  id?: string
+  boundary?: string
+  boundary_set?: string
 }
 
 export interface BoundaryListMatch {
@@ -107,8 +107,8 @@ export interface RepresentatifLoadMatch {
 }
 
 export interface RepresentatifListMatch {
-  boundary: string
-  boundary_set: string
+  boundary?: string
+  boundary_set?: string
 }
 
 export interface RepresentativeSet {

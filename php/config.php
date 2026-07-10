@@ -422,7 +422,6 @@ class RepresentOfficialsConfig
                         'orig' => 'boundary',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                       [
                         'active' => true,
@@ -431,7 +430,6 @@ class RepresentOfficialsConfig
                         'orig' => 'boundary_set',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 1,
                       ],
                     ],
                     'query' => [
@@ -492,7 +490,6 @@ class RepresentOfficialsConfig
                         'orig' => 'boundary',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                       [
                         'active' => true,
@@ -501,7 +498,6 @@ class RepresentOfficialsConfig
                         'orig' => 'boundary_set',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 1,
                       ],
                     ],
                     'query' => [
@@ -562,7 +558,6 @@ class RepresentOfficialsConfig
                         'orig' => 'boundary',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                       [
                         'active' => true,
@@ -571,7 +566,6 @@ class RepresentOfficialsConfig
                         'orig' => 'boundary_set',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 1,
                       ],
                     ],
                     'query' => [
@@ -632,7 +626,6 @@ class RepresentOfficialsConfig
                         'orig' => 'boundary_set',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                     'query' => [
@@ -691,7 +684,6 @@ class RepresentOfficialsConfig
                         'orig' => 'boundary_set',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                     'query' => [
@@ -750,7 +742,6 @@ class RepresentOfficialsConfig
                         'orig' => 'boundary_set',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                     'query' => [

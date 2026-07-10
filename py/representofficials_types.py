@@ -26,7 +26,7 @@ class Boundary(TypedDict, total=False):
     url: str
 
 
-class BoundaryLoadMatch(TypedDict):
+class BoundaryLoadMatch(TypedDict, total=False):
     id: str
     boundary: str
     boundary_set: str
@@ -120,7 +120,7 @@ class RepresentatifLoadMatch(TypedDict):
     id: str
 
 
-class RepresentatifListMatch(TypedDict):
+class RepresentatifListMatch(TypedDict, total=False):
     boundary: str
     boundary_set: str
 

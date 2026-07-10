@@ -16,9 +16,9 @@
 ---@field url? string
 
 ---@class BoundaryLoadMatch
----@field id string
----@field boundary string
----@field boundary_set string
+---@field id? string
+---@field boundary? string
+---@field boundary_set? string
 
 ---@class BoundaryListMatch
 ---@field boundary_set_name? string
@@ -94,8 +94,8 @@
 ---@field id string
 
 ---@class RepresentatifListMatch
----@field boundary string
----@field boundary_set string
+---@field boundary? string
+---@field boundary_set? string
 
 ---@class RepresentativeSet
 ---@field name? string

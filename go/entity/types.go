@@ -21,9 +21,9 @@ type Boundary struct {
 
 // BoundaryLoadMatch is the typed request payload for Boundary.LoadTyped.
 type BoundaryLoadMatch struct {
-	Id string `json:"id"`
-	Boundary string `json:"boundary"`
-	BoundarySet string `json:"boundary_set"`
+	Id *string `json:"id,omitempty"`
+	Boundary *string `json:"boundary,omitempty"`
+	BoundarySet *string `json:"boundary_set,omitempty"`
 }
 
 // BoundaryListMatch is the typed request payload for Boundary.ListTyped.
@@ -125,8 +125,8 @@ type RepresentatifLoadMatch struct {
 
 // RepresentatifListMatch is the typed request payload for Representatif.ListTyped.
 type RepresentatifListMatch struct {
-	Boundary string `json:"boundary"`
-	BoundarySet string `json:"boundary_set"`
+	Boundary *string `json:"boundary,omitempty"`
+	BoundarySet *string `json:"boundary_set,omitempty"`
 }
 
 // RepresentativeSet is the typed data model for the representative_set entity.

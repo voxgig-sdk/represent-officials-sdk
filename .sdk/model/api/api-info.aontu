@@ -16,9 +16,9 @@ main: {
           url: "https://represent.opennorth.ca"
         }
       ]
+      summary: "This API provides access to information about elected officials and electoral districts in Canada."
       title: "Represent Officials API"
       version: "1.0.0"
+      website: "https://represent.opennorth.ca"
     }
   }
-}
-

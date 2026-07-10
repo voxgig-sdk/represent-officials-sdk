@@ -50,14 +50,15 @@ except Exception as err:
     print(f"list failed: {err}")
 ```
 
-### 3. Load a boundary
+### 3. Load a postalcode
 
+PostalCode is nested under postal_code, so provide the `postal_code`.
 `load()` returns the bare record (a `dict`) and raises on error.
 
 ```python
 try:
-    boundary = client.Boundary().load({"id": "example_id"})
-    print(boundary)
+    postalcode = client.PostalCode().load({"postal_code": "example_postal_code"})
+    print(postalcode)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -508,7 +509,7 @@ Create an instance: `postal_code = client.PostalCode()`
 #### Example: Load
 
 ```python
-postal_code = client.PostalCode().load()
+postal_code = client.PostalCode().load({"postal_code": "postal_code"})
 ```
 
 
