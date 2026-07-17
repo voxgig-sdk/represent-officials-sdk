@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- RepresentOfficials SDK exists test
 
 local sdk = require("represent-officials_sdk")
 
