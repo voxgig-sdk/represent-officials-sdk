@@ -75,11 +75,11 @@ function postal_code_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "REPRESENTOFFICIALS_TEST_POSTAL_CODE_ENTID" => [],
-        "REPRESENTOFFICIALS_TEST_LIVE" => "FALSE",
+        "REPRESENT_OFFICIALS_TEST_POSTAL_CODE_ENTID" => [],
+        "REPRESENT_OFFICIALS_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["REPRESENTOFFICIALS_TEST_LIVE"] === "TRUE";
+    $live = $env["REPRESENT_OFFICIALS_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

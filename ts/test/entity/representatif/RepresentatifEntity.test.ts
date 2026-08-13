@@ -26,8 +26,8 @@ import {
 describe('RepresentatifEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when REPRESENTOFFICIALS_TEST_LIVE=TRUE.
-  afterEach(liveDelay('REPRESENTOFFICIALS_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when REPRESENT_OFFICIALS_TEST_LIVE=TRUE.
+  afterEach(liveDelay('REPRESENT_OFFICIALS_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = RepresentOfficialsSDK.test()
@@ -65,7 +65,7 @@ describe('RepresentatifEntity', async () => {
     representatif_ref01_match['boundary'] = setup.idmap['boundary01']
     representatif_ref01_match['boundary_set'] = setup.idmap['boundary_set01']
 
-    const representatif_ref01_list = await representatif_ref01_ent.list(representatif_ref01_match)
+    const representatif_ref01_list = (await representatif_ref01_ent.list(representatif_ref01_match)).map((e: any) => e.data())
 
 
 

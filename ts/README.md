@@ -35,7 +35,9 @@ const client = new RepresentOfficialsSDK()
 
 ### 2. List boundary records
 
-`list()` resolves to an array of Boundary objects — iterate it directly:
+`list()` resolves to an array of Boundary ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const boundarys = await client.Boundary().list()
@@ -68,8 +70,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const boundarys = await client.Boundary().list()
-  console.log(boundarys)
+  const boundarysets = await client.BoundarySet().list()
+  console.log(boundarysets)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -135,9 +137,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = RepresentOfficialsSDK.test()
 
-const boundary = await client.Boundary().list()
-// boundary is a bare entity populated with mock response data
-console.log(boundary)
+const boundaryset = await client.BoundarySet().list()
+// boundaryset is the entity, populated with mock response data
+// — call boundaryset.data() for the record itself
+console.log(boundaryset)
 ```
 
 You can also use the instance method:
@@ -152,7 +155,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Boundary()
+const entity = client.BoundarySet()
 
 // First call runs the operation and stores its result
 await entity.list()
@@ -313,7 +316,7 @@ The `prepare()` method returns:
 | `meta` |  |
 | `metadata` |  |
 | `name` |  |
-| `object` |  |
+| `objects` |  |
 | `url` |  |
 
 Operations: list, load.
@@ -337,7 +340,7 @@ API path: `/boundary-sets/`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `object` |  |
+| `objects` |  |
 
 Operations: list.
 
@@ -348,7 +351,7 @@ API path: `/candidates/`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `object` |  |
+| `objects` |  |
 
 Operations: list.
 
@@ -385,8 +388,8 @@ API path: `/postcodes/{postalCode}/`
 | `last_name` |  |
 | `meta` |  |
 | `name` |  |
-| `object` |  |
-| `office` |  |
+| `objects` |  |
+| `offices` |  |
 | `party_name` |  |
 | `personal_url` |  |
 | `photo_url` |  |
@@ -433,7 +436,7 @@ Create an instance: `const boundary = client.Boundary()`
 | `meta` | `Record<string, any>` |  |
 | `metadata` | `Record<string, any>` |  |
 | `name` | `string` |  |
-| `object` | `any[]` |  |
+| `objects` | `any[]` |  |
 | `url` | `string` |  |
 
 #### Example: Load
@@ -496,7 +499,7 @@ Create an instance: `const candidate = client.Candidate()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `object` | `any[]` |  |
+| `objects` | `any[]` |  |
 
 #### Example: List
 
@@ -520,7 +523,7 @@ Create an instance: `const election = client.Election()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `object` | `any[]` |  |
+| `objects` | `any[]` |  |
 
 #### Example: List
 
@@ -584,8 +587,8 @@ Create an instance: `const representatif = client.Representatif()`
 | `last_name` | `string` |  |
 | `meta` | `Record<string, any>` |  |
 | `name` | `string` |  |
-| `object` | `any[]` |  |
-| `office` | `any[]` |  |
+| `objects` | `any[]` |  |
+| `offices` | `any[]` |  |
 | `party_name` | `string` |  |
 | `personal_url` | `string` |  |
 | `photo_url` | `string` |  |
@@ -705,11 +708,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const boundary = client.Boundary()
-await boundary.list()
+const boundaryset = client.BoundarySet()
+await boundaryset.list()
 
-// boundary.data() now returns the boundary data from the last `list`
-// boundary.match() returns the last match criteria
+// boundaryset.data() now returns the boundaryset data from the last `list`
+// boundaryset.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

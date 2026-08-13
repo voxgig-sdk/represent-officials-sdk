@@ -75,12 +75,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-boundarys, err := client.Boundary(nil).List(nil, nil)
+boundarysets, err := client.BoundarySet(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = boundarys
+_ = boundarysets
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -144,13 +144,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-boundary, err := client.Boundary(nil).List(
+boundarySet, err := client.BoundarySet(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(boundary) // the returned mock data
+fmt.Println(boundarySet) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -280,7 +280,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | `"meta"` |  |
 | `"metadata"` |  |
 | `"name"` |  |
-| `"object"` |  |
+| `"objects"` |  |
 | `"url"` |  |
 
 Operations: List, Load.
@@ -304,7 +304,7 @@ API path: `/boundary-sets/`
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"object"` |  |
+| `"objects"` |  |
 
 Operations: List.
 
@@ -315,7 +315,7 @@ API path: `/candidates/`
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"object"` |  |
+| `"objects"` |  |
 
 Operations: List.
 
@@ -352,8 +352,8 @@ API path: `/postcodes/{postalCode}/`
 | `"last_name"` |  |
 | `"meta"` |  |
 | `"name"` |  |
-| `"object"` |  |
-| `"office"` |  |
+| `"objects"` |  |
+| `"offices"` |  |
 | `"party_name"` |  |
 | `"personal_url"` |  |
 | `"photo_url"` |  |
@@ -400,7 +400,7 @@ Create an instance: `boundary := client.Boundary(nil)`
 | `meta` | `map[string]any` |  |
 | `metadata` | `map[string]any` |  |
 | `name` | `string` |  |
-| `object` | `[]any` |  |
+| `objects` | `[]any` |  |
 | `url` | `string` |  |
 
 #### Example: Load
@@ -479,7 +479,7 @@ Create an instance: `candidate := client.Candidate(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `object` | `[]any` |  |
+| `objects` | `[]any` |  |
 
 #### Example: List
 
@@ -507,7 +507,7 @@ Create an instance: `election := client.Election(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `object` | `[]any` |  |
+| `objects` | `[]any` |  |
 
 #### Example: List
 
@@ -579,8 +579,8 @@ Create an instance: `representatif := client.Representatif(nil)`
 | `last_name` | `string` |  |
 | `meta` | `map[string]any` |  |
 | `name` | `string` |  |
-| `object` | `[]any` |  |
-| `office` | `[]any` |  |
+| `objects` | `[]any` |  |
+| `offices` | `[]any` |  |
 | `party_name` | `string` |  |
 | `personal_url` | `string` |  |
 | `photo_url` | `string` |  |
@@ -720,11 +720,11 @@ Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-boundary := client.Boundary(nil)
-boundary.List(nil, nil)
+boundaryset := client.BoundarySet(nil)
+boundaryset.List(nil, nil)
 
-// boundary.Data() now returns the boundary data from the last list
-// boundary.Match() returns the last match criteria
+// boundaryset.Data() now returns the boundaryset data from the last list
+// boundaryset.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

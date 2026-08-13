@@ -116,7 +116,7 @@ boundary = client.Boundary()
 | `meta` | `dict` | No |  |
 | `metadata` | `dict` | No |  |
 | `name` | `str` | No |  |
-| `object` | `list` | No |  |
+| `objects` | `list` | No |  |
 | `url` | `str` | No |  |
 
 ### Operations
@@ -242,7 +242,7 @@ candidate = client.Candidate()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `dict` | No |  |
-| `object` | `list` | No |  |
+| `objects` | `list` | No |  |
 
 ### Operations
 
@@ -296,7 +296,7 @@ election = client.Election()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `dict` | No |  |
-| `object` | `list` | No |  |
+| `objects` | `list` | No |  |
 
 ### Operations
 
@@ -417,8 +417,8 @@ representatif = client.Representatif()
 | `last_name` | `str` | No |  |
 | `meta` | `dict` | No |  |
 | `name` | `str` | Yes |  |
-| `object` | `list` | No |  |
-| `office` | `list` | No |  |
+| `objects` | `list` | No |  |
+| `offices` | `list` | No |  |
 | `party_name` | `str` | No |  |
 | `personal_url` | `str` | No |  |
 | `photo_url` | `str` | No |  |

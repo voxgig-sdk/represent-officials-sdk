@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ RepresentOfficialsUtility::setRegistrar(function (RepresentOfficialsUtility $u):
     $u->prepare_params = [RepresentOfficialsPrepareParams::class, 'call'];
     $u->prepare_path = [RepresentOfficialsPreparePath::class, 'call'];
     $u->prepare_query = [RepresentOfficialsPrepareQuery::class, 'call'];
+    $u->graphql_body = [RepresentOfficialsGraphql::class, 'body'];
+    $u->graphql_errors = [RepresentOfficialsGraphql::class, 'errors'];
     $u->result_basic = [RepresentOfficialsResultBasic::class, 'call'];
     $u->result_body = [RepresentOfficialsResultBody::class, 'call'];
     $u->result_headers = [RepresentOfficialsResultHeaders::class, 'call'];

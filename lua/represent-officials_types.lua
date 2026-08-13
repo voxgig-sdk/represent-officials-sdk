@@ -12,7 +12,7 @@
 ---@field meta? table
 ---@field metadata? table
 ---@field name? string
----@field object? table
+---@field objects? table
 ---@field url? string
 
 ---@class BoundaryLoadMatch
@@ -26,7 +26,7 @@
 ---@field meta? table
 ---@field metadata? table
 ---@field name? string
----@field object? table
+---@field objects? table
 ---@field url? string
 
 ---@class BoundarySet
@@ -44,19 +44,19 @@
 
 ---@class Candidate
 ---@field meta? table
----@field object? table
+---@field objects? table
 
 ---@class CandidateListMatch
 ---@field meta? table
----@field object? table
+---@field objects? table
 
 ---@class Election
 ---@field meta? table
----@field object? table
+---@field objects? table
 
 ---@class ElectionListMatch
 ---@field meta? table
----@field object? table
+---@field objects? table
 
 ---@class PostalCode
 ---@field boundaries_centroid? table
@@ -82,8 +82,8 @@
 ---@field last_name? string
 ---@field meta? table
 ---@field name string
----@field object? table
----@field office? table
+---@field objects? table
+---@field offices? table
 ---@field party_name? string
 ---@field personal_url? string
 ---@field photo_url? string

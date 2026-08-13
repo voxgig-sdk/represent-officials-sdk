@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = RepresentOfficialsSDK.test()
-const boundarys = await client.Boundary().list()
-// boundarys is an array of bare Boundary records populated with mock data
-console.log(boundarys)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = RepresentOfficialsSDK.test({
+  entity: {
+    boundary_set: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const boundarysets = await client.BoundarySet().list()
+// boundarysets is an array of BoundarySet entities, populated with mock data
+// — call boundarysets[0].data() for the record itself
+console.log(boundarysets)
 ```
 
 ### Python
 
 ```python
 client = RepresentOfficialsSDK.test()
-boundarys = client.Boundary().list()
-print(boundarys)
+boundarysets = client.BoundarySet().list()
+print(boundarysets)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(boundarys)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = RepresentOfficialsSDK::test([
-    "entity" => ["boundary" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["boundaryset" => ["test01" => ["id" => "test01"]]],
 ]);
-$boundarys = $client->Boundary()->list();
+$boundarysets = $client->BoundarySet()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Boundary(nil).List(
+result, err := client.BoundarySet(nil).List(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.Boundary(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = RepresentOfficialsSDK.test({
-  "entity" => { "boundary" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "boundaryset" => { "test01" => { "id" => "test01" } } },
 })
-boundarys = client.Boundary.list()
+boundarysets = client.BoundarySet.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:Boundary():list()
+local results, err = client:BoundarySet():list()
 ```
 
 ## Packages
@@ -110,7 +119,7 @@ import { RepresentOfficialsSDK } from '@voxgig-sdk/represent-officials'
 
 const client = new RepresentOfficialsSDK()
 
-// List all boundarys (returns Boundary[])
+// List all boundarys (returns BoundaryEntity[] — .data() for the record)
 const boundarys = await client.Boundary().list()
 for (const boundary of boundarys) {
   console.log(boundary)
@@ -203,7 +212,7 @@ $client = new RepresentOfficialsSDK();
 $boundarys = $client->Boundary()->list();
 print_r($boundarys);
 
-// Load a specific boundary (returns the bare record; throws on error)
+// Load a specific boundary (returns the ENTITY; call data_get() for the record; throws on error)
 $boundary = $client->Boundary()->load(["id" => "example_id"]);
 print_r($boundary);
 ```
@@ -243,7 +252,7 @@ client = RepresentOfficialsSDK.new
 boundarys = client.Boundary.list
 puts boundarys
 
-# Load a specific boundary (returns the bare record; raises on error)
+# Load a specific boundary (returns the ENTITY; call data_get for the record)
 boundary = client.Boundary.load({ "id" => "example_id" })
 puts boundary
 ```
@@ -380,6 +389,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://represent.opennorth.ca](https://represent.opennorth.ca)
 

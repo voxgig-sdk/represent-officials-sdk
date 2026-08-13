@@ -127,7 +127,7 @@ fmt.Println(boundary.GetName()) // "boundary"
 | `meta` | `map[string]any` | No |  |
 | `metadata` | `map[string]any` | No |  |
 | `name` | `string` | No |  |
-| `object` | `[]any` | No |  |
+| `objects` | `[]any` | No |  |
 | `url` | `string` | No |  |
 
 ### Operations
@@ -257,7 +257,7 @@ fmt.Println(candidate.GetName()) // "candidate"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `map[string]any` | No |  |
-| `object` | `[]any` | No |  |
+| `objects` | `[]any` | No |  |
 
 ### Operations
 
@@ -309,7 +309,7 @@ fmt.Println(election.GetName()) // "election"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `map[string]any` | No |  |
-| `object` | `[]any` | No |  |
+| `objects` | `[]any` | No |  |
 
 ### Operations
 
@@ -428,8 +428,8 @@ fmt.Println(representatif.GetName()) // "representatif"
 | `last_name` | `string` | No |  |
 | `meta` | `map[string]any` | No |  |
 | `name` | `string` | Yes |  |
-| `object` | `[]any` | No |  |
-| `office` | `[]any` | No |  |
+| `objects` | `[]any` | No |  |
+| `offices` | `[]any` | No |  |
 | `party_name` | `string` | No |  |
 | `personal_url` | `string` | No |  |
 | `photo_url` | `string` | No |  |

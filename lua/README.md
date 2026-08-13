@@ -64,7 +64,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local boundarys, err = client:Boundary():list()
+local boundarysets, err = client:BoundarySet():list()
 if err then error(err) end
 ```
 
@@ -122,7 +122,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Boundary():list()
+local result, err = client:BoundarySet():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -254,7 +254,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | `meta` |  |
 | `metadata` |  |
 | `name` |  |
-| `object` |  |
+| `objects` |  |
 | `url` |  |
 
 Operations: List, Load.
@@ -278,7 +278,7 @@ API path: `/boundary-sets/`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `object` |  |
+| `objects` |  |
 
 Operations: List.
 
@@ -289,7 +289,7 @@ API path: `/candidates/`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `object` |  |
+| `objects` |  |
 
 Operations: List.
 
@@ -326,8 +326,8 @@ API path: `/postcodes/{postalCode}/`
 | `last_name` |  |
 | `meta` |  |
 | `name` |  |
-| `object` |  |
-| `office` |  |
+| `objects` |  |
+| `offices` |  |
 | `party_name` |  |
 | `personal_url` |  |
 | `photo_url` |  |
@@ -374,7 +374,7 @@ Create an instance: `local boundary = client:Boundary(nil)`
 | `meta` | `table` |  |
 | `metadata` | `table` |  |
 | `name` | `string` |  |
-| `object` | `table` |  |
+| `objects` | `table` |  |
 | `url` | `string` |  |
 
 #### Example: Load
@@ -437,7 +437,7 @@ Create an instance: `local candidate = client:Candidate(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `object` | `table` |  |
+| `objects` | `table` |  |
 
 #### Example: List
 
@@ -461,7 +461,7 @@ Create an instance: `local election = client:Election(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `object` | `table` |  |
+| `objects` | `table` |  |
 
 #### Example: List
 
@@ -525,8 +525,8 @@ Create an instance: `local representatif = client:Representatif(nil)`
 | `last_name` | `string` |  |
 | `meta` | `table` |  |
 | `name` | `string` |  |
-| `object` | `table` |  |
-| `office` | `table` |  |
+| `objects` | `table` |  |
+| `offices` | `table` |  |
 | `party_name` | `string` |  |
 | `personal_url` | `string` |  |
 | `photo_url` | `string` |  |
@@ -653,11 +653,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local boundary = client:Boundary()
-boundary:list()
+local boundaryset = client:BoundarySet()
+boundaryset:list()
 
--- boundary:data_get() now returns the boundary data from the last list
--- boundary:match_get() returns the last match criteria
+-- boundaryset:data_get() now returns the boundaryset data from the last list
+-- boundaryset:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -23,8 +23,8 @@ module RepresentOfficialsTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("REPRESENTOFFICIALS_TEST_LIVE")
-    override = getenv("REPRESENTOFFICIALS_TEST_OVERRIDE")
+    live = getenv("REPRESENT_OFFICIALS_TEST_LIVE")
+    override = getenv("REPRESENT_OFFICIALS_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module RepresentOfficialsTestRunner
       end
     end
 
-    explain = getenv("REPRESENTOFFICIALS_TEST_EXPLAIN")
-    m["REPRESENTOFFICIALS_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("REPRESENT_OFFICIALS_TEST_EXPLAIN")
+    m["REPRESENT_OFFICIALS_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

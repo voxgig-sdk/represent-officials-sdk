@@ -122,7 +122,7 @@ boundary = client.Boundary
 | `meta` | `Hash` | No |  |
 | `metadata` | `Hash` | No |  |
 | `name` | `String` | No |  |
-| `object` | `Array` | No |  |
+| `objects` | `Array` | No |  |
 | `url` | `String` | No |  |
 
 ### Operations
@@ -246,7 +246,7 @@ candidate = client.Candidate
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `Hash` | No |  |
-| `object` | `Array` | No |  |
+| `objects` | `Array` | No |  |
 
 ### Operations
 
@@ -299,7 +299,7 @@ election = client.Election
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `Hash` | No |  |
-| `object` | `Array` | No |  |
+| `objects` | `Array` | No |  |
 
 ### Operations
 
@@ -420,8 +420,8 @@ representatif = client.Representatif
 | `last_name` | `String` | No |  |
 | `meta` | `Hash` | No |  |
 | `name` | `String` | Yes |  |
-| `object` | `Array` | No |  |
-| `office` | `Array` | No |  |
+| `objects` | `Array` | No |  |
+| `offices` | `Array` | No |  |
 | `party_name` | `String` | No |  |
 | `personal_url` | `String` | No |  |
 | `photo_url` | `String` | No |  |

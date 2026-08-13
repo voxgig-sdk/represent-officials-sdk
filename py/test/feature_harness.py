@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import RepresentOfficialsControl
-from core.error import RepresentOfficialsError
-from core.result import RepresentOfficialsResult
-from core.spec import RepresentOfficialsSpec
+from representofficials_sdk.config import make_config
+from representofficials_sdk.features import _make_feature
+from representofficials_sdk.core.control import RepresentOfficialsControl
+from representofficials_sdk.core.error import RepresentOfficialsError
+from representofficials_sdk.core.result import RepresentOfficialsResult
+from representofficials_sdk.core.spec import RepresentOfficialsSpec
 
 
 # True when this SDK was generated with the named feature.

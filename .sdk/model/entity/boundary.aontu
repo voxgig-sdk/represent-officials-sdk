@@ -31,7 +31,7 @@ main: kit: entity: boundary: {
       type: "`$STRING`"
     }
     {
-      name: "object"
+      name: "objects"
       req: false
       type: "`$ARRAY`"
     }
@@ -327,7 +327,7 @@ main: kit: entity: boundary: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.metadata`"
           }
         }
         {

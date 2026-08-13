@@ -3,15 +3,15 @@
     "election": {
       "ELECTION00": {
         "meta": {},
-        "object": []
+        "objects": []
       },
       "ELECTION01": {
         "meta": {},
-        "object": []
+        "objects": []
       },
       "ELECTION02": {
         "meta": {},
-        "object": []
+        "objects": []
       }
     }
   },
@@ -19,7 +19,7 @@
     "election": {
       "election_ref01": {
         "meta": {},
-        "object": []
+        "objects": []
       }
     }
   }

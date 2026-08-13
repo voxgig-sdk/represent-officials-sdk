@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'RepresentOfficials',
   }
 
 
@@ -109,7 +109,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "object",
+          "name": "objects",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 5
@@ -224,6 +224,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/boundaries/",
               "parts": [
@@ -340,6 +341,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/",
               "parts": [
@@ -420,6 +422,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/{boundary}/",
               "parts": [
@@ -443,7 +446,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.metadata`"
               },
               "index$": 1
             },
@@ -487,6 +490,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/{boundary}/centroid",
               "parts": [
@@ -555,6 +559,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/{boundary}/shape",
               "parts": [
@@ -623,6 +628,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/{boundary}/simple_shape",
               "parts": [
@@ -683,6 +689,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/centroid",
               "parts": [
@@ -741,6 +748,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/shape",
               "parts": [
@@ -799,6 +807,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/simple_shape",
               "parts": [
@@ -931,6 +940,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/boundary-sets/",
               "parts": [
@@ -1001,6 +1011,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/boundary-sets/{boundarySet}/",
               "parts": [
@@ -1045,7 +1056,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "object",
+          "name": "objects",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 1
@@ -1105,6 +1116,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/candidates/",
               "parts": [
@@ -1144,7 +1156,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "object",
+          "name": "objects",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 1
@@ -1204,6 +1216,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/elections/",
               "parts": [
@@ -1346,6 +1359,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/postcodes/{postalCode}/",
               "parts": [
@@ -1458,14 +1472,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "object",
+          "name": "objects",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 10
         },
         {
           "active": true,
-          "name": "office",
+          "name": "offices",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 11
@@ -1632,6 +1646,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/representatives/",
               "parts": [
@@ -1711,6 +1726,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/{boundary}/representatives/",
               "parts": [
@@ -1735,7 +1751,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.objects`"
               },
               "index$": 1
             }
@@ -1869,6 +1885,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/representatives/{representativeSet}/",
               "parts": [
@@ -1987,6 +2004,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/representative-sets/",
               "parts": [
@@ -2055,6 +2073,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/representative-sets/{representativeSet}/",
               "parts": [

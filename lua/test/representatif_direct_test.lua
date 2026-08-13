@@ -115,11 +115,11 @@ function representatif_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["REPRESENTOFFICIALS_TEST_REPRESENTATIF_ENTID"] = {},
-    ["REPRESENTOFFICIALS_TEST_LIVE"] = "FALSE",
+    ["REPRESENT_OFFICIALS_TEST_REPRESENTATIF_ENTID"] = {},
+    ["REPRESENT_OFFICIALS_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["REPRESENTOFFICIALS_TEST_LIVE"] == "TRUE"
+  local live = env["REPRESENT_OFFICIALS_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

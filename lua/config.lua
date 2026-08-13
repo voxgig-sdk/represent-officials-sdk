@@ -67,7 +67,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "object",
+            ["name"] = "objects",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 5,
@@ -182,6 +182,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/boundaries/",
                 ["parts"] = {
@@ -298,6 +299,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/boundaries/{boundarySet}/",
                 ["parts"] = {
@@ -378,6 +380,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/boundaries/{boundarySet}/{boundary}/",
                 ["parts"] = {
@@ -401,7 +404,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.metadata`",
                 },
                 ["index$"] = 1,
               },
@@ -445,6 +448,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/boundaries/{boundarySet}/{boundary}/centroid",
                 ["parts"] = {
@@ -513,6 +517,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/boundaries/{boundarySet}/{boundary}/shape",
                 ["parts"] = {
@@ -581,6 +586,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/boundaries/{boundarySet}/{boundary}/simple_shape",
                 ["parts"] = {
@@ -641,6 +647,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/boundaries/{boundarySet}/centroid",
                 ["parts"] = {
@@ -699,6 +706,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/boundaries/{boundarySet}/shape",
                 ["parts"] = {
@@ -757,6 +765,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/boundaries/{boundarySet}/simple_shape",
                 ["parts"] = {
@@ -889,6 +898,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/boundary-sets/",
                 ["parts"] = {
@@ -959,6 +969,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/boundary-sets/{boundarySet}/",
                 ["parts"] = {
@@ -1003,7 +1014,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "object",
+            ["name"] = "objects",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 1,
@@ -1063,6 +1074,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/candidates/",
                 ["parts"] = {
@@ -1102,7 +1114,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "object",
+            ["name"] = "objects",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 1,
@@ -1162,6 +1174,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/elections/",
                 ["parts"] = {
@@ -1304,6 +1317,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/postcodes/{postalCode}/",
                 ["parts"] = {
@@ -1416,14 +1430,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "object",
+            ["name"] = "objects",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 10,
           },
           {
             ["active"] = true,
-            ["name"] = "office",
+            ["name"] = "offices",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 11,
@@ -1590,6 +1604,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/representatives/",
                 ["parts"] = {
@@ -1669,6 +1684,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/boundaries/{boundarySet}/{boundary}/representatives/",
                 ["parts"] = {
@@ -1693,7 +1709,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.objects`",
                 },
                 ["index$"] = 1,
               },
@@ -1827,6 +1843,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/representatives/{representativeSet}/",
                 ["parts"] = {
@@ -1945,6 +1962,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/representative-sets/",
                 ["parts"] = {
@@ -2013,6 +2031,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/representative-sets/{representativeSet}/",
                 ["parts"] = {

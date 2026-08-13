@@ -7,7 +7,7 @@
         "meta": {},
         "metadata": {},
         "name": "s4a",
-        "object": [],
+        "objects": [],
         "url": "s4c",
         "boundary": "BOUNDARY01",
         "boundary_set": "BOUNDARY_SET01",
@@ -19,7 +19,7 @@
         "meta": {},
         "metadata": {},
         "name": "s90",
-        "object": [],
+        "objects": [],
         "url": "s92",
         "boundary": "BOUNDARY01",
         "boundary_set": "BOUNDARY_SET01",
@@ -31,7 +31,7 @@
         "meta": {},
         "metadata": {},
         "name": "sd6",
-        "object": [],
+        "objects": [],
         "url": "sd8",
         "boundary": "BOUNDARY01",
         "boundary_set": "BOUNDARY_SET01",
@@ -47,7 +47,7 @@
         "meta": {},
         "metadata": {},
         "name": "s11c",
-        "object": [],
+        "objects": [],
         "url": "s11e"
       }
     }

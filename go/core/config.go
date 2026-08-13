@@ -67,7 +67,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "object",
+						"name": "objects",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 5,
@@ -182,6 +182,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/",
 								"parts": []any{
@@ -209,7 +210,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -298,6 +298,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/",
 								"parts": []any{
@@ -378,6 +379,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/{boundary}/",
 								"parts": []any{
@@ -401,7 +403,7 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.metadata`",
 								},
 								"index$": 1,
 							},
@@ -445,6 +447,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/{boundary}/centroid",
 								"parts": []any{
@@ -513,6 +516,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/{boundary}/shape",
 								"parts": []any{
@@ -581,6 +585,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/{boundary}/simple_shape",
 								"parts": []any{
@@ -641,6 +646,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/centroid",
 								"parts": []any{
@@ -699,6 +705,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/shape",
 								"parts": []any{
@@ -757,6 +764,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/simple_shape",
 								"parts": []any{
@@ -784,7 +792,6 @@ func MakeConfig() map[string]any {
 								"index$": 7,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -889,6 +896,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/boundary-sets/",
 								"parts": []any{
@@ -912,7 +920,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -959,6 +966,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/boundary-sets/{boundarySet}/",
 								"parts": []any{
@@ -985,7 +993,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -1003,7 +1010,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "object",
+						"name": "objects",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 1,
@@ -1063,6 +1070,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/candidates/",
 								"parts": []any{
@@ -1084,7 +1092,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -1102,7 +1109,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "object",
+						"name": "objects",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 1,
@@ -1162,6 +1169,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/elections/",
 								"parts": []any{
@@ -1183,7 +1191,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -1304,6 +1311,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/postcodes/{postalCode}/",
 								"parts": []any{
@@ -1331,7 +1339,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -1416,14 +1423,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "object",
+						"name": "objects",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 10,
 					},
 					map[string]any{
 						"active": true,
-						"name": "office",
+						"name": "offices",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 11,
@@ -1590,6 +1597,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/representatives/",
 								"parts": []any{
@@ -1669,6 +1677,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/{boundary}/representatives/",
 								"parts": []any{
@@ -1693,12 +1702,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.objects`",
 								},
 								"index$": 1,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -1827,6 +1835,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/representatives/{representativeSet}/",
 								"parts": []any{
@@ -1863,7 +1872,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -1945,6 +1953,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/representative-sets/",
 								"parts": []any{
@@ -1966,7 +1975,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -2013,6 +2021,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/representative-sets/{representativeSet}/",
 								"parts": []any{
@@ -2039,7 +2048,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{

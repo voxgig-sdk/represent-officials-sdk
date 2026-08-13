@@ -11,7 +11,7 @@ export interface Boundary {
   meta?: Record<string, any>
   metadata?: Record<string, any>
   name?: string
-  object?: any[]
+  objects?: any[]
   url?: string
 }
 
@@ -19,6 +19,12 @@ export interface BoundaryLoadMatch {
   id?: string
   boundary?: string
   boundary_set?: string
+
+  // Selects a custom action instead of the plain load:
+  //   'centroid' | 'centroid' | 'shape' | 'shape' | 'simple_shape' | 'simple_shape'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface BoundaryListMatch {
@@ -27,7 +33,7 @@ export interface BoundaryListMatch {
   meta?: Record<string, any>
   metadata?: Record<string, any>
   name?: string
-  object?: any[]
+  objects?: any[]
   url?: string
 }
 
@@ -49,22 +55,22 @@ export interface BoundarySetListMatch {
 
 export interface Candidate {
   meta?: Record<string, any>
-  object?: any[]
+  objects?: any[]
 }
 
 export interface CandidateListMatch {
   meta?: Record<string, any>
-  object?: any[]
+  objects?: any[]
 }
 
 export interface Election {
   meta?: Record<string, any>
-  object?: any[]
+  objects?: any[]
 }
 
 export interface ElectionListMatch {
   meta?: Record<string, any>
-  object?: any[]
+  objects?: any[]
 }
 
 export interface PostalCode {
@@ -93,8 +99,8 @@ export interface Representatif {
   last_name?: string
   meta?: Record<string, any>
   name: string
-  object?: any[]
-  office?: any[]
+  objects?: any[]
+  offices?: any[]
   party_name?: string
   personal_url?: string
   photo_url?: string

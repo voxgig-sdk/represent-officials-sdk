@@ -119,7 +119,7 @@ local boundary = client:Boundary(nil)
 | `meta` | `table` | No |  |
 | `metadata` | `table` | No |  |
 | `name` | `string` | No |  |
-| `object` | `table` | No |  |
+| `objects` | `table` | No |  |
 | `url` | `string` | No |  |
 
 ### Operations
@@ -243,7 +243,7 @@ local candidate = client:Candidate(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `table` | No |  |
-| `object` | `table` | No |  |
+| `objects` | `table` | No |  |
 
 ### Operations
 
@@ -296,7 +296,7 @@ local election = client:Election(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `table` | No |  |
-| `object` | `table` | No |  |
+| `objects` | `table` | No |  |
 
 ### Operations
 
@@ -417,8 +417,8 @@ local representatif = client:Representatif(nil)
 | `last_name` | `string` | No |  |
 | `meta` | `table` | No |  |
 | `name` | `string` | Yes |  |
-| `object` | `table` | No |  |
-| `office` | `table` | No |  |
+| `objects` | `table` | No |  |
+| `offices` | `table` | No |  |
 | `party_name` | `string` | No |  |
 | `personal_url` | `string` | No |  |
 | `photo_url` | `string` | No |  |

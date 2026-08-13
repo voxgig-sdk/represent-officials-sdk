@@ -25,7 +25,7 @@
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] object
+# @!attribute [rw] objects
 #   @return [Array, nil]
 #
 # @!attribute [rw] url
@@ -36,7 +36,7 @@ Boundary = Struct.new(
   :meta,
   :metadata,
   :name,
-  :object,
+  :objects,
   :url,
   keyword_init: true
 )
@@ -75,7 +75,7 @@ BoundaryLoadMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] object
+# @!attribute [rw] objects
 #   @return [Array, nil]
 #
 # @!attribute [rw] url
@@ -86,7 +86,7 @@ BoundaryListMatch = Struct.new(
   :meta,
   :metadata,
   :name,
-  :object,
+  :objects,
   :url,
   keyword_init: true
 )
@@ -139,11 +139,11 @@ BoundarySetListMatch = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] object
+# @!attribute [rw] objects
 #   @return [Array, nil]
 Candidate = Struct.new(
   :meta,
-  :object,
+  :objects,
   keyword_init: true
 )
 
@@ -152,11 +152,11 @@ Candidate = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] object
+# @!attribute [rw] objects
 #   @return [Array, nil]
 CandidateListMatch = Struct.new(
   :meta,
-  :object,
+  :objects,
   keyword_init: true
 )
 
@@ -165,11 +165,11 @@ CandidateListMatch = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] object
+# @!attribute [rw] objects
 #   @return [Array, nil]
 Election = Struct.new(
   :meta,
-  :object,
+  :objects,
   keyword_init: true
 )
 
@@ -178,11 +178,11 @@ Election = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] object
+# @!attribute [rw] objects
 #   @return [Array, nil]
 ElectionListMatch = Struct.new(
   :meta,
-  :object,
+  :objects,
   keyword_init: true
 )
 
@@ -264,10 +264,10 @@ PostalCodeLoadMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String]
 #
-# @!attribute [rw] object
+# @!attribute [rw] objects
 #   @return [Array, nil]
 #
-# @!attribute [rw] office
+# @!attribute [rw] offices
 #   @return [Array, nil]
 #
 # @!attribute [rw] party_name
@@ -295,8 +295,8 @@ Representatif = Struct.new(
   :last_name,
   :meta,
   :name,
-  :object,
-  :office,
+  :objects,
+  :offices,
   :party_name,
   :personal_url,
   :photo_url,

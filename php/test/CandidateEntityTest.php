@@ -72,7 +72,7 @@ class CandidateEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set REPRESENTOFFICIALS_TEST_CANDIDATE_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set REPRESENT_OFFICIALS_TEST_CANDIDATE_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -117,22 +117,22 @@ function candidate_basic_setup($extra)
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("REPRESENTOFFICIALS_TEST_CANDIDATE_ENTID");
+    $entid_env_raw = getenv("REPRESENT_OFFICIALS_TEST_CANDIDATE_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "REPRESENTOFFICIALS_TEST_CANDIDATE_ENTID" => $idmap,
-        "REPRESENTOFFICIALS_TEST_LIVE" => "FALSE",
-        "REPRESENTOFFICIALS_TEST_EXPLAIN" => "FALSE",
+        "REPRESENT_OFFICIALS_TEST_CANDIDATE_ENTID" => $idmap,
+        "REPRESENT_OFFICIALS_TEST_LIVE" => "FALSE",
+        "REPRESENT_OFFICIALS_TEST_EXPLAIN" => "FALSE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["REPRESENTOFFICIALS_TEST_CANDIDATE_ENTID"]);
+        $env["REPRESENT_OFFICIALS_TEST_CANDIDATE_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
 
-    if ($env["REPRESENTOFFICIALS_TEST_LIVE"] === "TRUE") {
+    if ($env["REPRESENT_OFFICIALS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
             ],
@@ -141,13 +141,13 @@ function candidate_basic_setup($extra)
         $client = new RepresentOfficialsSDK(Helpers::to_map($merged_opts));
     }
 
-    $live = $env["REPRESENTOFFICIALS_TEST_LIVE"] === "TRUE";
+    $live = $env["REPRESENT_OFFICIALS_TEST_LIVE"] === "TRUE";
     return [
         "client" => $client,
         "data" => $entity_data,
         "idmap" => $idmap_resolved,
         "env" => $env,
-        "explain" => $env["REPRESENTOFFICIALS_TEST_EXPLAIN"] === "TRUE",
+        "explain" => $env["REPRESENT_OFFICIALS_TEST_EXPLAIN"] === "TRUE",
         "live" => $live,
         "synthetic_only" => $live && !$idmap_overridden,
         "now" => (int)(microtime(true) * 1000),

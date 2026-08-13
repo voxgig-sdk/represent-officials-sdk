@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# RepresentOfficials SDK exists test
 
 import pytest
 from representofficials_sdk import RepresentOfficialsSDK

@@ -68,7 +68,7 @@ module RepresentOfficialsConfig
             },
             {
               "active" => true,
-              "name" => "object",
+              "name" => "objects",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 5,
@@ -183,6 +183,7 @@ module RepresentOfficialsConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/boundaries/",
                   "parts" => [
@@ -299,6 +300,7 @@ module RepresentOfficialsConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/boundaries/{boundarySet}/",
                   "parts" => [
@@ -379,6 +381,7 @@ module RepresentOfficialsConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/boundaries/{boundarySet}/{boundary}/",
                   "parts" => [
@@ -402,7 +405,7 @@ module RepresentOfficialsConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.metadata`",
                   },
                   "index$" => 1,
                 },
@@ -446,6 +449,7 @@ module RepresentOfficialsConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/boundaries/{boundarySet}/{boundary}/centroid",
                   "parts" => [
@@ -514,6 +518,7 @@ module RepresentOfficialsConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/boundaries/{boundarySet}/{boundary}/shape",
                   "parts" => [
@@ -582,6 +587,7 @@ module RepresentOfficialsConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/boundaries/{boundarySet}/{boundary}/simple_shape",
                   "parts" => [
@@ -642,6 +648,7 @@ module RepresentOfficialsConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/boundaries/{boundarySet}/centroid",
                   "parts" => [
@@ -700,6 +707,7 @@ module RepresentOfficialsConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/boundaries/{boundarySet}/shape",
                   "parts" => [
@@ -758,6 +766,7 @@ module RepresentOfficialsConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/boundaries/{boundarySet}/simple_shape",
                   "parts" => [
@@ -890,6 +899,7 @@ module RepresentOfficialsConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/boundary-sets/",
                   "parts" => [
@@ -960,6 +970,7 @@ module RepresentOfficialsConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/boundary-sets/{boundarySet}/",
                   "parts" => [
@@ -1004,7 +1015,7 @@ module RepresentOfficialsConfig
             },
             {
               "active" => true,
-              "name" => "object",
+              "name" => "objects",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 1,
@@ -1064,6 +1075,7 @@ module RepresentOfficialsConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/candidates/",
                   "parts" => [
@@ -1103,7 +1115,7 @@ module RepresentOfficialsConfig
             },
             {
               "active" => true,
-              "name" => "object",
+              "name" => "objects",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 1,
@@ -1163,6 +1175,7 @@ module RepresentOfficialsConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/elections/",
                   "parts" => [
@@ -1305,6 +1318,7 @@ module RepresentOfficialsConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/postcodes/{postalCode}/",
                   "parts" => [
@@ -1417,14 +1431,14 @@ module RepresentOfficialsConfig
             },
             {
               "active" => true,
-              "name" => "object",
+              "name" => "objects",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 10,
             },
             {
               "active" => true,
-              "name" => "office",
+              "name" => "offices",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 11,
@@ -1591,6 +1605,7 @@ module RepresentOfficialsConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/representatives/",
                   "parts" => [
@@ -1670,6 +1685,7 @@ module RepresentOfficialsConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/boundaries/{boundarySet}/{boundary}/representatives/",
                   "parts" => [
@@ -1694,7 +1710,7 @@ module RepresentOfficialsConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.objects`",
                   },
                   "index$" => 1,
                 },
@@ -1828,6 +1844,7 @@ module RepresentOfficialsConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/representatives/{representativeSet}/",
                   "parts" => [
@@ -1946,6 +1963,7 @@ module RepresentOfficialsConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/representative-sets/",
                   "parts" => [
@@ -2014,6 +2032,7 @@ module RepresentOfficialsConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/representative-sets/{representativeSet}/",
                   "parts" => [

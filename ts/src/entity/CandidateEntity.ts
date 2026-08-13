@@ -37,7 +37,7 @@ class CandidateEntity extends RepresentOfficialsEntityBase<Candidate> {
 
 
 
-  async list(this: any, reqmatch?: CandidateListMatch, ctrl?: Control): Promise<Candidate[]> {
+  async list(this: any, reqmatch?: CandidateListMatch, ctrl?: Control): Promise<CandidateEntity[]> {
 
     const utility = this._utility
 

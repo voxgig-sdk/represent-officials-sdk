@@ -193,8 +193,33 @@ const boundary = client.Boundary()
 | `meta` | `Record<string, any>` | No |  |
 | `metadata` | `Record<string, any>` | No |  |
 | `name` | `string` | No |  |
-| `object` | `any[]` | No |  |
+| `objects` | `any[]` | No |  |
 | `url` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `centroid` | `/boundaries/{boundarySet}/{boundary}/centroid` | `client.Boundary().load({ $action: 'centroid', ... })` |
+| `centroid` | `/boundaries/{boundarySet}/centroid` | `client.Boundary().load({ $action: 'centroid', ... })` |
+| `shape` | `/boundaries/{boundarySet}/{boundary}/shape` | `client.Boundary().load({ $action: 'shape', ... })` |
+| `shape` | `/boundaries/{boundarySet}/shape` | `client.Boundary().load({ $action: 'shape', ... })` |
+| `simple_shape` | `/boundaries/{boundarySet}/{boundary}/simple_shape` | `client.Boundary().load({ $action: 'simple_shape', ... })` |
+| `simple_shape` | `/boundaries/{boundarySet}/simple_shape` | `client.Boundary().load({ $action: 'simple_shape', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Boundary record — check the API definition for its shape.
+
+```ts
+const result = await client.Boundary().load({
+  $action: 'centroid',
+  /* ...the action's own arguments */
+})
+```
 
 ### Operations
 
@@ -313,7 +338,7 @@ const candidate = client.Candidate()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `Record<string, any>` | No |  |
-| `object` | `any[]` | No |  |
+| `objects` | `any[]` | No |  |
 
 ### Operations
 
@@ -364,7 +389,7 @@ const election = client.Election()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `Record<string, any>` | No |  |
-| `object` | `any[]` | No |  |
+| `objects` | `any[]` | No |  |
 
 ### Operations
 
@@ -481,8 +506,8 @@ const representatif = client.Representatif()
 | `last_name` | `string` | No |  |
 | `meta` | `Record<string, any>` | No |  |
 | `name` | `string` | Yes |  |
-| `object` | `any[]` | No |  |
-| `office` | `any[]` | No |  |
+| `objects` | `any[]` | No |  |
+| `offices` | `any[]` | No |  |
 | `party_name` | `string` | No |  |
 | `personal_url` | `string` | No |  |
 | `photo_url` | `string` | No |  |

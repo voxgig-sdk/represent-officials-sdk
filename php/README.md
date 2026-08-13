@@ -51,7 +51,7 @@ PostalCode is nested under postal_code, so provide the `postal_code`.
 
 ```php
 try {
-    // load() returns the bare PostalCode record (throws on error).
+    // load() returns the ENTITY — call data_get() for the PostalCode record (throws on error).
     $postalcode = $client->PostalCode()->load(["postal_code" => "example_postal_code"]);
     print_r($postalcode);
 } catch (\Throwable $err) {
@@ -67,7 +67,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $boundarys = $client->Boundary()->list();
+    $boundarysets = $client->BoundarySet()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -139,12 +139,13 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```php
 $client = RepresentOfficialsSDK::test([
-    "entity" => ["boundary" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["boundaryset" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
-$boundary = $client->Boundary()->list();
-print_r($boundary);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$boundaryset = $client->BoundarySet()->list();
+print_r($boundaryset);
 ```
 
 ### Use a custom fetch function
@@ -248,7 +249,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -275,7 +276,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | `meta` |  |
 | `metadata` |  |
 | `name` |  |
-| `object` |  |
+| `objects` |  |
 | `url` |  |
 
 Operations: List, Load.
@@ -299,7 +300,7 @@ API path: `/boundary-sets/`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `object` |  |
+| `objects` |  |
 
 Operations: List.
 
@@ -310,7 +311,7 @@ API path: `/candidates/`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `object` |  |
+| `objects` |  |
 
 Operations: List.
 
@@ -347,8 +348,8 @@ API path: `/postcodes/{postalCode}/`
 | `last_name` |  |
 | `meta` |  |
 | `name` |  |
-| `object` |  |
-| `office` |  |
+| `objects` |  |
+| `offices` |  |
 | `party_name` |  |
 | `personal_url` |  |
 | `photo_url` |  |
@@ -395,13 +396,13 @@ Create an instance: `$boundary = $client->Boundary();`
 | `meta` | `array` |  |
 | `metadata` | `array` |  |
 | `name` | `string` |  |
-| `object` | `array` |  |
+| `objects` | `array` |  |
 | `url` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Boundary record (throws on error).
+// load() returns the ENTITY — call data_get() for the Boundary record (throws on error).
 $boundary = $client->Boundary()->load(["id" => "boundary_id"]);
 ```
 
@@ -435,7 +436,7 @@ Create an instance: `$boundary_set = $client->BoundarySet();`
 #### Example: Load
 
 ```php
-// load() returns the bare BoundarySet record (throws on error).
+// load() returns the ENTITY — call data_get() for the BoundarySet record (throws on error).
 $boundary_set = $client->BoundarySet()->load(["id" => "boundary_set_id"]);
 ```
 
@@ -462,7 +463,7 @@ Create an instance: `$candidate = $client->Candidate();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `object` | `array` |  |
+| `objects` | `array` |  |
 
 #### Example: List
 
@@ -487,7 +488,7 @@ Create an instance: `$election = $client->Election();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `object` | `array` |  |
+| `objects` | `array` |  |
 
 #### Example: List
 
@@ -523,7 +524,7 @@ Create an instance: `$postal_code = $client->PostalCode();`
 #### Example: Load
 
 ```php
-// load() returns the bare PostalCode record (throws on error).
+// load() returns the ENTITY — call data_get() for the PostalCode record (throws on error).
 $postal_code = $client->PostalCode()->load(["postal_code" => "postal_code"]);
 ```
 
@@ -553,8 +554,8 @@ Create an instance: `$representatif = $client->Representatif();`
 | `last_name` | `string` |  |
 | `meta` | `array` |  |
 | `name` | `string` |  |
-| `object` | `array` |  |
-| `office` | `array` |  |
+| `objects` | `array` |  |
+| `offices` | `array` |  |
 | `party_name` | `string` |  |
 | `personal_url` | `string` |  |
 | `photo_url` | `string` |  |
@@ -564,7 +565,7 @@ Create an instance: `$representatif = $client->Representatif();`
 #### Example: Load
 
 ```php
-// load() returns the bare Representatif record (throws on error).
+// load() returns the ENTITY — call data_get() for the Representatif record (throws on error).
 $representatif = $client->Representatif()->load(["id" => "representatif_id"]);
 ```
 
@@ -597,7 +598,7 @@ Create an instance: `$representative_set = $client->RepresentativeSet();`
 #### Example: Load
 
 ```php
-// load() returns the bare RepresentativeSet record (throws on error).
+// load() returns the ENTITY — call data_get() for the RepresentativeSet record (throws on error).
 $representative_set = $client->RepresentativeSet()->load(["id" => "representative_set_id"]);
 ```
 
@@ -685,11 +686,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$boundary = $client->Boundary();
-$boundary->list();
+$boundaryset = $client->BoundarySet();
+$boundaryset->list();
 
-// $boundary->data_get() now returns the boundary data from the last list
-// $boundary->match_get() returns the last match criteria
+// $boundaryset->data_get() now returns the boundaryset data from the last list
+// $boundaryset->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

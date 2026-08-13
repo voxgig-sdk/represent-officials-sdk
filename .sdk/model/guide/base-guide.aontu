@@ -31,6 +31,7 @@ guide: {
     path: "/boundaries/{boundarySet}/{boundary}/": {
       rename: param: "boundarySet": *"boundary_set"
       op: load: method: *GET
+      op: load: transform: res: *("`body.metadata`")|top
     }
     path: "/boundaries/{boundarySet}/{boundary}/centroid": {
       action: "centroid": {}
@@ -82,6 +83,7 @@ guide: {
     path: "/boundaries/{boundarySet}/{boundary}/representatives/": {
       rename: param: "boundarySet": *"boundary_set"
       op: list: method: *GET
+      op: list: transform: res: *("`body.objects`")|top
     }
     path: "/representatives/": {
       op: list: method: *GET

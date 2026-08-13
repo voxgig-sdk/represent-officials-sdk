@@ -26,8 +26,8 @@ import {
 describe('ElectionEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when REPRESENTOFFICIALS_TEST_LIVE=TRUE.
-  afterEach(liveDelay('REPRESENTOFFICIALS_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when REPRESENT_OFFICIALS_TEST_LIVE=TRUE.
+  afterEach(liveDelay('REPRESENT_OFFICIALS_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = RepresentOfficialsSDK.test()
@@ -63,7 +63,7 @@ describe('ElectionEntity', async () => {
     const election_ref01_ent = client.Election()
     const election_ref01_match: any = {}
 
-    const election_ref01_list = await election_ref01_ent.list(election_ref01_match)
+    const election_ref01_list = (await election_ref01_ent.list(election_ref01_match)).map((e: any) => e.data())
 
 
   })

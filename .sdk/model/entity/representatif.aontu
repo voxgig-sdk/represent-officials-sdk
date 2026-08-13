@@ -56,12 +56,12 @@ main: kit: entity: representatif: {
       type: "`$STRING`"
     }
     {
-      name: "object"
+      name: "objects"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "office"
+      name: "offices"
       req: false
       type: "`$ARRAY`"
     }
@@ -296,7 +296,7 @@ main: kit: entity: representatif: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.objects`"
           }
         }
       ]

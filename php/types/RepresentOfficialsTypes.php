@@ -20,7 +20,7 @@ class Boundary
     public ?array $meta = null;
     public ?array $metadata = null;
     public ?string $name = null;
-    public ?array $object = null;
+    public ?array $objects = null;
     public ?string $url = null;
 }
 
@@ -40,7 +40,7 @@ class BoundaryListMatch
     public ?array $meta = null;
     public ?array $metadata = null;
     public ?string $name = null;
-    public ?array $object = null;
+    public ?array $objects = null;
     public ?string $url = null;
 }
 
@@ -70,28 +70,28 @@ class BoundarySetListMatch
 class Candidate
 {
     public ?array $meta = null;
-    public ?array $object = null;
+    public ?array $objects = null;
 }
 
 /** Request payload for Candidate#list. */
 class CandidateListMatch
 {
     public ?array $meta = null;
-    public ?array $object = null;
+    public ?array $objects = null;
 }
 
 /** Election entity data model. */
 class Election
 {
     public ?array $meta = null;
-    public ?array $object = null;
+    public ?array $objects = null;
 }
 
 /** Request payload for Election#list. */
 class ElectionListMatch
 {
     public ?array $meta = null;
-    public ?array $object = null;
+    public ?array $objects = null;
 }
 
 /** PostalCode entity data model. */
@@ -126,8 +126,8 @@ class Representatif
     public ?string $last_name = null;
     public ?array $meta = null;
     public string $name;
-    public ?array $object = null;
-    public ?array $office = null;
+    public ?array $objects = null;
+    public ?array $offices = null;
     public ?string $party_name = null;
     public ?string $personal_url = null;
     public ?string $photo_url = null;

@@ -121,7 +121,7 @@ $boundary = $client->Boundary();
 | `meta` | `array` | No |  |
 | `metadata` | `array` | No |  |
 | `name` | `string` | No |  |
-| `object` | `array` | No |  |
+| `objects` | `array` | No |  |
 | `url` | `string` | No |  |
 
 ### Operations
@@ -245,7 +245,7 @@ $candidate = $client->Candidate();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `array` | No |  |
-| `object` | `array` | No |  |
+| `objects` | `array` | No |  |
 
 ### Operations
 
@@ -298,7 +298,7 @@ $election = $client->Election();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `array` | No |  |
-| `object` | `array` | No |  |
+| `objects` | `array` | No |  |
 
 ### Operations
 
@@ -419,8 +419,8 @@ $representatif = $client->Representatif();
 | `last_name` | `string` | No |  |
 | `meta` | `array` | No |  |
 | `name` | `string` | Yes |  |
-| `object` | `array` | No |  |
-| `office` | `array` | No |  |
+| `objects` | `array` | No |  |
+| `offices` | `array` | No |  |
 | `party_name` | `string` | No |  |
 | `personal_url` | `string` | No |  |
 | `photo_url` | `string` | No |  |

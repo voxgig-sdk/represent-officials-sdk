@@ -50,7 +50,7 @@ PostalCode is nested under postal_code, so provide the `postal_code`.
 
 ```ruby
 begin
-  # load returns the bare PostalCode record (raises on error).
+  # load returns the ENTITY — call data_get for the PostalCode record (raises on error).
   postalcode = client.PostalCode.load({ "postal_code" => "example_postal_code" })
   puts postalcode
 rescue => err
@@ -65,7 +65,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  boundarys = client.Boundary.list()
+  boundarysets = client.BoundarySet.list()
 rescue => err
   warn "list failed: #{err}"
 end
@@ -133,12 +133,13 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
 client = RepresentOfficialsSDK.test({
-  "entity" => { "boundary" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "boundaryset" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
-boundary = client.Boundary.list()
-puts boundary
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+boundaryset = client.BoundarySet.list()
+puts boundaryset
 ```
 
 ### Use a custom fetch function
@@ -265,7 +266,7 @@ returns a result `Hash` with these keys:
 | `meta` |  |
 | `metadata` |  |
 | `name` |  |
-| `object` |  |
+| `objects` |  |
 | `url` |  |
 
 Operations: List, Load.
@@ -289,7 +290,7 @@ API path: `/boundary-sets/`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `object` |  |
+| `objects` |  |
 
 Operations: List.
 
@@ -300,7 +301,7 @@ API path: `/candidates/`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `object` |  |
+| `objects` |  |
 
 Operations: List.
 
@@ -337,8 +338,8 @@ API path: `/postcodes/{postalCode}/`
 | `last_name` |  |
 | `meta` |  |
 | `name` |  |
-| `object` |  |
-| `office` |  |
+| `objects` |  |
+| `offices` |  |
 | `party_name` |  |
 | `personal_url` |  |
 | `photo_url` |  |
@@ -385,13 +386,13 @@ Create an instance: `boundary = client.Boundary`
 | `meta` | `Hash` |  |
 | `metadata` | `Hash` |  |
 | `name` | `String` |  |
-| `object` | `Array` |  |
+| `objects` | `Array` |  |
 | `url` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Boundary record (raises on error).
+# load returns the ENTITY — call data_get for the Boundary record (raises on error).
 boundary = client.Boundary.load({ "id" => "boundary_id" })
 ```
 
@@ -425,7 +426,7 @@ Create an instance: `boundary_set = client.BoundarySet`
 #### Example: Load
 
 ```ruby
-# load returns the bare BoundarySet record (raises on error).
+# load returns the ENTITY — call data_get for the BoundarySet record (raises on error).
 boundary_set = client.BoundarySet.load({ "id" => "boundary_set_id" })
 ```
 
@@ -452,7 +453,7 @@ Create an instance: `candidate = client.Candidate`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Hash` |  |
-| `object` | `Array` |  |
+| `objects` | `Array` |  |
 
 #### Example: List
 
@@ -477,7 +478,7 @@ Create an instance: `election = client.Election`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Hash` |  |
-| `object` | `Array` |  |
+| `objects` | `Array` |  |
 
 #### Example: List
 
@@ -513,7 +514,7 @@ Create an instance: `postal_code = client.PostalCode`
 #### Example: Load
 
 ```ruby
-# load returns the bare PostalCode record (raises on error).
+# load returns the ENTITY — call data_get for the PostalCode record (raises on error).
 postal_code = client.PostalCode.load({ "postal_code" => "postal_code" })
 ```
 
@@ -543,8 +544,8 @@ Create an instance: `representatif = client.Representatif`
 | `last_name` | `String` |  |
 | `meta` | `Hash` |  |
 | `name` | `String` |  |
-| `object` | `Array` |  |
-| `office` | `Array` |  |
+| `objects` | `Array` |  |
+| `offices` | `Array` |  |
 | `party_name` | `String` |  |
 | `personal_url` | `String` |  |
 | `photo_url` | `String` |  |
@@ -554,7 +555,7 @@ Create an instance: `representatif = client.Representatif`
 #### Example: Load
 
 ```ruby
-# load returns the bare Representatif record (raises on error).
+# load returns the ENTITY — call data_get for the Representatif record (raises on error).
 representatif = client.Representatif.load({ "id" => "representatif_id" })
 ```
 
@@ -587,7 +588,7 @@ Create an instance: `representative_set = client.RepresentativeSet`
 #### Example: Load
 
 ```ruby
-# load returns the bare RepresentativeSet record (raises on error).
+# load returns the ENTITY — call data_get for the RepresentativeSet record (raises on error).
 representative_set = client.RepresentativeSet.load({ "id" => "representative_set_id" })
 ```
 
@@ -675,11 +676,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-boundary = client.Boundary
-boundary.list()
+boundaryset = client.BoundarySet
+boundaryset.list()
 
-# boundary.data_get now returns the boundary data from the last list
-# boundary.match_get returns the last match criteria
+# boundaryset.data_get now returns the boundaryset data from the last list
+# boundaryset.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

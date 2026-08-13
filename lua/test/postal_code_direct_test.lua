@@ -70,11 +70,11 @@ function postal_code_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["REPRESENTOFFICIALS_TEST_POSTAL_CODE_ENTID"] = {},
-    ["REPRESENTOFFICIALS_TEST_LIVE"] = "FALSE",
+    ["REPRESENT_OFFICIALS_TEST_POSTAL_CODE_ENTID"] = {},
+    ["REPRESENT_OFFICIALS_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["REPRESENTOFFICIALS_TEST_LIVE"] == "TRUE"
+  local live = env["REPRESENT_OFFICIALS_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

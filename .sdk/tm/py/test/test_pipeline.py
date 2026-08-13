@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import RepresentOfficialsSDK
-from core.error import RepresentOfficialsError
-from core.result import RepresentOfficialsResult
-from core.response import RepresentOfficialsResponse
-from core.spec import RepresentOfficialsSpec
-from feature.base_feature import RepresentOfficialsBaseFeature
+from projectname_sdk.core.error import RepresentOfficialsError
+from projectname_sdk.core.result import RepresentOfficialsResult
+from projectname_sdk.core.response import RepresentOfficialsResponse
+from projectname_sdk.core.spec import RepresentOfficialsSpec
+from projectname_sdk.feature.base_feature import RepresentOfficialsBaseFeature
 
 
 def _client():

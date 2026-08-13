@@ -53,7 +53,7 @@ except Exception as err:
 ### 3. Load a postalcode
 
 PostalCode is nested under postal_code, so provide the `postal_code`.
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -70,8 +70,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    boundarys = client.Boundary().list()
-    print(boundarys)
+    boundarysets = client.BoundarySet().list()
+    print(boundarysets)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -137,9 +137,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = RepresentOfficialsSDK.test()
 
-# Entity ops return the bare record and raise on error.
-boundary = client.Boundary().list()
-# boundary contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+boundaryset = client.BoundarySet().list()
+# boundaryset contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -240,7 +241,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -267,7 +268,7 @@ On error, `ok` is `False` and `err` contains the error value.
 | `meta` |  |
 | `metadata` |  |
 | `name` |  |
-| `object` |  |
+| `objects` |  |
 | `url` |  |
 
 Operations: List, Load.
@@ -291,7 +292,7 @@ API path: `/boundary-sets/`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `object` |  |
+| `objects` |  |
 
 Operations: List.
 
@@ -302,7 +303,7 @@ API path: `/candidates/`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `object` |  |
+| `objects` |  |
 
 Operations: List.
 
@@ -339,8 +340,8 @@ API path: `/postcodes/{postalCode}/`
 | `last_name` |  |
 | `meta` |  |
 | `name` |  |
-| `object` |  |
-| `office` |  |
+| `objects` |  |
+| `offices` |  |
 | `party_name` |  |
 | `personal_url` |  |
 | `photo_url` |  |
@@ -387,7 +388,7 @@ Create an instance: `boundary = client.Boundary()`
 | `meta` | `dict` |  |
 | `metadata` | `dict` |  |
 | `name` | `str` |  |
-| `object` | `list` |  |
+| `objects` | `list` |  |
 | `url` | `str` |  |
 
 #### Example: Load
@@ -450,7 +451,7 @@ Create an instance: `candidate = client.Candidate()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `dict` |  |
-| `object` | `list` |  |
+| `objects` | `list` |  |
 
 #### Example: List
 
@@ -474,7 +475,7 @@ Create an instance: `election = client.Election()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `dict` |  |
-| `object` | `list` |  |
+| `objects` | `list` |  |
 
 #### Example: List
 
@@ -538,8 +539,8 @@ Create an instance: `representatif = client.Representatif()`
 | `last_name` | `str` |  |
 | `meta` | `dict` |  |
 | `name` | `str` |  |
-| `object` | `list` |  |
-| `office` | `list` |  |
+| `objects` | `list` |  |
+| `offices` | `list` |  |
 | `party_name` | `str` |  |
 | `personal_url` | `str` |  |
 | `photo_url` | `str` |  |
@@ -665,11 +666,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-boundary = client.Boundary()
-boundary.list()
+boundaryset = client.BoundarySet()
+boundaryset.list()
 
-# boundary.data_get() now returns the boundary data from the last list
-# boundary.match_get() returns the last match criteria
+# boundaryset.data_get() now returns the boundaryset data from the last list
+# boundaryset.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

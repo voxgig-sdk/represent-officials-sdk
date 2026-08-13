@@ -11,7 +11,7 @@ main: kit: entity: election: {
       type: "`$OBJECT`"
     }
     {
-      name: "object"
+      name: "objects"
       req: false
       type: "`$ARRAY`"
     }

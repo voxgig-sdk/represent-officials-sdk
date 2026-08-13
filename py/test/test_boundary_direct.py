@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from representofficials_sdk.utility.voxgig_struct import voxgig_struct as vs
 from representofficials_sdk import RepresentOfficialsSDK
-from core import helpers
+from representofficials_sdk.core import helpers
 from test import runner
 
 
@@ -105,11 +105,11 @@ def _boundary_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "REPRESENTOFFICIALS_TEST_BOUNDARY_ENTID": {},
-        "REPRESENTOFFICIALS_TEST_LIVE": "FALSE",
+        "REPRESENT_OFFICIALS_TEST_BOUNDARY_ENTID": {},
+        "REPRESENT_OFFICIALS_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("REPRESENTOFFICIALS_TEST_LIVE") == "TRUE"
+    live = env.get("REPRESENT_OFFICIALS_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
