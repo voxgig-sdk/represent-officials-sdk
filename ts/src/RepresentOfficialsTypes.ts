@@ -16,9 +16,7 @@ export interface Boundary {
 }
 
 export interface BoundaryLoadMatch {
-  id?: string
-  boundary?: string
-  boundary_set?: string
+  id: string
 
   // Selects a custom action instead of the plain load:
   //   'centroid' | 'centroid' | 'shape' | 'shape' | 'simple_shape' | 'simple_shape'
@@ -113,8 +111,23 @@ export interface RepresentatifLoadMatch {
 }
 
 export interface RepresentatifListMatch {
-  boundary?: string
-  boundary_set?: string
+  district_id?: string
+  district_name?: string
+  elected_office?: string
+  email?: string
+  extra?: Record<string, any>
+  first_name?: string
+  gender?: string
+  last_name?: string
+  meta?: Record<string, any>
+  name?: string
+  objects?: any[]
+  offices?: any[]
+  party_name?: string
+  personal_url?: string
+  photo_url?: string
+  source_url?: string
+  url?: string
 }
 
 export interface RepresentativeSet {

@@ -23,6 +23,7 @@ build = {
   modules = {
     ["represent-officials_sdk"] = "represent-officials_sdk.lua",
     ["config"] = "config.lua",
+    ["config_shared"] = "config_shared.lua",
     ["features"] = "features.lua",
   }
 }

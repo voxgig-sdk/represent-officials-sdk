@@ -25,9 +25,7 @@ type Boundary struct {
 
 // BoundaryLoadMatch is the typed request payload for Boundary.LoadTyped.
 type BoundaryLoadMatch struct {
-	Id *string `json:"id,omitempty"`
-	Boundary *string `json:"boundary,omitempty"`
-	BoundarySet *string `json:"boundary_set,omitempty"`
+	Id string `json:"id"`
 }
 
 // BoundaryListMatch is the typed request payload for Boundary.ListTyped.
@@ -129,8 +127,23 @@ type RepresentatifLoadMatch struct {
 
 // RepresentatifListMatch is the typed request payload for Representatif.ListTyped.
 type RepresentatifListMatch struct {
-	Boundary *string `json:"boundary,omitempty"`
-	BoundarySet *string `json:"boundary_set,omitempty"`
+	DistrictId *string `json:"district_id,omitempty"`
+	DistrictName *string `json:"district_name,omitempty"`
+	ElectedOffice *string `json:"elected_office,omitempty"`
+	Email *string `json:"email,omitempty"`
+	Extra *map[string]any `json:"extra,omitempty"`
+	FirstName *string `json:"first_name,omitempty"`
+	Gender *string `json:"gender,omitempty"`
+	LastName *string `json:"last_name,omitempty"`
+	Meta *map[string]any `json:"meta,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Objects *[]any `json:"objects,omitempty"`
+	Offices *[]any `json:"offices,omitempty"`
+	PartyName *string `json:"party_name,omitempty"`
+	PersonalUrl *string `json:"personal_url,omitempty"`
+	PhotoUrl *string `json:"photo_url,omitempty"`
+	SourceUrl *string `json:"source_url,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // RepresentativeSet is the typed data model for the representative_set entity.

@@ -26,10 +26,8 @@ class Boundary(TypedDict, total=False):
     url: str
 
 
-class BoundaryLoadMatch(TypedDict, total=False):
+class BoundaryLoadMatch(TypedDict):
     id: str
-    boundary: str
-    boundary_set: str
 
 
 class BoundaryListMatch(TypedDict, total=False):
@@ -121,8 +119,23 @@ class RepresentatifLoadMatch(TypedDict):
 
 
 class RepresentatifListMatch(TypedDict, total=False):
-    boundary: str
-    boundary_set: str
+    district_id: str
+    district_name: str
+    elected_office: str
+    email: str
+    extra: dict
+    first_name: str
+    gender: str
+    last_name: str
+    meta: dict
+    name: str
+    objects: list
+    offices: list
+    party_name: str
+    personal_url: str
+    photo_url: str
+    source_url: str
+    url: str
 
 
 class RepresentativeSet(TypedDict, total=False):

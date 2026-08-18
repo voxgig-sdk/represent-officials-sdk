@@ -40,7 +40,7 @@ class RepresentOfficialsSDK
         $utility = new RepresentOfficialsUtility();
         $this->_utility = $utility;
 
-        $config = RepresentOfficialsConfig::make_config();
+        $config = RepresentOfficialsConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

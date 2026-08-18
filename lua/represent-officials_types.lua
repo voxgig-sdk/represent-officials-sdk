@@ -16,9 +16,7 @@
 ---@field url? string
 
 ---@class BoundaryLoadMatch
----@field id? string
----@field boundary? string
----@field boundary_set? string
+---@field id string
 
 ---@class BoundaryListMatch
 ---@field boundary_set_name? string
@@ -94,8 +92,23 @@
 ---@field id string
 
 ---@class RepresentatifListMatch
----@field boundary? string
----@field boundary_set? string
+---@field district_id? string
+---@field district_name? string
+---@field elected_office? string
+---@field email? string
+---@field extra? table
+---@field first_name? string
+---@field gender? string
+---@field last_name? string
+---@field meta? table
+---@field name? string
+---@field objects? table
+---@field offices? table
+---@field party_name? string
+---@field personal_url? string
+---@field photo_url? string
+---@field source_url? string
+---@field url? string
 
 ---@class RepresentativeSet
 ---@field name? string

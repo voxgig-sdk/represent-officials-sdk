@@ -23,8 +23,8 @@ class RepresentOfficialsSDK:
         utility = RepresentOfficialsUtility()
         self._utility = utility
 
-        from representofficials_sdk.config import make_config
-        config = make_config()
+        from representofficials_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,

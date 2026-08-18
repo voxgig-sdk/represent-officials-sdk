@@ -44,17 +44,9 @@ Boundary = Struct.new(
 # Request payload for Boundary#load.
 #
 # @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] boundary
-#   @return [String, nil]
-#
-# @!attribute [rw] boundary_set
-#   @return [String, nil]
+#   @return [String]
 BoundaryLoadMatch = Struct.new(
   :id,
-  :boundary,
-  :boundary_set,
   keyword_init: true
 )
 
@@ -316,14 +308,74 @@ RepresentatifLoadMatch = Struct.new(
 
 # Request payload for Representatif#list.
 #
-# @!attribute [rw] boundary
+# @!attribute [rw] district_id
 #   @return [String, nil]
 #
-# @!attribute [rw] boundary_set
+# @!attribute [rw] district_name
+#   @return [String, nil]
+#
+# @!attribute [rw] elected_office
+#   @return [String, nil]
+#
+# @!attribute [rw] email
+#   @return [String, nil]
+#
+# @!attribute [rw] extra
+#   @return [Hash, nil]
+#
+# @!attribute [rw] first_name
+#   @return [String, nil]
+#
+# @!attribute [rw] gender
+#   @return [String, nil]
+#
+# @!attribute [rw] last_name
+#   @return [String, nil]
+#
+# @!attribute [rw] meta
+#   @return [Hash, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] objects
+#   @return [Array, nil]
+#
+# @!attribute [rw] offices
+#   @return [Array, nil]
+#
+# @!attribute [rw] party_name
+#   @return [String, nil]
+#
+# @!attribute [rw] personal_url
+#   @return [String, nil]
+#
+# @!attribute [rw] photo_url
+#   @return [String, nil]
+#
+# @!attribute [rw] source_url
+#   @return [String, nil]
+#
+# @!attribute [rw] url
 #   @return [String, nil]
 RepresentatifListMatch = Struct.new(
-  :boundary,
-  :boundary_set,
+  :district_id,
+  :district_name,
+  :elected_office,
+  :email,
+  :extra,
+  :first_name,
+  :gender,
+  :last_name,
+  :meta,
+  :name,
+  :objects,
+  :offices,
+  :party_name,
+  :personal_url,
+  :photo_url,
+  :source_url,
+  :url,
   keyword_init: true
 )
 

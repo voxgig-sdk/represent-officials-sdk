@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from representofficials_sdk.config import make_config
+from representofficials_sdk.config import shared_config
 from representofficials_sdk.features import _make_feature
 from representofficials_sdk.core.control import RepresentOfficialsControl
 from representofficials_sdk.core.error import RepresentOfficialsError
@@ -24,7 +24,7 @@ from representofficials_sdk.core.spec import RepresentOfficialsSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

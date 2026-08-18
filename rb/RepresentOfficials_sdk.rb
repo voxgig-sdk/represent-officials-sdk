@@ -28,7 +28,7 @@ class RepresentOfficialsSDK
     utility = RepresentOfficialsUtility.new
     @_utility = utility
 
-    config = RepresentOfficialsConfig.make_config
+    config = RepresentOfficialsConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

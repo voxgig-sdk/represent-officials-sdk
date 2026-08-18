@@ -27,9 +27,7 @@ class Boundary
 /** Request payload for Boundary#load. */
 class BoundaryLoadMatch
 {
-    public ?string $id = null;
-    public ?string $boundary = null;
-    public ?string $boundary_set = null;
+    public string $id;
 }
 
 /** Request payload for Boundary#list. */
@@ -144,8 +142,23 @@ class RepresentatifLoadMatch
 /** Request payload for Representatif#list. */
 class RepresentatifListMatch
 {
-    public ?string $boundary = null;
-    public ?string $boundary_set = null;
+    public ?string $district_id = null;
+    public ?string $district_name = null;
+    public ?string $elected_office = null;
+    public ?string $email = null;
+    public ?array $extra = null;
+    public ?string $first_name = null;
+    public ?string $gender = null;
+    public ?string $last_name = null;
+    public ?array $meta = null;
+    public ?string $name = null;
+    public ?array $objects = null;
+    public ?array $offices = null;
+    public ?string $party_name = null;
+    public ?string $personal_url = null;
+    public ?string $photo_url = null;
+    public ?string $source_url = null;
+    public ?string $url = null;
 }
 
 /** RepresentativeSet entity data model. */
