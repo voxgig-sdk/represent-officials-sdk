@@ -349,14 +349,14 @@ postal_code = client.PostalCode()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `boundaries_centroid` | `list` | No |  |
-| `boundaries_concordance` | `list` | No |  |
+| `boundaries_centroid` | `list` | No | Boundaries containing the postal code's centroid |
+| `boundaries_concordance` | `list` | No | Boundaries linked to postal code via official data |
 | `centroid` | `dict` | No |  |
-| `city` | `str` | No |  |
-| `code` | `str` | No |  |
-| `province` | `str` | No |  |
-| `representatives_centroid` | `list` | No |  |
-| `representatives_concordance` | `list` | No |  |
+| `city` | `str` | No | City name |
+| `code` | `str` | No | The postal code |
+| `province` | `str` | No | Province code |
+| `representatives_centroid` | `list` | No | Representatives for boundaries containing centroid |
+| `representatives_concordance` | `list` | No | Representatives for boundaries via concordance |
 
 ### Operations
 
@@ -407,23 +407,23 @@ representatif = client.Representatif()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `district_id` | `str` | No |  |
-| `district_name` | `str` | Yes |  |
-| `elected_office` | `str` | Yes |  |
-| `email` | `str` | No |  |
-| `extra` | `dict` | No |  |
-| `first_name` | `str` | No |  |
-| `gender` | `str` | No |  |
-| `last_name` | `str` | No |  |
+| `district_id` | `str` | No | District identifier if available |
+| `district_name` | `str` | Yes | Name of the electoral district |
+| `elected_office` | `str` | Yes | Type of office (e.g., MP, MLA, Mayor, Councillor, Alderman) |
+| `email` | `str` | No | Email address |
+| `extra` | `dict` | No | Additional data not covered by standard fields |
+| `first_name` | `str` | No | First name |
+| `gender` | `str` | No | Gender |
+| `last_name` | `str` | No | Last name |
 | `meta` | `dict` | No |  |
-| `name` | `str` | Yes |  |
+| `name` | `str` | Yes | Full name of the representative |
 | `objects` | `list` | No |  |
-| `offices` | `list` | No |  |
-| `party_name` | `str` | No |  |
-| `personal_url` | `str` | No |  |
-| `photo_url` | `str` | No |  |
-| `source_url` | `str` | No |  |
-| `url` | `str` | No |  |
+| `offices` | `list` | No | Contact information for representative's offices |
+| `party_name` | `str` | No | Political party name |
+| `personal_url` | `str` | No | Personal website not on official legislature site |
+| `photo_url` | `str` | No | URL to representative's photo |
+| `source_url` | `str` | No | URL where the data is scraped from |
+| `url` | `str` | No | Representative's page on official legislature site |
 
 ### Operations
 

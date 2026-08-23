@@ -351,14 +351,14 @@ postal_code = client.PostalCode
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `boundaries_centroid` | `Array` | No |  |
-| `boundaries_concordance` | `Array` | No |  |
+| `boundaries_centroid` | `Array` | No | Boundaries containing the postal code's centroid |
+| `boundaries_concordance` | `Array` | No | Boundaries linked to postal code via official data |
 | `centroid` | `Hash` | No |  |
-| `city` | `String` | No |  |
-| `code` | `String` | No |  |
-| `province` | `String` | No |  |
-| `representatives_centroid` | `Array` | No |  |
-| `representatives_concordance` | `Array` | No |  |
+| `city` | `String` | No | City name |
+| `code` | `String` | No | The postal code |
+| `province` | `String` | No | Province code |
+| `representatives_centroid` | `Array` | No | Representatives for boundaries containing centroid |
+| `representatives_concordance` | `Array` | No | Representatives for boundaries via concordance |
 
 ### Operations
 
@@ -410,23 +410,23 @@ representatif = client.Representatif
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `district_id` | `String` | No |  |
-| `district_name` | `String` | Yes |  |
-| `elected_office` | `String` | Yes |  |
-| `email` | `String` | No |  |
-| `extra` | `Hash` | No |  |
-| `first_name` | `String` | No |  |
-| `gender` | `String` | No |  |
-| `last_name` | `String` | No |  |
+| `district_id` | `String` | No | District identifier if available |
+| `district_name` | `String` | Yes | Name of the electoral district |
+| `elected_office` | `String` | Yes | Type of office (e.g., MP, MLA, Mayor, Councillor, Alderman) |
+| `email` | `String` | No | Email address |
+| `extra` | `Hash` | No | Additional data not covered by standard fields |
+| `first_name` | `String` | No | First name |
+| `gender` | `String` | No | Gender |
+| `last_name` | `String` | No | Last name |
 | `meta` | `Hash` | No |  |
-| `name` | `String` | Yes |  |
+| `name` | `String` | Yes | Full name of the representative |
 | `objects` | `Array` | No |  |
-| `offices` | `Array` | No |  |
-| `party_name` | `String` | No |  |
-| `personal_url` | `String` | No |  |
-| `photo_url` | `String` | No |  |
-| `source_url` | `String` | No |  |
-| `url` | `String` | No |  |
+| `offices` | `Array` | No | Contact information for representative's offices |
+| `party_name` | `String` | No | Political party name |
+| `personal_url` | `String` | No | Personal website not on official legislature site |
+| `photo_url` | `String` | No | URL to representative's photo |
+| `source_url` | `String` | No | URL where the data is scraped from |
+| `url` | `String` | No | Representative's page on official legislature site |
 
 ### Operations
 

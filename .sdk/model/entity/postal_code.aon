@@ -8,11 +8,13 @@ main: kit: entity: postal_code: {
     {
       name: "boundaries_centroid"
       req: false
+      short: "Boundaries containing the postal code's centroid"
       type: "`$ARRAY`"
     }
     {
       name: "boundaries_concordance"
       req: false
+      short: "Boundaries linked to postal code via official data"
       type: "`$ARRAY`"
     }
     {
@@ -23,26 +25,31 @@ main: kit: entity: postal_code: {
     {
       name: "city"
       req: false
+      short: "City name"
       type: "`$STRING`"
     }
     {
       name: "code"
       req: false
+      short: "The postal code"
       type: "`$STRING`"
     }
     {
       name: "province"
       req: false
+      short: "Province code"
       type: "`$STRING`"
     }
     {
       name: "representatives_centroid"
       req: false
+      short: "Representatives for boundaries containing centroid"
       type: "`$ARRAY`"
     }
     {
       name: "representatives_concordance"
       req: false
+      short: "Representatives for boundaries via concordance"
       type: "`$ARRAY`"
     }
   ]

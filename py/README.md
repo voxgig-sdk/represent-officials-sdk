@@ -313,14 +313,14 @@ API path: `/elections/`
 
 | Field | Description |
 | --- | --- |
-| `boundaries_centroid` |  |
-| `boundaries_concordance` |  |
+| `boundaries_centroid` | Boundaries containing the postal code's centroid |
+| `boundaries_concordance` | Boundaries linked to postal code via official data |
 | `centroid` |  |
-| `city` |  |
-| `code` |  |
-| `province` |  |
-| `representatives_centroid` |  |
-| `representatives_concordance` |  |
+| `city` | City name |
+| `code` | The postal code |
+| `province` | Province code |
+| `representatives_centroid` | Representatives for boundaries containing centroid |
+| `representatives_concordance` | Representatives for boundaries via concordance |
 
 Operations: Load.
 
@@ -330,23 +330,23 @@ API path: `/postcodes/{postalCode}/`
 
 | Field | Description |
 | --- | --- |
-| `district_id` |  |
-| `district_name` |  |
-| `elected_office` |  |
-| `email` |  |
-| `extra` |  |
-| `first_name` |  |
-| `gender` |  |
-| `last_name` |  |
+| `district_id` | District identifier if available |
+| `district_name` | Name of the electoral district |
+| `elected_office` | Type of office (e.g., MP, MLA, Mayor, Councillor, Alderman) |
+| `email` | Email address |
+| `extra` | Additional data not covered by standard fields |
+| `first_name` | First name |
+| `gender` | Gender |
+| `last_name` | Last name |
 | `meta` |  |
-| `name` |  |
+| `name` | Full name of the representative |
 | `objects` |  |
-| `offices` |  |
-| `party_name` |  |
-| `personal_url` |  |
-| `photo_url` |  |
-| `source_url` |  |
-| `url` |  |
+| `offices` | Contact information for representative's offices |
+| `party_name` | Political party name |
+| `personal_url` | Personal website not on official legislature site |
+| `photo_url` | URL to representative's photo |
+| `source_url` | URL where the data is scraped from |
+| `url` | Representative's page on official legislature site |
 
 Operations: List, Load.
 
@@ -498,14 +498,14 @@ Create an instance: `postal_code = client.PostalCode()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `boundaries_centroid` | `list` |  |
-| `boundaries_concordance` | `list` |  |
+| `boundaries_centroid` | `list` | Boundaries containing the postal code's centroid |
+| `boundaries_concordance` | `list` | Boundaries linked to postal code via official data |
 | `centroid` | `dict` |  |
-| `city` | `str` |  |
-| `code` | `str` |  |
-| `province` | `str` |  |
-| `representatives_centroid` | `list` |  |
-| `representatives_concordance` | `list` |  |
+| `city` | `str` | City name |
+| `code` | `str` | The postal code |
+| `province` | `str` | Province code |
+| `representatives_centroid` | `list` | Representatives for boundaries containing centroid |
+| `representatives_concordance` | `list` | Representatives for boundaries via concordance |
 
 #### Example: Load
 
@@ -529,23 +529,23 @@ Create an instance: `representatif = client.Representatif()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `district_id` | `str` |  |
-| `district_name` | `str` |  |
-| `elected_office` | `str` |  |
-| `email` | `str` |  |
-| `extra` | `dict` |  |
-| `first_name` | `str` |  |
-| `gender` | `str` |  |
-| `last_name` | `str` |  |
+| `district_id` | `str` | District identifier if available |
+| `district_name` | `str` | Name of the electoral district |
+| `elected_office` | `str` | Type of office (e.g., MP, MLA, Mayor, Councillor, Alderman) |
+| `email` | `str` | Email address |
+| `extra` | `dict` | Additional data not covered by standard fields |
+| `first_name` | `str` | First name |
+| `gender` | `str` | Gender |
+| `last_name` | `str` | Last name |
 | `meta` | `dict` |  |
-| `name` | `str` |  |
+| `name` | `str` | Full name of the representative |
 | `objects` | `list` |  |
-| `offices` | `list` |  |
-| `party_name` | `str` |  |
-| `personal_url` | `str` |  |
-| `photo_url` | `str` |  |
-| `source_url` | `str` |  |
-| `url` | `str` |  |
+| `offices` | `list` | Contact information for representative's offices |
+| `party_name` | `str` | Political party name |
+| `personal_url` | `str` | Personal website not on official legislature site |
+| `photo_url` | `str` | URL to representative's photo |
+| `source_url` | `str` | URL where the data is scraped from |
+| `url` | `str` | Representative's page on official legislature site |
 
 #### Example: Load
 

@@ -1190,12 +1190,14 @@
               "active": true,
               "name": "boundaries_centroid",
               "req": false,
+              "short": "Boundaries containing the postal code's centroid",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "boundaries_concordance",
               "req": false,
+              "short": "Boundaries linked to postal code via official data",
               "type": "`$ARRAY`"
             },
             {
@@ -1208,30 +1210,35 @@
               "active": true,
               "name": "city",
               "req": false,
+              "short": "City name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "code",
               "req": false,
+              "short": "The postal code",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "province",
               "req": false,
+              "short": "Province code",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "representatives_centroid",
               "req": false,
+              "short": "Representatives for boundaries containing centroid",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "representatives_concordance",
               "req": false,
+              "short": "Representatives for boundaries via concordance",
               "type": "`$ARRAY`"
             }
           ],
@@ -1336,48 +1343,56 @@
               "active": true,
               "name": "district_id",
               "req": false,
+              "short": "District identifier if available",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "district_name",
               "req": true,
+              "short": "Name of the electoral district",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "elected_office",
               "req": true,
+              "short": "Type of office (e.g., MP, MLA, Mayor, Councillor, Alderman)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "email",
               "req": false,
+              "short": "Email address",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "extra",
               "req": false,
+              "short": "Additional data not covered by standard fields",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "first_name",
               "req": false,
+              "short": "First name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "gender",
               "req": false,
+              "short": "Gender",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "last_name",
               "req": false,
+              "short": "Last name",
               "type": "`$STRING`"
             },
             {
@@ -1390,6 +1405,7 @@
               "active": true,
               "name": "name",
               "req": true,
+              "short": "Full name of the representative",
               "type": "`$STRING`"
             },
             {
@@ -1402,36 +1418,42 @@
               "active": true,
               "name": "offices",
               "req": false,
+              "short": "Contact information for representative's offices",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "party_name",
               "req": false,
+              "short": "Political party name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "personal_url",
               "req": false,
+              "short": "Personal website not on official legislature site",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "photo_url",
               "req": false,
+              "short": "URL to representative's photo",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "source_url",
               "req": false,
+              "short": "URL where the data is scraped from",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "url",
               "req": false,
+              "short": "Representative's page on official legislature site",
               "type": "`$STRING`"
             }
           ],

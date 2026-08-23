@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'RepresentOfficials',
+        slug: "represent-officials",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -1050,10 +1061,12 @@ class Config {
       "fields": [
         {
           "name": "boundaries_centroid",
+          "short": "Boundaries containing the postal code's centroid",
           "type": "`$ARRAY`"
         },
         {
           "name": "boundaries_concordance",
+          "short": "Boundaries linked to postal code via official data",
           "type": "`$ARRAY`"
         },
         {
@@ -1062,22 +1075,27 @@ class Config {
         },
         {
           "name": "city",
+          "short": "City name",
           "type": "`$STRING`"
         },
         {
           "name": "code",
+          "short": "The postal code",
           "type": "`$STRING`"
         },
         {
           "name": "province",
+          "short": "Province code",
           "type": "`$STRING`"
         },
         {
           "name": "representatives_centroid",
+          "short": "Representatives for boundaries containing centroid",
           "type": "`$ARRAY`"
         },
         {
           "name": "representatives_concordance",
+          "short": "Representatives for boundaries via concordance",
           "type": "`$ARRAY`"
         }
       ],
@@ -1166,36 +1184,44 @@ class Config {
       "fields": [
         {
           "name": "district_id",
+          "short": "District identifier if available",
           "type": "`$STRING`"
         },
         {
           "name": "district_name",
           "req": true,
+          "short": "Name of the electoral district",
           "type": "`$STRING`"
         },
         {
           "name": "elected_office",
           "req": true,
+          "short": "Type of office (e.g., MP, MLA, Mayor, Councillor, Alderman)",
           "type": "`$STRING`"
         },
         {
           "name": "email",
+          "short": "Email address",
           "type": "`$STRING`"
         },
         {
           "name": "extra",
+          "short": "Additional data not covered by standard fields",
           "type": "`$OBJECT`"
         },
         {
           "name": "first_name",
+          "short": "First name",
           "type": "`$STRING`"
         },
         {
           "name": "gender",
+          "short": "Gender",
           "type": "`$STRING`"
         },
         {
           "name": "last_name",
+          "short": "Last name",
           "type": "`$STRING`"
         },
         {
@@ -1205,6 +1231,7 @@ class Config {
         {
           "name": "name",
           "req": true,
+          "short": "Full name of the representative",
           "type": "`$STRING`"
         },
         {
@@ -1213,26 +1240,32 @@ class Config {
         },
         {
           "name": "offices",
+          "short": "Contact information for representative's offices",
           "type": "`$ARRAY`"
         },
         {
           "name": "party_name",
+          "short": "Political party name",
           "type": "`$STRING`"
         },
         {
           "name": "personal_url",
+          "short": "Personal website not on official legislature site",
           "type": "`$STRING`"
         },
         {
           "name": "photo_url",
+          "short": "URL to representative's photo",
           "type": "`$STRING`"
         },
         {
           "name": "source_url",
+          "short": "URL where the data is scraped from",
           "type": "`$STRING`"
         },
         {
           "name": "url",
+          "short": "Representative's page on official legislature site",
           "type": "`$STRING`"
         }
       ],

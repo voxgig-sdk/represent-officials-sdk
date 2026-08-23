@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -361,14 +361,14 @@ API path: `/elections/`
 
 | Field | Description |
 | --- | --- |
-| `boundaries_centroid` |  |
-| `boundaries_concordance` |  |
+| `boundaries_centroid` | Boundaries containing the postal code's centroid |
+| `boundaries_concordance` | Boundaries linked to postal code via official data |
 | `centroid` |  |
-| `city` |  |
-| `code` |  |
-| `province` |  |
-| `representatives_centroid` |  |
-| `representatives_concordance` |  |
+| `city` | City name |
+| `code` | The postal code |
+| `province` | Province code |
+| `representatives_centroid` | Representatives for boundaries containing centroid |
+| `representatives_concordance` | Representatives for boundaries via concordance |
 
 Operations: load.
 
@@ -378,23 +378,23 @@ API path: `/postcodes/{postalCode}/`
 
 | Field | Description |
 | --- | --- |
-| `district_id` |  |
-| `district_name` |  |
-| `elected_office` |  |
-| `email` |  |
-| `extra` |  |
-| `first_name` |  |
-| `gender` |  |
-| `last_name` |  |
+| `district_id` | District identifier if available |
+| `district_name` | Name of the electoral district |
+| `elected_office` | Type of office (e.g., MP, MLA, Mayor, Councillor, Alderman) |
+| `email` | Email address |
+| `extra` | Additional data not covered by standard fields |
+| `first_name` | First name |
+| `gender` | Gender |
+| `last_name` | Last name |
 | `meta` |  |
-| `name` |  |
+| `name` | Full name of the representative |
 | `objects` |  |
-| `offices` |  |
-| `party_name` |  |
-| `personal_url` |  |
-| `photo_url` |  |
-| `source_url` |  |
-| `url` |  |
+| `offices` | Contact information for representative's offices |
+| `party_name` | Political party name |
+| `personal_url` | Personal website not on official legislature site |
+| `photo_url` | URL to representative's photo |
+| `source_url` | URL where the data is scraped from |
+| `url` | Representative's page on official legislature site |
 
 Operations: list, load.
 
@@ -546,14 +546,14 @@ Create an instance: `const postal_code = client.PostalCode()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `boundaries_centroid` | `any[]` |  |
-| `boundaries_concordance` | `any[]` |  |
+| `boundaries_centroid` | `any[]` | Boundaries containing the postal code's centroid |
+| `boundaries_concordance` | `any[]` | Boundaries linked to postal code via official data |
 | `centroid` | `Record<string, any>` |  |
-| `city` | `string` |  |
-| `code` | `string` |  |
-| `province` | `string` |  |
-| `representatives_centroid` | `any[]` |  |
-| `representatives_concordance` | `any[]` |  |
+| `city` | `string` | City name |
+| `code` | `string` | The postal code |
+| `province` | `string` | Province code |
+| `representatives_centroid` | `any[]` | Representatives for boundaries containing centroid |
+| `representatives_concordance` | `any[]` | Representatives for boundaries via concordance |
 
 #### Example: Load
 
@@ -577,23 +577,23 @@ Create an instance: `const representatif = client.Representatif()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `district_id` | `string` |  |
-| `district_name` | `string` |  |
-| `elected_office` | `string` |  |
-| `email` | `string` |  |
-| `extra` | `Record<string, any>` |  |
-| `first_name` | `string` |  |
-| `gender` | `string` |  |
-| `last_name` | `string` |  |
+| `district_id` | `string` | District identifier if available |
+| `district_name` | `string` | Name of the electoral district |
+| `elected_office` | `string` | Type of office (e.g., MP, MLA, Mayor, Councillor, Alderman) |
+| `email` | `string` | Email address |
+| `extra` | `Record<string, any>` | Additional data not covered by standard fields |
+| `first_name` | `string` | First name |
+| `gender` | `string` | Gender |
+| `last_name` | `string` | Last name |
 | `meta` | `Record<string, any>` |  |
-| `name` | `string` |  |
+| `name` | `string` | Full name of the representative |
 | `objects` | `any[]` |  |
-| `offices` | `any[]` |  |
-| `party_name` | `string` |  |
-| `personal_url` | `string` |  |
-| `photo_url` | `string` |  |
-| `source_url` | `string` |  |
-| `url` | `string` |  |
+| `offices` | `any[]` | Contact information for representative's offices |
+| `party_name` | `string` | Political party name |
+| `personal_url` | `string` | Personal website not on official legislature site |
+| `photo_url` | `string` | URL to representative's photo |
+| `source_url` | `string` | URL where the data is scraped from |
+| `url` | `string` | Representative's page on official legislature site |
 
 #### Example: Load
 

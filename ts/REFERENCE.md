@@ -439,14 +439,14 @@ const postal_code = client.PostalCode()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `boundaries_centroid` | `any[]` | No |  |
-| `boundaries_concordance` | `any[]` | No |  |
+| `boundaries_centroid` | `any[]` | No | Boundaries containing the postal code's centroid |
+| `boundaries_concordance` | `any[]` | No | Boundaries linked to postal code via official data |
 | `centroid` | `Record<string, any>` | No |  |
-| `city` | `string` | No |  |
-| `code` | `string` | No |  |
-| `province` | `string` | No |  |
-| `representatives_centroid` | `any[]` | No |  |
-| `representatives_concordance` | `any[]` | No |  |
+| `city` | `string` | No | City name |
+| `code` | `string` | No | The postal code |
+| `province` | `string` | No | Province code |
+| `representatives_centroid` | `any[]` | No | Representatives for boundaries containing centroid |
+| `representatives_concordance` | `any[]` | No | Representatives for boundaries via concordance |
 
 ### Operations
 
@@ -496,23 +496,23 @@ const representatif = client.Representatif()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `district_id` | `string` | No |  |
-| `district_name` | `string` | Yes |  |
-| `elected_office` | `string` | Yes |  |
-| `email` | `string` | No |  |
-| `extra` | `Record<string, any>` | No |  |
-| `first_name` | `string` | No |  |
-| `gender` | `string` | No |  |
-| `last_name` | `string` | No |  |
+| `district_id` | `string` | No | District identifier if available |
+| `district_name` | `string` | Yes | Name of the electoral district |
+| `elected_office` | `string` | Yes | Type of office (e.g., MP, MLA, Mayor, Councillor, Alderman) |
+| `email` | `string` | No | Email address |
+| `extra` | `Record<string, any>` | No | Additional data not covered by standard fields |
+| `first_name` | `string` | No | First name |
+| `gender` | `string` | No | Gender |
+| `last_name` | `string` | No | Last name |
 | `meta` | `Record<string, any>` | No |  |
-| `name` | `string` | Yes |  |
+| `name` | `string` | Yes | Full name of the representative |
 | `objects` | `any[]` | No |  |
-| `offices` | `any[]` | No |  |
-| `party_name` | `string` | No |  |
-| `personal_url` | `string` | No |  |
-| `photo_url` | `string` | No |  |
-| `source_url` | `string` | No |  |
-| `url` | `string` | No |  |
+| `offices` | `any[]` | No | Contact information for representative's offices |
+| `party_name` | `string` | No | Political party name |
+| `personal_url` | `string` | No | Personal website not on official legislature site |
+| `photo_url` | `string` | No | URL to representative's photo |
+| `source_url` | `string` | No | URL where the data is scraped from |
+| `url` | `string` | No | Representative's page on official legislature site |
 
 ### Operations
 

@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "RepresentOfficials",
+			"slug": "represent-officials",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -1015,10 +1018,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "boundaries_centroid",
+						"short": "Boundaries containing the postal code's centroid",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "boundaries_concordance",
+						"short": "Boundaries linked to postal code via official data",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
@@ -1027,22 +1032,27 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "city",
+						"short": "City name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "code",
+						"short": "The postal code",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "province",
+						"short": "Province code",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "representatives_centroid",
+						"short": "Representatives for boundaries containing centroid",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "representatives_concordance",
+						"short": "Representatives for boundaries via concordance",
 						"type": "`$ARRAY`",
 					},
 				},
@@ -1131,36 +1141,44 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "district_id",
+						"short": "District identifier if available",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "district_name",
 						"req": true,
+						"short": "Name of the electoral district",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "elected_office",
 						"req": true,
+						"short": "Type of office (e.g., MP, MLA, Mayor, Councillor, Alderman)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "email",
+						"short": "Email address",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "extra",
+						"short": "Additional data not covered by standard fields",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "first_name",
+						"short": "First name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "gender",
+						"short": "Gender",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "last_name",
+						"short": "Last name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -1170,6 +1188,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "name",
 						"req": true,
+						"short": "Full name of the representative",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -1178,26 +1197,32 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "offices",
+						"short": "Contact information for representative's offices",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "party_name",
+						"short": "Political party name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "personal_url",
+						"short": "Personal website not on official legislature site",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "photo_url",
+						"short": "URL to representative's photo",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "source_url",
+						"short": "URL where the data is scraped from",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "url",
+						"short": "Representative's page on official legislature site",
 						"type": "`$STRING`",
 					},
 				},
