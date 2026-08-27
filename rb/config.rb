@@ -28,6 +28,7 @@ module RepresentOfficialsConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
@@ -54,6 +55,10 @@ module RepresentOfficialsConfig
             },
             {
               "name" => "external_id",
+              "type" => "`$STRING`",
+            },
+            {
+              "name" => "id",
               "type" => "`$STRING`",
             },
             {
@@ -705,6 +710,10 @@ module RepresentOfficialsConfig
               "type" => "`$STRING`",
             },
             {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+            {
               "name" => "name",
               "type" => "`$STRING`",
             },
@@ -1185,6 +1194,10 @@ module RepresentOfficialsConfig
               "type" => "`$STRING`",
             },
             {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+            {
               "name" => "last_name",
               "short" => "Last name",
               "type" => "`$STRING`",
@@ -1575,6 +1588,10 @@ module RepresentOfficialsConfig
         },
         "representative_set" => {
           "fields" => [
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
             {
               "name" => "name",
               "type" => "`$STRING`",

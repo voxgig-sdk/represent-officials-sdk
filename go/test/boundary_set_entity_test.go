@@ -121,13 +121,19 @@ func TestBoundarySetEntity(t *testing.T) {
 		}
 
 		// LOAD
-		boundarySetRef01MatchDt0 := map[string]any{}
+		boundarySetRef01MatchDt0 := map[string]any{
+			"id": boundarySetRef01Data["id"],
+		}
 		boundarySetRef01DataDt0Loaded, err := boundarySetRef01Ent.Load(boundarySetRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if boundarySetRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		boundarySetRef01DataDt0LoadResult := core.ToMapAny(entityData(boundarySetRef01DataDt0Loaded))
+		if boundarySetRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if boundarySetRef01DataDt0LoadResult["id"] != boundarySetRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

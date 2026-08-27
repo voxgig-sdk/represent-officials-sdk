@@ -124,6 +124,7 @@ fmt.Println(boundary.GetName()) // "boundary"
 | --- | --- | --- | --- |
 | `boundary_set_name` | `string` | No |  |
 | `external_id` | `string` | No |  |
+| `id` | `string` | No |  |
 | `meta` | `map[string]any` | No |  |
 | `metadata` | `map[string]any` | No |  |
 | `name` | `string` | No |  |
@@ -192,6 +193,7 @@ fmt.Println(boundarySet.GetName()) // "boundary_set"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `domain` | `string` | No |  |
+| `id` | `string` | No |  |
 | `name` | `string` | No |  |
 | `url` | `string` | No |  |
 
@@ -425,6 +427,7 @@ fmt.Println(representatif.GetName()) // "representatif"
 | `extra` | `map[string]any` | No | Additional data not covered by standard fields |
 | `first_name` | `string` | No | First name |
 | `gender` | `string` | No | Gender |
+| `id` | `string` | No |  |
 | `last_name` | `string` | No | Last name |
 | `meta` | `map[string]any` | No |  |
 | `name` | `string` | Yes | Full name of the representative |
@@ -497,6 +500,7 @@ fmt.Println(representativeSet.GetName()) // "representative_set"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `string` | No |  |
 | `name` | `string` | No |  |
 | `url` | `string` | No |  |
 

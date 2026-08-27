@@ -2,53 +2,53 @@
   "existing": {
     "boundary": {
       "BOUNDARY00": {
-        "boundary_set_name": "s46",
+        "boundary_set_name": "s50",
         "external_id": "EXTERNAL01",
+        "id": "BOUNDARY00",
         "meta": {},
         "metadata": {},
-        "name": "s4a",
+        "name": "s55",
         "objects": [],
-        "url": "s4c",
+        "url": "s57",
         "boundary": "BOUNDARY01",
-        "boundary_set": "BOUNDARY_SET01",
-        "id": "BOUNDARY00"
+        "boundary_set": "BOUNDARY_SET01"
       },
       "BOUNDARY01": {
-        "boundary_set_name": "s8c",
+        "boundary_set_name": "sa0",
         "external_id": "EXTERNAL01",
+        "id": "BOUNDARY01",
         "meta": {},
         "metadata": {},
-        "name": "s90",
+        "name": "sa5",
         "objects": [],
-        "url": "s92",
+        "url": "sa7",
         "boundary": "BOUNDARY01",
-        "boundary_set": "BOUNDARY_SET01",
-        "id": "BOUNDARY01"
+        "boundary_set": "BOUNDARY_SET01"
       },
       "BOUNDARY02": {
-        "boundary_set_name": "sd2",
+        "boundary_set_name": "sf0",
         "external_id": "EXTERNAL01",
+        "id": "BOUNDARY02",
         "meta": {},
         "metadata": {},
-        "name": "sd6",
+        "name": "sf5",
         "objects": [],
-        "url": "sd8",
+        "url": "sf7",
         "boundary": "BOUNDARY01",
-        "boundary_set": "BOUNDARY_SET01",
-        "id": "BOUNDARY02"
+        "boundary_set": "BOUNDARY_SET01"
       }
     }
   },
   "new": {
     "boundary": {
       "boundary_ref01": {
-        "boundary_set_name": "s118",
+        "boundary_set_name": "s140",
         "external_id": "EXTERNAL01",
         "meta": {},
         "metadata": {},
-        "name": "s11c",
+        "name": "s145",
         "objects": [],
-        "url": "s11e"
+        "url": "s147"
       }
     }
   }

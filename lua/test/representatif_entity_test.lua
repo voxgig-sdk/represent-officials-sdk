@@ -95,10 +95,14 @@ describe("RepresentatifEntity", function()
     assert.is_table(representatif_ref01_list_result)
 
     -- LOAD
-    local representatif_ref01_match_dt0 = {}
+    local representatif_ref01_match_dt0 = {
+      id = representatif_ref01_data["id"],
+    }
     local representatif_ref01_data_dt0_loaded, err = representatif_ref01_ent:load(representatif_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(representatif_ref01_data_dt0_loaded)
+    local representatif_ref01_data_dt0_load_result = helpers.to_map(type(representatif_ref01_data_dt0_loaded) == 'table' and representatif_ref01_data_dt0_loaded.data_get and representatif_ref01_data_dt0_loaded:data_get() or representatif_ref01_data_dt0_loaded)
+    assert.is_not_nil(representatif_ref01_data_dt0_load_result)
+    assert.are.equal(representatif_ref01_data_dt0_load_result["id"], representatif_ref01_data["id"])
 
   end)
 end)

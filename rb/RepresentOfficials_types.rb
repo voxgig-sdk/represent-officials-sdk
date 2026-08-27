@@ -16,6 +16,9 @@
 # @!attribute [rw] external_id
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
@@ -33,6 +36,7 @@
 Boundary = Struct.new(
   :boundary_set_name,
   :external_id,
+  :id,
   :meta,
   :metadata,
   :name,
@@ -58,6 +62,9 @@ BoundaryLoadMatch = Struct.new(
 # @!attribute [rw] external_id
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
@@ -75,6 +82,7 @@ BoundaryLoadMatch = Struct.new(
 BoundaryListMatch = Struct.new(
   :boundary_set_name,
   :external_id,
+  :id,
   :meta,
   :metadata,
   :name,
@@ -88,6 +96,9 @@ BoundaryListMatch = Struct.new(
 # @!attribute [rw] domain
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] name
 #   @return [String, nil]
 #
@@ -95,6 +106,7 @@ BoundaryListMatch = Struct.new(
 #   @return [String, nil]
 BoundarySet = Struct.new(
   :domain,
+  :id,
   :name,
   :url,
   keyword_init: true
@@ -114,6 +126,9 @@ BoundarySetLoadMatch = Struct.new(
 # @!attribute [rw] domain
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] name
 #   @return [String, nil]
 #
@@ -121,6 +136,7 @@ BoundarySetLoadMatch = Struct.new(
 #   @return [String, nil]
 BoundarySetListMatch = Struct.new(
   :domain,
+  :id,
   :name,
   :url,
   keyword_init: true
@@ -247,6 +263,9 @@ PostalCodeLoadMatch = Struct.new(
 # @!attribute [rw] gender
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] last_name
 #   @return [String, nil]
 #
@@ -284,6 +303,7 @@ Representatif = Struct.new(
   :extra,
   :first_name,
   :gender,
+  :id,
   :last_name,
   :meta,
   :name,
@@ -329,6 +349,9 @@ RepresentatifLoadMatch = Struct.new(
 # @!attribute [rw] gender
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] last_name
 #   @return [String, nil]
 #
@@ -366,6 +389,7 @@ RepresentatifListMatch = Struct.new(
   :extra,
   :first_name,
   :gender,
+  :id,
   :last_name,
   :meta,
   :name,
@@ -381,12 +405,16 @@ RepresentatifListMatch = Struct.new(
 
 # RepresentativeSet entity data model.
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] name
 #   @return [String, nil]
 #
 # @!attribute [rw] url
 #   @return [String, nil]
 RepresentativeSet = Struct.new(
+  :id,
   :name,
   :url,
   keyword_init: true
@@ -403,12 +431,16 @@ RepresentativeSetLoadMatch = Struct.new(
 
 # Request payload for RepresentativeSet#list.
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] name
 #   @return [String, nil]
 #
 # @!attribute [rw] url
 #   @return [String, nil]
 RepresentativeSetListMatch = Struct.new(
+  :id,
   :name,
   :url,
   keyword_init: true

@@ -96,9 +96,13 @@ class RepresentatifEntityTest extends TestCase
         $this->assertIsArray($representatif_ref01_list_result);
 
         // LOAD
-        $representatif_ref01_match_dt0 = [];
+        $representatif_ref01_match_dt0 = [
+            "id" => $representatif_ref01_data["id"],
+        ];
         $representatif_ref01_data_dt0_loaded = $representatif_ref01_ent->load($representatif_ref01_match_dt0, null);
-        $this->assertNotNull($representatif_ref01_data_dt0_loaded);
+        $representatif_ref01_data_dt0_load_result = Helpers::to_map(is_object($representatif_ref01_data_dt0_loaded) && method_exists($representatif_ref01_data_dt0_loaded, 'data_get') ? $representatif_ref01_data_dt0_loaded->data_get() : $representatif_ref01_data_dt0_loaded);
+        $this->assertNotNull($representatif_ref01_data_dt0_load_result);
+        $this->assertEquals($representatif_ref01_data_dt0_load_result["id"], $representatif_ref01_data["id"]);
 
     }
 }

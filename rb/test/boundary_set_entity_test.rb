@@ -83,9 +83,13 @@ class BoundarySetEntityTest < Minitest::Test
     assert boundary_set_ref01_list_result.is_a?(Array)
 
     # LOAD
-    boundary_set_ref01_match_dt0 = {}
+    boundary_set_ref01_match_dt0 = {
+      "id" => boundary_set_ref01_data["id"],
+    }
     boundary_set_ref01_data_dt0_loaded = boundary_set_ref01_ent.load(boundary_set_ref01_match_dt0, nil)
-    assert !boundary_set_ref01_data_dt0_loaded.nil?
+    boundary_set_ref01_data_dt0_load_result = Helpers.to_map(boundary_set_ref01_data_dt0_loaded.respond_to?(:data_get) ? boundary_set_ref01_data_dt0_loaded.data_get : boundary_set_ref01_data_dt0_loaded)
+    assert !boundary_set_ref01_data_dt0_load_result.nil?
+    assert_equal boundary_set_ref01_data_dt0_load_result["id"], boundary_set_ref01_data["id"]
 
   end
 end

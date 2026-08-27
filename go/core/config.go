@@ -20,6 +20,7 @@ func MakeConfig() map[string]any {
 				"options": map[string]any{
 					"active": false,
 				},
+				"transport": "base",
 			},
 		},
 		"options": map[string]any{
@@ -46,6 +47,10 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "external_id",
+						"type": "`$STRING`",
+					},
+					map[string]any{
+						"name": "id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -697,6 +702,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+					map[string]any{
 						"name": "name",
 						"type": "`$STRING`",
 					},
@@ -1177,6 +1186,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+					map[string]any{
 						"name": "last_name",
 						"short": "Last name",
 						"type": "`$STRING`",
@@ -1567,6 +1580,10 @@ func MakeConfig() map[string]any {
 			},
 			"representative_set": map[string]any{
 				"fields": []any{
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
 					map[string]any{
 						"name": "name",
 						"type": "`$STRING`",

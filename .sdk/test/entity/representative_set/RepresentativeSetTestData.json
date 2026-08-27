@@ -2,27 +2,27 @@
   "existing": {
     "representative_set": {
       "REPRESENTATIVE_SET00": {
-        "name": "s14",
-        "url": "s15",
-        "id": "REPRESENTATIVE_SET00"
+        "id": "REPRESENTATIVE_SET00",
+        "name": "s1f",
+        "url": "s20"
       },
       "REPRESENTATIVE_SET01": {
-        "name": "s28",
-        "url": "s29",
-        "id": "REPRESENTATIVE_SET01"
+        "id": "REPRESENTATIVE_SET01",
+        "name": "s3d",
+        "url": "s3e"
       },
       "REPRESENTATIVE_SET02": {
-        "name": "s3c",
-        "url": "s3d",
-        "id": "REPRESENTATIVE_SET02"
+        "id": "REPRESENTATIVE_SET02",
+        "name": "s5b",
+        "url": "s5c"
       }
     }
   },
   "new": {
     "representative_set": {
       "representative_set_ref01": {
-        "name": "s50",
-        "url": "s51"
+        "name": "s79",
+        "url": "s7a"
       }
     }
   }

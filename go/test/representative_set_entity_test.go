@@ -121,13 +121,19 @@ func TestRepresentativeSetEntity(t *testing.T) {
 		}
 
 		// LOAD
-		representativeSetRef01MatchDt0 := map[string]any{}
+		representativeSetRef01MatchDt0 := map[string]any{
+			"id": representativeSetRef01Data["id"],
+		}
 		representativeSetRef01DataDt0Loaded, err := representativeSetRef01Ent.Load(representativeSetRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if representativeSetRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		representativeSetRef01DataDt0LoadResult := core.ToMapAny(entityData(representativeSetRef01DataDt0Loaded))
+		if representativeSetRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if representativeSetRef01DataDt0LoadResult["id"] != representativeSetRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

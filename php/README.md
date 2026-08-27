@@ -38,7 +38,7 @@ try {
     // list() returns an array of Boundary records — iterate directly.
     $boundarys = $client->Boundary()->list();
     foreach ($boundarys as $item) {
-        echo $item["boundary_set_name"] . "\n";
+        echo $item["id"] . " " . $item["boundary_set_name"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -273,6 +273,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | --- | --- |
 | `boundary_set_name` |  |
 | `external_id` |  |
+| `id` |  |
 | `meta` |  |
 | `metadata` |  |
 | `name` |  |
@@ -288,6 +289,7 @@ API path: `/boundaries/`
 | Field | Description |
 | --- | --- |
 | `domain` |  |
+| `id` |  |
 | `name` |  |
 | `url` |  |
 
@@ -345,6 +347,7 @@ API path: `/postcodes/{postalCode}/`
 | `extra` | Additional data not covered by standard fields |
 | `first_name` | First name |
 | `gender` | Gender |
+| `id` |  |
 | `last_name` | Last name |
 | `meta` |  |
 | `name` | Full name of the representative |
@@ -364,6 +367,7 @@ API path: `/representatives/`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 | `name` |  |
 | `url` |  |
 
@@ -393,6 +397,7 @@ Create an instance: `$boundary = $client->Boundary();`
 | --- | --- | --- |
 | `boundary_set_name` | `string` |  |
 | `external_id` | `string` |  |
+| `id` | `string` |  |
 | `meta` | `array` |  |
 | `metadata` | `array` |  |
 | `name` | `string` |  |
@@ -430,6 +435,7 @@ Create an instance: `$boundary_set = $client->BoundarySet();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `domain` | `string` |  |
+| `id` | `string` |  |
 | `name` | `string` |  |
 | `url` | `string` |  |
 
@@ -551,6 +557,7 @@ Create an instance: `$representatif = $client->Representatif();`
 | `extra` | `array` | Additional data not covered by standard fields |
 | `first_name` | `string` | First name |
 | `gender` | `string` | Gender |
+| `id` | `string` |  |
 | `last_name` | `string` | Last name |
 | `meta` | `array` |  |
 | `name` | `string` | Full name of the representative |
@@ -592,6 +599,7 @@ Create an instance: `$representative_set = $client->RepresentativeSet();`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `id` | `string` |  |
 | `name` | `string` |  |
 | `url` | `string` |  |
 

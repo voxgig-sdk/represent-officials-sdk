@@ -92,10 +92,14 @@ describe("BoundarySetEntity", function()
     assert.is_table(boundary_set_ref01_list_result)
 
     -- LOAD
-    local boundary_set_ref01_match_dt0 = {}
+    local boundary_set_ref01_match_dt0 = {
+      id = boundary_set_ref01_data["id"],
+    }
     local boundary_set_ref01_data_dt0_loaded, err = boundary_set_ref01_ent:load(boundary_set_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(boundary_set_ref01_data_dt0_loaded)
+    local boundary_set_ref01_data_dt0_load_result = helpers.to_map(type(boundary_set_ref01_data_dt0_loaded) == 'table' and boundary_set_ref01_data_dt0_loaded.data_get and boundary_set_ref01_data_dt0_loaded:data_get() or boundary_set_ref01_data_dt0_loaded)
+    assert.is_not_nil(boundary_set_ref01_data_dt0_load_result)
+    assert.are.equal(boundary_set_ref01_data_dt0_load_result["id"], boundary_set_ref01_data["id"])
 
   end)
 end)

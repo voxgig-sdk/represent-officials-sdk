@@ -43,7 +43,7 @@ local boundarys, err = client:Boundary():list()
 if err then error(err) end
 
 for _, item in ipairs(boundarys) do
-  print(item["boundary_set_name"])
+  print(item["id"], item["boundary_set_name"])
 end
 ```
 
@@ -251,6 +251,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | --- | --- |
 | `boundary_set_name` |  |
 | `external_id` |  |
+| `id` |  |
 | `meta` |  |
 | `metadata` |  |
 | `name` |  |
@@ -266,6 +267,7 @@ API path: `/boundaries/`
 | Field | Description |
 | --- | --- |
 | `domain` |  |
+| `id` |  |
 | `name` |  |
 | `url` |  |
 
@@ -323,6 +325,7 @@ API path: `/postcodes/{postalCode}/`
 | `extra` | Additional data not covered by standard fields |
 | `first_name` | First name |
 | `gender` | Gender |
+| `id` |  |
 | `last_name` | Last name |
 | `meta` |  |
 | `name` | Full name of the representative |
@@ -342,6 +345,7 @@ API path: `/representatives/`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 | `name` |  |
 | `url` |  |
 
@@ -371,6 +375,7 @@ Create an instance: `local boundary = client:Boundary(nil)`
 | --- | --- | --- |
 | `boundary_set_name` | `string` |  |
 | `external_id` | `string` |  |
+| `id` | `string` |  |
 | `meta` | `table` |  |
 | `metadata` | `table` |  |
 | `name` | `string` |  |
@@ -406,6 +411,7 @@ Create an instance: `local boundary_set = client:BoundarySet(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `domain` | `string` |  |
+| `id` | `string` |  |
 | `name` | `string` |  |
 | `url` | `string` |  |
 
@@ -522,6 +528,7 @@ Create an instance: `local representatif = client:Representatif(nil)`
 | `extra` | `table` | Additional data not covered by standard fields |
 | `first_name` | `string` | First name |
 | `gender` | `string` | Gender |
+| `id` | `string` |  |
 | `last_name` | `string` | Last name |
 | `meta` | `table` |  |
 | `name` | `string` | Full name of the representative |
@@ -561,6 +568,7 @@ Create an instance: `local representative_set = client:RepresentativeSet(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `id` | `string` |  |
 | `name` | `string` |  |
 | `url` | `string` |  |
 

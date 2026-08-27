@@ -88,9 +88,13 @@ class TestBoundarySetEntity:
         assert isinstance(boundary_set_ref01_list_result, list)
 
         # LOAD
-        boundary_set_ref01_match_dt0 = {}
+        boundary_set_ref01_match_dt0 = {
+            "id": boundary_set_ref01_data["id"],
+        }
         boundary_set_ref01_data_dt0_loaded = boundary_set_ref01_ent.load(boundary_set_ref01_match_dt0, None)
-        assert boundary_set_ref01_data_dt0_loaded is not None
+        boundary_set_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(boundary_set_ref01_data_dt0_loaded))
+        assert boundary_set_ref01_data_dt0_load_result is not None
+        assert boundary_set_ref01_data_dt0_load_result["id"] == boundary_set_ref01_data["id"]
 
 
 

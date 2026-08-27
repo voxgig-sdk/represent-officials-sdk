@@ -119,6 +119,7 @@ boundary = client.Boundary
 | --- | --- | --- | --- |
 | `boundary_set_name` | `String` | No |  |
 | `external_id` | `String` | No |  |
+| `id` | `String` | No |  |
 | `meta` | `Hash` | No |  |
 | `metadata` | `Hash` | No |  |
 | `name` | `String` | No |  |
@@ -184,6 +185,7 @@ boundary_set = client.BoundarySet
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `domain` | `String` | No |  |
+| `id` | `String` | No |  |
 | `name` | `String` | No |  |
 | `url` | `String` | No |  |
 
@@ -417,6 +419,7 @@ representatif = client.Representatif
 | `extra` | `Hash` | No | Additional data not covered by standard fields |
 | `first_name` | `String` | No | First name |
 | `gender` | `String` | No | Gender |
+| `id` | `String` | No |  |
 | `last_name` | `String` | No | Last name |
 | `meta` | `Hash` | No |  |
 | `name` | `String` | Yes | Full name of the representative |
@@ -486,6 +489,7 @@ representative_set = client.RepresentativeSet
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `String` | No |  |
 | `name` | `String` | No |  |
 | `url` | `String` | No |  |
 

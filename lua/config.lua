@@ -16,6 +16,7 @@ local function make_config()
         ["options"] = {
           ["active"] = false,
         },
+        ["transport"] = "base",
       },
     },
     options = {
@@ -42,6 +43,10 @@ local function make_config()
           },
           {
             ["name"] = "external_id",
+            ["type"] = "`$STRING`",
+          },
+          {
+            ["name"] = "id",
             ["type"] = "`$STRING`",
           },
           {
@@ -693,6 +698,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
+          {
             ["name"] = "name",
             ["type"] = "`$STRING`",
           },
@@ -1173,6 +1182,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
+          {
             ["name"] = "last_name",
             ["short"] = "Last name",
             ["type"] = "`$STRING`",
@@ -1563,6 +1576,10 @@ local function make_config()
       },
       ["representative_set"] = {
         ["fields"] = {
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
           {
             ["name"] = "name",
             ["type"] = "`$STRING`",

@@ -265,6 +265,7 @@ On error, `ok` is `False` and `err` contains the error value.
 | --- | --- |
 | `boundary_set_name` |  |
 | `external_id` |  |
+| `id` |  |
 | `meta` |  |
 | `metadata` |  |
 | `name` |  |
@@ -280,6 +281,7 @@ API path: `/boundaries/`
 | Field | Description |
 | --- | --- |
 | `domain` |  |
+| `id` |  |
 | `name` |  |
 | `url` |  |
 
@@ -337,6 +339,7 @@ API path: `/postcodes/{postalCode}/`
 | `extra` | Additional data not covered by standard fields |
 | `first_name` | First name |
 | `gender` | Gender |
+| `id` |  |
 | `last_name` | Last name |
 | `meta` |  |
 | `name` | Full name of the representative |
@@ -356,6 +359,7 @@ API path: `/representatives/`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 | `name` |  |
 | `url` |  |
 
@@ -385,6 +389,7 @@ Create an instance: `boundary = client.Boundary()`
 | --- | --- | --- |
 | `boundary_set_name` | `str` |  |
 | `external_id` | `str` |  |
+| `id` | `str` |  |
 | `meta` | `dict` |  |
 | `metadata` | `dict` |  |
 | `name` | `str` |  |
@@ -420,6 +425,7 @@ Create an instance: `boundary_set = client.BoundarySet()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `domain` | `str` |  |
+| `id` | `str` |  |
 | `name` | `str` |  |
 | `url` | `str` |  |
 
@@ -536,6 +542,7 @@ Create an instance: `representatif = client.Representatif()`
 | `extra` | `dict` | Additional data not covered by standard fields |
 | `first_name` | `str` | First name |
 | `gender` | `str` | Gender |
+| `id` | `str` |  |
 | `last_name` | `str` | Last name |
 | `meta` | `dict` |  |
 | `name` | `str` | Full name of the representative |
@@ -575,6 +582,7 @@ Create an instance: `representative_set = client.RepresentativeSet()`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `id` | `str` |  |
 | `name` | `str` |  |
 | `url` | `str` |  |
 

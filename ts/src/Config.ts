@@ -40,7 +40,8 @@ class Config {
      test:     {
       "options": {
         "active": false
-      }
+      },
+      "transport": "base"
     },
 
   }
@@ -89,6 +90,10 @@ class Config {
         },
         {
           "name": "external_id",
+          "type": "`$STRING`"
+        },
+        {
+          "name": "id",
           "type": "`$STRING`"
         },
         {
@@ -740,6 +745,10 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "name": "id",
+          "type": "`$STRING`"
+        },
+        {
           "name": "name",
           "type": "`$STRING`"
         },
@@ -1220,6 +1229,10 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "name": "id",
+          "type": "`$STRING`"
+        },
+        {
           "name": "last_name",
           "short": "Last name",
           "type": "`$STRING`"
@@ -1610,6 +1623,10 @@ class Config {
     },
     "representative_set": {
       "fields": [
+        {
+          "name": "id",
+          "type": "`$STRING`"
+        },
         {
           "name": "name",
           "type": "`$STRING`"

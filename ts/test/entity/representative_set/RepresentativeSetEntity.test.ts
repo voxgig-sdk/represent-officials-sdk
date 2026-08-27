@@ -66,6 +66,12 @@ describe('RepresentativeSetEntity', async () => {
     const representative_set_ref01_list = (await representative_set_ref01_ent.list(representative_set_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const representative_set_ref01_match_dt0: any = {}
+    representative_set_ref01_match_dt0.id = representative_set_ref01_data.id
+    const representative_set_ref01_data_dt0 = (await representative_set_ref01_ent.load(representative_set_ref01_match_dt0)).data()
+    assert(representative_set_ref01_data_dt0.id === representative_set_ref01_data.id)
+
 
   })
 })

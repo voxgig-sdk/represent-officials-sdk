@@ -48,6 +48,11 @@ main: kit: entity: representatif: {
       type: "`$STRING`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "last_name"
       req: false
       short: "Last name"
@@ -106,6 +111,11 @@ main: kit: entity: representatif: {
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "representatif"
   op: {

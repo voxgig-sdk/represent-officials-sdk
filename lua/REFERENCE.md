@@ -116,6 +116,7 @@ local boundary = client:Boundary(nil)
 | --- | --- | --- | --- |
 | `boundary_set_name` | `string` | No |  |
 | `external_id` | `string` | No |  |
+| `id` | `string` | No |  |
 | `meta` | `table` | No |  |
 | `metadata` | `table` | No |  |
 | `name` | `string` | No |  |
@@ -181,6 +182,7 @@ local boundary_set = client:BoundarySet(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `domain` | `string` | No |  |
+| `id` | `string` | No |  |
 | `name` | `string` | No |  |
 | `url` | `string` | No |  |
 
@@ -414,6 +416,7 @@ local representatif = client:Representatif(nil)
 | `extra` | `table` | No | Additional data not covered by standard fields |
 | `first_name` | `string` | No | First name |
 | `gender` | `string` | No | Gender |
+| `id` | `string` | No |  |
 | `last_name` | `string` | No | Last name |
 | `meta` | `table` | No |  |
 | `name` | `string` | Yes | Full name of the representative |
@@ -483,6 +486,7 @@ local representative_set = client:RepresentativeSet(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `string` | No |  |
 | `name` | `string` | No |  |
 | `url` | `string` | No |  |
 

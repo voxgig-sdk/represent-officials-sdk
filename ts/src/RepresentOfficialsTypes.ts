@@ -8,6 +8,7 @@
 export interface Boundary {
   boundary_set_name?: string
   external_id?: string
+  id?: string
   meta?: Record<string, any>
   metadata?: Record<string, any>
   name?: string
@@ -28,6 +29,7 @@ export interface BoundaryLoadMatch {
 export interface BoundaryListMatch {
   boundary_set_name?: string
   external_id?: string
+  id?: string
   meta?: Record<string, any>
   metadata?: Record<string, any>
   name?: string
@@ -37,6 +39,7 @@ export interface BoundaryListMatch {
 
 export interface BoundarySet {
   domain?: string
+  id?: string
   name?: string
   url?: string
 }
@@ -47,6 +50,7 @@ export interface BoundarySetLoadMatch {
 
 export interface BoundarySetListMatch {
   domain?: string
+  id?: string
   name?: string
   url?: string
 }
@@ -94,6 +98,7 @@ export interface Representatif {
   extra?: Record<string, any>
   first_name?: string
   gender?: string
+  id?: string
   last_name?: string
   meta?: Record<string, any>
   name: string
@@ -118,6 +123,7 @@ export interface RepresentatifListMatch {
   extra?: Record<string, any>
   first_name?: string
   gender?: string
+  id?: string
   last_name?: string
   meta?: Record<string, any>
   name?: string
@@ -131,6 +137,7 @@ export interface RepresentatifListMatch {
 }
 
 export interface RepresentativeSet {
+  id?: string
   name?: string
   url?: string
 }
@@ -140,6 +147,7 @@ export interface RepresentativeSetLoadMatch {
 }
 
 export interface RepresentativeSetListMatch {
+  id?: string
   name?: string
   url?: string
 }

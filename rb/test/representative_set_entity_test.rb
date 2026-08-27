@@ -83,9 +83,13 @@ class RepresentativeSetEntityTest < Minitest::Test
     assert representative_set_ref01_list_result.is_a?(Array)
 
     # LOAD
-    representative_set_ref01_match_dt0 = {}
+    representative_set_ref01_match_dt0 = {
+      "id" => representative_set_ref01_data["id"],
+    }
     representative_set_ref01_data_dt0_loaded = representative_set_ref01_ent.load(representative_set_ref01_match_dt0, nil)
-    assert !representative_set_ref01_data_dt0_loaded.nil?
+    representative_set_ref01_data_dt0_load_result = Helpers.to_map(representative_set_ref01_data_dt0_loaded.respond_to?(:data_get) ? representative_set_ref01_data_dt0_loaded.data_get : representative_set_ref01_data_dt0_loaded)
+    assert !representative_set_ref01_data_dt0_load_result.nil?
+    assert_equal representative_set_ref01_data_dt0_load_result["id"], representative_set_ref01_data["id"]
 
   end
 end

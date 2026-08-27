@@ -88,9 +88,13 @@ class TestRepresentativeSetEntity:
         assert isinstance(representative_set_ref01_list_result, list)
 
         # LOAD
-        representative_set_ref01_match_dt0 = {}
+        representative_set_ref01_match_dt0 = {
+            "id": representative_set_ref01_data["id"],
+        }
         representative_set_ref01_data_dt0_loaded = representative_set_ref01_ent.load(representative_set_ref01_match_dt0, None)
-        assert representative_set_ref01_data_dt0_loaded is not None
+        representative_set_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(representative_set_ref01_data_dt0_loaded))
+        assert representative_set_ref01_data_dt0_load_result is not None
+        assert representative_set_ref01_data_dt0_load_result["id"] == representative_set_ref01_data["id"]
 
 
 

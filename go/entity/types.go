@@ -16,6 +16,7 @@ import (
 type Boundary struct {
 	BoundarySetName *string `json:"boundary_set_name,omitempty"`
 	ExternalId *string `json:"external_id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Meta *map[string]any `json:"meta,omitempty"`
 	Metadata *map[string]any `json:"metadata,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -32,6 +33,7 @@ type BoundaryLoadMatch struct {
 type BoundaryListMatch struct {
 	BoundarySetName *string `json:"boundary_set_name,omitempty"`
 	ExternalId *string `json:"external_id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Meta *map[string]any `json:"meta,omitempty"`
 	Metadata *map[string]any `json:"metadata,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -42,6 +44,7 @@ type BoundaryListMatch struct {
 // BoundarySet is the typed data model for the boundary_set entity.
 type BoundarySet struct {
 	Domain *string `json:"domain,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Url *string `json:"url,omitempty"`
 }
@@ -54,6 +57,7 @@ type BoundarySetLoadMatch struct {
 // BoundarySetListMatch is the typed request payload for BoundarySet.ListTyped.
 type BoundarySetListMatch struct {
 	Domain *string `json:"domain,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Url *string `json:"url,omitempty"`
 }
@@ -108,6 +112,7 @@ type Representatif struct {
 	Extra *map[string]any `json:"extra,omitempty"`
 	FirstName *string `json:"first_name,omitempty"`
 	Gender *string `json:"gender,omitempty"`
+	Id *string `json:"id,omitempty"`
 	LastName *string `json:"last_name,omitempty"`
 	Meta *map[string]any `json:"meta,omitempty"`
 	Name string `json:"name"`
@@ -134,6 +139,7 @@ type RepresentatifListMatch struct {
 	Extra *map[string]any `json:"extra,omitempty"`
 	FirstName *string `json:"first_name,omitempty"`
 	Gender *string `json:"gender,omitempty"`
+	Id *string `json:"id,omitempty"`
 	LastName *string `json:"last_name,omitempty"`
 	Meta *map[string]any `json:"meta,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -148,6 +154,7 @@ type RepresentatifListMatch struct {
 
 // RepresentativeSet is the typed data model for the representative_set entity.
 type RepresentativeSet struct {
+	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Url *string `json:"url,omitempty"`
 }
@@ -159,6 +166,7 @@ type RepresentativeSetLoadMatch struct {
 
 // RepresentativeSetListMatch is the typed request payload for RepresentativeSet.ListTyped.
 type RepresentativeSetListMatch struct {
+	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Url *string `json:"url,omitempty"`
 }

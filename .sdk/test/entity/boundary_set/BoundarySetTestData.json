@@ -2,31 +2,31 @@
   "existing": {
     "boundary_set": {
       "BOUNDARY_SET00": {
-        "domain": "s1e",
-        "name": "s1f",
-        "url": "s20",
-        "id": "BOUNDARY_SET00"
+        "domain": "s28",
+        "id": "BOUNDARY_SET00",
+        "name": "s2a",
+        "url": "s2b"
       },
       "BOUNDARY_SET01": {
-        "domain": "s3c",
-        "name": "s3d",
-        "url": "s3e",
-        "id": "BOUNDARY_SET01"
+        "domain": "s50",
+        "id": "BOUNDARY_SET01",
+        "name": "s52",
+        "url": "s53"
       },
       "BOUNDARY_SET02": {
-        "domain": "s5a",
-        "name": "s5b",
-        "url": "s5c",
-        "id": "BOUNDARY_SET02"
+        "domain": "s78",
+        "id": "BOUNDARY_SET02",
+        "name": "s7a",
+        "url": "s7b"
       }
     }
   },
   "new": {
     "boundary_set": {
       "boundary_set_ref01": {
-        "domain": "s78",
-        "name": "s79",
-        "url": "s7a"
+        "domain": "sa0",
+        "name": "sa2",
+        "url": "sa3"
       }
     }
   }

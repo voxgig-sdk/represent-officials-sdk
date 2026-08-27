@@ -6,6 +6,11 @@ main: kit: entity: representative_set: {
 
   fields: [
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "name"
       req: false
       type: "`$STRING`"
@@ -16,6 +21,11 @@ main: kit: entity: representative_set: {
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "representative_set"
   op: {

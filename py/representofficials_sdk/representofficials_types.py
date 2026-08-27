@@ -19,6 +19,7 @@ from typing import TypedDict, Any
 class Boundary(TypedDict, total=False):
     boundary_set_name: str
     external_id: str
+    id: str
     meta: dict
     metadata: dict
     name: str
@@ -33,6 +34,7 @@ class BoundaryLoadMatch(TypedDict):
 class BoundaryListMatch(TypedDict, total=False):
     boundary_set_name: str
     external_id: str
+    id: str
     meta: dict
     metadata: dict
     name: str
@@ -42,6 +44,7 @@ class BoundaryListMatch(TypedDict, total=False):
 
 class BoundarySet(TypedDict, total=False):
     domain: str
+    id: str
     name: str
     url: str
 
@@ -52,6 +55,7 @@ class BoundarySetLoadMatch(TypedDict):
 
 class BoundarySetListMatch(TypedDict, total=False):
     domain: str
+    id: str
     name: str
     url: str
 
@@ -103,6 +107,7 @@ class Representatif(RepresentatifRequired, total=False):
     extra: dict
     first_name: str
     gender: str
+    id: str
     last_name: str
     meta: dict
     objects: list
@@ -126,6 +131,7 @@ class RepresentatifListMatch(TypedDict, total=False):
     extra: dict
     first_name: str
     gender: str
+    id: str
     last_name: str
     meta: dict
     name: str
@@ -139,6 +145,7 @@ class RepresentatifListMatch(TypedDict, total=False):
 
 
 class RepresentativeSet(TypedDict, total=False):
+    id: str
     name: str
     url: str
 
@@ -148,5 +155,6 @@ class RepresentativeSetLoadMatch(TypedDict):
 
 
 class RepresentativeSetListMatch(TypedDict, total=False):
+    id: str
     name: str
     url: str

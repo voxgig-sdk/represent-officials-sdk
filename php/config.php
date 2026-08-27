@@ -42,6 +42,7 @@ class RepresentOfficialsConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
@@ -68,6 +69,10 @@ class RepresentOfficialsConfig
             ],
             [
               'name' => 'external_id',
+              'type' => '`$STRING`',
+            ],
+            [
+              'name' => 'id',
               'type' => '`$STRING`',
             ],
             [
@@ -719,6 +724,10 @@ class RepresentOfficialsConfig
               'type' => '`$STRING`',
             ],
             [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+            [
               'name' => 'name',
               'type' => '`$STRING`',
             ],
@@ -1199,6 +1208,10 @@ class RepresentOfficialsConfig
               'type' => '`$STRING`',
             ],
             [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+            [
               'name' => 'last_name',
               'short' => 'Last name',
               'type' => '`$STRING`',
@@ -1589,6 +1602,10 @@ class RepresentOfficialsConfig
         ],
         'representative_set' => [
           'fields' => [
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
             [
               'name' => 'name',
               'type' => '`$STRING`',

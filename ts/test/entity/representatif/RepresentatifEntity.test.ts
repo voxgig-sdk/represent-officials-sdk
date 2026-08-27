@@ -68,6 +68,12 @@ describe('RepresentatifEntity', async () => {
     const representatif_ref01_list = (await representatif_ref01_ent.list(representatif_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const representatif_ref01_match_dt0: any = {}
+    representatif_ref01_match_dt0.id = representatif_ref01_data.id
+    const representatif_ref01_data_dt0 = (await representatif_ref01_ent.load(representatif_ref01_match_dt0)).data()
+    assert(representatif_ref01_data_dt0.id === representatif_ref01_data.id)
+
 
   })
 })

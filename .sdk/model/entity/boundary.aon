@@ -16,6 +16,11 @@ main: kit: entity: boundary: {
       type: "`$STRING`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "meta"
       req: false
       type: "`$OBJECT`"
@@ -41,6 +46,11 @@ main: kit: entity: boundary: {
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "boundary"
   op: {

@@ -190,6 +190,7 @@ const boundary = client.Boundary()
 | --- | --- | --- | --- |
 | `boundary_set_name` | `string` | No |  |
 | `external_id` | `string` | No |  |
+| `id` | `string` | No |  |
 | `meta` | `Record<string, any>` | No |  |
 | `metadata` | `Record<string, any>` | No |  |
 | `name` | `string` | No |  |
@@ -278,6 +279,7 @@ const boundary_set = client.BoundarySet()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `domain` | `string` | No |  |
+| `id` | `string` | No |  |
 | `name` | `string` | No |  |
 | `url` | `string` | No |  |
 
@@ -503,6 +505,7 @@ const representatif = client.Representatif()
 | `extra` | `Record<string, any>` | No | Additional data not covered by standard fields |
 | `first_name` | `string` | No | First name |
 | `gender` | `string` | No | Gender |
+| `id` | `string` | No |  |
 | `last_name` | `string` | No | Last name |
 | `meta` | `Record<string, any>` | No |  |
 | `name` | `string` | Yes | Full name of the representative |
@@ -570,6 +573,7 @@ const representative_set = client.RepresentativeSet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `string` | No |  |
 | `name` | `string` | No |  |
 | `url` | `string` | No |  |
 

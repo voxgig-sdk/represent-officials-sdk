@@ -17,6 +17,7 @@ class Boundary
 {
     public ?string $boundary_set_name = null;
     public ?string $external_id = null;
+    public ?string $id = null;
     public ?array $meta = null;
     public ?array $metadata = null;
     public ?string $name = null;
@@ -35,6 +36,7 @@ class BoundaryListMatch
 {
     public ?string $boundary_set_name = null;
     public ?string $external_id = null;
+    public ?string $id = null;
     public ?array $meta = null;
     public ?array $metadata = null;
     public ?string $name = null;
@@ -46,6 +48,7 @@ class BoundaryListMatch
 class BoundarySet
 {
     public ?string $domain = null;
+    public ?string $id = null;
     public ?string $name = null;
     public ?string $url = null;
 }
@@ -60,6 +63,7 @@ class BoundarySetLoadMatch
 class BoundarySetListMatch
 {
     public ?string $domain = null;
+    public ?string $id = null;
     public ?string $name = null;
     public ?string $url = null;
 }
@@ -121,6 +125,7 @@ class Representatif
     public ?array $extra = null;
     public ?string $first_name = null;
     public ?string $gender = null;
+    public ?string $id = null;
     public ?string $last_name = null;
     public ?array $meta = null;
     public string $name;
@@ -149,6 +154,7 @@ class RepresentatifListMatch
     public ?array $extra = null;
     public ?string $first_name = null;
     public ?string $gender = null;
+    public ?string $id = null;
     public ?string $last_name = null;
     public ?array $meta = null;
     public ?string $name = null;
@@ -164,6 +170,7 @@ class RepresentatifListMatch
 /** RepresentativeSet entity data model. */
 class RepresentativeSet
 {
+    public ?string $id = null;
     public ?string $name = null;
     public ?string $url = null;
 }
@@ -177,6 +184,7 @@ class RepresentativeSetLoadMatch
 /** Request payload for RepresentativeSet#list. */
 class RepresentativeSetListMatch
 {
+    public ?string $id = null;
     public ?string $name = null;
     public ?string $url = null;
 }

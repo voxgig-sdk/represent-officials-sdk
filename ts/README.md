@@ -162,7 +162,7 @@ await entity.list()
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data)
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -313,6 +313,7 @@ The `prepare()` method returns:
 | --- | --- |
 | `boundary_set_name` |  |
 | `external_id` |  |
+| `id` |  |
 | `meta` |  |
 | `metadata` |  |
 | `name` |  |
@@ -328,6 +329,7 @@ API path: `/boundaries/`
 | Field | Description |
 | --- | --- |
 | `domain` |  |
+| `id` |  |
 | `name` |  |
 | `url` |  |
 
@@ -385,6 +387,7 @@ API path: `/postcodes/{postalCode}/`
 | `extra` | Additional data not covered by standard fields |
 | `first_name` | First name |
 | `gender` | Gender |
+| `id` |  |
 | `last_name` | Last name |
 | `meta` |  |
 | `name` | Full name of the representative |
@@ -404,6 +407,7 @@ API path: `/representatives/`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 | `name` |  |
 | `url` |  |
 
@@ -433,6 +437,7 @@ Create an instance: `const boundary = client.Boundary()`
 | --- | --- | --- |
 | `boundary_set_name` | `string` |  |
 | `external_id` | `string` |  |
+| `id` | `string` |  |
 | `meta` | `Record<string, any>` |  |
 | `metadata` | `Record<string, any>` |  |
 | `name` | `string` |  |
@@ -468,6 +473,7 @@ Create an instance: `const boundary_set = client.BoundarySet()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `domain` | `string` |  |
+| `id` | `string` |  |
 | `name` | `string` |  |
 | `url` | `string` |  |
 
@@ -584,6 +590,7 @@ Create an instance: `const representatif = client.Representatif()`
 | `extra` | `Record<string, any>` | Additional data not covered by standard fields |
 | `first_name` | `string` | First name |
 | `gender` | `string` | Gender |
+| `id` | `string` |  |
 | `last_name` | `string` | Last name |
 | `meta` | `Record<string, any>` |  |
 | `name` | `string` | Full name of the representative |
@@ -623,6 +630,7 @@ Create an instance: `const representative_set = client.RepresentativeSet()`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `id` | `string` |  |
 | `name` | `string` |  |
 | `url` | `string` |  |
 

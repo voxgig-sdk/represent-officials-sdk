@@ -66,6 +66,12 @@ describe('BoundaryEntity', async () => {
     const boundary_ref01_list = (await boundary_ref01_ent.list(boundary_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const boundary_ref01_match_dt0: any = {}
+    boundary_ref01_match_dt0.id = boundary_ref01_data.id
+    const boundary_ref01_data_dt0 = (await boundary_ref01_ent.load(boundary_ref01_match_dt0)).data()
+    assert(boundary_ref01_data_dt0.id === boundary_ref01_data.id)
+
 
   })
 })

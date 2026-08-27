@@ -118,6 +118,7 @@ $boundary = $client->Boundary();
 | --- | --- | --- | --- |
 | `boundary_set_name` | `string` | No |  |
 | `external_id` | `string` | No |  |
+| `id` | `string` | No |  |
 | `meta` | `array` | No |  |
 | `metadata` | `array` | No |  |
 | `name` | `string` | No |  |
@@ -183,6 +184,7 @@ $boundary_set = $client->BoundarySet();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `domain` | `string` | No |  |
+| `id` | `string` | No |  |
 | `name` | `string` | No |  |
 | `url` | `string` | No |  |
 
@@ -416,6 +418,7 @@ $representatif = $client->Representatif();
 | `extra` | `array` | No | Additional data not covered by standard fields |
 | `first_name` | `string` | No | First name |
 | `gender` | `string` | No | Gender |
+| `id` | `string` | No |  |
 | `last_name` | `string` | No | Last name |
 | `meta` | `array` | No |  |
 | `name` | `string` | Yes | Full name of the representative |
@@ -485,6 +488,7 @@ $representative_set = $client->RepresentativeSet();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `string` | No |  |
 | `name` | `string` | No |  |
 | `url` | `string` | No |  |
 

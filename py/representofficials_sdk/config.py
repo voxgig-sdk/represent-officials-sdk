@@ -37,6 +37,7 @@ def make_config():
         "options": {
           "active": False,
         },
+        "transport": "base",
       },
         },
         "options": {
@@ -63,6 +64,10 @@ def make_config():
           },
           {
             "name": "external_id",
+            "type": "`$STRING`",
+          },
+          {
+            "name": "id",
             "type": "`$STRING`",
           },
           {
@@ -714,6 +719,10 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+          {
             "name": "name",
             "type": "`$STRING`",
           },
@@ -1194,6 +1203,10 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+          {
             "name": "last_name",
             "short": "Last name",
             "type": "`$STRING`",
@@ -1584,6 +1597,10 @@ def make_config():
       },
       "representative_set": {
         "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
           {
             "name": "name",
             "type": "`$STRING`",

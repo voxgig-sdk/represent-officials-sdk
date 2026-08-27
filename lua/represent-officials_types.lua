@@ -9,6 +9,7 @@
 ---@class Boundary
 ---@field boundary_set_name? string
 ---@field external_id? string
+---@field id? string
 ---@field meta? table
 ---@field metadata? table
 ---@field name? string
@@ -21,6 +22,7 @@
 ---@class BoundaryListMatch
 ---@field boundary_set_name? string
 ---@field external_id? string
+---@field id? string
 ---@field meta? table
 ---@field metadata? table
 ---@field name? string
@@ -29,6 +31,7 @@
 
 ---@class BoundarySet
 ---@field domain? string
+---@field id? string
 ---@field name? string
 ---@field url? string
 
@@ -37,6 +40,7 @@
 
 ---@class BoundarySetListMatch
 ---@field domain? string
+---@field id? string
 ---@field name? string
 ---@field url? string
 
@@ -77,6 +81,7 @@
 ---@field extra? table
 ---@field first_name? string
 ---@field gender? string
+---@field id? string
 ---@field last_name? string
 ---@field meta? table
 ---@field name string
@@ -99,6 +104,7 @@
 ---@field extra? table
 ---@field first_name? string
 ---@field gender? string
+---@field id? string
 ---@field last_name? string
 ---@field meta? table
 ---@field name? string
@@ -111,6 +117,7 @@
 ---@field url? string
 
 ---@class RepresentativeSet
+---@field id? string
 ---@field name? string
 ---@field url? string
 
@@ -118,6 +125,7 @@
 ---@field id string
 
 ---@class RepresentativeSetListMatch
+---@field id? string
 ---@field name? string
 ---@field url? string
 

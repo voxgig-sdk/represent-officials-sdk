@@ -91,9 +91,13 @@ class TestRepresentatifEntity:
         assert isinstance(representatif_ref01_list_result, list)
 
         # LOAD
-        representatif_ref01_match_dt0 = {}
+        representatif_ref01_match_dt0 = {
+            "id": representatif_ref01_data["id"],
+        }
         representatif_ref01_data_dt0_loaded = representatif_ref01_ent.load(representatif_ref01_match_dt0, None)
-        assert representatif_ref01_data_dt0_loaded is not None
+        representatif_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(representatif_ref01_data_dt0_loaded))
+        assert representatif_ref01_data_dt0_load_result is not None
+        assert representatif_ref01_data_dt0_load_result["id"] == representatif_ref01_data["id"]
 
 
 
