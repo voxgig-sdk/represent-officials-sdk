@@ -18,6 +18,14 @@ export interface Boundary {
 
 export interface BoundaryLoadMatch {
   id: string
+  callback?: string
+  contain?: string
+  external_id?: string
+  format?: string
+  limit?: number
+  name?: string
+  offset?: number
+  pretty?: number
 
   // Selects a custom action instead of the plain load:
   //   'centroid' | 'centroid' | 'shape' | 'shape' | 'simple_shape' | 'simple_shape'
@@ -27,14 +35,17 @@ export interface BoundaryLoadMatch {
 }
 
 export interface BoundaryListMatch {
-  boundary_set_name?: string
+  callback?: string
+  contain?: string
   external_id?: string
-  id?: string
-  meta?: Record<string, any>
-  metadata?: Record<string, any>
+  format?: string
+  intersect?: string
+  limit?: number
   name?: string
-  objects?: any[]
-  url?: string
+  offset?: number
+  pretty?: number
+  set?: string
+  touch?: string
 }
 
 export interface BoundarySet {
@@ -46,13 +57,19 @@ export interface BoundarySet {
 
 export interface BoundarySetLoadMatch {
   id: string
+  callback?: string
+  format?: string
+  pretty?: number
 }
 
 export interface BoundarySetListMatch {
+  callback?: string
   domain?: string
-  id?: string
+  format?: string
+  limit?: number
   name?: string
-  url?: string
+  offset?: number
+  pretty?: number
 }
 
 export interface Candidate {
@@ -61,8 +78,11 @@ export interface Candidate {
 }
 
 export interface CandidateListMatch {
-  meta?: Record<string, any>
-  objects?: any[]
+  callback?: string
+  format?: string
+  limit?: number
+  offset?: number
+  pretty?: number
 }
 
 export interface Election {
@@ -71,8 +91,11 @@ export interface Election {
 }
 
 export interface ElectionListMatch {
-  meta?: Record<string, any>
-  objects?: any[]
+  callback?: string
+  format?: string
+  limit?: number
+  offset?: number
+  pretty?: number
 }
 
 export interface PostalCode {
@@ -88,6 +111,10 @@ export interface PostalCode {
 
 export interface PostalCodeLoadMatch {
   postal_code: string
+  callback?: string
+  format?: string
+  pretty?: number
+  set?: string
 }
 
 export interface Representatif {
@@ -113,27 +140,36 @@ export interface Representatif {
 
 export interface RepresentatifLoadMatch {
   id: string
+  callback?: string
+  district_name?: string
+  elected_office?: string
+  first_name?: string
+  format?: string
+  gender?: string
+  last_name?: string
+  limit?: number
+  name?: string
+  offset?: number
+  party_name?: string
+  point?: string
+  pretty?: number
 }
 
 export interface RepresentatifListMatch {
-  district_id?: string
+  callback?: string
+  district?: string
   district_name?: string
   elected_office?: string
-  email?: string
-  extra?: Record<string, any>
   first_name?: string
+  format?: string
   gender?: string
-  id?: string
   last_name?: string
-  meta?: Record<string, any>
+  limit?: number
   name?: string
-  objects?: any[]
-  offices?: any[]
+  offset?: number
   party_name?: string
-  personal_url?: string
-  photo_url?: string
-  source_url?: string
-  url?: string
+  point?: string
+  pretty?: number
 }
 
 export interface RepresentativeSet {
@@ -144,11 +180,16 @@ export interface RepresentativeSet {
 
 export interface RepresentativeSetLoadMatch {
   id: string
+  callback?: string
+  format?: string
+  pretty?: number
 }
 
 export interface RepresentativeSetListMatch {
-  id?: string
-  name?: string
-  url?: string
+  callback?: string
+  format?: string
+  limit?: number
+  offset?: number
+  pretty?: number
 }
 

@@ -49,45 +49,89 @@ Boundary = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [String]
-BoundaryLoadMatch = Struct.new(
-  :id,
-  keyword_init: true
-)
-
-# Request payload for Boundary#list.
 #
-# @!attribute [rw] boundary_set_name
+# @!attribute [rw] callback
+#   @return [String, nil]
+#
+# @!attribute [rw] contain
 #   @return [String, nil]
 #
 # @!attribute [rw] external_id
 #   @return [String, nil]
 #
-# @!attribute [rw] id
+# @!attribute [rw] format
 #   @return [String, nil]
 #
-# @!attribute [rw] meta
-#   @return [Hash, nil]
-#
-# @!attribute [rw] metadata
-#   @return [Hash, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] objects
-#   @return [Array, nil]
+# @!attribute [rw] offset
+#   @return [Integer, nil]
 #
-# @!attribute [rw] url
+# @!attribute [rw] pretty
+#   @return [Integer, nil]
+BoundaryLoadMatch = Struct.new(
+  :id,
+  :callback,
+  :contain,
+  :external_id,
+  :format,
+  :limit,
+  :name,
+  :offset,
+  :pretty,
+  keyword_init: true
+)
+
+# Request payload for Boundary#list.
+#
+# @!attribute [rw] callback
+#   @return [String, nil]
+#
+# @!attribute [rw] contain
+#   @return [String, nil]
+#
+# @!attribute [rw] external_id
+#   @return [String, nil]
+#
+# @!attribute [rw] format
+#   @return [String, nil]
+#
+# @!attribute [rw] intersect
+#   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] offset
+#   @return [Integer, nil]
+#
+# @!attribute [rw] pretty
+#   @return [Integer, nil]
+#
+# @!attribute [rw] set
+#   @return [String, nil]
+#
+# @!attribute [rw] touch
 #   @return [String, nil]
 BoundaryListMatch = Struct.new(
-  :boundary_set_name,
+  :callback,
+  :contain,
   :external_id,
-  :id,
-  :meta,
-  :metadata,
+  :format,
+  :intersect,
+  :limit,
   :name,
-  :objects,
-  :url,
+  :offset,
+  :pretty,
+  :set,
+  :touch,
   keyword_init: true
 )
 
@@ -116,29 +160,53 @@ BoundarySet = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [String]
+#
+# @!attribute [rw] callback
+#   @return [String, nil]
+#
+# @!attribute [rw] format
+#   @return [String, nil]
+#
+# @!attribute [rw] pretty
+#   @return [Integer, nil]
 BoundarySetLoadMatch = Struct.new(
   :id,
+  :callback,
+  :format,
+  :pretty,
   keyword_init: true
 )
 
 # Request payload for BoundarySet#list.
 #
+# @!attribute [rw] callback
+#   @return [String, nil]
+#
 # @!attribute [rw] domain
 #   @return [String, nil]
 #
-# @!attribute [rw] id
+# @!attribute [rw] format
 #   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] url
-#   @return [String, nil]
+# @!attribute [rw] offset
+#   @return [Integer, nil]
+#
+# @!attribute [rw] pretty
+#   @return [Integer, nil]
 BoundarySetListMatch = Struct.new(
+  :callback,
   :domain,
-  :id,
+  :format,
+  :limit,
   :name,
-  :url,
+  :offset,
+  :pretty,
   keyword_init: true
 )
 
@@ -157,14 +225,26 @@ Candidate = Struct.new(
 
 # Request payload for Candidate#list.
 #
-# @!attribute [rw] meta
-#   @return [Hash, nil]
+# @!attribute [rw] callback
+#   @return [String, nil]
 #
-# @!attribute [rw] objects
-#   @return [Array, nil]
+# @!attribute [rw] format
+#   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] offset
+#   @return [Integer, nil]
+#
+# @!attribute [rw] pretty
+#   @return [Integer, nil]
 CandidateListMatch = Struct.new(
-  :meta,
-  :objects,
+  :callback,
+  :format,
+  :limit,
+  :offset,
+  :pretty,
   keyword_init: true
 )
 
@@ -183,14 +263,26 @@ Election = Struct.new(
 
 # Request payload for Election#list.
 #
-# @!attribute [rw] meta
-#   @return [Hash, nil]
+# @!attribute [rw] callback
+#   @return [String, nil]
 #
-# @!attribute [rw] objects
-#   @return [Array, nil]
+# @!attribute [rw] format
+#   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] offset
+#   @return [Integer, nil]
+#
+# @!attribute [rw] pretty
+#   @return [Integer, nil]
 ElectionListMatch = Struct.new(
-  :meta,
-  :objects,
+  :callback,
+  :format,
+  :limit,
+  :offset,
+  :pretty,
   keyword_init: true
 )
 
@@ -235,8 +327,24 @@ PostalCode = Struct.new(
 #
 # @!attribute [rw] postal_code
 #   @return [String]
+#
+# @!attribute [rw] callback
+#   @return [String, nil]
+#
+# @!attribute [rw] format
+#   @return [String, nil]
+#
+# @!attribute [rw] pretty
+#   @return [Integer, nil]
+#
+# @!attribute [rw] set
+#   @return [String, nil]
 PostalCodeLoadMatch = Struct.new(
   :postal_code,
+  :callback,
+  :format,
+  :pretty,
+  :set,
   keyword_init: true
 )
 
@@ -321,14 +429,8 @@ Representatif = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [String]
-RepresentatifLoadMatch = Struct.new(
-  :id,
-  keyword_init: true
-)
-
-# Request payload for Representatif#list.
 #
-# @!attribute [rw] district_id
+# @!attribute [rw] callback
 #   @return [String, nil]
 #
 # @!attribute [rw] district_name
@@ -337,69 +439,111 @@ RepresentatifLoadMatch = Struct.new(
 # @!attribute [rw] elected_office
 #   @return [String, nil]
 #
-# @!attribute [rw] email
+# @!attribute [rw] first_name
 #   @return [String, nil]
 #
-# @!attribute [rw] extra
-#   @return [Hash, nil]
-#
-# @!attribute [rw] first_name
+# @!attribute [rw] format
 #   @return [String, nil]
 #
 # @!attribute [rw] gender
 #   @return [String, nil]
 #
-# @!attribute [rw] id
+# @!attribute [rw] last_name
+#   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] offset
+#   @return [Integer, nil]
+#
+# @!attribute [rw] party_name
+#   @return [String, nil]
+#
+# @!attribute [rw] point
+#   @return [String, nil]
+#
+# @!attribute [rw] pretty
+#   @return [Integer, nil]
+RepresentatifLoadMatch = Struct.new(
+  :id,
+  :callback,
+  :district_name,
+  :elected_office,
+  :first_name,
+  :format,
+  :gender,
+  :last_name,
+  :limit,
+  :name,
+  :offset,
+  :party_name,
+  :point,
+  :pretty,
+  keyword_init: true
+)
+
+# Request payload for Representatif#list.
+#
+# @!attribute [rw] callback
+#   @return [String, nil]
+#
+# @!attribute [rw] district
+#   @return [String, nil]
+#
+# @!attribute [rw] district_name
+#   @return [String, nil]
+#
+# @!attribute [rw] elected_office
+#   @return [String, nil]
+#
+# @!attribute [rw] first_name
+#   @return [String, nil]
+#
+# @!attribute [rw] format
+#   @return [String, nil]
+#
+# @!attribute [rw] gender
 #   @return [String, nil]
 #
 # @!attribute [rw] last_name
 #   @return [String, nil]
 #
-# @!attribute [rw] meta
-#   @return [Hash, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] objects
-#   @return [Array, nil]
-#
-# @!attribute [rw] offices
-#   @return [Array, nil]
+# @!attribute [rw] offset
+#   @return [Integer, nil]
 #
 # @!attribute [rw] party_name
 #   @return [String, nil]
 #
-# @!attribute [rw] personal_url
+# @!attribute [rw] point
 #   @return [String, nil]
 #
-# @!attribute [rw] photo_url
-#   @return [String, nil]
-#
-# @!attribute [rw] source_url
-#   @return [String, nil]
-#
-# @!attribute [rw] url
-#   @return [String, nil]
+# @!attribute [rw] pretty
+#   @return [Integer, nil]
 RepresentatifListMatch = Struct.new(
-  :district_id,
+  :callback,
+  :district,
   :district_name,
   :elected_office,
-  :email,
-  :extra,
   :first_name,
+  :format,
   :gender,
-  :id,
   :last_name,
-  :meta,
+  :limit,
   :name,
-  :objects,
-  :offices,
+  :offset,
   :party_name,
-  :personal_url,
-  :photo_url,
-  :source_url,
-  :url,
+  :point,
+  :pretty,
   keyword_init: true
 )
 
@@ -424,25 +568,45 @@ RepresentativeSet = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [String]
+#
+# @!attribute [rw] callback
+#   @return [String, nil]
+#
+# @!attribute [rw] format
+#   @return [String, nil]
+#
+# @!attribute [rw] pretty
+#   @return [Integer, nil]
 RepresentativeSetLoadMatch = Struct.new(
   :id,
+  :callback,
+  :format,
+  :pretty,
   keyword_init: true
 )
 
 # Request payload for RepresentativeSet#list.
 #
-# @!attribute [rw] id
+# @!attribute [rw] callback
 #   @return [String, nil]
 #
-# @!attribute [rw] name
+# @!attribute [rw] format
 #   @return [String, nil]
 #
-# @!attribute [rw] url
-#   @return [String, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] offset
+#   @return [Integer, nil]
+#
+# @!attribute [rw] pretty
+#   @return [Integer, nil]
 RepresentativeSetListMatch = Struct.new(
-  :id,
-  :name,
-  :url,
+  :callback,
+  :format,
+  :limit,
+  :offset,
+  :pretty,
   keyword_init: true
 )
 

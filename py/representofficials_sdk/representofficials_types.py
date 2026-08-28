@@ -27,19 +27,33 @@ class Boundary(TypedDict, total=False):
     url: str
 
 
-class BoundaryLoadMatch(TypedDict):
+class BoundaryLoadMatchRequired(TypedDict):
     id: str
+
+
+class BoundaryLoadMatch(BoundaryLoadMatchRequired, total=False):
+    callback: str
+    contain: str
+    external_id: str
+    format: str
+    limit: int
+    name: str
+    offset: int
+    pretty: int
 
 
 class BoundaryListMatch(TypedDict, total=False):
-    boundary_set_name: str
+    callback: str
+    contain: str
     external_id: str
-    id: str
-    meta: dict
-    metadata: dict
+    format: str
+    intersect: str
+    limit: int
     name: str
-    objects: list
-    url: str
+    offset: int
+    pretty: int
+    set: str
+    touch: str
 
 
 class BoundarySet(TypedDict, total=False):
@@ -49,15 +63,24 @@ class BoundarySet(TypedDict, total=False):
     url: str
 
 
-class BoundarySetLoadMatch(TypedDict):
+class BoundarySetLoadMatchRequired(TypedDict):
     id: str
+
+
+class BoundarySetLoadMatch(BoundarySetLoadMatchRequired, total=False):
+    callback: str
+    format: str
+    pretty: int
 
 
 class BoundarySetListMatch(TypedDict, total=False):
+    callback: str
     domain: str
-    id: str
+    format: str
+    limit: int
     name: str
-    url: str
+    offset: int
+    pretty: int
 
 
 class Candidate(TypedDict, total=False):
@@ -66,8 +89,11 @@ class Candidate(TypedDict, total=False):
 
 
 class CandidateListMatch(TypedDict, total=False):
-    meta: dict
-    objects: list
+    callback: str
+    format: str
+    limit: int
+    offset: int
+    pretty: int
 
 
 class Election(TypedDict, total=False):
@@ -76,8 +102,11 @@ class Election(TypedDict, total=False):
 
 
 class ElectionListMatch(TypedDict, total=False):
-    meta: dict
-    objects: list
+    callback: str
+    format: str
+    limit: int
+    offset: int
+    pretty: int
 
 
 class PostalCode(TypedDict, total=False):
@@ -91,8 +120,15 @@ class PostalCode(TypedDict, total=False):
     representatives_concordance: list
 
 
-class PostalCodeLoadMatch(TypedDict):
+class PostalCodeLoadMatchRequired(TypedDict):
     postal_code: str
+
+
+class PostalCodeLoadMatch(PostalCodeLoadMatchRequired, total=False):
+    callback: str
+    format: str
+    pretty: int
+    set: str
 
 
 class RepresentatifRequired(TypedDict):
@@ -119,29 +155,41 @@ class Representatif(RepresentatifRequired, total=False):
     url: str
 
 
-class RepresentatifLoadMatch(TypedDict):
+class RepresentatifLoadMatchRequired(TypedDict):
     id: str
+
+
+class RepresentatifLoadMatch(RepresentatifLoadMatchRequired, total=False):
+    callback: str
+    district_name: str
+    elected_office: str
+    first_name: str
+    format: str
+    gender: str
+    last_name: str
+    limit: int
+    name: str
+    offset: int
+    party_name: str
+    point: str
+    pretty: int
 
 
 class RepresentatifListMatch(TypedDict, total=False):
-    district_id: str
+    callback: str
+    district: str
     district_name: str
     elected_office: str
-    email: str
-    extra: dict
     first_name: str
+    format: str
     gender: str
-    id: str
     last_name: str
-    meta: dict
+    limit: int
     name: str
-    objects: list
-    offices: list
+    offset: int
     party_name: str
-    personal_url: str
-    photo_url: str
-    source_url: str
-    url: str
+    point: str
+    pretty: int
 
 
 class RepresentativeSet(TypedDict, total=False):
@@ -150,11 +198,19 @@ class RepresentativeSet(TypedDict, total=False):
     url: str
 
 
-class RepresentativeSetLoadMatch(TypedDict):
+class RepresentativeSetLoadMatchRequired(TypedDict):
     id: str
+
+
+class RepresentativeSetLoadMatch(RepresentativeSetLoadMatchRequired, total=False):
+    callback: str
+    format: str
+    pretty: int
 
 
 class RepresentativeSetListMatch(TypedDict, total=False):
-    id: str
-    name: str
-    url: str
+    callback: str
+    format: str
+    limit: int
+    offset: int
+    pretty: int

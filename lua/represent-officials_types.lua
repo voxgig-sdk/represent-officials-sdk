@@ -18,16 +18,27 @@
 
 ---@class BoundaryLoadMatch
 ---@field id string
+---@field callback? string
+---@field contain? string
+---@field external_id? string
+---@field format? string
+---@field limit? number
+---@field name? string
+---@field offset? number
+---@field pretty? number
 
 ---@class BoundaryListMatch
----@field boundary_set_name? string
+---@field callback? string
+---@field contain? string
 ---@field external_id? string
----@field id? string
----@field meta? table
----@field metadata? table
+---@field format? string
+---@field intersect? string
+---@field limit? number
 ---@field name? string
----@field objects? table
----@field url? string
+---@field offset? number
+---@field pretty? number
+---@field set? string
+---@field touch? string
 
 ---@class BoundarySet
 ---@field domain? string
@@ -37,28 +48,40 @@
 
 ---@class BoundarySetLoadMatch
 ---@field id string
+---@field callback? string
+---@field format? string
+---@field pretty? number
 
 ---@class BoundarySetListMatch
+---@field callback? string
 ---@field domain? string
----@field id? string
+---@field format? string
+---@field limit? number
 ---@field name? string
----@field url? string
+---@field offset? number
+---@field pretty? number
 
 ---@class Candidate
 ---@field meta? table
 ---@field objects? table
 
 ---@class CandidateListMatch
----@field meta? table
----@field objects? table
+---@field callback? string
+---@field format? string
+---@field limit? number
+---@field offset? number
+---@field pretty? number
 
 ---@class Election
 ---@field meta? table
 ---@field objects? table
 
 ---@class ElectionListMatch
----@field meta? table
----@field objects? table
+---@field callback? string
+---@field format? string
+---@field limit? number
+---@field offset? number
+---@field pretty? number
 
 ---@class PostalCode
 ---@field boundaries_centroid? table
@@ -72,6 +95,10 @@
 
 ---@class PostalCodeLoadMatch
 ---@field postal_code string
+---@field callback? string
+---@field format? string
+---@field pretty? number
+---@field set? string
 
 ---@class Representatif
 ---@field district_id? string
@@ -95,26 +122,35 @@
 
 ---@class RepresentatifLoadMatch
 ---@field id string
-
----@class RepresentatifListMatch
----@field district_id? string
+---@field callback? string
 ---@field district_name? string
 ---@field elected_office? string
----@field email? string
----@field extra? table
 ---@field first_name? string
+---@field format? string
 ---@field gender? string
----@field id? string
 ---@field last_name? string
----@field meta? table
+---@field limit? number
 ---@field name? string
----@field objects? table
----@field offices? table
+---@field offset? number
 ---@field party_name? string
----@field personal_url? string
----@field photo_url? string
----@field source_url? string
----@field url? string
+---@field point? string
+---@field pretty? number
+
+---@class RepresentatifListMatch
+---@field callback? string
+---@field district? string
+---@field district_name? string
+---@field elected_office? string
+---@field first_name? string
+---@field format? string
+---@field gender? string
+---@field last_name? string
+---@field limit? number
+---@field name? string
+---@field offset? number
+---@field party_name? string
+---@field point? string
+---@field pretty? number
 
 ---@class RepresentativeSet
 ---@field id? string
@@ -123,11 +159,16 @@
 
 ---@class RepresentativeSetLoadMatch
 ---@field id string
+---@field callback? string
+---@field format? string
+---@field pretty? number
 
 ---@class RepresentativeSetListMatch
----@field id? string
----@field name? string
----@field url? string
+---@field callback? string
+---@field format? string
+---@field limit? number
+---@field offset? number
+---@field pretty? number
 
 local M = {}
 

@@ -29,19 +29,30 @@ class Boundary
 class BoundaryLoadMatch
 {
     public string $id;
+    public ?string $callback = null;
+    public ?string $contain = null;
+    public ?string $external_id = null;
+    public ?string $format = null;
+    public ?int $limit = null;
+    public ?string $name = null;
+    public ?int $offset = null;
+    public ?int $pretty = null;
 }
 
 /** Request payload for Boundary#list. */
 class BoundaryListMatch
 {
-    public ?string $boundary_set_name = null;
+    public ?string $callback = null;
+    public ?string $contain = null;
     public ?string $external_id = null;
-    public ?string $id = null;
-    public ?array $meta = null;
-    public ?array $metadata = null;
+    public ?string $format = null;
+    public ?string $intersect = null;
+    public ?int $limit = null;
     public ?string $name = null;
-    public ?array $objects = null;
-    public ?string $url = null;
+    public ?int $offset = null;
+    public ?int $pretty = null;
+    public ?string $set = null;
+    public ?string $touch = null;
 }
 
 /** BoundarySet entity data model. */
@@ -57,15 +68,21 @@ class BoundarySet
 class BoundarySetLoadMatch
 {
     public string $id;
+    public ?string $callback = null;
+    public ?string $format = null;
+    public ?int $pretty = null;
 }
 
 /** Request payload for BoundarySet#list. */
 class BoundarySetListMatch
 {
+    public ?string $callback = null;
     public ?string $domain = null;
-    public ?string $id = null;
+    public ?string $format = null;
+    public ?int $limit = null;
     public ?string $name = null;
-    public ?string $url = null;
+    public ?int $offset = null;
+    public ?int $pretty = null;
 }
 
 /** Candidate entity data model. */
@@ -78,8 +95,11 @@ class Candidate
 /** Request payload for Candidate#list. */
 class CandidateListMatch
 {
-    public ?array $meta = null;
-    public ?array $objects = null;
+    public ?string $callback = null;
+    public ?string $format = null;
+    public ?int $limit = null;
+    public ?int $offset = null;
+    public ?int $pretty = null;
 }
 
 /** Election entity data model. */
@@ -92,8 +112,11 @@ class Election
 /** Request payload for Election#list. */
 class ElectionListMatch
 {
-    public ?array $meta = null;
-    public ?array $objects = null;
+    public ?string $callback = null;
+    public ?string $format = null;
+    public ?int $limit = null;
+    public ?int $offset = null;
+    public ?int $pretty = null;
 }
 
 /** PostalCode entity data model. */
@@ -113,6 +136,10 @@ class PostalCode
 class PostalCodeLoadMatch
 {
     public string $postal_code;
+    public ?string $callback = null;
+    public ?string $format = null;
+    public ?int $pretty = null;
+    public ?string $set = null;
 }
 
 /** Representatif entity data model. */
@@ -142,29 +169,38 @@ class Representatif
 class RepresentatifLoadMatch
 {
     public string $id;
+    public ?string $callback = null;
+    public ?string $district_name = null;
+    public ?string $elected_office = null;
+    public ?string $first_name = null;
+    public ?string $format = null;
+    public ?string $gender = null;
+    public ?string $last_name = null;
+    public ?int $limit = null;
+    public ?string $name = null;
+    public ?int $offset = null;
+    public ?string $party_name = null;
+    public ?string $point = null;
+    public ?int $pretty = null;
 }
 
 /** Request payload for Representatif#list. */
 class RepresentatifListMatch
 {
-    public ?string $district_id = null;
+    public ?string $callback = null;
+    public ?string $district = null;
     public ?string $district_name = null;
     public ?string $elected_office = null;
-    public ?string $email = null;
-    public ?array $extra = null;
     public ?string $first_name = null;
+    public ?string $format = null;
     public ?string $gender = null;
-    public ?string $id = null;
     public ?string $last_name = null;
-    public ?array $meta = null;
+    public ?int $limit = null;
     public ?string $name = null;
-    public ?array $objects = null;
-    public ?array $offices = null;
+    public ?int $offset = null;
     public ?string $party_name = null;
-    public ?string $personal_url = null;
-    public ?string $photo_url = null;
-    public ?string $source_url = null;
-    public ?string $url = null;
+    public ?string $point = null;
+    public ?int $pretty = null;
 }
 
 /** RepresentativeSet entity data model. */
@@ -179,13 +215,18 @@ class RepresentativeSet
 class RepresentativeSetLoadMatch
 {
     public string $id;
+    public ?string $callback = null;
+    public ?string $format = null;
+    public ?int $pretty = null;
 }
 
 /** Request payload for RepresentativeSet#list. */
 class RepresentativeSetListMatch
 {
-    public ?string $id = null;
-    public ?string $name = null;
-    public ?string $url = null;
+    public ?string $callback = null;
+    public ?string $format = null;
+    public ?int $limit = null;
+    public ?int $offset = null;
+    public ?int $pretty = null;
 }
 

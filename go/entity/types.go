@@ -27,18 +27,29 @@ type Boundary struct {
 // BoundaryLoadMatch is the typed request payload for Boundary.LoadTyped.
 type BoundaryLoadMatch struct {
 	Id string `json:"id"`
+	Callback *string `json:"callback,omitempty"`
+	Contain *string `json:"contain,omitempty"`
+	ExternalId *string `json:"external_id,omitempty"`
+	Format *string `json:"format,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Offset *int `json:"offset,omitempty"`
+	Pretty *int `json:"pretty,omitempty"`
 }
 
 // BoundaryListMatch is the typed request payload for Boundary.ListTyped.
 type BoundaryListMatch struct {
-	BoundarySetName *string `json:"boundary_set_name,omitempty"`
+	Callback *string `json:"callback,omitempty"`
+	Contain *string `json:"contain,omitempty"`
 	ExternalId *string `json:"external_id,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Meta *map[string]any `json:"meta,omitempty"`
-	Metadata *map[string]any `json:"metadata,omitempty"`
+	Format *string `json:"format,omitempty"`
+	Intersect *string `json:"intersect,omitempty"`
+	Limit *int `json:"limit,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Objects *[]any `json:"objects,omitempty"`
-	Url *string `json:"url,omitempty"`
+	Offset *int `json:"offset,omitempty"`
+	Pretty *int `json:"pretty,omitempty"`
+	Set *string `json:"set,omitempty"`
+	Touch *string `json:"touch,omitempty"`
 }
 
 // BoundarySet is the typed data model for the boundary_set entity.
@@ -52,14 +63,20 @@ type BoundarySet struct {
 // BoundarySetLoadMatch is the typed request payload for BoundarySet.LoadTyped.
 type BoundarySetLoadMatch struct {
 	Id string `json:"id"`
+	Callback *string `json:"callback,omitempty"`
+	Format *string `json:"format,omitempty"`
+	Pretty *int `json:"pretty,omitempty"`
 }
 
 // BoundarySetListMatch is the typed request payload for BoundarySet.ListTyped.
 type BoundarySetListMatch struct {
+	Callback *string `json:"callback,omitempty"`
 	Domain *string `json:"domain,omitempty"`
-	Id *string `json:"id,omitempty"`
+	Format *string `json:"format,omitempty"`
+	Limit *int `json:"limit,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Url *string `json:"url,omitempty"`
+	Offset *int `json:"offset,omitempty"`
+	Pretty *int `json:"pretty,omitempty"`
 }
 
 // Candidate is the typed data model for the candidate entity.
@@ -70,8 +87,11 @@ type Candidate struct {
 
 // CandidateListMatch is the typed request payload for Candidate.ListTyped.
 type CandidateListMatch struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Objects *[]any `json:"objects,omitempty"`
+	Callback *string `json:"callback,omitempty"`
+	Format *string `json:"format,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Offset *int `json:"offset,omitempty"`
+	Pretty *int `json:"pretty,omitempty"`
 }
 
 // Election is the typed data model for the election entity.
@@ -82,8 +102,11 @@ type Election struct {
 
 // ElectionListMatch is the typed request payload for Election.ListTyped.
 type ElectionListMatch struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Objects *[]any `json:"objects,omitempty"`
+	Callback *string `json:"callback,omitempty"`
+	Format *string `json:"format,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Offset *int `json:"offset,omitempty"`
+	Pretty *int `json:"pretty,omitempty"`
 }
 
 // PostalCode is the typed data model for the postal_code entity.
@@ -101,6 +124,10 @@ type PostalCode struct {
 // PostalCodeLoadMatch is the typed request payload for PostalCode.LoadTyped.
 type PostalCodeLoadMatch struct {
 	PostalCode string `json:"postal_code"`
+	Callback *string `json:"callback,omitempty"`
+	Format *string `json:"format,omitempty"`
+	Pretty *int `json:"pretty,omitempty"`
+	Set *string `json:"set,omitempty"`
 }
 
 // Representatif is the typed data model for the representatif entity.
@@ -128,28 +155,37 @@ type Representatif struct {
 // RepresentatifLoadMatch is the typed request payload for Representatif.LoadTyped.
 type RepresentatifLoadMatch struct {
 	Id string `json:"id"`
+	Callback *string `json:"callback,omitempty"`
+	DistrictName *string `json:"district_name,omitempty"`
+	ElectedOffice *string `json:"elected_office,omitempty"`
+	FirstName *string `json:"first_name,omitempty"`
+	Format *string `json:"format,omitempty"`
+	Gender *string `json:"gender,omitempty"`
+	LastName *string `json:"last_name,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Offset *int `json:"offset,omitempty"`
+	PartyName *string `json:"party_name,omitempty"`
+	Point *string `json:"point,omitempty"`
+	Pretty *int `json:"pretty,omitempty"`
 }
 
 // RepresentatifListMatch is the typed request payload for Representatif.ListTyped.
 type RepresentatifListMatch struct {
-	DistrictId *string `json:"district_id,omitempty"`
+	Callback *string `json:"callback,omitempty"`
+	District *string `json:"district,omitempty"`
 	DistrictName *string `json:"district_name,omitempty"`
 	ElectedOffice *string `json:"elected_office,omitempty"`
-	Email *string `json:"email,omitempty"`
-	Extra *map[string]any `json:"extra,omitempty"`
 	FirstName *string `json:"first_name,omitempty"`
+	Format *string `json:"format,omitempty"`
 	Gender *string `json:"gender,omitempty"`
-	Id *string `json:"id,omitempty"`
 	LastName *string `json:"last_name,omitempty"`
-	Meta *map[string]any `json:"meta,omitempty"`
+	Limit *int `json:"limit,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Objects *[]any `json:"objects,omitempty"`
-	Offices *[]any `json:"offices,omitempty"`
+	Offset *int `json:"offset,omitempty"`
 	PartyName *string `json:"party_name,omitempty"`
-	PersonalUrl *string `json:"personal_url,omitempty"`
-	PhotoUrl *string `json:"photo_url,omitempty"`
-	SourceUrl *string `json:"source_url,omitempty"`
-	Url *string `json:"url,omitempty"`
+	Point *string `json:"point,omitempty"`
+	Pretty *int `json:"pretty,omitempty"`
 }
 
 // RepresentativeSet is the typed data model for the representative_set entity.
@@ -162,13 +198,18 @@ type RepresentativeSet struct {
 // RepresentativeSetLoadMatch is the typed request payload for RepresentativeSet.LoadTyped.
 type RepresentativeSetLoadMatch struct {
 	Id string `json:"id"`
+	Callback *string `json:"callback,omitempty"`
+	Format *string `json:"format,omitempty"`
+	Pretty *int `json:"pretty,omitempty"`
 }
 
 // RepresentativeSetListMatch is the typed request payload for RepresentativeSet.ListTyped.
 type RepresentativeSetListMatch struct {
-	Id *string `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Url *string `json:"url,omitempty"`
+	Callback *string `json:"callback,omitempty"`
+	Format *string `json:"format,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Offset *int `json:"offset,omitempty"`
+	Pretty *int `json:"pretty,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the
