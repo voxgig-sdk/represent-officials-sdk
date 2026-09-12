@@ -74,6 +74,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "boundary",
 				"op": map[string]any{
 					"list": map[string]any{
@@ -156,8 +160,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/",
-								"parts": []any{
-									"boundaries",
+								"segments": []any{
+									map[string]any{
+										"lit": "boundaries",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -177,6 +183,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"boundaries",
 								},
 							},
 						},
@@ -252,13 +261,17 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/",
-								"parts": []any{
-									"boundaries",
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"boundarySet": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "boundaries",
+									},
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -277,6 +290,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"boundaries",
+									"{id}",
 								},
 							},
 							map[string]any{
@@ -321,14 +338,20 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/{boundary}/",
-								"parts": []any{
-									"boundaries",
-									"{boundary_set}",
-									"{boundary}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"boundarySet": "boundary_set",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "boundaries",
+									},
+									map[string]any{
+										"var": "boundary_set",
+									},
+									map[string]any{
+										"var": "boundary",
 									},
 								},
 								"select": map[string]any{
@@ -343,6 +366,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.metadata`",
+								},
+								"parts": []any{
+									"boundaries",
+									"{boundary_set}",
+									"{boundary}",
 								},
 							},
 							map[string]any{
@@ -381,15 +409,23 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/{boundary}/centroid",
-								"parts": []any{
-									"boundaries",
-									"{boundary_set}",
-									"{boundary}",
-									"centroid",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"boundarySet": "boundary_set",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "boundaries",
+									},
+									map[string]any{
+										"var": "boundary_set",
+									},
+									map[string]any{
+										"var": "boundary",
+									},
+									map[string]any{
+										"lit": "centroid",
 									},
 								},
 								"select": map[string]any{
@@ -404,6 +440,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"boundaries",
+									"{boundary_set}",
+									"{boundary}",
+									"centroid",
 								},
 							},
 							map[string]any{
@@ -442,15 +484,23 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/{boundary}/shape",
-								"parts": []any{
-									"boundaries",
-									"{boundary_set}",
-									"{boundary}",
-									"shape",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"boundarySet": "boundary_set",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "boundaries",
+									},
+									map[string]any{
+										"var": "boundary_set",
+									},
+									map[string]any{
+										"var": "boundary",
+									},
+									map[string]any{
+										"lit": "shape",
 									},
 								},
 								"select": map[string]any{
@@ -465,6 +515,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"boundaries",
+									"{boundary_set}",
+									"{boundary}",
+									"shape",
 								},
 							},
 							map[string]any{
@@ -503,15 +559,23 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/{boundary}/simple_shape",
-								"parts": []any{
-									"boundaries",
-									"{boundary_set}",
-									"{boundary}",
-									"simple_shape",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"boundarySet": "boundary_set",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "boundaries",
+									},
+									map[string]any{
+										"var": "boundary_set",
+									},
+									map[string]any{
+										"var": "boundary",
+									},
+									map[string]any{
+										"lit": "simple_shape",
 									},
 								},
 								"select": map[string]any{
@@ -526,6 +590,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"boundaries",
+									"{boundary_set}",
+									"{boundary}",
+									"simple_shape",
 								},
 							},
 							map[string]any{
@@ -557,14 +627,20 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/centroid",
-								"parts": []any{
-									"boundaries",
-									"{boundary_set}",
-									"centroid",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"boundarySet": "boundary_set",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "boundaries",
+									},
+									map[string]any{
+										"var": "boundary_set",
+									},
+									map[string]any{
+										"lit": "centroid",
 									},
 								},
 								"select": map[string]any{
@@ -578,6 +654,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"boundaries",
+									"{boundary_set}",
+									"centroid",
 								},
 							},
 							map[string]any{
@@ -609,14 +690,20 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/shape",
-								"parts": []any{
-									"boundaries",
-									"{boundary_set}",
-									"shape",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"boundarySet": "boundary_set",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "boundaries",
+									},
+									map[string]any{
+										"var": "boundary_set",
+									},
+									map[string]any{
+										"lit": "shape",
 									},
 								},
 								"select": map[string]any{
@@ -630,6 +717,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"boundaries",
+									"{boundary_set}",
+									"shape",
 								},
 							},
 							map[string]any{
@@ -661,14 +753,20 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/simple_shape",
-								"parts": []any{
-									"boundaries",
-									"{boundary_set}",
-									"simple_shape",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"boundarySet": "boundary_set",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "boundaries",
+									},
+									map[string]any{
+										"var": "boundary_set",
+									},
+									map[string]any{
+										"lit": "simple_shape",
 									},
 								},
 								"select": map[string]any{
@@ -682,6 +780,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"boundaries",
+									"{boundary_set}",
+									"simple_shape",
 								},
 							},
 						},
@@ -713,6 +816,10 @@ func MakeConfig() map[string]any {
 						"name": "url",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "boundary_set",
 				"op": map[string]any{
@@ -772,8 +879,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/boundary-sets/",
-								"parts": []any{
-									"boundary-sets",
+								"segments": []any{
+									map[string]any{
+										"lit": "boundary-sets",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -789,6 +898,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"boundary-sets",
 								},
 							},
 						},
@@ -832,13 +944,17 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/boundary-sets/{boundarySet}/",
-								"parts": []any{
-									"boundary-sets",
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"boundarySet": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "boundary-sets",
+									},
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -852,6 +968,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"boundary-sets",
+									"{id}",
 								},
 							},
 						},
@@ -918,8 +1038,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/candidates/",
-								"parts": []any{
-									"candidates",
+								"segments": []any{
+									map[string]any{
+										"lit": "candidates",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -933,6 +1055,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"candidates",
 								},
 							},
 						},
@@ -999,8 +1124,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/elections/",
-								"parts": []any{
-									"elections",
+								"segments": []any{
+									map[string]any{
+										"lit": "elections",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -1014,6 +1141,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"elections",
 								},
 							},
 						},
@@ -1112,13 +1242,17 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/postcodes/{postalCode}/",
-								"parts": []any{
-									"postcodes",
-									"{postal_code}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"postalCode": "postal_code",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "postcodes",
+									},
+									map[string]any{
+										"var": "postal_code",
 									},
 								},
 								"select": map[string]any{
@@ -1133,6 +1267,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"postcodes",
+									"{postal_code}",
 								},
 							},
 						},
@@ -1166,6 +1304,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "email",
 						"name": "email",
 						"short": "Email address",
 						"type": "`$STRING`",
@@ -1238,6 +1377,10 @@ func MakeConfig() map[string]any {
 						"short": "Representative's page on official legislature site",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "representatif",
 				"op": map[string]any{
@@ -1339,8 +1482,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/representatives/",
-								"parts": []any{
-									"representatives",
+								"segments": []any{
+									map[string]any{
+										"lit": "representatives",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -1363,6 +1508,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"representatives",
 								},
 							},
 							map[string]any{
@@ -1407,15 +1555,23 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/{boundary}/representatives/",
-								"parts": []any{
-									"boundaries",
-									"{boundary_set}",
-									"{boundary}",
-									"representatives",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"boundarySet": "boundary_set",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "boundaries",
+									},
+									map[string]any{
+										"var": "boundary_set",
+									},
+									map[string]any{
+										"var": "boundary",
+									},
+									map[string]any{
+										"lit": "representatives",
 									},
 								},
 								"select": map[string]any{
@@ -1430,6 +1586,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.objects`",
+								},
+								"parts": []any{
+									"boundaries",
+									"{boundary_set}",
+									"{boundary}",
+									"representatives",
 								},
 							},
 						},
@@ -1535,13 +1697,17 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/representatives/{representativeSet}/",
-								"parts": []any{
-									"representatives",
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"representativeSet": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "representatives",
+									},
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -1565,6 +1731,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"representatives",
+									"{id}",
 								},
 							},
 						},
@@ -1592,6 +1762,10 @@ func MakeConfig() map[string]any {
 						"name": "url",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "representative_set",
 				"op": map[string]any{
@@ -1639,8 +1813,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/representative-sets/",
-								"parts": []any{
-									"representative-sets",
+								"segments": []any{
+									map[string]any{
+										"lit": "representative-sets",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -1654,6 +1830,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"representative-sets",
 								},
 							},
 						},
@@ -1697,13 +1876,17 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/representative-sets/{representativeSet}/",
-								"parts": []any{
-									"representative-sets",
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"representativeSet": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "representative-sets",
+									},
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -1718,6 +1901,10 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"parts": []any{
+									"representative-sets",
+									"{id}",
+								},
 							},
 						},
 					},
@@ -1728,6 +1915,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

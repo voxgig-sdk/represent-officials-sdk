@@ -24,6 +24,7 @@ main: kit: entity: representatif: {
       type: "`$STRING`"
     }
     {
+      format: "email"
       name: "email"
       req: false
       short: "Email address"
@@ -229,8 +230,10 @@ main: kit: entity: representatif: {
           }
           method: "GET"
           orig: "/representatives/"
-          parts: [
-            "representatives"
+          segments: [
+            {
+              lit: "representatives"
+            }
           ]
           select: {
             exist: [
@@ -299,17 +302,25 @@ main: kit: entity: representatif: {
           }
           method: "GET"
           orig: "/boundaries/{boundarySet}/{boundary}/representatives/"
-          parts: [
-            "boundaries"
-            "{boundary_set}"
-            "{boundary}"
-            "representatives"
-          ]
           rename: {
             param: {
               boundarySet: "boundary_set"
             }
           }
+          segments: [
+            {
+              lit: "boundaries"
+            }
+            {
+              var: "boundary_set"
+            }
+            {
+              var: "boundary"
+            }
+            {
+              lit: "representatives"
+            }
+          ]
           select: {
             exist: [
               "boundary"
@@ -438,15 +449,19 @@ main: kit: entity: representatif: {
           }
           method: "GET"
           orig: "/representatives/{representativeSet}/"
-          parts: [
-            "representatives"
-            "{id}"
-          ]
           rename: {
             param: {
               representativeSet: "id"
             }
           }
+          segments: [
+            {
+              lit: "representatives"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "callback"

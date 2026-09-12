@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -117,6 +128,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "boundary",
       "op": {
         "list": {
@@ -199,8 +214,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/boundaries/",
-              "parts": [
-                "boundaries"
+              "segments": [
+                {
+                  "lit": "boundaries"
+                }
               ],
               "select": {
                 "exist": [
@@ -220,7 +237,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "boundaries"
+              ]
             }
           ]
         },
@@ -295,15 +315,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/",
-              "parts": [
-                "boundaries",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "boundarySet": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "boundaries"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "callback",
@@ -320,7 +344,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "boundaries",
+                "{id}"
+              ]
             },
             {
               "args": {
@@ -364,16 +392,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/{boundary}/",
-              "parts": [
-                "boundaries",
-                "{boundary_set}",
-                "{boundary}"
-              ],
               "rename": {
                 "param": {
                   "boundarySet": "boundary_set"
                 }
               },
+              "segments": [
+                {
+                  "lit": "boundaries"
+                },
+                {
+                  "var": "boundary_set"
+                },
+                {
+                  "var": "boundary"
+                }
+              ],
               "select": {
                 "exist": [
                   "boundary",
@@ -386,7 +420,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.metadata`"
-              }
+              },
+              "parts": [
+                "boundaries",
+                "{boundary_set}",
+                "{boundary}"
+              ]
             },
             {
               "args": {
@@ -424,17 +463,25 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/{boundary}/centroid",
-              "parts": [
-                "boundaries",
-                "{boundary_set}",
-                "{boundary}",
-                "centroid"
-              ],
               "rename": {
                 "param": {
                   "boundarySet": "boundary_set"
                 }
               },
+              "segments": [
+                {
+                  "lit": "boundaries"
+                },
+                {
+                  "var": "boundary_set"
+                },
+                {
+                  "var": "boundary"
+                },
+                {
+                  "lit": "centroid"
+                }
+              ],
               "select": {
                 "$action": "centroid",
                 "exist": [
@@ -447,7 +494,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "boundaries",
+                "{boundary_set}",
+                "{boundary}",
+                "centroid"
+              ]
             },
             {
               "args": {
@@ -485,17 +538,25 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/{boundary}/shape",
-              "parts": [
-                "boundaries",
-                "{boundary_set}",
-                "{boundary}",
-                "shape"
-              ],
               "rename": {
                 "param": {
                   "boundarySet": "boundary_set"
                 }
               },
+              "segments": [
+                {
+                  "lit": "boundaries"
+                },
+                {
+                  "var": "boundary_set"
+                },
+                {
+                  "var": "boundary"
+                },
+                {
+                  "lit": "shape"
+                }
+              ],
               "select": {
                 "$action": "shape",
                 "exist": [
@@ -508,7 +569,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "boundaries",
+                "{boundary_set}",
+                "{boundary}",
+                "shape"
+              ]
             },
             {
               "args": {
@@ -546,17 +613,25 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/{boundary}/simple_shape",
-              "parts": [
-                "boundaries",
-                "{boundary_set}",
-                "{boundary}",
-                "simple_shape"
-              ],
               "rename": {
                 "param": {
                   "boundarySet": "boundary_set"
                 }
               },
+              "segments": [
+                {
+                  "lit": "boundaries"
+                },
+                {
+                  "var": "boundary_set"
+                },
+                {
+                  "var": "boundary"
+                },
+                {
+                  "lit": "simple_shape"
+                }
+              ],
               "select": {
                 "$action": "simple_shape",
                 "exist": [
@@ -569,7 +644,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "boundaries",
+                "{boundary_set}",
+                "{boundary}",
+                "simple_shape"
+              ]
             },
             {
               "args": {
@@ -600,16 +681,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/centroid",
-              "parts": [
-                "boundaries",
-                "{boundary_set}",
-                "centroid"
-              ],
               "rename": {
                 "param": {
                   "boundarySet": "boundary_set"
                 }
               },
+              "segments": [
+                {
+                  "lit": "boundaries"
+                },
+                {
+                  "var": "boundary_set"
+                },
+                {
+                  "lit": "centroid"
+                }
+              ],
               "select": {
                 "$action": "centroid",
                 "exist": [
@@ -621,7 +708,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "boundaries",
+                "{boundary_set}",
+                "centroid"
+              ]
             },
             {
               "args": {
@@ -652,16 +744,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/shape",
-              "parts": [
-                "boundaries",
-                "{boundary_set}",
-                "shape"
-              ],
               "rename": {
                 "param": {
                   "boundarySet": "boundary_set"
                 }
               },
+              "segments": [
+                {
+                  "lit": "boundaries"
+                },
+                {
+                  "var": "boundary_set"
+                },
+                {
+                  "lit": "shape"
+                }
+              ],
               "select": {
                 "$action": "shape",
                 "exist": [
@@ -673,7 +771,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "boundaries",
+                "{boundary_set}",
+                "shape"
+              ]
             },
             {
               "args": {
@@ -704,16 +807,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/simple_shape",
-              "parts": [
-                "boundaries",
-                "{boundary_set}",
-                "simple_shape"
-              ],
               "rename": {
                 "param": {
                   "boundarySet": "boundary_set"
                 }
               },
+              "segments": [
+                {
+                  "lit": "boundaries"
+                },
+                {
+                  "var": "boundary_set"
+                },
+                {
+                  "lit": "simple_shape"
+                }
+              ],
               "select": {
                 "$action": "simple_shape",
                 "exist": [
@@ -725,7 +834,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "boundaries",
+                "{boundary_set}",
+                "simple_shape"
+              ]
             }
           ]
         }
@@ -757,6 +871,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "boundary_set",
       "op": {
         "list": {
@@ -815,8 +933,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/boundary-sets/",
-              "parts": [
-                "boundary-sets"
+              "segments": [
+                {
+                  "lit": "boundary-sets"
+                }
               ],
               "select": {
                 "exist": [
@@ -832,7 +952,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "boundary-sets"
+              ]
             }
           ]
         },
@@ -875,15 +998,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/boundary-sets/{boundarySet}/",
-              "parts": [
-                "boundary-sets",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "boundarySet": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "boundary-sets"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "callback",
@@ -895,7 +1022,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "boundary-sets",
+                "{id}"
+              ]
             }
           ]
         }
@@ -961,8 +1092,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/candidates/",
-              "parts": [
-                "candidates"
+              "segments": [
+                {
+                  "lit": "candidates"
+                }
               ],
               "select": {
                 "exist": [
@@ -976,7 +1109,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "candidates"
+              ]
             }
           ]
         }
@@ -1042,8 +1178,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/elections/",
-              "parts": [
-                "elections"
+              "segments": [
+                {
+                  "lit": "elections"
+                }
               ],
               "select": {
                 "exist": [
@@ -1057,7 +1195,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "elections"
+              ]
             }
           ]
         }
@@ -1155,15 +1296,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/postcodes/{postalCode}/",
-              "parts": [
-                "postcodes",
-                "{postal_code}"
-              ],
               "rename": {
                 "param": {
                   "postalCode": "postal_code"
                 }
               },
+              "segments": [
+                {
+                  "lit": "postcodes"
+                },
+                {
+                  "var": "postal_code"
+                }
+              ],
               "select": {
                 "exist": [
                   "callback",
@@ -1176,7 +1321,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "postcodes",
+                "{postal_code}"
+              ]
             }
           ]
         }
@@ -1209,6 +1358,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "email",
           "name": "email",
           "short": "Email address",
           "type": "`$STRING`"
@@ -1282,6 +1432,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "representatif",
       "op": {
         "list": {
@@ -1382,8 +1536,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/representatives/",
-              "parts": [
-                "representatives"
+              "segments": [
+                {
+                  "lit": "representatives"
+                }
               ],
               "select": {
                 "exist": [
@@ -1406,7 +1562,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "representatives"
+              ]
             },
             {
               "args": {
@@ -1450,17 +1609,25 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/{boundary}/representatives/",
-              "parts": [
-                "boundaries",
-                "{boundary_set}",
-                "{boundary}",
-                "representatives"
-              ],
               "rename": {
                 "param": {
                   "boundarySet": "boundary_set"
                 }
               },
+              "segments": [
+                {
+                  "lit": "boundaries"
+                },
+                {
+                  "var": "boundary_set"
+                },
+                {
+                  "var": "boundary"
+                },
+                {
+                  "lit": "representatives"
+                }
+              ],
               "select": {
                 "exist": [
                   "boundary",
@@ -1473,7 +1640,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.objects`"
-              }
+              },
+              "parts": [
+                "boundaries",
+                "{boundary_set}",
+                "{boundary}",
+                "representatives"
+              ]
             }
           ]
         },
@@ -1578,15 +1751,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/representatives/{representativeSet}/",
-              "parts": [
-                "representatives",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "representativeSet": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "representatives"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "callback",
@@ -1608,7 +1785,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "representatives",
+                "{id}"
+              ]
             }
           ]
         }
@@ -1636,6 +1817,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "representative_set",
       "op": {
         "list": {
@@ -1682,8 +1867,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/representative-sets/",
-              "parts": [
-                "representative-sets"
+              "segments": [
+                {
+                  "lit": "representative-sets"
+                }
               ],
               "select": {
                 "exist": [
@@ -1697,7 +1884,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "representative-sets"
+              ]
             }
           ]
         },
@@ -1740,15 +1930,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/representative-sets/{representativeSet}/",
-              "parts": [
-                "representative-sets",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "representativeSet": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "representative-sets"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "callback",
@@ -1760,7 +1954,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "representative-sets",
+                "{id}"
+              ]
             }
           ]
         }
@@ -1776,6 +1974,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

@@ -143,8 +143,10 @@ main: kit: entity: boundary: {
           }
           method: "GET"
           orig: "/boundaries/"
-          parts: [
-            "boundaries"
+          segments: [
+            {
+              lit: "boundaries"
+            }
           ]
           select: {
             exist: [
@@ -245,15 +247,19 @@ main: kit: entity: boundary: {
           }
           method: "GET"
           orig: "/boundaries/{boundarySet}/"
-          parts: [
-            "boundaries"
-            "{id}"
-          ]
           rename: {
             param: {
               boundarySet: "id"
             }
           }
+          segments: [
+            {
+              lit: "boundaries"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "callback"
@@ -316,16 +322,22 @@ main: kit: entity: boundary: {
           }
           method: "GET"
           orig: "/boundaries/{boundarySet}/{boundary}/"
-          parts: [
-            "boundaries"
-            "{boundary_set}"
-            "{boundary}"
-          ]
           rename: {
             param: {
               boundarySet: "boundary_set"
             }
           }
+          segments: [
+            {
+              lit: "boundaries"
+            }
+            {
+              var: "boundary_set"
+            }
+            {
+              var: "boundary"
+            }
+          ]
           select: {
             exist: [
               "boundary"
@@ -377,17 +389,25 @@ main: kit: entity: boundary: {
           }
           method: "GET"
           orig: "/boundaries/{boundarySet}/{boundary}/centroid"
-          parts: [
-            "boundaries"
-            "{boundary_set}"
-            "{boundary}"
-            "centroid"
-          ]
           rename: {
             param: {
               boundarySet: "boundary_set"
             }
           }
+          segments: [
+            {
+              lit: "boundaries"
+            }
+            {
+              var: "boundary_set"
+            }
+            {
+              var: "boundary"
+            }
+            {
+              lit: "centroid"
+            }
+          ]
           select: {
             "$action": "centroid"
             exist: [
@@ -439,17 +459,25 @@ main: kit: entity: boundary: {
           }
           method: "GET"
           orig: "/boundaries/{boundarySet}/{boundary}/shape"
-          parts: [
-            "boundaries"
-            "{boundary_set}"
-            "{boundary}"
-            "shape"
-          ]
           rename: {
             param: {
               boundarySet: "boundary_set"
             }
           }
+          segments: [
+            {
+              lit: "boundaries"
+            }
+            {
+              var: "boundary_set"
+            }
+            {
+              var: "boundary"
+            }
+            {
+              lit: "shape"
+            }
+          ]
           select: {
             "$action": "shape"
             exist: [
@@ -501,17 +529,25 @@ main: kit: entity: boundary: {
           }
           method: "GET"
           orig: "/boundaries/{boundarySet}/{boundary}/simple_shape"
-          parts: [
-            "boundaries"
-            "{boundary_set}"
-            "{boundary}"
-            "simple_shape"
-          ]
           rename: {
             param: {
               boundarySet: "boundary_set"
             }
           }
+          segments: [
+            {
+              lit: "boundaries"
+            }
+            {
+              var: "boundary_set"
+            }
+            {
+              var: "boundary"
+            }
+            {
+              lit: "simple_shape"
+            }
+          ]
           select: {
             "$action": "simple_shape"
             exist: [
@@ -556,16 +592,22 @@ main: kit: entity: boundary: {
           }
           method: "GET"
           orig: "/boundaries/{boundarySet}/centroid"
-          parts: [
-            "boundaries"
-            "{boundary_set}"
-            "centroid"
-          ]
           rename: {
             param: {
               boundarySet: "boundary_set"
             }
           }
+          segments: [
+            {
+              lit: "boundaries"
+            }
+            {
+              var: "boundary_set"
+            }
+            {
+              lit: "centroid"
+            }
+          ]
           select: {
             "$action": "centroid"
             exist: [
@@ -609,16 +651,22 @@ main: kit: entity: boundary: {
           }
           method: "GET"
           orig: "/boundaries/{boundarySet}/shape"
-          parts: [
-            "boundaries"
-            "{boundary_set}"
-            "shape"
-          ]
           rename: {
             param: {
               boundarySet: "boundary_set"
             }
           }
+          segments: [
+            {
+              lit: "boundaries"
+            }
+            {
+              var: "boundary_set"
+            }
+            {
+              lit: "shape"
+            }
+          ]
           select: {
             "$action": "shape"
             exist: [
@@ -662,16 +710,22 @@ main: kit: entity: boundary: {
           }
           method: "GET"
           orig: "/boundaries/{boundarySet}/simple_shape"
-          parts: [
-            "boundaries"
-            "{boundary_set}"
-            "simple_shape"
-          ]
           rename: {
             param: {
               boundarySet: "boundary_set"
             }
           }
+          segments: [
+            {
+              lit: "boundaries"
+            }
+            {
+              var: "boundary_set"
+            }
+            {
+              lit: "simple_shape"
+            }
+          ]
           select: {
             "$action": "simple_shape"
             exist: [

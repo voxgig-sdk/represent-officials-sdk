@@ -95,8 +95,10 @@ main: kit: entity: boundary_set: {
           }
           method: "GET"
           orig: "/boundary-sets/"
-          parts: [
-            "boundary-sets"
+          segments: [
+            {
+              lit: "boundary-sets"
+            }
           ]
           select: {
             exist: [
@@ -156,15 +158,19 @@ main: kit: entity: boundary_set: {
           }
           method: "GET"
           orig: "/boundary-sets/{boundarySet}/"
-          parts: [
-            "boundary-sets"
-            "{id}"
-          ]
           rename: {
             param: {
               boundarySet: "id"
             }
           }
+          segments: [
+            {
+              lit: "boundary-sets"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "callback"

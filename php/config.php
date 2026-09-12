@@ -96,6 +96,10 @@ class RepresentOfficialsConfig
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'boundary',
           'op' => [
             'list' => [
@@ -178,8 +182,10 @@ class RepresentOfficialsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/boundaries/',
-                  'parts' => [
-                    'boundaries',
+                  'segments' => [
+                    [
+                      'lit' => 'boundaries',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -199,6 +205,9 @@ class RepresentOfficialsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'boundaries',
                   ],
                 ],
               ],
@@ -274,13 +283,17 @@ class RepresentOfficialsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/boundaries/{boundarySet}/',
-                  'parts' => [
-                    'boundaries',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'boundarySet' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'boundaries',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -299,6 +312,10 @@ class RepresentOfficialsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'boundaries',
+                    '{id}',
                   ],
                 ],
                 [
@@ -343,14 +360,20 @@ class RepresentOfficialsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/boundaries/{boundarySet}/{boundary}/',
-                  'parts' => [
-                    'boundaries',
-                    '{boundary_set}',
-                    '{boundary}',
-                  ],
                   'rename' => [
                     'param' => [
                       'boundarySet' => 'boundary_set',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'boundaries',
+                    ],
+                    [
+                      'var' => 'boundary_set',
+                    ],
+                    [
+                      'var' => 'boundary',
                     ],
                   ],
                   'select' => [
@@ -365,6 +388,11 @@ class RepresentOfficialsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.metadata`',
+                  ],
+                  'parts' => [
+                    'boundaries',
+                    '{boundary_set}',
+                    '{boundary}',
                   ],
                 ],
                 [
@@ -403,15 +431,23 @@ class RepresentOfficialsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/boundaries/{boundarySet}/{boundary}/centroid',
-                  'parts' => [
-                    'boundaries',
-                    '{boundary_set}',
-                    '{boundary}',
-                    'centroid',
-                  ],
                   'rename' => [
                     'param' => [
                       'boundarySet' => 'boundary_set',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'boundaries',
+                    ],
+                    [
+                      'var' => 'boundary_set',
+                    ],
+                    [
+                      'var' => 'boundary',
+                    ],
+                    [
+                      'lit' => 'centroid',
                     ],
                   ],
                   'select' => [
@@ -426,6 +462,12 @@ class RepresentOfficialsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'boundaries',
+                    '{boundary_set}',
+                    '{boundary}',
+                    'centroid',
                   ],
                 ],
                 [
@@ -464,15 +506,23 @@ class RepresentOfficialsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/boundaries/{boundarySet}/{boundary}/shape',
-                  'parts' => [
-                    'boundaries',
-                    '{boundary_set}',
-                    '{boundary}',
-                    'shape',
-                  ],
                   'rename' => [
                     'param' => [
                       'boundarySet' => 'boundary_set',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'boundaries',
+                    ],
+                    [
+                      'var' => 'boundary_set',
+                    ],
+                    [
+                      'var' => 'boundary',
+                    ],
+                    [
+                      'lit' => 'shape',
                     ],
                   ],
                   'select' => [
@@ -487,6 +537,12 @@ class RepresentOfficialsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'boundaries',
+                    '{boundary_set}',
+                    '{boundary}',
+                    'shape',
                   ],
                 ],
                 [
@@ -525,15 +581,23 @@ class RepresentOfficialsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/boundaries/{boundarySet}/{boundary}/simple_shape',
-                  'parts' => [
-                    'boundaries',
-                    '{boundary_set}',
-                    '{boundary}',
-                    'simple_shape',
-                  ],
                   'rename' => [
                     'param' => [
                       'boundarySet' => 'boundary_set',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'boundaries',
+                    ],
+                    [
+                      'var' => 'boundary_set',
+                    ],
+                    [
+                      'var' => 'boundary',
+                    ],
+                    [
+                      'lit' => 'simple_shape',
                     ],
                   ],
                   'select' => [
@@ -548,6 +612,12 @@ class RepresentOfficialsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'boundaries',
+                    '{boundary_set}',
+                    '{boundary}',
+                    'simple_shape',
                   ],
                 ],
                 [
@@ -579,14 +649,20 @@ class RepresentOfficialsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/boundaries/{boundarySet}/centroid',
-                  'parts' => [
-                    'boundaries',
-                    '{boundary_set}',
-                    'centroid',
-                  ],
                   'rename' => [
                     'param' => [
                       'boundarySet' => 'boundary_set',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'boundaries',
+                    ],
+                    [
+                      'var' => 'boundary_set',
+                    ],
+                    [
+                      'lit' => 'centroid',
                     ],
                   ],
                   'select' => [
@@ -600,6 +676,11 @@ class RepresentOfficialsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'boundaries',
+                    '{boundary_set}',
+                    'centroid',
                   ],
                 ],
                 [
@@ -631,14 +712,20 @@ class RepresentOfficialsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/boundaries/{boundarySet}/shape',
-                  'parts' => [
-                    'boundaries',
-                    '{boundary_set}',
-                    'shape',
-                  ],
                   'rename' => [
                     'param' => [
                       'boundarySet' => 'boundary_set',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'boundaries',
+                    ],
+                    [
+                      'var' => 'boundary_set',
+                    ],
+                    [
+                      'lit' => 'shape',
                     ],
                   ],
                   'select' => [
@@ -652,6 +739,11 @@ class RepresentOfficialsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'boundaries',
+                    '{boundary_set}',
+                    'shape',
                   ],
                 ],
                 [
@@ -683,14 +775,20 @@ class RepresentOfficialsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/boundaries/{boundarySet}/simple_shape',
-                  'parts' => [
-                    'boundaries',
-                    '{boundary_set}',
-                    'simple_shape',
-                  ],
                   'rename' => [
                     'param' => [
                       'boundarySet' => 'boundary_set',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'boundaries',
+                    ],
+                    [
+                      'var' => 'boundary_set',
+                    ],
+                    [
+                      'lit' => 'simple_shape',
                     ],
                   ],
                   'select' => [
@@ -704,6 +802,11 @@ class RepresentOfficialsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'boundaries',
+                    '{boundary_set}',
+                    'simple_shape',
                   ],
                 ],
               ],
@@ -735,6 +838,10 @@ class RepresentOfficialsConfig
               'name' => 'url',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'boundary_set',
           'op' => [
@@ -794,8 +901,10 @@ class RepresentOfficialsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/boundary-sets/',
-                  'parts' => [
-                    'boundary-sets',
+                  'segments' => [
+                    [
+                      'lit' => 'boundary-sets',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -811,6 +920,9 @@ class RepresentOfficialsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'boundary-sets',
                   ],
                 ],
               ],
@@ -854,13 +966,17 @@ class RepresentOfficialsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/boundary-sets/{boundarySet}/',
-                  'parts' => [
-                    'boundary-sets',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'boundarySet' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'boundary-sets',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -874,6 +990,10 @@ class RepresentOfficialsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'boundary-sets',
+                    '{id}',
                   ],
                 ],
               ],
@@ -940,8 +1060,10 @@ class RepresentOfficialsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/candidates/',
-                  'parts' => [
-                    'candidates',
+                  'segments' => [
+                    [
+                      'lit' => 'candidates',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -955,6 +1077,9 @@ class RepresentOfficialsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'candidates',
                   ],
                 ],
               ],
@@ -1021,8 +1146,10 @@ class RepresentOfficialsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/elections/',
-                  'parts' => [
-                    'elections',
+                  'segments' => [
+                    [
+                      'lit' => 'elections',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -1036,6 +1163,9 @@ class RepresentOfficialsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'elections',
                   ],
                 ],
               ],
@@ -1134,13 +1264,17 @@ class RepresentOfficialsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/postcodes/{postalCode}/',
-                  'parts' => [
-                    'postcodes',
-                    '{postal_code}',
-                  ],
                   'rename' => [
                     'param' => [
                       'postalCode' => 'postal_code',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'postcodes',
+                    ],
+                    [
+                      'var' => 'postal_code',
                     ],
                   ],
                   'select' => [
@@ -1155,6 +1289,10 @@ class RepresentOfficialsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'postcodes',
+                    '{postal_code}',
                   ],
                 ],
               ],
@@ -1188,6 +1326,7 @@ class RepresentOfficialsConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'email',
               'name' => 'email',
               'short' => 'Email address',
               'type' => '`$STRING`',
@@ -1260,6 +1399,10 @@ class RepresentOfficialsConfig
               'short' => 'Representative\'s page on official legislature site',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'representatif',
           'op' => [
@@ -1361,8 +1504,10 @@ class RepresentOfficialsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/representatives/',
-                  'parts' => [
-                    'representatives',
+                  'segments' => [
+                    [
+                      'lit' => 'representatives',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -1385,6 +1530,9 @@ class RepresentOfficialsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'representatives',
                   ],
                 ],
                 [
@@ -1429,15 +1577,23 @@ class RepresentOfficialsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/boundaries/{boundarySet}/{boundary}/representatives/',
-                  'parts' => [
-                    'boundaries',
-                    '{boundary_set}',
-                    '{boundary}',
-                    'representatives',
-                  ],
                   'rename' => [
                     'param' => [
                       'boundarySet' => 'boundary_set',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'boundaries',
+                    ],
+                    [
+                      'var' => 'boundary_set',
+                    ],
+                    [
+                      'var' => 'boundary',
+                    ],
+                    [
+                      'lit' => 'representatives',
                     ],
                   ],
                   'select' => [
@@ -1452,6 +1608,12 @@ class RepresentOfficialsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.objects`',
+                  ],
+                  'parts' => [
+                    'boundaries',
+                    '{boundary_set}',
+                    '{boundary}',
+                    'representatives',
                   ],
                 ],
               ],
@@ -1557,13 +1719,17 @@ class RepresentOfficialsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/representatives/{representativeSet}/',
-                  'parts' => [
-                    'representatives',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'representativeSet' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'representatives',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -1587,6 +1753,10 @@ class RepresentOfficialsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'representatives',
+                    '{id}',
                   ],
                 ],
               ],
@@ -1614,6 +1784,10 @@ class RepresentOfficialsConfig
               'name' => 'url',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'representative_set',
           'op' => [
@@ -1661,8 +1835,10 @@ class RepresentOfficialsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/representative-sets/',
-                  'parts' => [
-                    'representative-sets',
+                  'segments' => [
+                    [
+                      'lit' => 'representative-sets',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -1676,6 +1852,9 @@ class RepresentOfficialsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'representative-sets',
                   ],
                 ],
               ],
@@ -1719,13 +1898,17 @@ class RepresentOfficialsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/representative-sets/{representativeSet}/',
-                  'parts' => [
-                    'representative-sets',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'representativeSet' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'representative-sets',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -1739,6 +1922,10 @@ class RepresentOfficialsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'representative-sets',
+                    '{id}',
                   ],
                 ],
               ],

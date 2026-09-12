@@ -76,8 +76,10 @@ main: kit: entity: representative_set: {
           }
           method: "GET"
           orig: "/representative-sets/"
-          parts: [
-            "representative-sets"
+          segments: [
+            {
+              lit: "representative-sets"
+            }
           ]
           select: {
             exist: [
@@ -135,15 +137,19 @@ main: kit: entity: representative_set: {
           }
           method: "GET"
           orig: "/representative-sets/{representativeSet}/"
-          parts: [
-            "representative-sets"
-            "{id}"
-          ]
           rename: {
             param: {
               representativeSet: "id"
             }
           }
+          segments: [
+            {
+              lit: "representative-sets"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "callback"

@@ -103,15 +103,19 @@ main: kit: entity: postal_code: {
           }
           method: "GET"
           orig: "/postcodes/{postalCode}/"
-          parts: [
-            "postcodes"
-            "{postal_code}"
-          ]
           rename: {
             param: {
               postalCode: "postal_code"
             }
           }
+          segments: [
+            {
+              lit: "postcodes"
+            }
+            {
+              var: "postal_code"
+            }
+          ]
           select: {
             exist: [
               "callback"

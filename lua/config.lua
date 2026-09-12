@@ -70,6 +70,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "boundary",
         ["op"] = {
           ["list"] = {
@@ -152,8 +156,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/boundaries/",
-                ["parts"] = {
-                  "boundaries",
+                ["segments"] = {
+                  {
+                    ["lit"] = "boundaries",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -173,6 +179,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "boundaries",
                 },
               },
             },
@@ -248,13 +257,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/boundaries/{boundarySet}/",
-                ["parts"] = {
-                  "boundaries",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["boundarySet"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "boundaries",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -273,6 +286,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "boundaries",
+                  "{id}",
                 },
               },
               {
@@ -317,14 +334,20 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/boundaries/{boundarySet}/{boundary}/",
-                ["parts"] = {
-                  "boundaries",
-                  "{boundary_set}",
-                  "{boundary}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["boundarySet"] = "boundary_set",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "boundaries",
+                  },
+                  {
+                    ["var"] = "boundary_set",
+                  },
+                  {
+                    ["var"] = "boundary",
                   },
                 },
                 ["select"] = {
@@ -339,6 +362,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.metadata`",
+                },
+                ["parts"] = {
+                  "boundaries",
+                  "{boundary_set}",
+                  "{boundary}",
                 },
               },
               {
@@ -377,15 +405,23 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/boundaries/{boundarySet}/{boundary}/centroid",
-                ["parts"] = {
-                  "boundaries",
-                  "{boundary_set}",
-                  "{boundary}",
-                  "centroid",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["boundarySet"] = "boundary_set",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "boundaries",
+                  },
+                  {
+                    ["var"] = "boundary_set",
+                  },
+                  {
+                    ["var"] = "boundary",
+                  },
+                  {
+                    ["lit"] = "centroid",
                   },
                 },
                 ["select"] = {
@@ -400,6 +436,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "boundaries",
+                  "{boundary_set}",
+                  "{boundary}",
+                  "centroid",
                 },
               },
               {
@@ -438,15 +480,23 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/boundaries/{boundarySet}/{boundary}/shape",
-                ["parts"] = {
-                  "boundaries",
-                  "{boundary_set}",
-                  "{boundary}",
-                  "shape",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["boundarySet"] = "boundary_set",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "boundaries",
+                  },
+                  {
+                    ["var"] = "boundary_set",
+                  },
+                  {
+                    ["var"] = "boundary",
+                  },
+                  {
+                    ["lit"] = "shape",
                   },
                 },
                 ["select"] = {
@@ -461,6 +511,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "boundaries",
+                  "{boundary_set}",
+                  "{boundary}",
+                  "shape",
                 },
               },
               {
@@ -499,15 +555,23 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/boundaries/{boundarySet}/{boundary}/simple_shape",
-                ["parts"] = {
-                  "boundaries",
-                  "{boundary_set}",
-                  "{boundary}",
-                  "simple_shape",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["boundarySet"] = "boundary_set",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "boundaries",
+                  },
+                  {
+                    ["var"] = "boundary_set",
+                  },
+                  {
+                    ["var"] = "boundary",
+                  },
+                  {
+                    ["lit"] = "simple_shape",
                   },
                 },
                 ["select"] = {
@@ -522,6 +586,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "boundaries",
+                  "{boundary_set}",
+                  "{boundary}",
+                  "simple_shape",
                 },
               },
               {
@@ -553,14 +623,20 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/boundaries/{boundarySet}/centroid",
-                ["parts"] = {
-                  "boundaries",
-                  "{boundary_set}",
-                  "centroid",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["boundarySet"] = "boundary_set",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "boundaries",
+                  },
+                  {
+                    ["var"] = "boundary_set",
+                  },
+                  {
+                    ["lit"] = "centroid",
                   },
                 },
                 ["select"] = {
@@ -574,6 +650,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "boundaries",
+                  "{boundary_set}",
+                  "centroid",
                 },
               },
               {
@@ -605,14 +686,20 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/boundaries/{boundarySet}/shape",
-                ["parts"] = {
-                  "boundaries",
-                  "{boundary_set}",
-                  "shape",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["boundarySet"] = "boundary_set",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "boundaries",
+                  },
+                  {
+                    ["var"] = "boundary_set",
+                  },
+                  {
+                    ["lit"] = "shape",
                   },
                 },
                 ["select"] = {
@@ -626,6 +713,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "boundaries",
+                  "{boundary_set}",
+                  "shape",
                 },
               },
               {
@@ -657,14 +749,20 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/boundaries/{boundarySet}/simple_shape",
-                ["parts"] = {
-                  "boundaries",
-                  "{boundary_set}",
-                  "simple_shape",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["boundarySet"] = "boundary_set",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "boundaries",
+                  },
+                  {
+                    ["var"] = "boundary_set",
+                  },
+                  {
+                    ["lit"] = "simple_shape",
                   },
                 },
                 ["select"] = {
@@ -678,6 +776,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "boundaries",
+                  "{boundary_set}",
+                  "simple_shape",
                 },
               },
             },
@@ -709,6 +812,10 @@ local function make_config()
             ["name"] = "url",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "boundary_set",
         ["op"] = {
@@ -768,8 +875,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/boundary-sets/",
-                ["parts"] = {
-                  "boundary-sets",
+                ["segments"] = {
+                  {
+                    ["lit"] = "boundary-sets",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -785,6 +894,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "boundary-sets",
                 },
               },
             },
@@ -828,13 +940,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/boundary-sets/{boundarySet}/",
-                ["parts"] = {
-                  "boundary-sets",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["boundarySet"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "boundary-sets",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -848,6 +964,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "boundary-sets",
+                  "{id}",
                 },
               },
             },
@@ -914,8 +1034,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/candidates/",
-                ["parts"] = {
-                  "candidates",
+                ["segments"] = {
+                  {
+                    ["lit"] = "candidates",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -929,6 +1051,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "candidates",
                 },
               },
             },
@@ -995,8 +1120,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/elections/",
-                ["parts"] = {
-                  "elections",
+                ["segments"] = {
+                  {
+                    ["lit"] = "elections",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1010,6 +1137,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "elections",
                 },
               },
             },
@@ -1108,13 +1238,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/postcodes/{postalCode}/",
-                ["parts"] = {
-                  "postcodes",
-                  "{postal_code}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["postalCode"] = "postal_code",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "postcodes",
+                  },
+                  {
+                    ["var"] = "postal_code",
                   },
                 },
                 ["select"] = {
@@ -1129,6 +1263,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "postcodes",
+                  "{postal_code}",
                 },
               },
             },
@@ -1162,6 +1300,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "email",
             ["name"] = "email",
             ["short"] = "Email address",
             ["type"] = "`$STRING`",
@@ -1234,6 +1373,10 @@ local function make_config()
             ["short"] = "Representative's page on official legislature site",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "representatif",
         ["op"] = {
@@ -1335,8 +1478,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/representatives/",
-                ["parts"] = {
-                  "representatives",
+                ["segments"] = {
+                  {
+                    ["lit"] = "representatives",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1359,6 +1504,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "representatives",
                 },
               },
               {
@@ -1403,15 +1551,23 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/boundaries/{boundarySet}/{boundary}/representatives/",
-                ["parts"] = {
-                  "boundaries",
-                  "{boundary_set}",
-                  "{boundary}",
-                  "representatives",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["boundarySet"] = "boundary_set",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "boundaries",
+                  },
+                  {
+                    ["var"] = "boundary_set",
+                  },
+                  {
+                    ["var"] = "boundary",
+                  },
+                  {
+                    ["lit"] = "representatives",
                   },
                 },
                 ["select"] = {
@@ -1426,6 +1582,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.objects`",
+                },
+                ["parts"] = {
+                  "boundaries",
+                  "{boundary_set}",
+                  "{boundary}",
+                  "representatives",
                 },
               },
             },
@@ -1531,13 +1693,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/representatives/{representativeSet}/",
-                ["parts"] = {
-                  "representatives",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["representativeSet"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "representatives",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -1561,6 +1727,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "representatives",
+                  "{id}",
                 },
               },
             },
@@ -1588,6 +1758,10 @@ local function make_config()
             ["name"] = "url",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "representative_set",
         ["op"] = {
@@ -1635,8 +1809,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/representative-sets/",
-                ["parts"] = {
-                  "representative-sets",
+                ["segments"] = {
+                  {
+                    ["lit"] = "representative-sets",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1650,6 +1826,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "representative-sets",
                 },
               },
             },
@@ -1693,13 +1872,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/representative-sets/{representativeSet}/",
-                ["parts"] = {
-                  "representative-sets",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["representativeSet"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "representative-sets",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -1713,6 +1896,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "representative-sets",
+                  "{id}",
                 },
               },
             },

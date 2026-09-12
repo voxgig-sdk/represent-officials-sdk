@@ -1,6 +1,14 @@
 # RepresentOfficials SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -91,6 +99,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "boundary",
         "op": {
           "list": {
@@ -173,8 +185,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/boundaries/",
-                "parts": [
-                  "boundaries",
+                "segments": [
+                  {
+                    "lit": "boundaries",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -195,6 +209,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "boundaries",
+                ],
               },
             ],
           },
@@ -269,15 +286,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/boundaries/{boundarySet}/",
-                "parts": [
-                  "boundaries",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "boundarySet": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "boundaries",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "callback",
@@ -295,6 +316,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "boundaries",
+                  "{id}",
+                ],
               },
               {
                 "args": {
@@ -338,16 +363,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/boundaries/{boundarySet}/{boundary}/",
-                "parts": [
-                  "boundaries",
-                  "{boundary_set}",
-                  "{boundary}",
-                ],
                 "rename": {
                   "param": {
                     "boundarySet": "boundary_set",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "boundaries",
+                  },
+                  {
+                    "var": "boundary_set",
+                  },
+                  {
+                    "var": "boundary",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "boundary",
@@ -361,6 +392,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.metadata`",
                 },
+                "parts": [
+                  "boundaries",
+                  "{boundary_set}",
+                  "{boundary}",
+                ],
               },
               {
                 "args": {
@@ -398,17 +434,25 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/boundaries/{boundarySet}/{boundary}/centroid",
-                "parts": [
-                  "boundaries",
-                  "{boundary_set}",
-                  "{boundary}",
-                  "centroid",
-                ],
                 "rename": {
                   "param": {
                     "boundarySet": "boundary_set",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "boundaries",
+                  },
+                  {
+                    "var": "boundary_set",
+                  },
+                  {
+                    "var": "boundary",
+                  },
+                  {
+                    "lit": "centroid",
+                  },
+                ],
                 "select": {
                   "$action": "centroid",
                   "exist": [
@@ -422,6 +466,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "boundaries",
+                  "{boundary_set}",
+                  "{boundary}",
+                  "centroid",
+                ],
               },
               {
                 "args": {
@@ -459,17 +509,25 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/boundaries/{boundarySet}/{boundary}/shape",
-                "parts": [
-                  "boundaries",
-                  "{boundary_set}",
-                  "{boundary}",
-                  "shape",
-                ],
                 "rename": {
                   "param": {
                     "boundarySet": "boundary_set",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "boundaries",
+                  },
+                  {
+                    "var": "boundary_set",
+                  },
+                  {
+                    "var": "boundary",
+                  },
+                  {
+                    "lit": "shape",
+                  },
+                ],
                 "select": {
                   "$action": "shape",
                   "exist": [
@@ -483,6 +541,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "boundaries",
+                  "{boundary_set}",
+                  "{boundary}",
+                  "shape",
+                ],
               },
               {
                 "args": {
@@ -520,17 +584,25 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/boundaries/{boundarySet}/{boundary}/simple_shape",
-                "parts": [
-                  "boundaries",
-                  "{boundary_set}",
-                  "{boundary}",
-                  "simple_shape",
-                ],
                 "rename": {
                   "param": {
                     "boundarySet": "boundary_set",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "boundaries",
+                  },
+                  {
+                    "var": "boundary_set",
+                  },
+                  {
+                    "var": "boundary",
+                  },
+                  {
+                    "lit": "simple_shape",
+                  },
+                ],
                 "select": {
                   "$action": "simple_shape",
                   "exist": [
@@ -544,6 +616,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "boundaries",
+                  "{boundary_set}",
+                  "{boundary}",
+                  "simple_shape",
+                ],
               },
               {
                 "args": {
@@ -574,16 +652,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/boundaries/{boundarySet}/centroid",
-                "parts": [
-                  "boundaries",
-                  "{boundary_set}",
-                  "centroid",
-                ],
                 "rename": {
                   "param": {
                     "boundarySet": "boundary_set",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "boundaries",
+                  },
+                  {
+                    "var": "boundary_set",
+                  },
+                  {
+                    "lit": "centroid",
+                  },
+                ],
                 "select": {
                   "$action": "centroid",
                   "exist": [
@@ -596,6 +680,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "boundaries",
+                  "{boundary_set}",
+                  "centroid",
+                ],
               },
               {
                 "args": {
@@ -626,16 +715,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/boundaries/{boundarySet}/shape",
-                "parts": [
-                  "boundaries",
-                  "{boundary_set}",
-                  "shape",
-                ],
                 "rename": {
                   "param": {
                     "boundarySet": "boundary_set",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "boundaries",
+                  },
+                  {
+                    "var": "boundary_set",
+                  },
+                  {
+                    "lit": "shape",
+                  },
+                ],
                 "select": {
                   "$action": "shape",
                   "exist": [
@@ -648,6 +743,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "boundaries",
+                  "{boundary_set}",
+                  "shape",
+                ],
               },
               {
                 "args": {
@@ -678,16 +778,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/boundaries/{boundarySet}/simple_shape",
-                "parts": [
-                  "boundaries",
-                  "{boundary_set}",
-                  "simple_shape",
-                ],
                 "rename": {
                   "param": {
                     "boundarySet": "boundary_set",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "boundaries",
+                  },
+                  {
+                    "var": "boundary_set",
+                  },
+                  {
+                    "lit": "simple_shape",
+                  },
+                ],
                 "select": {
                   "$action": "simple_shape",
                   "exist": [
@@ -700,6 +806,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "boundaries",
+                  "{boundary_set}",
+                  "simple_shape",
+                ],
               },
             ],
           },
@@ -731,6 +842,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "boundary_set",
         "op": {
           "list": {
@@ -789,8 +904,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/boundary-sets/",
-                "parts": [
-                  "boundary-sets",
+                "segments": [
+                  {
+                    "lit": "boundary-sets",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -807,6 +924,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "boundary-sets",
+                ],
               },
             ],
           },
@@ -849,15 +969,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/boundary-sets/{boundarySet}/",
-                "parts": [
-                  "boundary-sets",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "boundarySet": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "boundary-sets",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "callback",
@@ -870,6 +994,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "boundary-sets",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -935,8 +1063,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/candidates/",
-                "parts": [
-                  "candidates",
+                "segments": [
+                  {
+                    "lit": "candidates",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -951,6 +1081,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "candidates",
+                ],
               },
             ],
           },
@@ -1016,8 +1149,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/elections/",
-                "parts": [
-                  "elections",
+                "segments": [
+                  {
+                    "lit": "elections",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -1032,6 +1167,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "elections",
+                ],
               },
             ],
           },
@@ -1129,15 +1267,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/postcodes/{postalCode}/",
-                "parts": [
-                  "postcodes",
-                  "{postal_code}",
-                ],
                 "rename": {
                   "param": {
                     "postalCode": "postal_code",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "postcodes",
+                  },
+                  {
+                    "var": "postal_code",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "callback",
@@ -1151,6 +1293,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "postcodes",
+                  "{postal_code}",
+                ],
               },
             ],
           },
@@ -1183,6 +1329,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "email",
             "name": "email",
             "short": "Email address",
             "type": "`$STRING`",
@@ -1256,6 +1403,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "representatif",
         "op": {
           "list": {
@@ -1356,8 +1507,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/representatives/",
-                "parts": [
-                  "representatives",
+                "segments": [
+                  {
+                    "lit": "representatives",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -1381,6 +1534,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "representatives",
+                ],
               },
               {
                 "args": {
@@ -1424,17 +1580,25 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/boundaries/{boundarySet}/{boundary}/representatives/",
-                "parts": [
-                  "boundaries",
-                  "{boundary_set}",
-                  "{boundary}",
-                  "representatives",
-                ],
                 "rename": {
                   "param": {
                     "boundarySet": "boundary_set",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "boundaries",
+                  },
+                  {
+                    "var": "boundary_set",
+                  },
+                  {
+                    "var": "boundary",
+                  },
+                  {
+                    "lit": "representatives",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "boundary",
@@ -1448,6 +1612,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.objects`",
                 },
+                "parts": [
+                  "boundaries",
+                  "{boundary_set}",
+                  "{boundary}",
+                  "representatives",
+                ],
               },
             ],
           },
@@ -1552,15 +1722,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/representatives/{representativeSet}/",
-                "parts": [
-                  "representatives",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "representativeSet": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "representatives",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "callback",
@@ -1583,6 +1757,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "representatives",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -1610,6 +1788,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "representative_set",
         "op": {
           "list": {
@@ -1656,8 +1838,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/representative-sets/",
-                "parts": [
-                  "representative-sets",
+                "segments": [
+                  {
+                    "lit": "representative-sets",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -1672,6 +1856,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "representative-sets",
+                ],
               },
             ],
           },
@@ -1714,15 +1901,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/representative-sets/{representativeSet}/",
-                "parts": [
-                  "representative-sets",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "representativeSet": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "representative-sets",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "callback",
@@ -1735,6 +1926,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "representative-sets",
+                  "{id}",
+                ],
               },
             ],
           },

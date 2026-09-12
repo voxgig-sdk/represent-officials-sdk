@@ -66,8 +66,10 @@ main: kit: entity: candidate: {
           }
           method: "GET"
           orig: "/candidates/"
-          parts: [
-            "candidates"
+          segments: [
+            {
+              lit: "candidates"
+            }
           ]
           select: {
             exist: [
