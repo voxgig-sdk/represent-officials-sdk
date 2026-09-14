@@ -105,7 +105,7 @@ local results, err = client:BoundarySet():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/represent-officials` | publish pending — [install from git tag](https://github.com/voxgig-sdk/represent-officials-sdk/releases) |
+| TypeScript | `@voxgig-sdk/represent-officials-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/represent-officials-sdk/releases) |
 | Python | `voxgig-sdk-represent-officials` | publish pending — [install from git tag](https://github.com/voxgig-sdk/represent-officials-sdk/releases) |
 | PHP | `voxgig-sdk/represent-officials` | publish pending — [install from git tag](https://github.com/voxgig-sdk/represent-officials-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/represent-officials-sdk/go` | `go get github.com/voxgig-sdk/represent-officials-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:BoundarySet():list()
 ### TypeScript
 
 ```ts
-import { RepresentOfficialsSDK } from '@voxgig-sdk/represent-officials'
+import { RepresentOfficialsSDK } from '@voxgig-sdk/represent-officials-sdk'
 
 const client = new RepresentOfficialsSDK()
 

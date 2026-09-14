@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { RepresentOfficialsSDK } from '@voxgig-sdk/represent-officials'
+import { RepresentOfficialsSDK } from '@voxgig-sdk/represent-officials-sdk'
 
 const client = new RepresentOfficialsSDK()
 ```
@@ -729,7 +729,7 @@ represent-officials/
 Import the SDK from the package root:
 
 ```ts
-import { RepresentOfficialsSDK } from '@voxgig-sdk/represent-officials'
+import { RepresentOfficialsSDK } from '@voxgig-sdk/represent-officials-sdk'
 ```
 
 ### Entity state
