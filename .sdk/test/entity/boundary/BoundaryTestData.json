@@ -51,5 +51,731 @@
         "url": "s147"
       }
     }
+  },
+  "requests": {
+    "GET /boundaries/": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getBoundaries",
+        "parameters": [
+          {
+            "description": "Number of results per page (default: 20)",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 20,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Offset for pagination",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "default": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Filter by boundary sets (comma-separated)",
+            "in": "query",
+            "name": "sets",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter by boundary name",
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter by external ID",
+            "in": "query",
+            "name": "external_id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Find boundaries containing latitude,longitude (e.g., 45.524,-73.596)",
+            "in": "query",
+            "name": "contains",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Find boundaries that touch the specified boundary",
+            "in": "query",
+            "name": "touches",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Find boundaries that intersect the specified boundary",
+            "in": "query",
+            "name": "intersects",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Output format",
+            "in": "query",
+            "name": "format",
+            "schema": {
+              "enum": [
+                "json",
+                "apibrowser"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Pretty print JSON output",
+            "in": "query",
+            "name": "pretty",
+            "schema": {
+              "enum": [
+                0,
+                1
+              ],
+              "type": "integer"
+            }
+          },
+          {
+            "description": "JSONP callback function name",
+            "in": "query",
+            "name": "callback",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "meta": {
+                      "properties": {
+                        "next": {
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "previous": {
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "total_count": {
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "objects": {
+                      "items": {
+                        "properties": {
+                          "boundary_set_name": {
+                            "type": "string"
+                          },
+                          "external_id": {
+                            "type": "string"
+                          },
+                          "metadata": {
+                            "type": "object"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /boundaries/{boundarySet}/": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getBoundariesFromSet",
+        "parameters": [
+          {
+            "description": "Boundary set identifier",
+            "in": "path",
+            "name": "boundarySet",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Number of results per page",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 20,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Offset for pagination",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "default": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Filter by boundary name",
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter by external ID",
+            "in": "query",
+            "name": "external_id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Find boundaries containing latitude,longitude",
+            "in": "query",
+            "name": "contains",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Output format",
+            "in": "query",
+            "name": "format",
+            "schema": {
+              "enum": [
+                "json",
+                "apibrowser"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Pretty print JSON output",
+            "in": "query",
+            "name": "pretty",
+            "schema": {
+              "enum": [
+                0,
+                1
+              ],
+              "type": "integer"
+            }
+          },
+          {
+            "description": "JSONP callback function name",
+            "in": "query",
+            "name": "callback",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "meta": {
+                      "properties": {
+                        "next": {
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "previous": {
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "total_count": {
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "objects": {
+                      "items": {
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /boundaries/{boundarySet}/{boundary}/": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getBoundary",
+        "parameters": [
+          {
+            "description": "Boundary set identifier",
+            "in": "path",
+            "name": "boundarySet",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Boundary identifier",
+            "in": "path",
+            "name": "boundary",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Output format",
+            "in": "query",
+            "name": "format",
+            "schema": {
+              "enum": [
+                "json",
+                "apibrowser"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Pretty print JSON output",
+            "in": "query",
+            "name": "pretty",
+            "schema": {
+              "enum": [
+                0,
+                1
+              ],
+              "type": "integer"
+            }
+          },
+          {
+            "description": "JSONP callback function name",
+            "in": "query",
+            "name": "callback",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "boundary_set_name": {
+                      "type": "string"
+                    },
+                    "external_id": {
+                      "type": "string"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /boundaries/{boundarySet}/{boundary}/centroid": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getBoundaryCentroid",
+        "parameters": [
+          {
+            "description": "Boundary set identifier",
+            "in": "path",
+            "name": "boundarySet",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Boundary identifier",
+            "in": "path",
+            "name": "boundary",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Output format",
+            "in": "query",
+            "name": "format",
+            "schema": {
+              "enum": [
+                "json",
+                "kml",
+                "wkt"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "JSONP callback function name",
+            "in": "query",
+            "name": "callback",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "GeoJSON Feature with Point geometry",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /boundaries/{boundarySet}/{boundary}/shape": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getBoundaryShape",
+        "parameters": [
+          {
+            "description": "Boundary set identifier",
+            "in": "path",
+            "name": "boundarySet",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Boundary identifier",
+            "in": "path",
+            "name": "boundary",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Output format",
+            "in": "query",
+            "name": "format",
+            "schema": {
+              "enum": [
+                "json",
+                "kml",
+                "wkt"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "JSONP callback function name",
+            "in": "query",
+            "name": "callback",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "GeoJSON Feature",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /boundaries/{boundarySet}/{boundary}/simple_shape": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getBoundarySimpleShape",
+        "parameters": [
+          {
+            "description": "Boundary set identifier",
+            "in": "path",
+            "name": "boundarySet",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Boundary identifier",
+            "in": "path",
+            "name": "boundary",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Output format",
+            "in": "query",
+            "name": "format",
+            "schema": {
+              "enum": [
+                "json",
+                "kml",
+                "wkt"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "JSONP callback function name",
+            "in": "query",
+            "name": "callback",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "GeoJSON Feature",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /boundaries/{boundarySet}/centroid": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getBoundarySetCentroids",
+        "parameters": [
+          {
+            "description": "Boundary set identifier",
+            "in": "path",
+            "name": "boundarySet",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Output format",
+            "in": "query",
+            "name": "format",
+            "schema": {
+              "enum": [
+                "json",
+                "kml",
+                "wkt"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "JSONP callback function name",
+            "in": "query",
+            "name": "callback",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "GeoJSON FeatureCollection",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /boundaries/{boundarySet}/shape": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getBoundarySetShapes",
+        "parameters": [
+          {
+            "description": "Boundary set identifier",
+            "in": "path",
+            "name": "boundarySet",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Output format",
+            "in": "query",
+            "name": "format",
+            "schema": {
+              "enum": [
+                "json",
+                "kml",
+                "wkt"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "JSONP callback function name",
+            "in": "query",
+            "name": "callback",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "GeoJSON FeatureCollection",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /boundaries/{boundarySet}/simple_shape": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getBoundarySetSimpleShapes",
+        "parameters": [
+          {
+            "description": "Boundary set identifier",
+            "in": "path",
+            "name": "boundarySet",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Output format",
+            "in": "query",
+            "name": "format",
+            "schema": {
+              "enum": [
+                "json",
+                "kml",
+                "wkt"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "JSONP callback function name",
+            "in": "query",
+            "name": "callback",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "GeoJSON FeatureCollection",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

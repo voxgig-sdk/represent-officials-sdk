@@ -25,5 +25,182 @@
         "url": "s7a"
       }
     }
+  },
+  "requests": {
+    "GET /representative-sets/": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getRepresentativeSets",
+        "parameters": [
+          {
+            "description": "Number of results per page (default: 20)",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 20,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Offset for pagination",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "default": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Output format",
+            "in": "query",
+            "name": "format",
+            "schema": {
+              "enum": [
+                "json",
+                "apibrowser"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Pretty print JSON output",
+            "in": "query",
+            "name": "pretty",
+            "schema": {
+              "enum": [
+                0,
+                1
+              ],
+              "type": "integer"
+            }
+          },
+          {
+            "description": "JSONP callback function name",
+            "in": "query",
+            "name": "callback",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "meta": {
+                      "properties": {
+                        "next": {
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "previous": {
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "total_count": {
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "objects": {
+                      "items": {
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /representative-sets/{representativeSet}/": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getRepresentativeSet",
+        "parameters": [
+          {
+            "description": "Representative set identifier (e.g., ontario-legislature)",
+            "in": "path",
+            "name": "representativeSet",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Output format",
+            "in": "query",
+            "name": "format",
+            "schema": {
+              "enum": [
+                "json",
+                "apibrowser"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Pretty print JSON output",
+            "in": "query",
+            "name": "pretty",
+            "schema": {
+              "enum": [
+                0,
+                1
+              ],
+              "type": "integer"
+            }
+          },
+          {
+            "description": "JSONP callback function name",
+            "in": "query",
+            "name": "callback",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

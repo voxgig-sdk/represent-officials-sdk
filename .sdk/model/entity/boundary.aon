@@ -141,6 +141,12 @@ main: kit: entity: boundary: {
               }
             ]
           }
+          contract: {
+            id: "GET /boundaries/"
+            json: "{\"operationId\":\"getBoundaries\",\"parameters\":[{\"description\":\"Number of results per page (default: 20)\",\"in\":\"query\",\"name\":\"limit\",\"schema\":{\"default\":20,\"type\":\"integer\"}},{\"description\":\"Offset for pagination\",\"in\":\"query\",\"name\":\"offset\",\"schema\":{\"default\":0,\"type\":\"integer\"}},{\"description\":\"Filter by boundary sets (comma-separated)\",\"in\":\"query\",\"name\":\"sets\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by boundary name\",\"in\":\"query\",\"name\":\"name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by external ID\",\"in\":\"query\",\"name\":\"external_id\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Find boundaries containing latitude,longitude (e.g., 45.524,-73.596)\",\"in\":\"query\",\"name\":\"contains\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Find boundaries that touch the specified boundary\",\"in\":\"query\",\"name\":\"touches\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Find boundaries that intersect the specified boundary\",\"in\":\"query\",\"name\":\"intersects\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"meta\":{\"properties\":{\"next\":{\"nullable\":true,\"type\":\"string\"},\"previous\":{\"nullable\":true,\"type\":\"string\"},\"total_count\":{\"type\":\"integer\"}},\"type\":\"object\"},\"objects\":{\"items\":{\"properties\":{\"boundary_set_name\":{\"type\":\"string\"},\"external_id\":{\"type\":\"string\"},\"metadata\":{\"type\":\"object\"},\"name\":{\"type\":\"string\"},\"url\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/boundaries/"
           segments: [
@@ -245,6 +251,12 @@ main: kit: entity: boundary: {
               }
             ]
           }
+          contract: {
+            id: "GET /boundaries/{boundarySet}/"
+            json: "{\"operationId\":\"getBoundariesFromSet\",\"parameters\":[{\"description\":\"Boundary set identifier\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Number of results per page\",\"in\":\"query\",\"name\":\"limit\",\"schema\":{\"default\":20,\"type\":\"integer\"}},{\"description\":\"Offset for pagination\",\"in\":\"query\",\"name\":\"offset\",\"schema\":{\"default\":0,\"type\":\"integer\"}},{\"description\":\"Filter by boundary name\",\"in\":\"query\",\"name\":\"name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by external ID\",\"in\":\"query\",\"name\":\"external_id\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Find boundaries containing latitude,longitude\",\"in\":\"query\",\"name\":\"contains\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"meta\":{\"properties\":{\"next\":{\"nullable\":true,\"type\":\"string\"},\"previous\":{\"nullable\":true,\"type\":\"string\"},\"total_count\":{\"type\":\"integer\"}},\"type\":\"object\"},\"objects\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/boundaries/{boundarySet}/"
           rename: {
@@ -320,6 +332,12 @@ main: kit: entity: boundary: {
               }
             ]
           }
+          contract: {
+            id: "GET /boundaries/{boundarySet}/{boundary}/"
+            json: "{\"operationId\":\"getBoundary\",\"parameters\":[{\"description\":\"Boundary set identifier\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Boundary identifier\",\"in\":\"path\",\"name\":\"boundary\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"boundary_set_name\":{\"type\":\"string\"},\"external_id\":{\"type\":\"string\"},\"metadata\":{\"type\":\"object\"},\"name\":{\"type\":\"string\"},\"url\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/boundaries/{boundarySet}/{boundary}/"
           rename: {
@@ -386,6 +404,12 @@ main: kit: entity: boundary: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /boundaries/{boundarySet}/{boundary}/centroid"
+            json: "{\"operationId\":\"getBoundaryCentroid\",\"parameters\":[{\"description\":\"Boundary set identifier\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Boundary identifier\",\"in\":\"path\",\"name\":\"boundary\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"kml\",\"wkt\"],\"type\":\"string\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"GeoJSON Feature with Point geometry\",\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/boundaries/{boundarySet}/{boundary}/centroid"
@@ -457,6 +481,12 @@ main: kit: entity: boundary: {
               }
             ]
           }
+          contract: {
+            id: "GET /boundaries/{boundarySet}/{boundary}/shape"
+            json: "{\"operationId\":\"getBoundaryShape\",\"parameters\":[{\"description\":\"Boundary set identifier\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Boundary identifier\",\"in\":\"path\",\"name\":\"boundary\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"kml\",\"wkt\"],\"type\":\"string\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"GeoJSON Feature\",\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/boundaries/{boundarySet}/{boundary}/shape"
           rename: {
@@ -527,6 +557,12 @@ main: kit: entity: boundary: {
               }
             ]
           }
+          contract: {
+            id: "GET /boundaries/{boundarySet}/{boundary}/simple_shape"
+            json: "{\"operationId\":\"getBoundarySimpleShape\",\"parameters\":[{\"description\":\"Boundary set identifier\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Boundary identifier\",\"in\":\"path\",\"name\":\"boundary\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"kml\",\"wkt\"],\"type\":\"string\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"GeoJSON Feature\",\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/boundaries/{boundarySet}/{boundary}/simple_shape"
           rename: {
@@ -590,6 +626,12 @@ main: kit: entity: boundary: {
               }
             ]
           }
+          contract: {
+            id: "GET /boundaries/{boundarySet}/centroid"
+            json: "{\"operationId\":\"getBoundarySetCentroids\",\"parameters\":[{\"description\":\"Boundary set identifier\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"kml\",\"wkt\"],\"type\":\"string\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"GeoJSON FeatureCollection\",\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/boundaries/{boundarySet}/centroid"
           rename: {
@@ -649,6 +691,12 @@ main: kit: entity: boundary: {
               }
             ]
           }
+          contract: {
+            id: "GET /boundaries/{boundarySet}/shape"
+            json: "{\"operationId\":\"getBoundarySetShapes\",\"parameters\":[{\"description\":\"Boundary set identifier\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"kml\",\"wkt\"],\"type\":\"string\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"GeoJSON FeatureCollection\",\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/boundaries/{boundarySet}/shape"
           rename: {
@@ -707,6 +755,12 @@ main: kit: entity: boundary: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /boundaries/{boundarySet}/simple_shape"
+            json: "{\"operationId\":\"getBoundarySetSimpleShapes\",\"parameters\":[{\"description\":\"Boundary set identifier\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"kml\",\"wkt\"],\"type\":\"string\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"GeoJSON FeatureCollection\",\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/boundaries/{boundarySet}/simple_shape"

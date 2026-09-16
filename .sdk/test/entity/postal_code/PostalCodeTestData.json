@@ -52,5 +52,138 @@
         "representatives_concordance": []
       }
     }
+  },
+  "requests": {
+    "GET /postcodes/{postalCode}/": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getByPostalCode",
+        "parameters": [
+          {
+            "description": "Canadian postal code in uppercase with no spaces (e.g., L5G4L3)",
+            "in": "path",
+            "name": "postalCode",
+            "required": true,
+            "schema": {
+              "pattern": "^[A-Z][0-9][A-Z][0-9][A-Z][0-9]$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit results to specific boundary sets (comma-separated)",
+            "in": "query",
+            "name": "sets",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Output format",
+            "in": "query",
+            "name": "format",
+            "schema": {
+              "enum": [
+                "json",
+                "apibrowser"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Pretty print JSON output",
+            "in": "query",
+            "name": "pretty",
+            "schema": {
+              "enum": [
+                0,
+                1
+              ],
+              "type": "integer"
+            }
+          },
+          {
+            "description": "JSONP callback function name",
+            "in": "query",
+            "name": "callback",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "boundaries_centroid": {
+                      "description": "Boundaries containing the postal code's centroid",
+                      "items": {
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "boundaries_concordance": {
+                      "description": "Boundaries linked to postal code via official data",
+                      "items": {
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "centroid": {
+                      "properties": {
+                        "coordinates": {
+                          "items": {
+                            "type": "number"
+                          },
+                          "type": "array"
+                        },
+                        "type": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "city": {
+                      "description": "City name",
+                      "type": "string"
+                    },
+                    "code": {
+                      "description": "The postal code",
+                      "type": "string"
+                    },
+                    "province": {
+                      "description": "Province code",
+                      "type": "string"
+                    },
+                    "representatives_centroid": {
+                      "description": "Representatives for boundaries containing centroid",
+                      "items": {
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "representatives_concordance": {
+                      "description": "Representatives for boundaries via concordance",
+                      "items": {
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "503": {
+            "description": "Rate limit exceeded"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

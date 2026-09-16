@@ -24,7 +24,71 @@
         "repr": "auto"
       },
       "contributor": {},
-      "docs": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "boundary": {
           "active": true,
@@ -187,6 +251,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /boundaries/",
+                    "json": "{\"operationId\":\"getBoundaries\",\"parameters\":[{\"description\":\"Number of results per page (default: 20)\",\"in\":\"query\",\"name\":\"limit\",\"schema\":{\"default\":20,\"type\":\"integer\"}},{\"description\":\"Offset for pagination\",\"in\":\"query\",\"name\":\"offset\",\"schema\":{\"default\":0,\"type\":\"integer\"}},{\"description\":\"Filter by boundary sets (comma-separated)\",\"in\":\"query\",\"name\":\"sets\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by boundary name\",\"in\":\"query\",\"name\":\"name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by external ID\",\"in\":\"query\",\"name\":\"external_id\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Find boundaries containing latitude,longitude (e.g., 45.524,-73.596)\",\"in\":\"query\",\"name\":\"contains\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Find boundaries that touch the specified boundary\",\"in\":\"query\",\"name\":\"touches\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Find boundaries that intersect the specified boundary\",\"in\":\"query\",\"name\":\"intersects\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"meta\":{\"properties\":{\"next\":{\"nullable\":true,\"type\":\"string\"},\"previous\":{\"nullable\":true,\"type\":\"string\"},\"total_count\":{\"type\":\"integer\"}},\"type\":\"object\"},\"objects\":{\"items\":{\"properties\":{\"boundary_set_name\":{\"type\":\"string\"},\"external_id\":{\"type\":\"string\"},\"metadata\":{\"type\":\"object\"},\"name\":{\"type\":\"string\"},\"url\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/boundaries/",
@@ -303,6 +373,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /boundaries/{boundarySet}/",
+                    "json": "{\"operationId\":\"getBoundariesFromSet\",\"parameters\":[{\"description\":\"Boundary set identifier\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Number of results per page\",\"in\":\"query\",\"name\":\"limit\",\"schema\":{\"default\":20,\"type\":\"integer\"}},{\"description\":\"Offset for pagination\",\"in\":\"query\",\"name\":\"offset\",\"schema\":{\"default\":0,\"type\":\"integer\"}},{\"description\":\"Filter by boundary name\",\"in\":\"query\",\"name\":\"name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by external ID\",\"in\":\"query\",\"name\":\"external_id\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Find boundaries containing latitude,longitude\",\"in\":\"query\",\"name\":\"contains\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"meta\":{\"properties\":{\"next\":{\"nullable\":true,\"type\":\"string\"},\"previous\":{\"nullable\":true,\"type\":\"string\"},\"total_count\":{\"type\":\"integer\"}},\"type\":\"object\"},\"objects\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/boundaries/{boundarySet}/",
@@ -385,6 +461,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /boundaries/{boundarySet}/{boundary}/",
+                    "json": "{\"operationId\":\"getBoundary\",\"parameters\":[{\"description\":\"Boundary set identifier\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Boundary identifier\",\"in\":\"path\",\"name\":\"boundary\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"boundary_set_name\":{\"type\":\"string\"},\"external_id\":{\"type\":\"string\"},\"metadata\":{\"type\":\"object\"},\"name\":{\"type\":\"string\"},\"url\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/boundaries/{boundarySet}/{boundary}/",
@@ -457,6 +539,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /boundaries/{boundarySet}/{boundary}/centroid",
+                    "json": "{\"operationId\":\"getBoundaryCentroid\",\"parameters\":[{\"description\":\"Boundary set identifier\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Boundary identifier\",\"in\":\"path\",\"name\":\"boundary\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"kml\",\"wkt\"],\"type\":\"string\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"GeoJSON Feature with Point geometry\",\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -534,6 +622,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /boundaries/{boundarySet}/{boundary}/shape",
+                    "json": "{\"operationId\":\"getBoundaryShape\",\"parameters\":[{\"description\":\"Boundary set identifier\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Boundary identifier\",\"in\":\"path\",\"name\":\"boundary\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"kml\",\"wkt\"],\"type\":\"string\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"GeoJSON Feature\",\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/boundaries/{boundarySet}/{boundary}/shape",
@@ -610,6 +704,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /boundaries/{boundarySet}/{boundary}/simple_shape",
+                    "json": "{\"operationId\":\"getBoundarySimpleShape\",\"parameters\":[{\"description\":\"Boundary set identifier\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Boundary identifier\",\"in\":\"path\",\"name\":\"boundary\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"kml\",\"wkt\"],\"type\":\"string\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"GeoJSON Feature\",\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/boundaries/{boundarySet}/{boundary}/simple_shape",
@@ -678,6 +778,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /boundaries/{boundarySet}/centroid",
+                    "json": "{\"operationId\":\"getBoundarySetCentroids\",\"parameters\":[{\"description\":\"Boundary set identifier\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"kml\",\"wkt\"],\"type\":\"string\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"GeoJSON FeatureCollection\",\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/boundaries/{boundarySet}/centroid",
@@ -742,6 +848,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /boundaries/{boundarySet}/shape",
+                    "json": "{\"operationId\":\"getBoundarySetShapes\",\"parameters\":[{\"description\":\"Boundary set identifier\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"kml\",\"wkt\"],\"type\":\"string\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"GeoJSON FeatureCollection\",\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/boundaries/{boundarySet}/shape",
@@ -805,6 +917,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /boundaries/{boundarySet}/simple_shape",
+                    "json": "{\"operationId\":\"getBoundarySetSimpleShapes\",\"parameters\":[{\"description\":\"Boundary set identifier\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"kml\",\"wkt\"],\"type\":\"string\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"GeoJSON FeatureCollection\",\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -954,6 +1072,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /boundary-sets/",
+                    "json": "{\"operationId\":\"getBoundarySets\",\"parameters\":[{\"description\":\"Number of results per page (default: 20)\",\"in\":\"query\",\"name\":\"limit\",\"schema\":{\"default\":20,\"type\":\"integer\"}},{\"description\":\"Offset for pagination\",\"in\":\"query\",\"name\":\"offset\",\"schema\":{\"default\":0,\"type\":\"integer\"}},{\"description\":\"Filter by boundary set name\",\"in\":\"query\",\"name\":\"name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by domain (e.g., Canada)\",\"in\":\"query\",\"name\":\"domain\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"meta\":{\"properties\":{\"next\":{\"nullable\":true,\"type\":\"string\"},\"previous\":{\"nullable\":true,\"type\":\"string\"},\"total_count\":{\"type\":\"integer\"}},\"type\":\"object\"},\"objects\":{\"items\":{\"properties\":{\"domain\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"url\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/boundary-sets/",
@@ -1023,6 +1147,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /boundary-sets/{boundarySet}/",
+                    "json": "{\"operationId\":\"getBoundarySet\",\"parameters\":[{\"description\":\"Boundary set identifier (e.g., federal-electoral-districts)\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"domain\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"url\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1133,6 +1263,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /candidates/",
+                    "json": "{\"operationId\":\"getCandidates\",\"parameters\":[{\"description\":\"Number of results per page (default: 20)\",\"in\":\"query\",\"name\":\"limit\",\"schema\":{\"default\":20,\"type\":\"integer\"}},{\"description\":\"Offset for pagination\",\"in\":\"query\",\"name\":\"offset\",\"schema\":{\"default\":0,\"type\":\"integer\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"meta\":{\"properties\":{\"next\":{\"nullable\":true,\"type\":\"string\"},\"previous\":{\"nullable\":true,\"type\":\"string\"},\"total_count\":{\"type\":\"integer\"}},\"type\":\"object\"},\"objects\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/candidates/",
@@ -1234,6 +1370,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /elections/",
+                    "json": "{\"operationId\":\"getElections\",\"parameters\":[{\"description\":\"Number of results per page (default: 20)\",\"in\":\"query\",\"name\":\"limit\",\"schema\":{\"default\":20,\"type\":\"integer\"}},{\"description\":\"Offset for pagination\",\"in\":\"query\",\"name\":\"offset\",\"schema\":{\"default\":0,\"type\":\"integer\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"meta\":{\"properties\":{\"next\":{\"nullable\":true,\"type\":\"string\"},\"previous\":{\"nullable\":true,\"type\":\"string\"},\"total_count\":{\"type\":\"integer\"}},\"type\":\"object\"},\"objects\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1379,6 +1521,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /postcodes/{postalCode}/",
+                    "json": "{\"operationId\":\"getByPostalCode\",\"parameters\":[{\"description\":\"Canadian postal code in uppercase with no spaces (e.g., L5G4L3)\",\"in\":\"path\",\"name\":\"postalCode\",\"required\":true,\"schema\":{\"pattern\":\"^[A-Z][0-9][A-Z][0-9][A-Z][0-9]$\",\"type\":\"string\"}},{\"description\":\"Limit results to specific boundary sets (comma-separated)\",\"in\":\"query\",\"name\":\"sets\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"boundaries_centroid\":{\"description\":\"Boundaries containing the postal code's centroid\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"boundaries_concordance\":{\"description\":\"Boundaries linked to postal code via official data\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"centroid\":{\"properties\":{\"coordinates\":{\"items\":{\"type\":\"number\"},\"type\":\"array\"},\"type\":{\"type\":\"string\"}},\"type\":\"object\"},\"city\":{\"description\":\"City name\",\"type\":\"string\"},\"code\":{\"description\":\"The postal code\",\"type\":\"string\"},\"province\":{\"description\":\"Province code\",\"type\":\"string\"},\"representatives_centroid\":{\"description\":\"Representatives for boundaries containing centroid\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"representatives_concordance\":{\"description\":\"Representatives for boundaries via concordance\",\"items\":{\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"503\":{\"description\":\"Rate limit exceeded\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1682,6 +1830,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /representatives/",
+                    "json": "{\"operationId\":\"getRepresentatives\",\"parameters\":[{\"description\":\"Number of results per page (default: 20)\",\"in\":\"query\",\"name\":\"limit\",\"schema\":{\"default\":20,\"type\":\"integer\"}},{\"description\":\"Offset for pagination\",\"in\":\"query\",\"name\":\"offset\",\"schema\":{\"default\":0,\"type\":\"integer\"}},{\"description\":\"Find representatives by latitude,longitude (e.g., 45.524,-73.596)\",\"in\":\"query\",\"name\":\"point\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by districts (comma-separated)\",\"in\":\"query\",\"name\":\"districts\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by representative name\",\"in\":\"query\",\"name\":\"name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by first name\",\"in\":\"query\",\"name\":\"first_name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by last name\",\"in\":\"query\",\"name\":\"last_name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by gender (M or F)\",\"in\":\"query\",\"name\":\"gender\",\"schema\":{\"enum\":[\"M\",\"F\"],\"type\":\"string\"}},{\"description\":\"Filter by district name\",\"in\":\"query\",\"name\":\"district_name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by elected office (e.g., MP, MLA, Mayor, Councillor)\",\"in\":\"query\",\"name\":\"elected_office\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by party name\",\"in\":\"query\",\"name\":\"party_name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"meta\":{\"properties\":{\"next\":{\"nullable\":true,\"type\":\"string\"},\"previous\":{\"nullable\":true,\"type\":\"string\"},\"total_count\":{\"type\":\"integer\"}},\"type\":\"object\"},\"objects\":{\"items\":{\"properties\":{\"district_id\":{\"description\":\"District identifier if available\",\"type\":\"string\"},\"district_name\":{\"description\":\"Name of the electoral district\",\"type\":\"string\"},\"elected_office\":{\"description\":\"Type of office (e.g., MP, MLA, Mayor, Councillor, Alderman)\",\"type\":\"string\"},\"email\":{\"description\":\"Email address\",\"format\":\"email\",\"type\":\"string\"},\"extra\":{\"description\":\"Additional data not covered by standard fields\",\"type\":\"object\"},\"first_name\":{\"description\":\"First name\",\"type\":\"string\"},\"gender\":{\"description\":\"Gender\",\"enum\":[\"M\",\"F\"],\"type\":\"string\"},\"last_name\":{\"description\":\"Last name\",\"type\":\"string\"},\"name\":{\"description\":\"Full name of the representative\",\"type\":\"string\"},\"offices\":{\"description\":\"Contact information for representative's offices\",\"items\":{\"properties\":{\"fax\":{\"description\":\"Fax number\",\"type\":\"string\"},\"postal\":{\"description\":\"Mailing address\",\"type\":\"string\"},\"tel\":{\"description\":\"Telephone number\",\"type\":\"string\"},\"type\":{\"description\":\"Office type (e.g., constituency, legislature)\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"party_name\":{\"description\":\"Political party name\",\"type\":\"string\"},\"personal_url\":{\"description\":\"Personal website not on official legislature site\",\"type\":\"string\"},\"photo_url\":{\"description\":\"URL to representative's photo\",\"type\":\"string\"},\"source_url\":{\"description\":\"URL where the data is scraped from\",\"type\":\"string\"},\"url\":{\"description\":\"Representative's page on official legislature site\",\"type\":\"string\"}},\"required\":[\"name\",\"district_name\",\"elected_office\"],\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/representatives/",
@@ -1760,6 +1914,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /boundaries/{boundarySet}/{boundary}/representatives/",
+                    "json": "{\"operationId\":\"getBoundaryRepresentatives\",\"parameters\":[{\"description\":\"Boundary set identifier\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Boundary identifier\",\"in\":\"path\",\"name\":\"boundary\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"objects\":{\"items\":{\"properties\":{\"district_id\":{\"description\":\"District identifier if available\",\"type\":\"string\"},\"district_name\":{\"description\":\"Name of the electoral district\",\"type\":\"string\"},\"elected_office\":{\"description\":\"Type of office (e.g., MP, MLA, Mayor, Councillor, Alderman)\",\"type\":\"string\"},\"email\":{\"description\":\"Email address\",\"format\":\"email\",\"type\":\"string\"},\"extra\":{\"description\":\"Additional data not covered by standard fields\",\"type\":\"object\"},\"first_name\":{\"description\":\"First name\",\"type\":\"string\"},\"gender\":{\"description\":\"Gender\",\"enum\":[\"M\",\"F\"],\"type\":\"string\"},\"last_name\":{\"description\":\"Last name\",\"type\":\"string\"},\"name\":{\"description\":\"Full name of the representative\",\"type\":\"string\"},\"offices\":{\"description\":\"Contact information for representative's offices\",\"items\":{\"properties\":{\"fax\":{\"description\":\"Fax number\",\"type\":\"string\"},\"postal\":{\"description\":\"Mailing address\",\"type\":\"string\"},\"tel\":{\"description\":\"Telephone number\",\"type\":\"string\"},\"type\":{\"description\":\"Office type (e.g., constituency, legislature)\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"party_name\":{\"description\":\"Political party name\",\"type\":\"string\"},\"personal_url\":{\"description\":\"Personal website not on official legislature site\",\"type\":\"string\"},\"photo_url\":{\"description\":\"URL to representative's photo\",\"type\":\"string\"},\"source_url\":{\"description\":\"URL where the data is scraped from\",\"type\":\"string\"},\"url\":{\"description\":\"Representative's page on official legislature site\",\"type\":\"string\"}},\"required\":[\"name\",\"district_name\",\"elected_office\"],\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1925,6 +2085,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /representatives/{representativeSet}/",
+                    "json": "{\"operationId\":\"getRepresentativesFromSet\",\"parameters\":[{\"description\":\"Representative set identifier (e.g., house-of-commons)\",\"in\":\"path\",\"name\":\"representativeSet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Number of results per page\",\"in\":\"query\",\"name\":\"limit\",\"schema\":{\"default\":20,\"type\":\"integer\"}},{\"description\":\"Offset for pagination\",\"in\":\"query\",\"name\":\"offset\",\"schema\":{\"default\":0,\"type\":\"integer\"}},{\"description\":\"Find representatives by latitude,longitude\",\"in\":\"query\",\"name\":\"point\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by representative name\",\"in\":\"query\",\"name\":\"name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by first name\",\"in\":\"query\",\"name\":\"first_name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by last name\",\"in\":\"query\",\"name\":\"last_name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by gender\",\"in\":\"query\",\"name\":\"gender\",\"schema\":{\"enum\":[\"M\",\"F\"],\"type\":\"string\"}},{\"description\":\"Filter by district name\",\"in\":\"query\",\"name\":\"district_name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by elected office\",\"in\":\"query\",\"name\":\"elected_office\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by party name\",\"in\":\"query\",\"name\":\"party_name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"meta\":{\"properties\":{\"next\":{\"nullable\":true,\"type\":\"string\"},\"previous\":{\"nullable\":true,\"type\":\"string\"},\"total_count\":{\"type\":\"integer\"}},\"type\":\"object\"},\"objects\":{\"items\":{\"properties\":{\"district_id\":{\"description\":\"District identifier if available\",\"type\":\"string\"},\"district_name\":{\"description\":\"Name of the electoral district\",\"type\":\"string\"},\"elected_office\":{\"description\":\"Type of office (e.g., MP, MLA, Mayor, Councillor, Alderman)\",\"type\":\"string\"},\"email\":{\"description\":\"Email address\",\"format\":\"email\",\"type\":\"string\"},\"extra\":{\"description\":\"Additional data not covered by standard fields\",\"type\":\"object\"},\"first_name\":{\"description\":\"First name\",\"type\":\"string\"},\"gender\":{\"description\":\"Gender\",\"enum\":[\"M\",\"F\"],\"type\":\"string\"},\"last_name\":{\"description\":\"Last name\",\"type\":\"string\"},\"name\":{\"description\":\"Full name of the representative\",\"type\":\"string\"},\"offices\":{\"description\":\"Contact information for representative's offices\",\"items\":{\"properties\":{\"fax\":{\"description\":\"Fax number\",\"type\":\"string\"},\"postal\":{\"description\":\"Mailing address\",\"type\":\"string\"},\"tel\":{\"description\":\"Telephone number\",\"type\":\"string\"},\"type\":{\"description\":\"Office type (e.g., constituency, legislature)\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"party_name\":{\"description\":\"Political party name\",\"type\":\"string\"},\"personal_url\":{\"description\":\"Personal website not on official legislature site\",\"type\":\"string\"},\"photo_url\":{\"description\":\"URL to representative's photo\",\"type\":\"string\"},\"source_url\":{\"description\":\"URL where the data is scraped from\",\"type\":\"string\"},\"url\":{\"description\":\"Representative's page on official legislature site\",\"type\":\"string\"}},\"required\":[\"name\",\"district_name\",\"elected_office\"],\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/representatives/{representativeSet}/",
@@ -2058,6 +2224,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /representative-sets/",
+                    "json": "{\"operationId\":\"getRepresentativeSets\",\"parameters\":[{\"description\":\"Number of results per page (default: 20)\",\"in\":\"query\",\"name\":\"limit\",\"schema\":{\"default\":20,\"type\":\"integer\"}},{\"description\":\"Offset for pagination\",\"in\":\"query\",\"name\":\"offset\",\"schema\":{\"default\":0,\"type\":\"integer\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"meta\":{\"properties\":{\"next\":{\"nullable\":true,\"type\":\"string\"},\"previous\":{\"nullable\":true,\"type\":\"string\"},\"total_count\":{\"type\":\"integer\"}},\"type\":\"object\"},\"objects\":{\"items\":{\"properties\":{\"name\":{\"type\":\"string\"},\"url\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/representative-sets/",
@@ -2126,6 +2298,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /representative-sets/{representativeSet}/",
+                    "json": "{\"operationId\":\"getRepresentativeSet\",\"parameters\":[{\"description\":\"Representative set identifier (e.g., ontario-legislature)\",\"in\":\"path\",\"name\":\"representativeSet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"name\":{\"type\":\"string\"},\"url\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/representative-sets/{representativeSet}/",
@@ -2164,13 +2342,223 @@
         }
       },
       "feature": {
+        "ratelimit": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "burst": 5,
+              "rate": 5
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "ratelimit",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Client-side rate limiting via a token bucket",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "retry": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "factor": 2,
+              "maxDelay": 2000,
+              "minDelay": 50,
+              "retries": 2,
+              "statuses": [
+                408,
+                425,
+                429,
+                500,
+                502,
+                503,
+                504
+              ]
+            },
+            "optspec": {
+              "jitter": "`$BOOLEAN`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "retry",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Automatic retry of transient failures with exponential backoff",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
         "test": {
           "active": true,
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "config": {
             "options": {
               "active": false
-            }
+            },
+            "optspec": {
+              "entity": "`$MAP`",
+              "net": "`$MAP`"
+            },
+            "strict": false
           },
           "hook": {
             "GetData": {
@@ -2260,6 +2648,102 @@
           },
           "title": "In-memory mock transport for testing without a live server",
           "transport": "base",
+          "version": "0.0.1"
+        },
+        "timeout": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "ms": 30000
+            },
+            "optspec": {
+              "clearTimer": "`$FUNCTION`",
+              "setTimer": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "timeout",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Per-request timeout with transport abort",
+          "transport": "wrap",
           "version": "0.0.1"
         }
       },
@@ -2564,6 +3048,48 @@
         "website": "https://represent.opennorth.ca"
       },
       "option": {},
+      "optspec": {
+        "allow": {
+          "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+          "op": "create,update,load,list,remove,command,direct,graphql"
+        },
+        "apikey": "",
+        "auth": {
+          "basic": false,
+          "prefix": ""
+        },
+        "base": "http://localhost:8000",
+        "clean": {
+          "keys": "key,token,id"
+        },
+        "entity": {
+          "`$CHILD`": {
+            "`$OPEN`": true,
+            "active": false,
+            "alias": {}
+          }
+        },
+        "extend": "`$ANY`",
+        "headers": {
+          "`$CHILD`": "`$STRING`"
+        },
+        "prefix": "",
+        "secret": "",
+        "server": {
+          "`$CHILD`": ""
+        },
+        "suffix": "",
+        "system": {
+          "fetch": "`$ANY`"
+        },
+        "test": {
+          "active": false,
+          "entity": {
+            "`$OPEN`": true
+          }
+        },
+        "utility": {}
+      },
       "repo": {
         "host": "github.com",
         "path": ""
@@ -3118,6 +3644,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {
@@ -3159,7 +3686,7 @@
         "live": {
           "app": false,
           "base": "",
-          "strict": false
+          "strict": true
         }
       }
     }

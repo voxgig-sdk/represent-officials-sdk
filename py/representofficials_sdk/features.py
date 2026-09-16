@@ -1,12 +1,18 @@
 # RepresentOfficials SDK feature factory
 
 from representofficials_sdk.feature.base_feature import RepresentOfficialsBaseFeature
+from representofficials_sdk.feature.ratelimit_feature import RepresentOfficialsRatelimitFeature
+from representofficials_sdk.feature.retry_feature import RepresentOfficialsRetryFeature
 from representofficials_sdk.feature.test_feature import RepresentOfficialsTestFeature
+from representofficials_sdk.feature.timeout_feature import RepresentOfficialsTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: RepresentOfficialsBaseFeature(),
+    "ratelimit": lambda: RepresentOfficialsRatelimitFeature(),
+    "retry": lambda: RepresentOfficialsRetryFeature(),
     "test": lambda: RepresentOfficialsTestFeature(),
+    "timeout": lambda: RepresentOfficialsTimeoutFeature(),
 }
 
 
