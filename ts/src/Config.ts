@@ -127,27 +127,27 @@ class Config {
 
     entity: {
       
-      boundary: {
-      },
-
-      boundary_set: {
-      },
-
-      candidate: {
-      },
-
-      election: {
-      },
-
-      postal_code: {
-      },
-
-      representatif: {
-      },
-
-      representative_set: {
-      },
-
+        boundary: {
+        },
+  
+        boundary_set: {
+        },
+  
+        candidate: {
+        },
+  
+        election: {
+        },
+  
+        postal_code: {
+        },
+  
+        representatif: {
+        },
+  
+        representative_set: {
+        },
+  
     }
   }
 

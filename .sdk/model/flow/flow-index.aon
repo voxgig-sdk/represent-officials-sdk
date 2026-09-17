@@ -1,9 +1,9 @@
 # Flows
 
-@"BasicBoundaryFlow.aon"
-@"BasicBoundarySetFlow.aon"
-@"BasicCandidateFlow.aon"
-@"BasicElectionFlow.aon"
-@"BasicPostalCodeFlow.aon"
-@"BasicRepresentatifFlow.aon"
-@"BasicRepresentativeSetFlow.aon"
+@"./BasicBoundaryFlow.aon"
+@"./BasicBoundarySetFlow.aon"
+@"./BasicCandidateFlow.aon"
+@"./BasicElectionFlow.aon"
+@"./BasicPostalCodeFlow.aon"
+@"./BasicRepresentatifFlow.aon"
+@"./BasicRepresentativeSetFlow.aon"
