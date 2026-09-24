@@ -50,15 +50,14 @@ except Exception as err:
     print(f"list failed: {err}")
 ```
 
-### 3. Load a postalcode
+### 3. Load a boundary
 
-PostalCode is nested under postal_code, so provide the `postal_code`.
 `load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
-    postalcode = client.PostalCode().load({"postal_code": "example_postal_code"})
-    print(postalcode)
+    boundary = client.Boundary().load({"id": "example_id"})
+    print(boundary)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -221,7 +220,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `Candidate` | `(data) -> CandidateEntity` | Create a Candidate entity instance. |
 | `Election` | `(data) -> ElectionEntity` | Create an Election entity instance. |
 | `PostalCode` | `(data) -> PostalCodeEntity` | Create a PostalCode entity instance. |
-| `Representatif` | `(data) -> RepresentatifEntity` | Create a Representatif entity instance. |
+| `Representative` | `(data) -> RepresentativeEntity` | Create a Representative entity instance. |
 | `RepresentativeSet` | `(data) -> RepresentativeSetEntity` | Create a RepresentativeSet entity instance. |
 
 ### Entity interface
@@ -328,7 +327,7 @@ Operations: Load.
 
 API path: `/postcodes/{postalCode}/`
 
-#### Representatif
+#### Representative
 
 | Field | Description |
 | --- | --- |
@@ -520,9 +519,9 @@ postal_code = client.PostalCode().load({"postal_code": "postal_code"})
 ```
 
 
-### Representatif
+### Representative
 
-Create an instance: `representatif = client.Representatif()`
+Create an instance: `representative = client.Representative()`
 
 #### Operations
 
@@ -557,13 +556,13 @@ Create an instance: `representatif = client.Representatif()`
 #### Example: Load
 
 ```python
-representatif = client.Representatif().load({"id": "representatif_id"})
+representative = client.Representative().load({"id": "representative_id"})
 ```
 
 #### Example: List
 
 ```python
-representatifs = client.Representatif().list()
+representatives = client.Representative().list()
 ```
 
 

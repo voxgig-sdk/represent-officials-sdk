@@ -419,15 +419,15 @@ function RepresentOfficialsSDK:PostalCode(data)
 end
 
 
--- Idiomatic facade: client:Representatif():list() / client:Representatif():load({ id = ... })
+-- Idiomatic facade: client:Representative():list() / client:Representative():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function RepresentOfficialsSDK:Representatif(data)
-  local EntityMod = require("entity.representatif_entity")
+function RepresentOfficialsSDK:Representative(data)
+  local EntityMod = require("entity.representative_entity")
   if data == nil then
-    if self._representatif == nil then
-      self._representatif = EntityMod.new(self, nil)
+    if self._representative == nil then
+      self._representative = EntityMod.new(self, nil)
     end
-    return self._representatif
+    return self._representative
   end
   return EntityMod.new(self, data)
 end

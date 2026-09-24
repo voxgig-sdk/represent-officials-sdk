@@ -1,0 +1,530 @@
+# Entity: representative
+
+main: kit: entity: representative: {
+
+  alias: field: {}
+
+  fields: {
+    district_id: {
+      h: "District Id"
+      n: "district_id"
+      r: false
+      sh: "District identifier if available"
+      t: "`$STRING`"
+    }
+    district_name: {
+      h: "District Name"
+      n: "district_name"
+      r: true
+      sh: "Name of the electoral district"
+      t: "`$STRING`"
+    }
+    elected_office: {
+      h: "Elected Office"
+      n: "elected_office"
+      r: true
+      sh: "Type of office (e.g., MP, MLA, Mayor, Councillor, Alderman)"
+      t: "`$STRING`"
+    }
+    email: {
+      fo: "email"
+      h: "Email"
+      n: "email"
+      r: false
+      sh: "Email address"
+      t: "`$STRING`"
+    }
+    extra: {
+      h: "Extra"
+      n: "extra"
+      r: false
+      sh: "Additional data not covered by standard fields"
+      t: "`$OBJECT`"
+    }
+    first_name: {
+      h: "First Name"
+      n: "first_name"
+      r: false
+      sh: "First name"
+      t: "`$STRING`"
+    }
+    gender: {
+      h: "Gender"
+      n: "gender"
+      r: false
+      sh: "Gender"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    last_name: {
+      h: "Last Name"
+      n: "last_name"
+      r: false
+      sh: "Last name"
+      t: "`$STRING`"
+    }
+    meta: {
+      h: "Meta"
+      n: "meta"
+      r: false
+      t: "`$OBJECT`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "Full name of the representative"
+      t: "`$STRING`"
+    }
+    objects: {
+      h: "Objects"
+      n: "objects"
+      r: false
+      t: "`$ARRAY`"
+    }
+    offices: {
+      h: "Offices"
+      n: "offices"
+      r: false
+      sh: "Contact information for representative's offices"
+      t: "`$ARRAY`"
+    }
+    party_name: {
+      h: "Party Name"
+      n: "party_name"
+      r: false
+      sh: "Political party name"
+      t: "`$STRING`"
+    }
+    personal_url: {
+      h: "Personal Url"
+      n: "personal_url"
+      r: false
+      sh: "Personal website not on official legislature site"
+      t: "`$STRING`"
+    }
+    photo_url: {
+      h: "Photo Url"
+      n: "photo_url"
+      r: false
+      sh: "URL to representative's photo"
+      t: "`$STRING`"
+    }
+    source_url: {
+      h: "Source Url"
+      n: "source_url"
+      r: false
+      sh: "URL where the data is scraped from"
+      t: "`$STRING`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: false
+      sh: "Representative's page on official legislature site"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "representative"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /representatives/"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "callback"
+                or: "callback"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "district"
+                or: "district"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "district_name"
+                or: "district_name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "elected_office"
+                or: "elected_office"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "first_name"
+                or: "first_name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "format"
+                or: "format"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "gender"
+                or: "gender"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "last_name"
+                or: "last_name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "name"
+                or: "name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 0
+                k: "query"
+                n: "offset"
+                or: "offset"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "party_name"
+                or: "party_name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "point"
+                or: "point"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "pretty"
+                or: "pretty"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/representatives/"
+          q: {
+            exist: [
+              "callback"
+              "district"
+              "district_name"
+              "elected_office"
+              "first_name"
+              "format"
+              "gender"
+              "last_name"
+              "limit"
+              "name"
+              "offset"
+              "party_name"
+              "point"
+              "pretty"
+            ]
+          }
+          s: [
+            {
+              lit: "representatives"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /boundaries/{boundarySet}/{boundary}/representatives/"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "boundary"
+                or: "boundary"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "boundary_set"
+                or: "boundary_set"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "callback"
+                or: "callback"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "format"
+                or: "format"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "pretty"
+                or: "pretty"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/boundaries/{boundarySet}/{boundary}/representatives/"
+          q: {
+            exist: [
+              "boundary"
+              "boundary_set"
+              "callback"
+              "format"
+              "pretty"
+            ]
+          }
+          r: {
+            param: {
+              boundarySet: "boundary_set"
+            }
+          }
+          s: [
+            {
+              lit: "boundaries"
+            }
+            {
+              var: "boundary_set"
+            }
+            {
+              var: "boundary"
+            }
+            {
+              lit: "representatives"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.objects`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /representatives/{representativeSet}/"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "representative_set"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "callback"
+                or: "callback"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "district_name"
+                or: "district_name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "elected_office"
+                or: "elected_office"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "first_name"
+                or: "first_name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "format"
+                or: "format"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "gender"
+                or: "gender"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "last_name"
+                or: "last_name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "name"
+                or: "name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 0
+                k: "query"
+                n: "offset"
+                or: "offset"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "party_name"
+                or: "party_name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "point"
+                or: "point"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "pretty"
+                or: "pretty"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/representatives/{representativeSet}/"
+          q: {
+            exist: [
+              "callback"
+              "district_name"
+              "elected_office"
+              "first_name"
+              "format"
+              "gender"
+              "id"
+              "last_name"
+              "limit"
+              "name"
+              "offset"
+              "party_name"
+              "point"
+              "pretty"
+            ]
+          }
+          r: {
+            param: {
+              representativeSet: "id"
+            }
+          }
+          s: [
+            {
+              lit: "representatives"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.boundary")]
+  ]
+
+}

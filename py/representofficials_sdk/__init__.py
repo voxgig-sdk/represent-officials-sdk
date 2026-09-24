@@ -337,10 +337,10 @@ class RepresentOfficialsSDK:
         return PostalCodeEntity(self, data)
 
 
-    def Representatif(self, data=None) -> "RepresentatifEntity":
-        """Entity factory: client.Representatif().list() / client.Representatif().load({"id": ...})."""
-        from representofficials_sdk.entity.representatif_entity import RepresentatifEntity
-        return RepresentatifEntity(self, data)
+    def Representative(self, data=None) -> "RepresentativeEntity":
+        """Entity factory: client.Representative().list() / client.Representative().load({"id": ...})."""
+        from representofficials_sdk.entity.representative_entity import RepresentativeEntity
+        return RepresentativeEntity(self, data)
 
 
     def RepresentativeSet(self, data=None) -> "RepresentativeSetEntity":
@@ -381,5 +381,5 @@ if TYPE_CHECKING:
     from representofficials_sdk.entity.candidate_entity import CandidateEntity
     from representofficials_sdk.entity.election_entity import ElectionEntity
     from representofficials_sdk.entity.postal_code_entity import PostalCodeEntity
-    from representofficials_sdk.entity.representatif_entity import RepresentatifEntity
+    from representofficials_sdk.entity.representative_entity import RepresentativeEntity
     from representofficials_sdk.entity.representative_set_entity import RepresentativeSetEntity

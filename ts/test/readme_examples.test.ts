@@ -37,7 +37,7 @@ const SDK_NAME = 'RepresentOfficialsSDK'
 
 // A fixture for every entity, so list()/load() resolve offline with no
 // network. Snippet client construction is rewritten to seed this.
-const TEST_SEED = {"entity":{"boundary":{"test01":{"id":"test01"}},"boundary_set":{"test01":{"id":"test01"}},"candidate":{"test01":{"id":"test01"}},"election":{"test01":{"id":"test01"}},"postal_code":{"test01":{"id":"test01"}},"representatif":{"test01":{"id":"test01"}},"representative_set":{"test01":{"id":"test01"}}}}
+const TEST_SEED = {"entity":{"boundary":{"test01":{"id":"test01"}},"boundary_set":{"test01":{"id":"test01"}},"candidate":{"test01":{"id":"test01"}},"election":{"test01":{"id":"test01"}},"postal_code":{"test01":{"id":"test01"}},"representative":{"test01":{"id":"test01"}},"representative_set":{"test01":{"id":"test01"}}}}
 const SEED_ARG = JSON.stringify(TEST_SEED)
 const SEEDED_CTOR = SDK_NAME + '.test(' + SEED_ARG + ')'
 

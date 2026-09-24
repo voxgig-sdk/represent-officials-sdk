@@ -20,7 +20,7 @@ import (
 const prompt = "represent-officials"
 
 // entitiesHelp is the space-separated entity list shown by /help.
-const entitiesHelp = "boundary boundary_set candidate election postal_code representatif representative_set"
+const entitiesHelp = "boundary boundary_set candidate election postal_code representative representative_set"
 
 func main() {
 	os.Exit(run(os.Args[1:], os.Stdin, os.Stdout, os.Stderr))

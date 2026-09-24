@@ -67,9 +67,9 @@ Create a new `Election` entity instance. Pass `nil` for no initial data.
 
 Create a new `PostalCode` entity instance. Pass `nil` for no initial data.
 
-#### `Representatif(data map[string]any) RepresentOfficialsEntity`
+#### `Representative(data map[string]any) RepresentOfficialsEntity`
 
-Create a new `Representatif` entity instance. Pass `nil` for no initial data.
+Create a new `Representative` entity instance. Pass `nil` for no initial data.
 
 #### `RepresentativeSet(data map[string]any) RepresentOfficialsEntity`
 
@@ -409,11 +409,11 @@ Return the entity name.
 
 ---
 
-## RepresentatifEntity
+## RepresentativeEntity
 
 ```go
-representatif := client.Representatif(nil)
-fmt.Println(representatif.GetName()) // "representatif"
+representative := client.Representative(nil)
+fmt.Println(representative.GetName()) // "representative"
 ```
 
 ### Fields
@@ -446,7 +446,7 @@ fmt.Println(representatif.GetName()) // "representatif"
 List entities matching the given criteria. Returns an array.
 
 ```go
-results, err := client.Representatif(nil).List(nil, nil)
+results, err := client.Representative(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -458,7 +458,7 @@ fmt.Println(results)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Representatif(nil).Load(map[string]any{"id": "representatif_id"}, nil)
+result, err := client.Representative(nil).Load(map[string]any{"id": "representative_id"}, nil)
 if err != nil {
     panic(err)
 }
@@ -479,7 +479,7 @@ Get or set the entity match criteria. Works the same as `Data()`.
 
 #### `Make() Entity`
 
-Create a new `RepresentatifEntity` instance with the same client and
+Create a new `RepresentativeEntity` instance with the same client and
 options.
 
 #### `GetName() string`

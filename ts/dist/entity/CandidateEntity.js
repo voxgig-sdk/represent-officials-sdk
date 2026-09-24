@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CandidateEntity = void 0;
 const RepresentOfficialsEntityBase_1 = require("../RepresentOfficialsEntityBase");
-// TODO: needs Entity superclass
 class CandidateEntity extends RepresentOfficialsEntityBase_1.RepresentOfficialsEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

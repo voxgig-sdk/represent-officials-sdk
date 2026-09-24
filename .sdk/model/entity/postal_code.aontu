@@ -1,0 +1,152 @@
+# Entity: postal_code
+
+main: kit: entity: postal_code: {
+
+  alias: field: {}
+
+  fields: {
+    boundaries_centroid: {
+      h: "Boundaries Centroid"
+      n: "boundaries_centroid"
+      r: false
+      sh: "Boundaries containing the postal code's centroid"
+      t: "`$ARRAY`"
+    }
+    boundaries_concordance: {
+      h: "Boundaries Concordance"
+      n: "boundaries_concordance"
+      r: false
+      sh: "Boundaries linked to postal code via official data"
+      t: "`$ARRAY`"
+    }
+    centroid: {
+      h: "Centroid"
+      n: "centroid"
+      r: false
+      t: "`$OBJECT`"
+    }
+    city: {
+      h: "City"
+      n: "city"
+      r: false
+      sh: "City name"
+      t: "`$STRING`"
+    }
+    code: {
+      h: "Code"
+      n: "code"
+      r: false
+      sh: "The postal code"
+      t: "`$STRING`"
+    }
+    province: {
+      h: "Province"
+      n: "province"
+      r: false
+      sh: "Province code"
+      t: "`$STRING`"
+    }
+    representatives_centroid: {
+      h: "Representatives Centroid"
+      n: "representatives_centroid"
+      r: false
+      sh: "Representatives for boundaries containing centroid"
+      t: "`$ARRAY`"
+    }
+    representatives_concordance: {
+      h: "Representatives Concordance"
+      n: "representatives_concordance"
+      r: false
+      sh: "Representatives for boundaries via concordance"
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "postal_code"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /postcodes/{postalCode}/"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "postal_code"
+                or: "postal_code"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "callback"
+                or: "callback"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "format"
+                or: "format"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "pretty"
+                or: "pretty"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "set"
+                or: "set"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/postcodes/{postalCode}/"
+          q: {
+            exist: [
+              "callback"
+              "format"
+              "postal_code"
+              "pretty"
+              "set"
+            ]
+          }
+          r: {
+            param: {
+              postalCode: "postal_code"
+            }
+          }
+          s: [
+            {
+              lit: "postcodes"
+            }
+            {
+              var: "postal_code"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

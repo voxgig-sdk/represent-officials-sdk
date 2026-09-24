@@ -1,7 +1,7 @@
 # Typed models for the RepresentOfficials SDK.
 #
-# GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-# params (op.<name>.points[].args.params[]). Field/param types come from the
+# GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+# params (op.<name>.points[].g.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
 #
@@ -131,13 +131,13 @@ class PostalCodeLoadMatch(PostalCodeLoadMatchRequired, total=False):
     set: str
 
 
-class RepresentatifRequired(TypedDict):
+class RepresentativeRequired(TypedDict):
     district_name: str
     elected_office: str
     name: str
 
 
-class Representatif(RepresentatifRequired, total=False):
+class Representative(RepresentativeRequired, total=False):
     district_id: str
     email: str
     extra: dict
@@ -155,11 +155,11 @@ class Representatif(RepresentatifRequired, total=False):
     url: str
 
 
-class RepresentatifLoadMatchRequired(TypedDict):
+class RepresentativeLoadMatchRequired(TypedDict):
     id: str
 
 
-class RepresentatifLoadMatch(RepresentatifLoadMatchRequired, total=False):
+class RepresentativeLoadMatch(RepresentativeLoadMatchRequired, total=False):
     callback: str
     district_name: str
     elected_office: str
@@ -175,7 +175,7 @@ class RepresentatifLoadMatch(RepresentatifLoadMatchRequired, total=False):
     pretty: int
 
 
-class RepresentatifListMatch(TypedDict, total=False):
+class RepresentativeListMatch(TypedDict, total=False):
     callback: str
     district: str
     district_name: str

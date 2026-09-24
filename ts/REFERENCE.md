@@ -108,9 +108,9 @@ Create a new `PostalCode` entity instance.
 
 **Returns:** `PostalCodeEntity` instance.
 
-#### `Representatif(data?: object)`
+#### `Representative(data?: object)`
 
-Create a new `Representatif` entity instance.
+Create a new `Representative` entity instance.
 
 **Parameters:**
 
@@ -118,7 +118,7 @@ Create a new `Representatif` entity instance.
 | --- | --- | --- |
 | `data` | `object` | Initial entity data. |
 
-**Returns:** `RepresentatifEntity` instance.
+**Returns:** `RepresentativeEntity` instance.
 
 #### `RepresentativeSet(data?: object)`
 
@@ -488,10 +488,10 @@ Return a copy of the entity options.
 
 ---
 
-## RepresentatifEntity
+## RepresentativeEntity
 
 ```ts
-const representatif = client.Representatif()
+const representative = client.Representative()
 ```
 
 ### Fields
@@ -524,7 +524,7 @@ const representatif = client.Representatif()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Representatif().list()
+const results = await client.Representative().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -532,7 +532,7 @@ const results = await client.Representatif().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Representatif().load({ id: 'representatif_id' })
+const result = await client.Representative().load({ id: 'representative_id' })
 ```
 
 ### Common Methods
@@ -549,7 +549,7 @@ Get or set the entity match criteria. Works the same as `data()`.
 
 #### `make()`
 
-Create a new `RepresentatifEntity` instance with the same client and
+Create a new `RepresentativeEntity` instance with the same client and
 options.
 
 #### `client()`

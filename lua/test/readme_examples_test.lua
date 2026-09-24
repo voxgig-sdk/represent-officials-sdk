@@ -20,7 +20,7 @@ local SDK_MODULE = "represent-officials_sdk"
 -- A test-mode client seeded with a fixture for every entity. The constructor
 -- of each runnable snippet is rewritten to this form so the offline mock has
 -- data to return.
-local TEST_SEED = '{ entity = { ["boundary"] = { ["test01"] = { id = "test01" } }, ["boundary_set"] = { ["test01"] = { id = "test01" } }, ["candidate"] = { ["test01"] = { id = "test01" } }, ["election"] = { ["test01"] = { id = "test01" } }, ["postal_code"] = { ["test01"] = { id = "test01" } }, ["representatif"] = { ["test01"] = { id = "test01" } }, ["representative_set"] = { ["test01"] = { id = "test01" } } } }'
+local TEST_SEED = '{ entity = { ["boundary"] = { ["test01"] = { id = "test01" } }, ["boundary_set"] = { ["test01"] = { id = "test01" } }, ["candidate"] = { ["test01"] = { id = "test01" } }, ["election"] = { ["test01"] = { id = "test01" } }, ["postal_code"] = { ["test01"] = { id = "test01" } }, ["representative"] = { ["test01"] = { id = "test01" } }, ["representative_set"] = { ["test01"] = { id = "test01" } } } }'
 local TEST_CTOR = "sdk.test(" .. TEST_SEED .. ")"
 
 local function script_dir()

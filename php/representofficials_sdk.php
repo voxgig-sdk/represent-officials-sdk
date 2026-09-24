@@ -431,21 +431,21 @@ class RepresentOfficialsSDK
     }
 
 
-    private $_representatif = null;
+    private $_representative = null;
 
-    // Canonical facade: $client->Representatif()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->representatif()
+    // Canonical facade: $client->Representative()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->representative()
     // resolves here too.
-    public function Representatif($data = null)
+    public function Representative($data = null)
     {
-        require_once __DIR__ . '/entity/representatif_entity.php';
+        require_once __DIR__ . '/entity/representative_entity.php';
         if ($data === null) {
-            if ($this->_representatif === null) {
-                $this->_representatif = new RepresentatifEntity($this, null);
+            if ($this->_representative === null) {
+                $this->_representative = new RepresentativeEntity($this, null);
             }
-            return $this->_representatif;
+            return $this->_representative;
         }
-        return new RepresentatifEntity($this, $data);
+        return new RepresentativeEntity($this, $data);
     }
 
 

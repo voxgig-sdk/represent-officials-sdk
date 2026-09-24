@@ -98,7 +98,7 @@ func postal_codeBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"postal_code01", "postal_code02", "postal_code03", "postcode01", "postcode02", "postcode03"},
+		[]any{"postal_code01", "postal_code02", "postal_code03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

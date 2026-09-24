@@ -1,0 +1,112 @@
+{
+  "existing": {
+    "representative": {
+      "REPRESENTATIVE00": {
+        "district_id": "DISTRICT01",
+        "district_name": "sb5",
+        "elected_office": "sb6",
+        "email": "sb7",
+        "extra": {},
+        "first_name": "sb9",
+        "gender": "sba",
+        "id": "REPRESENTATIVE00",
+        "last_name": "sbc",
+        "meta": {},
+        "name": "sbe",
+        "objects": [],
+        "offices": [],
+        "party_name": "sc1",
+        "personal_url": "sc2",
+        "photo_url": "sc3",
+        "source_url": "sc4",
+        "url": "sc5",
+        "boundary": "BOUNDARY01",
+        "boundary_set": "BOUNDARY_SET01"
+      },
+      "REPRESENTATIVE01": {
+        "district_id": "DISTRICT01",
+        "district_name": "s169",
+        "elected_office": "s16a",
+        "email": "s16b",
+        "extra": {},
+        "first_name": "s16d",
+        "gender": "s16e",
+        "id": "REPRESENTATIVE01",
+        "last_name": "s170",
+        "meta": {},
+        "name": "s172",
+        "objects": [],
+        "offices": [],
+        "party_name": "s175",
+        "personal_url": "s176",
+        "photo_url": "s177",
+        "source_url": "s178",
+        "url": "s179",
+        "boundary": "BOUNDARY01",
+        "boundary_set": "BOUNDARY_SET01"
+      },
+      "REPRESENTATIVE02": {
+        "district_id": "DISTRICT01",
+        "district_name": "s21d",
+        "elected_office": "s21e",
+        "email": "s21f",
+        "extra": {},
+        "first_name": "s221",
+        "gender": "s222",
+        "id": "REPRESENTATIVE02",
+        "last_name": "s224",
+        "meta": {},
+        "name": "s226",
+        "objects": [],
+        "offices": [],
+        "party_name": "s229",
+        "personal_url": "s22a",
+        "photo_url": "s22b",
+        "source_url": "s22c",
+        "url": "s22d",
+        "boundary": "BOUNDARY01",
+        "boundary_set": "BOUNDARY_SET01"
+      }
+    }
+  },
+  "new": {
+    "representative": {
+      "representative_ref01": {
+        "district_id": "DISTRICT01",
+        "district_name": "s2d1",
+        "elected_office": "s2d2",
+        "email": "s2d3",
+        "extra": {},
+        "first_name": "s2d5",
+        "gender": "s2d6",
+        "last_name": "s2d8",
+        "meta": {},
+        "name": "s2da",
+        "objects": [],
+        "offices": [],
+        "party_name": "s2dd",
+        "personal_url": "s2de",
+        "photo_url": "s2df",
+        "source_url": "s2e0",
+        "url": "s2e1"
+      }
+    }
+  },
+  "requests": {
+    "GET /representatives/": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /boundaries/{boundarySet}/{boundary}/representatives/": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /representatives/{representativeSet}/": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -60,9 +60,9 @@ Create a new `Election` entity instance. Pass `nil` for no initial data.
 
 Create a new `PostalCode` entity instance. Pass `nil` for no initial data.
 
-#### `Representatif(data)`
+#### `Representative(data)`
 
-Create a new `Representatif` entity instance. Pass `nil` for no initial data.
+Create a new `Representative` entity instance. Pass `nil` for no initial data.
 
 #### `RepresentativeSet(data)`
 
@@ -399,10 +399,10 @@ Return the entity name.
 
 ---
 
-## RepresentatifEntity
+## RepresentativeEntity
 
 ```lua
-local representatif = client:Representatif(nil)
+local representative = client:Representative(nil)
 ```
 
 ### Fields
@@ -435,7 +435,7 @@ local representatif = client:Representatif(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Representatif():list()
+local results, err = client:Representative():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -443,7 +443,7 @@ local results, err = client:Representatif():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Representatif():load({ id = "representatif_id" })
+local result, err = client:Representative():load({ id = "representative_id" })
 ```
 
 ### Common Methods
@@ -466,7 +466,7 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `RepresentatifEntity` instance with the same client and
+Create a new `RepresentativeEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`

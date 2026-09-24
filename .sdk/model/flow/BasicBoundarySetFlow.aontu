@@ -1,0 +1,44 @@
+# BasicBoundarySetFlow
+
+main: kit: flow: BasicBoundarySetFlow:
+{
+  entity: "boundary_set",
+  kind: "basic",
+  name: "BasicBoundarySetFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "boundary_set_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "boundary_set_ref01",
+        srcdatavar: "boundary_set_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "boundary_set01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-boundary_set_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBoundarySetFlow"
+}

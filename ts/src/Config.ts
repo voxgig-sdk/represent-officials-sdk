@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -142,7 +135,7 @@ class Config {
         postal_code: {
         },
   
-        representatif: {
+        representative: {
         },
   
         representative_set: {
@@ -157,34 +150,42 @@ class Config {
       "fields": [
         {
           "name": "boundary_set_name",
+          "title": "Boundary Set Name",
           "type": "`$STRING`"
         },
         {
           "name": "external_id",
+          "title": "External Id",
           "type": "`$STRING`"
         },
         {
           "name": "id",
+          "title": "Id",
           "type": "`$STRING`"
         },
         {
           "name": "meta",
+          "title": "Meta",
           "type": "`$OBJECT`"
         },
         {
           "name": "metadata",
+          "title": "Metadata",
           "type": "`$OBJECT`"
         },
         {
           "name": "name",
+          "title": "Name",
           "type": "`$STRING`"
         },
         {
           "name": "objects",
+          "title": "Objects",
           "type": "`$ARRAY`"
         },
         {
           "name": "url",
+          "title": "Url",
           "type": "`$STRING`"
         }
       ],
@@ -199,78 +200,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "callback",
-                    "orig": "callback",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "contain",
-                    "orig": "contain",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "external_id",
-                    "orig": "external_id",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "format",
-                    "orig": "format",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "intersect",
-                    "orig": "intersect",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 20,
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "name",
-                    "orig": "name",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 0,
-                    "kind": "query",
-                    "name": "offset",
-                    "orig": "offset",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "pretty",
-                    "orig": "pretty",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "set",
-                    "orig": "set",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "touch",
-                    "orig": "touch",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/boundaries/",
@@ -279,6 +208,86 @@ class Config {
                   "lit": "boundaries"
                 }
               ],
+              "parts": [
+                "boundaries"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "callback",
+                    "orig": "callback",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "contain",
+                    "orig": "contain",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "external_id",
+                    "orig": "external_id",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "format",
+                    "orig": "format",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "intersect",
+                    "orig": "intersect",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 20
+                  },
+                  {
+                    "name": "name",
+                    "orig": "name",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "offset",
+                    "orig": "offset",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 0
+                  },
+                  {
+                    "name": "pretty",
+                    "orig": "pretty",
+                    "type": "`$INTEGER`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "set",
+                    "orig": "set",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "touch",
+                    "orig": "touch",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "callback",
@@ -293,14 +302,7 @@ class Config {
                   "set",
                   "touch"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "boundaries"
-              ]
+              }
             }
           ]
         },
@@ -309,77 +311,9 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "boundary_set",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "callback",
-                    "orig": "callback",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "contain",
-                    "orig": "contain",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "external_id",
-                    "orig": "external_id",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "format",
-                    "orig": "format",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 20,
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "name",
-                    "orig": "name",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 0,
-                    "kind": "query",
-                    "name": "offset",
-                    "orig": "offset",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "pretty",
-                    "orig": "pretty",
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/",
-              "rename": {
-                "param": {
-                  "boundarySet": "id"
-                }
-              },
               "segments": [
                 {
                   "lit": "boundaries"
@@ -388,6 +322,82 @@ class Config {
                   "var": "id"
                 }
               ],
+              "parts": [
+                "boundaries",
+                "{id}"
+              ],
+              "rename": {
+                "param": {
+                  "boundarySet": "id"
+                }
+              },
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "boundary_set",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "callback",
+                    "orig": "callback",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "contain",
+                    "orig": "contain",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "external_id",
+                    "orig": "external_id",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "format",
+                    "orig": "format",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 20
+                  },
+                  {
+                    "name": "name",
+                    "orig": "name",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "offset",
+                    "orig": "offset",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 0
+                  },
+                  {
+                    "name": "pretty",
+                    "orig": "pretty",
+                    "type": "`$INTEGER`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "callback",
@@ -400,63 +410,12 @@ class Config {
                   "offset",
                   "pretty"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "boundaries",
-                "{id}"
-              ]
+              }
             },
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "boundary",
-                    "orig": "boundary",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "param",
-                    "name": "boundary_set",
-                    "orig": "boundary_set",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "callback",
-                    "orig": "callback",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "format",
-                    "orig": "format",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "pretty",
-                    "orig": "pretty",
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/{boundary}/",
-              "rename": {
-                "param": {
-                  "boundarySet": "boundary_set"
-                }
-              },
               "segments": [
                 {
                   "lit": "boundaries"
@@ -468,6 +427,58 @@ class Config {
                   "var": "boundary"
                 }
               ],
+              "parts": [
+                "boundaries",
+                "{boundary_set}",
+                "{boundary}"
+              ],
+              "rename": {
+                "param": {
+                  "boundarySet": "boundary_set"
+                }
+              },
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body.metadata`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "boundary",
+                    "orig": "boundary",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  },
+                  {
+                    "name": "boundary_set",
+                    "orig": "boundary_set",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "callback",
+                    "orig": "callback",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "format",
+                    "orig": "format",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "pretty",
+                    "orig": "pretty",
+                    "type": "`$INTEGER`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "boundary",
@@ -476,58 +487,12 @@ class Config {
                   "format",
                   "pretty"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body.metadata`"
-              },
-              "parts": [
-                "boundaries",
-                "{boundary_set}",
-                "{boundary}"
-              ]
+              }
             },
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "boundary",
-                    "orig": "boundary",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "param",
-                    "name": "boundary_set",
-                    "orig": "boundary_set",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "callback",
-                    "orig": "callback",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "format",
-                    "orig": "format",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/{boundary}/centroid",
-              "rename": {
-                "param": {
-                  "boundarySet": "boundary_set"
-                }
-              },
               "segments": [
                 {
                   "lit": "boundaries"
@@ -542,6 +507,53 @@ class Config {
                   "lit": "centroid"
                 }
               ],
+              "parts": [
+                "boundaries",
+                "{boundary_set}",
+                "{boundary}",
+                "centroid"
+              ],
+              "rename": {
+                "param": {
+                  "boundarySet": "boundary_set"
+                }
+              },
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "boundary",
+                    "orig": "boundary",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  },
+                  {
+                    "name": "boundary_set",
+                    "orig": "boundary_set",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "callback",
+                    "orig": "callback",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "format",
+                    "orig": "format",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "$action": "centroid",
                 "exist": [
@@ -550,59 +562,12 @@ class Config {
                   "callback",
                   "format"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "boundaries",
-                "{boundary_set}",
-                "{boundary}",
-                "centroid"
-              ]
+              }
             },
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "boundary",
-                    "orig": "boundary",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "param",
-                    "name": "boundary_set",
-                    "orig": "boundary_set",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "callback",
-                    "orig": "callback",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "format",
-                    "orig": "format",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/{boundary}/shape",
-              "rename": {
-                "param": {
-                  "boundarySet": "boundary_set"
-                }
-              },
               "segments": [
                 {
                   "lit": "boundaries"
@@ -617,6 +582,53 @@ class Config {
                   "lit": "shape"
                 }
               ],
+              "parts": [
+                "boundaries",
+                "{boundary_set}",
+                "{boundary}",
+                "shape"
+              ],
+              "rename": {
+                "param": {
+                  "boundarySet": "boundary_set"
+                }
+              },
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "boundary",
+                    "orig": "boundary",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  },
+                  {
+                    "name": "boundary_set",
+                    "orig": "boundary_set",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "callback",
+                    "orig": "callback",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "format",
+                    "orig": "format",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "$action": "shape",
                 "exist": [
@@ -625,59 +637,12 @@ class Config {
                   "callback",
                   "format"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "boundaries",
-                "{boundary_set}",
-                "{boundary}",
-                "shape"
-              ]
+              }
             },
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "boundary",
-                    "orig": "boundary",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "param",
-                    "name": "boundary_set",
-                    "orig": "boundary_set",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "callback",
-                    "orig": "callback",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "format",
-                    "orig": "format",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/{boundary}/simple_shape",
-              "rename": {
-                "param": {
-                  "boundarySet": "boundary_set"
-                }
-              },
               "segments": [
                 {
                   "lit": "boundaries"
@@ -692,6 +657,53 @@ class Config {
                   "lit": "simple_shape"
                 }
               ],
+              "parts": [
+                "boundaries",
+                "{boundary_set}",
+                "{boundary}",
+                "simple_shape"
+              ],
+              "rename": {
+                "param": {
+                  "boundarySet": "boundary_set"
+                }
+              },
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "boundary",
+                    "orig": "boundary",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  },
+                  {
+                    "name": "boundary_set",
+                    "orig": "boundary_set",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "callback",
+                    "orig": "callback",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "format",
+                    "orig": "format",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "$action": "simple_shape",
                 "exist": [
@@ -700,52 +712,12 @@ class Config {
                   "callback",
                   "format"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "boundaries",
-                "{boundary_set}",
-                "{boundary}",
-                "simple_shape"
-              ]
+              }
             },
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "boundary_set",
-                    "orig": "boundary_set",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "callback",
-                    "orig": "callback",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "format",
-                    "orig": "format",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/centroid",
-              "rename": {
-                "param": {
-                  "boundarySet": "boundary_set"
-                }
-              },
               "segments": [
                 {
                   "lit": "boundaries"
@@ -757,6 +729,45 @@ class Config {
                   "lit": "centroid"
                 }
               ],
+              "parts": [
+                "boundaries",
+                "{boundary_set}",
+                "centroid"
+              ],
+              "rename": {
+                "param": {
+                  "boundarySet": "boundary_set"
+                }
+              },
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "boundary_set",
+                    "orig": "boundary_set",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "callback",
+                    "orig": "callback",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "format",
+                    "orig": "format",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "$action": "centroid",
                 "exist": [
@@ -764,51 +775,12 @@ class Config {
                   "callback",
                   "format"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "boundaries",
-                "{boundary_set}",
-                "centroid"
-              ]
+              }
             },
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "boundary_set",
-                    "orig": "boundary_set",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "callback",
-                    "orig": "callback",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "format",
-                    "orig": "format",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/shape",
-              "rename": {
-                "param": {
-                  "boundarySet": "boundary_set"
-                }
-              },
               "segments": [
                 {
                   "lit": "boundaries"
@@ -820,6 +792,45 @@ class Config {
                   "lit": "shape"
                 }
               ],
+              "parts": [
+                "boundaries",
+                "{boundary_set}",
+                "shape"
+              ],
+              "rename": {
+                "param": {
+                  "boundarySet": "boundary_set"
+                }
+              },
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "boundary_set",
+                    "orig": "boundary_set",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "callback",
+                    "orig": "callback",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "format",
+                    "orig": "format",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "$action": "shape",
                 "exist": [
@@ -827,51 +838,12 @@ class Config {
                   "callback",
                   "format"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "boundaries",
-                "{boundary_set}",
-                "shape"
-              ]
+              }
             },
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "boundary_set",
-                    "orig": "boundary_set",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "callback",
-                    "orig": "callback",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "format",
-                    "orig": "format",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/simple_shape",
-              "rename": {
-                "param": {
-                  "boundarySet": "boundary_set"
-                }
-              },
               "segments": [
                 {
                   "lit": "boundaries"
@@ -883,6 +855,45 @@ class Config {
                   "lit": "simple_shape"
                 }
               ],
+              "parts": [
+                "boundaries",
+                "{boundary_set}",
+                "simple_shape"
+              ],
+              "rename": {
+                "param": {
+                  "boundarySet": "boundary_set"
+                }
+              },
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "boundary_set",
+                    "orig": "boundary_set",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "callback",
+                    "orig": "callback",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "format",
+                    "orig": "format",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "$action": "simple_shape",
                 "exist": [
@@ -890,44 +901,35 @@ class Config {
                   "callback",
                   "format"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "boundaries",
-                "{boundary_set}",
-                "simple_shape"
-              ]
+              }
             }
           ]
         }
       },
       "relations": {
-        "ancestors": [
-          [
-            "boundary"
-          ]
-        ]
+        "ancestors": []
       }
     },
     "boundary_set": {
       "fields": [
         {
           "name": "domain",
+          "title": "Domain",
           "type": "`$STRING`"
         },
         {
           "name": "id",
+          "title": "Id",
           "type": "`$STRING`"
         },
         {
           "name": "name",
+          "title": "Name",
           "type": "`$STRING`"
         },
         {
           "name": "url",
+          "title": "Url",
           "type": "`$STRING`"
         }
       ],
@@ -942,54 +944,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "callback",
-                    "orig": "callback",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "domain",
-                    "orig": "domain",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "format",
-                    "orig": "format",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 20,
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "name",
-                    "orig": "name",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 0,
-                    "kind": "query",
-                    "name": "offset",
-                    "orig": "offset",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "pretty",
-                    "orig": "pretty",
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/boundary-sets/",
@@ -998,6 +952,62 @@ class Config {
                   "lit": "boundary-sets"
                 }
               ],
+              "parts": [
+                "boundary-sets"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "callback",
+                    "orig": "callback",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "domain",
+                    "orig": "domain",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "format",
+                    "orig": "format",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 20
+                  },
+                  {
+                    "name": "name",
+                    "orig": "name",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "offset",
+                    "orig": "offset",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 0
+                  },
+                  {
+                    "name": "pretty",
+                    "orig": "pretty",
+                    "type": "`$INTEGER`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "callback",
@@ -1008,14 +1018,7 @@ class Config {
                   "offset",
                   "pretty"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "boundary-sets"
-              ]
+              }
             }
           ]
         },
@@ -1024,45 +1027,9 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "boundary_set",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "callback",
-                    "orig": "callback",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "format",
-                    "orig": "format",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "pretty",
-                    "orig": "pretty",
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/boundary-sets/{boundarySet}/",
-              "rename": {
-                "param": {
-                  "boundarySet": "id"
-                }
-              },
               "segments": [
                 {
                   "lit": "boundary-sets"
@@ -1071,6 +1038,50 @@ class Config {
                   "var": "id"
                 }
               ],
+              "parts": [
+                "boundary-sets",
+                "{id}"
+              ],
+              "rename": {
+                "param": {
+                  "boundarySet": "id"
+                }
+              },
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "boundary_set",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "callback",
+                    "orig": "callback",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "format",
+                    "orig": "format",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "pretty",
+                    "orig": "pretty",
+                    "type": "`$INTEGER`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "callback",
@@ -1078,15 +1089,7 @@ class Config {
                   "id",
                   "pretty"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "boundary-sets",
-                "{id}"
-              ]
+              }
             }
           ]
         }
@@ -1099,10 +1102,12 @@ class Config {
       "fields": [
         {
           "name": "meta",
+          "title": "Meta",
           "type": "`$OBJECT`"
         },
         {
           "name": "objects",
+          "title": "Objects",
           "type": "`$ARRAY`"
         }
       ],
@@ -1113,42 +1118,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "callback",
-                    "orig": "callback",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "format",
-                    "orig": "format",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 20,
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "example": 0,
-                    "kind": "query",
-                    "name": "offset",
-                    "orig": "offset",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "pretty",
-                    "orig": "pretty",
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/candidates/",
@@ -1157,6 +1126,50 @@ class Config {
                   "lit": "candidates"
                 }
               ],
+              "parts": [
+                "candidates"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "callback",
+                    "orig": "callback",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "format",
+                    "orig": "format",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 20
+                  },
+                  {
+                    "name": "offset",
+                    "orig": "offset",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 0
+                  },
+                  {
+                    "name": "pretty",
+                    "orig": "pretty",
+                    "type": "`$INTEGER`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "callback",
@@ -1165,14 +1178,7 @@ class Config {
                   "offset",
                   "pretty"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "candidates"
-              ]
+              }
             }
           ]
         }
@@ -1185,10 +1191,12 @@ class Config {
       "fields": [
         {
           "name": "meta",
+          "title": "Meta",
           "type": "`$OBJECT`"
         },
         {
           "name": "objects",
+          "title": "Objects",
           "type": "`$ARRAY`"
         }
       ],
@@ -1199,42 +1207,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "callback",
-                    "orig": "callback",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "format",
-                    "orig": "format",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 20,
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "example": 0,
-                    "kind": "query",
-                    "name": "offset",
-                    "orig": "offset",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "pretty",
-                    "orig": "pretty",
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/elections/",
@@ -1243,6 +1215,50 @@ class Config {
                   "lit": "elections"
                 }
               ],
+              "parts": [
+                "elections"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "callback",
+                    "orig": "callback",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "format",
+                    "orig": "format",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 20
+                  },
+                  {
+                    "name": "offset",
+                    "orig": "offset",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 0
+                  },
+                  {
+                    "name": "pretty",
+                    "orig": "pretty",
+                    "type": "`$INTEGER`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "callback",
@@ -1251,14 +1267,7 @@ class Config {
                   "offset",
                   "pretty"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "elections"
-              ]
+              }
             }
           ]
         }
@@ -1271,42 +1280,50 @@ class Config {
       "fields": [
         {
           "name": "boundaries_centroid",
-          "short": "Boundaries containing the postal code's centroid",
-          "type": "`$ARRAY`"
+          "title": "Boundaries Centroid",
+          "type": "`$ARRAY`",
+          "short": "Boundaries containing the postal code's centroid"
         },
         {
           "name": "boundaries_concordance",
-          "short": "Boundaries linked to postal code via official data",
-          "type": "`$ARRAY`"
+          "title": "Boundaries Concordance",
+          "type": "`$ARRAY`",
+          "short": "Boundaries linked to postal code via official data"
         },
         {
           "name": "centroid",
+          "title": "Centroid",
           "type": "`$OBJECT`"
         },
         {
           "name": "city",
-          "short": "City name",
-          "type": "`$STRING`"
+          "title": "City",
+          "type": "`$STRING`",
+          "short": "City name"
         },
         {
           "name": "code",
-          "short": "The postal code",
-          "type": "`$STRING`"
+          "title": "Code",
+          "type": "`$STRING`",
+          "short": "The postal code"
         },
         {
           "name": "province",
-          "short": "Province code",
-          "type": "`$STRING`"
+          "title": "Province",
+          "type": "`$STRING`",
+          "short": "Province code"
         },
         {
           "name": "representatives_centroid",
-          "short": "Representatives for boundaries containing centroid",
-          "type": "`$ARRAY`"
+          "title": "Representatives Centroid",
+          "type": "`$ARRAY`",
+          "short": "Representatives for boundaries containing centroid"
         },
         {
           "name": "representatives_concordance",
-          "short": "Representatives for boundaries via concordance",
-          "type": "`$ARRAY`"
+          "title": "Representatives Concordance",
+          "type": "`$ARRAY`",
+          "short": "Representatives for boundaries via concordance"
         }
       ],
       "name": "postal_code",
@@ -1316,51 +1333,9 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "postal_code",
-                    "orig": "postal_code",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "callback",
-                    "orig": "callback",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "format",
-                    "orig": "format",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "pretty",
-                    "orig": "pretty",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "set",
-                    "orig": "set",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/postcodes/{postalCode}/",
-              "rename": {
-                "param": {
-                  "postalCode": "postal_code"
-                }
-              },
               "segments": [
                 {
                   "lit": "postcodes"
@@ -1369,6 +1344,56 @@ class Config {
                   "var": "postal_code"
                 }
               ],
+              "parts": [
+                "postcodes",
+                "{postal_code}"
+              ],
+              "rename": {
+                "param": {
+                  "postalCode": "postal_code"
+                }
+              },
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "postal_code",
+                    "orig": "postal_code",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "callback",
+                    "orig": "callback",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "format",
+                    "orig": "format",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "pretty",
+                    "orig": "pretty",
+                    "type": "`$INTEGER`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "set",
+                    "orig": "set",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "callback",
@@ -1377,222 +1402,138 @@ class Config {
                   "pretty",
                   "set"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "postcodes",
-                "{postal_code}"
-              ]
+              }
             }
           ]
         }
       },
       "relations": {
-        "ancestors": [
-          [
-            "postcode"
-          ]
-        ]
+        "ancestors": []
       }
     },
-    "representatif": {
+    "representative": {
       "fields": [
         {
           "name": "district_id",
-          "short": "District identifier if available",
-          "type": "`$STRING`"
+          "title": "District Id",
+          "type": "`$STRING`",
+          "short": "District identifier if available"
         },
         {
           "name": "district_name",
+          "title": "District Name",
+          "type": "`$STRING`",
           "req": true,
-          "short": "Name of the electoral district",
-          "type": "`$STRING`"
+          "short": "Name of the electoral district"
         },
         {
           "name": "elected_office",
+          "title": "Elected Office",
+          "type": "`$STRING`",
           "req": true,
-          "short": "Type of office (e.g., MP, MLA, Mayor, Councillor, Alderman)",
-          "type": "`$STRING`"
+          "short": "Type of office (e.g., MP, MLA, Mayor, Councillor, Alderman)"
         },
         {
-          "format": "email",
           "name": "email",
+          "title": "Email",
+          "type": "`$STRING`",
           "short": "Email address",
-          "type": "`$STRING`"
+          "format": "email"
         },
         {
           "name": "extra",
-          "short": "Additional data not covered by standard fields",
-          "type": "`$OBJECT`"
+          "title": "Extra",
+          "type": "`$OBJECT`",
+          "short": "Additional data not covered by standard fields"
         },
         {
           "name": "first_name",
-          "short": "First name",
-          "type": "`$STRING`"
+          "title": "First Name",
+          "type": "`$STRING`",
+          "short": "First name"
         },
         {
           "name": "gender",
-          "short": "Gender",
-          "type": "`$STRING`"
+          "title": "Gender",
+          "type": "`$STRING`",
+          "short": "Gender"
         },
         {
           "name": "id",
+          "title": "Id",
           "type": "`$STRING`"
         },
         {
           "name": "last_name",
-          "short": "Last name",
-          "type": "`$STRING`"
+          "title": "Last Name",
+          "type": "`$STRING`",
+          "short": "Last name"
         },
         {
           "name": "meta",
+          "title": "Meta",
           "type": "`$OBJECT`"
         },
         {
           "name": "name",
+          "title": "Name",
+          "type": "`$STRING`",
           "req": true,
-          "short": "Full name of the representative",
-          "type": "`$STRING`"
+          "short": "Full name of the representative"
         },
         {
           "name": "objects",
+          "title": "Objects",
           "type": "`$ARRAY`"
         },
         {
           "name": "offices",
-          "short": "Contact information for representative's offices",
-          "type": "`$ARRAY`"
+          "title": "Offices",
+          "type": "`$ARRAY`",
+          "short": "Contact information for representative's offices"
         },
         {
           "name": "party_name",
-          "short": "Political party name",
-          "type": "`$STRING`"
+          "title": "Party Name",
+          "type": "`$STRING`",
+          "short": "Political party name"
         },
         {
           "name": "personal_url",
-          "short": "Personal website not on official legislature site",
-          "type": "`$STRING`"
+          "title": "Personal Url",
+          "type": "`$STRING`",
+          "short": "Personal website not on official legislature site"
         },
         {
           "name": "photo_url",
-          "short": "URL to representative's photo",
-          "type": "`$STRING`"
+          "title": "Photo Url",
+          "type": "`$STRING`",
+          "short": "URL to representative's photo"
         },
         {
           "name": "source_url",
-          "short": "URL where the data is scraped from",
-          "type": "`$STRING`"
+          "title": "Source Url",
+          "type": "`$STRING`",
+          "short": "URL where the data is scraped from"
         },
         {
           "name": "url",
-          "short": "Representative's page on official legislature site",
-          "type": "`$STRING`"
+          "title": "Url",
+          "type": "`$STRING`",
+          "short": "Representative's page on official legislature site"
         }
       ],
       "id": {
         "field": "id",
         "name": "id"
       },
-      "name": "representatif",
+      "name": "representative",
       "op": {
         "list": {
           "input": "data",
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "callback",
-                    "orig": "callback",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "district",
-                    "orig": "district",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "district_name",
-                    "orig": "district_name",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "elected_office",
-                    "orig": "elected_office",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "first_name",
-                    "orig": "first_name",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "format",
-                    "orig": "format",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "gender",
-                    "orig": "gender",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "last_name",
-                    "orig": "last_name",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 20,
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "name",
-                    "orig": "name",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 0,
-                    "kind": "query",
-                    "name": "offset",
-                    "orig": "offset",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "party_name",
-                    "orig": "party_name",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "point",
-                    "orig": "point",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "pretty",
-                    "orig": "pretty",
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/representatives/",
@@ -1601,6 +1542,104 @@ class Config {
                   "lit": "representatives"
                 }
               ],
+              "parts": [
+                "representatives"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "callback",
+                    "orig": "callback",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "district",
+                    "orig": "district",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "district_name",
+                    "orig": "district_name",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "elected_office",
+                    "orig": "elected_office",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "first_name",
+                    "orig": "first_name",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "format",
+                    "orig": "format",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "gender",
+                    "orig": "gender",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "last_name",
+                    "orig": "last_name",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 20
+                  },
+                  {
+                    "name": "name",
+                    "orig": "name",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "offset",
+                    "orig": "offset",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 0
+                  },
+                  {
+                    "name": "party_name",
+                    "orig": "party_name",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "point",
+                    "orig": "point",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "pretty",
+                    "orig": "pretty",
+                    "type": "`$INTEGER`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "callback",
@@ -1618,62 +1657,12 @@ class Config {
                   "point",
                   "pretty"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "representatives"
-              ]
+              }
             },
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "boundary",
-                    "orig": "boundary",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "param",
-                    "name": "boundary_set",
-                    "orig": "boundary_set",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "callback",
-                    "orig": "callback",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "format",
-                    "orig": "format",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "pretty",
-                    "orig": "pretty",
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/boundaries/{boundarySet}/{boundary}/representatives/",
-              "rename": {
-                "param": {
-                  "boundarySet": "boundary_set"
-                }
-              },
               "segments": [
                 {
                   "lit": "boundaries"
@@ -1688,6 +1677,59 @@ class Config {
                   "lit": "representatives"
                 }
               ],
+              "parts": [
+                "boundaries",
+                "{boundary_set}",
+                "{boundary}",
+                "representatives"
+              ],
+              "rename": {
+                "param": {
+                  "boundarySet": "boundary_set"
+                }
+              },
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body.objects`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "boundary",
+                    "orig": "boundary",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  },
+                  {
+                    "name": "boundary_set",
+                    "orig": "boundary_set",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "callback",
+                    "orig": "callback",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "format",
+                    "orig": "format",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "pretty",
+                    "orig": "pretty",
+                    "type": "`$INTEGER`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "boundary",
@@ -1696,17 +1738,7 @@ class Config {
                   "format",
                   "pretty"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body.objects`"
-              },
-              "parts": [
-                "boundaries",
-                "{boundary_set}",
-                "{boundary}",
-                "representatives"
-              ]
+              }
             }
           ]
         },
@@ -1715,107 +1747,9 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "representative_set",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "callback",
-                    "orig": "callback",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "district_name",
-                    "orig": "district_name",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "elected_office",
-                    "orig": "elected_office",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "first_name",
-                    "orig": "first_name",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "format",
-                    "orig": "format",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "gender",
-                    "orig": "gender",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "last_name",
-                    "orig": "last_name",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 20,
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "name",
-                    "orig": "name",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 0,
-                    "kind": "query",
-                    "name": "offset",
-                    "orig": "offset",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "party_name",
-                    "orig": "party_name",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "point",
-                    "orig": "point",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "pretty",
-                    "orig": "pretty",
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/representatives/{representativeSet}/",
-              "rename": {
-                "param": {
-                  "representativeSet": "id"
-                }
-              },
               "segments": [
                 {
                   "lit": "representatives"
@@ -1824,6 +1758,112 @@ class Config {
                   "var": "id"
                 }
               ],
+              "parts": [
+                "representatives",
+                "{id}"
+              ],
+              "rename": {
+                "param": {
+                  "representativeSet": "id"
+                }
+              },
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "representative_set",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "callback",
+                    "orig": "callback",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "district_name",
+                    "orig": "district_name",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "elected_office",
+                    "orig": "elected_office",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "first_name",
+                    "orig": "first_name",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "format",
+                    "orig": "format",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "gender",
+                    "orig": "gender",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "last_name",
+                    "orig": "last_name",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 20
+                  },
+                  {
+                    "name": "name",
+                    "orig": "name",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "offset",
+                    "orig": "offset",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 0
+                  },
+                  {
+                    "name": "party_name",
+                    "orig": "party_name",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "point",
+                    "orig": "point",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "pretty",
+                    "orig": "pretty",
+                    "type": "`$INTEGER`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "callback",
@@ -1841,15 +1881,7 @@ class Config {
                   "point",
                   "pretty"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "representatives",
-                "{id}"
-              ]
+              }
             }
           ]
         }
@@ -1857,7 +1889,7 @@ class Config {
       "relations": {
         "ancestors": [
           [
-            "boundary"
+            "$.main.kit.entity.boundary"
           ]
         ]
       }
@@ -1866,14 +1898,17 @@ class Config {
       "fields": [
         {
           "name": "id",
+          "title": "Id",
           "type": "`$STRING`"
         },
         {
           "name": "name",
+          "title": "Name",
           "type": "`$STRING`"
         },
         {
           "name": "url",
+          "title": "Url",
           "type": "`$STRING`"
         }
       ],
@@ -1888,42 +1923,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "callback",
-                    "orig": "callback",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "format",
-                    "orig": "format",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 20,
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "example": 0,
-                    "kind": "query",
-                    "name": "offset",
-                    "orig": "offset",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "pretty",
-                    "orig": "pretty",
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/representative-sets/",
@@ -1932,6 +1931,50 @@ class Config {
                   "lit": "representative-sets"
                 }
               ],
+              "parts": [
+                "representative-sets"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "callback",
+                    "orig": "callback",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "format",
+                    "orig": "format",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 20
+                  },
+                  {
+                    "name": "offset",
+                    "orig": "offset",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 0
+                  },
+                  {
+                    "name": "pretty",
+                    "orig": "pretty",
+                    "type": "`$INTEGER`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "callback",
@@ -1940,14 +1983,7 @@ class Config {
                   "offset",
                   "pretty"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "representative-sets"
-              ]
+              }
             }
           ]
         },
@@ -1956,45 +1992,9 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "representative_set",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "callback",
-                    "orig": "callback",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "format",
-                    "orig": "format",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "pretty",
-                    "orig": "pretty",
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/representative-sets/{representativeSet}/",
-              "rename": {
-                "param": {
-                  "representativeSet": "id"
-                }
-              },
               "segments": [
                 {
                   "lit": "representative-sets"
@@ -2003,6 +2003,50 @@ class Config {
                   "var": "id"
                 }
               ],
+              "parts": [
+                "representative-sets",
+                "{id}"
+              ],
+              "rename": {
+                "param": {
+                  "representativeSet": "id"
+                }
+              },
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "representative_set",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "callback",
+                    "orig": "callback",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "format",
+                    "orig": "format",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "pretty",
+                    "orig": "pretty",
+                    "type": "`$INTEGER`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "callback",
@@ -2010,15 +2054,7 @@ class Config {
                   "id",
                   "pretty"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "representative-sets",
-                "{id}"
-              ]
+              }
             }
           ]
         }

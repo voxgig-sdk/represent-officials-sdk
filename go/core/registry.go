@@ -22,7 +22,7 @@ var NewElectionEntityFunc func(client *RepresentOfficialsSDK, entopts map[string
 
 var NewPostalCodeEntityFunc func(client *RepresentOfficialsSDK, entopts map[string]any) RepresentOfficialsEntity
 
-var NewRepresentatifEntityFunc func(client *RepresentOfficialsSDK, entopts map[string]any) RepresentOfficialsEntity
+var NewRepresentativeEntityFunc func(client *RepresentOfficialsSDK, entopts map[string]any) RepresentOfficialsEntity
 
 var NewRepresentativeSetEntityFunc func(client *RepresentOfficialsSDK, entopts map[string]any) RepresentOfficialsEntity
 

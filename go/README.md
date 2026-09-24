@@ -232,7 +232,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Candidate` | `(data map[string]any) RepresentOfficialsEntity` | Create a Candidate entity instance. |
 | `Election` | `(data map[string]any) RepresentOfficialsEntity` | Create an Election entity instance. |
 | `PostalCode` | `(data map[string]any) RepresentOfficialsEntity` | Create a PostalCode entity instance. |
-| `Representatif` | `(data map[string]any) RepresentOfficialsEntity` | Create a Representatif entity instance. |
+| `Representative` | `(data map[string]any) RepresentOfficialsEntity` | Create a Representative entity instance. |
 | `RepresentativeSet` | `(data map[string]any) RepresentOfficialsEntity` | Create a RepresentativeSet entity instance. |
 
 ### Entity interface (RepresentOfficialsEntity)
@@ -340,7 +340,7 @@ Operations: Load.
 
 API path: `/postcodes/{postalCode}/`
 
-#### Representatif
+#### Representative
 
 | Field | Description |
 | --- | --- |
@@ -560,9 +560,9 @@ fmt.Println(postalCode) // the loaded record
 ```
 
 
-### Representatif
+### Representative
 
-Create an instance: `representatif := client.Representatif(nil)`
+Create an instance: `representative := client.Representative(nil)`
 
 #### Operations
 
@@ -597,21 +597,21 @@ Create an instance: `representatif := client.Representatif(nil)`
 #### Example: Load
 
 ```go
-representatif, err := client.Representatif(nil).Load(map[string]any{"id": "representatif_id"}, nil)
+representative, err := client.Representative(nil).Load(map[string]any{"id": "representative_id"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(representatif) // the loaded record
+fmt.Println(representative) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-representatifs, err := client.Representatif(nil).List(nil, nil)
+representatives, err := client.Representative(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(representatifs) // the array of records
+fmt.Println(representatives) // the array of records
 ```
 
 

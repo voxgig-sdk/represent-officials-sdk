@@ -70,7 +70,7 @@ function postal_code_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["postal_code01", "postal_code02", "postal_code03", "postcode01", "postcode02", "postcode03"] as $k) {
+    foreach (["postal_code01", "postal_code02", "postal_code03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

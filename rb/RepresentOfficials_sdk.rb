@@ -324,10 +324,10 @@ class RepresentOfficialsSDK
   end
 
 
-  # Canonical facade: client.Representatif.list / client.Representatif.load({ "id" => ... })
-  def Representatif(data = nil)
-    require_relative 'entity/representatif_entity'
-    RepresentatifEntity.new(self, data)
+  # Canonical facade: client.Representative.list / client.Representative.load({ "id" => ... })
+  def Representative(data = nil)
+    require_relative 'entity/representative_entity'
+    RepresentativeEntity.new(self, data)
   end
 
 

@@ -153,7 +153,7 @@ JSON schemas are emitted by the SDK from the `Args` struct's `json` /
 
 The 7 entities valid as the `entity` argument:
 
-boundary | boundary_set | candidate | election | postal_code | representatif | representative_set
+boundary | boundary_set | candidate | election | postal_code | representative | representative_set
 
 ### Smoke test via HTTP (raw JSON-RPC)
 

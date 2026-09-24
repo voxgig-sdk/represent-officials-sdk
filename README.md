@@ -14,7 +14,7 @@ Metadata kindly supplied by [www.freepublicapis.com](https://www.freepublicapis.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI with an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
-> **Features:** `ratelimit`, `retry`, `test`, `timeout` — opt-in,
+> **Features:** `undefined`, `undefined`, `undefined`, `undefined` — opt-in,
 > inactive until switched on, and configured per client. See the Features
 > section of any SDK README below for what each one does.
 
@@ -128,12 +128,6 @@ const boundarys = await client.Boundary().list()
 for (const boundary of boundarys) {
   console.log(boundary)
 }
-
-// Load a specific postalcode (returns a PostalCode)
-const postalcode = await client.PostalCode().load({
-  postal_code: 'example_postal_code',
-})
-console.log(postalcode)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -179,7 +173,7 @@ The API exposes 7 entities:
 | **Candidate** | The Candidate entity (list). | `/candidates/` |
 | **Election** | The Election entity (list). | `/elections/` |
 | **PostalCode** | The PostalCode entity (load). | `/postcodes/{postalCode}/` |
-| **Representatif** | The Representatif entity (list, load). | `/representatives/` |
+| **Representative** | The Representative entity (list, load). | `/representatives/` |
 | **RepresentativeSet** | The RepresentativeSet entity (list, load). | `/representative-sets/` |
 
 The operations available across these entities are **load**, **list** — see each entity's
@@ -234,15 +228,6 @@ if err != nil {
     panic(err)
 }
 fmt.Println(boundarys)
-
-// Load a specific postalcode
-postalCode, err := client.PostalCode(nil).Load(
-    map[string]any{"postal_code": "example_postal_code"}, nil,
-)
-if err != nil {
-    panic(err)
-}
-fmt.Println(postalCode)
 ```
 
 ### Ruby

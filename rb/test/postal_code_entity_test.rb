@@ -62,7 +62,7 @@ def postal_code_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["postal_code01", "postal_code02", "postal_code03", "postcode01", "postcode02", "postcode03"],
+    ["postal_code01", "postal_code02", "postal_code03"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

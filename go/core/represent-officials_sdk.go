@@ -264,7 +264,6 @@ func (sdk *RepresentOfficialsSDK) rawRequest(fetchargs map[string]any) (map[stri
 		if !noBody {
 			if jf := vs.GetProp(fm, "json"); jf != nil {
 				if f, ok := jf.(func() any); ok {
-					// f() returns nil on parse error in our fetcher.
 					jsonData = f()
 				}
 			}
@@ -281,17 +280,6 @@ func (sdk *RepresentOfficialsSDK) rawRequest(fetchargs map[string]any) (map[stri
 	return map[string]any{"ok": false, "err": ctx.MakeError("direct_invalid", "invalid response type")}, nil
 }
 
-// Raw GraphQL access: the pressure valve that makes the generated surface's
-// deliberate omissions (per-call selection sets, typed filter builders,
-// batching, subscriptions) livable — the whole schema stays reachable.
-//
-// Thin wrapper over the same prepare/fetch path Direct uses, with the one
-// thing raw Direct cannot do for GraphQL: a GraphQL failure rides HTTP 200
-// as a top-level `errors` array, so status alone would report a failed query
-// as ok.
-//
-// NOTE: like Direct, this bypasses the feature pipeline — no retry,
-// ratelimit or paging features apply.
 func (sdk *RepresentOfficialsSDK) Graphql(
 	query string, variables map[string]any, ctrl map[string]any,
 ) (map[string]any, error) {
@@ -378,11 +366,11 @@ func (sdk *RepresentOfficialsSDK) PostalCode(data map[string]any) RepresentOffic
 }
 
 
-// Representatif returns a Representatif entity bound to this client.
-// Idiomatic usage: client.Representatif(nil).List(nil, nil) or
-// client.Representatif(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *RepresentOfficialsSDK) Representatif(data map[string]any) RepresentOfficialsEntity {
-	return NewRepresentatifEntityFunc(sdk, data)
+// Representative returns a Representative entity bound to this client.
+// Idiomatic usage: client.Representative(nil).List(nil, nil) or
+// client.Representative(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *RepresentOfficialsSDK) Representative(data map[string]any) RepresentOfficialsEntity {
+	return NewRepresentativeEntityFunc(sdk, data)
 }
 
 

@@ -44,15 +44,13 @@ rescue => err
 end
 ```
 
-### 3. Load a postalcode
-
-PostalCode is nested under postal_code, so provide the `postal_code`.
+### 3. Load a boundary
 
 ```ruby
 begin
-  # load returns the ENTITY — call data_get for the PostalCode record (raises on error).
-  postalcode = client.PostalCode.load({ "postal_code" => "example_postal_code" })
-  puts postalcode
+  # load returns the ENTITY — call data_get for the Boundary record (raises on error).
+  boundary = client.Boundary.load({ "id" => "example_id" })
+  puts boundary
 rescue => err
   warn "load failed: #{err}"
 end
@@ -220,7 +218,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Candidate` | `(data) -> CandidateEntity` | Create a Candidate entity instance. |
 | `Election` | `(data) -> ElectionEntity` | Create an Election entity instance. |
 | `PostalCode` | `(data) -> PostalCodeEntity` | Create a PostalCode entity instance. |
-| `Representatif` | `(data) -> RepresentatifEntity` | Create a Representatif entity instance. |
+| `Representative` | `(data) -> RepresentativeEntity` | Create a Representative entity instance. |
 | `RepresentativeSet` | `(data) -> RepresentativeSetEntity` | Create a RepresentativeSet entity instance. |
 
 ### Entity interface
@@ -326,7 +324,7 @@ Operations: Load.
 
 API path: `/postcodes/{postalCode}/`
 
-#### Representatif
+#### Representative
 
 | Field | Description |
 | --- | --- |
@@ -525,9 +523,9 @@ postal_code = client.PostalCode.load({ "postal_code" => "postal_code" })
 ```
 
 
-### Representatif
+### Representative
 
-Create an instance: `representatif = client.Representatif`
+Create an instance: `representative = client.Representative`
 
 #### Operations
 
@@ -562,15 +560,15 @@ Create an instance: `representatif = client.Representatif`
 #### Example: Load
 
 ```ruby
-# load returns the ENTITY — call data_get for the Representatif record (raises on error).
-representatif = client.Representatif.load({ "id" => "representatif_id" })
+# load returns the ENTITY — call data_get for the Representative record (raises on error).
+representative = client.Representative.load({ "id" => "representative_id" })
 ```
 
 #### Example: List
 
 ```ruby
-# list returns an Array of Representatif records (raises on error).
-representatifs = client.Representatif.list
+# list returns an Array of Representative records (raises on error).
+representatives = client.Representative.list
 ```
 
 

@@ -88,7 +88,7 @@ func MakeConfig() map[string]any {
 				"candidate": map[string]any{},
 				"election": map[string]any{},
 				"postal_code": map[string]any{},
-				"representatif": map[string]any{},
+				"representative": map[string]any{},
 				"representative_set": map[string]any{},
 			},
 		},
@@ -97,34 +97,42 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "boundary_set_name",
+						"title": "Boundary Set Name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "external_id",
+						"title": "External Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "meta",
+						"title": "Meta",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "metadata",
+						"title": "Metadata",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "objects",
+						"title": "Objects",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "url",
+						"title": "Url",
 						"type": "`$STRING`",
 					},
 				},
@@ -139,84 +147,92 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "callback",
-											"orig": "callback",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "contain",
-											"orig": "contain",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "external_id",
-											"orig": "external_id",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "format",
-											"orig": "format",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "intersect",
-											"orig": "intersect",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 20,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "name",
-											"orig": "name",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "offset",
-											"orig": "offset",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "pretty",
-											"orig": "pretty",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "set",
-											"orig": "set",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "touch",
-											"orig": "touch",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/",
 								"segments": []any{
 									map[string]any{
 										"lit": "boundaries",
+									},
+								},
+								"parts": []any{
+									"boundaries",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "callback",
+											"orig": "callback",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "contain",
+											"orig": "contain",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "external_id",
+											"orig": "external_id",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "format",
+											"orig": "format",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "intersect",
+											"orig": "intersect",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 20,
+										},
+										map[string]any{
+											"name": "name",
+											"orig": "name",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "offset",
+											"orig": "offset",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+										map[string]any{
+											"name": "pretty",
+											"orig": "pretty",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "set",
+											"orig": "set",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "touch",
+											"orig": "touch",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -234,13 +250,6 @@ func MakeConfig() map[string]any {
 										"touch",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"boundaries",
-								},
 							},
 						},
 					},
@@ -249,83 +258,91 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "boundary_set",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "callback",
-											"orig": "callback",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "contain",
-											"orig": "contain",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "external_id",
-											"orig": "external_id",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "format",
-											"orig": "format",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 20,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "name",
-											"orig": "name",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "offset",
-											"orig": "offset",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "pretty",
-											"orig": "pretty",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"boundarySet": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "boundaries",
 									},
 									map[string]any{
 										"var": "id",
+									},
+								},
+								"parts": []any{
+									"boundaries",
+									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"boundarySet": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "boundary_set",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "callback",
+											"orig": "callback",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "contain",
+											"orig": "contain",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "external_id",
+											"orig": "external_id",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "format",
+											"orig": "format",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 20,
+										},
+										map[string]any{
+											"name": "name",
+											"orig": "name",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "offset",
+											"orig": "offset",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+										map[string]any{
+											"name": "pretty",
+											"orig": "pretty",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -341,62 +358,11 @@ func MakeConfig() map[string]any {
 										"pretty",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"boundaries",
-									"{id}",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "boundary",
-											"orig": "boundary",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "param",
-											"name": "boundary_set",
-											"orig": "boundary_set",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "callback",
-											"orig": "callback",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "format",
-											"orig": "format",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "pretty",
-											"orig": "pretty",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/{boundary}/",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"boundarySet": "boundary_set",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "boundaries",
@@ -406,6 +372,58 @@ func MakeConfig() map[string]any {
 									},
 									map[string]any{
 										"var": "boundary",
+									},
+								},
+								"parts": []any{
+									"boundaries",
+									"{boundary_set}",
+									"{boundary}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"boundarySet": "boundary_set",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.metadata`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "boundary",
+											"orig": "boundary",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+										map[string]any{
+											"name": "boundary_set",
+											"orig": "boundary_set",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "callback",
+											"orig": "callback",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "format",
+											"orig": "format",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "pretty",
+											"orig": "pretty",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -417,57 +435,11 @@ func MakeConfig() map[string]any {
 										"pretty",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.metadata`",
-								},
-								"parts": []any{
-									"boundaries",
-									"{boundary_set}",
-									"{boundary}",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "boundary",
-											"orig": "boundary",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "param",
-											"name": "boundary_set",
-											"orig": "boundary_set",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "callback",
-											"orig": "callback",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "format",
-											"orig": "format",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/{boundary}/centroid",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"boundarySet": "boundary_set",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "boundaries",
@@ -482,6 +454,53 @@ func MakeConfig() map[string]any {
 										"lit": "centroid",
 									},
 								},
+								"parts": []any{
+									"boundaries",
+									"{boundary_set}",
+									"{boundary}",
+									"centroid",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"boundarySet": "boundary_set",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "boundary",
+											"orig": "boundary",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+										map[string]any{
+											"name": "boundary_set",
+											"orig": "boundary_set",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "callback",
+											"orig": "callback",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "format",
+											"orig": "format",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "centroid",
 									"exist": []any{
@@ -491,58 +510,11 @@ func MakeConfig() map[string]any {
 										"format",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"boundaries",
-									"{boundary_set}",
-									"{boundary}",
-									"centroid",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "boundary",
-											"orig": "boundary",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "param",
-											"name": "boundary_set",
-											"orig": "boundary_set",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "callback",
-											"orig": "callback",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "format",
-											"orig": "format",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/{boundary}/shape",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"boundarySet": "boundary_set",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "boundaries",
@@ -557,6 +529,53 @@ func MakeConfig() map[string]any {
 										"lit": "shape",
 									},
 								},
+								"parts": []any{
+									"boundaries",
+									"{boundary_set}",
+									"{boundary}",
+									"shape",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"boundarySet": "boundary_set",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "boundary",
+											"orig": "boundary",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+										map[string]any{
+											"name": "boundary_set",
+											"orig": "boundary_set",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "callback",
+											"orig": "callback",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "format",
+											"orig": "format",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "shape",
 									"exist": []any{
@@ -566,58 +585,11 @@ func MakeConfig() map[string]any {
 										"format",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"boundaries",
-									"{boundary_set}",
-									"{boundary}",
-									"shape",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "boundary",
-											"orig": "boundary",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "param",
-											"name": "boundary_set",
-											"orig": "boundary_set",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "callback",
-											"orig": "callback",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "format",
-											"orig": "format",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/{boundary}/simple_shape",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"boundarySet": "boundary_set",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "boundaries",
@@ -632,6 +604,53 @@ func MakeConfig() map[string]any {
 										"lit": "simple_shape",
 									},
 								},
+								"parts": []any{
+									"boundaries",
+									"{boundary_set}",
+									"{boundary}",
+									"simple_shape",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"boundarySet": "boundary_set",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "boundary",
+											"orig": "boundary",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+										map[string]any{
+											"name": "boundary_set",
+											"orig": "boundary_set",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "callback",
+											"orig": "callback",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "format",
+											"orig": "format",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "simple_shape",
 									"exist": []any{
@@ -641,51 +660,11 @@ func MakeConfig() map[string]any {
 										"format",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"boundaries",
-									"{boundary_set}",
-									"{boundary}",
-									"simple_shape",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "boundary_set",
-											"orig": "boundary_set",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "callback",
-											"orig": "callback",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "format",
-											"orig": "format",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/centroid",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"boundarySet": "boundary_set",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "boundaries",
@@ -697,6 +676,45 @@ func MakeConfig() map[string]any {
 										"lit": "centroid",
 									},
 								},
+								"parts": []any{
+									"boundaries",
+									"{boundary_set}",
+									"centroid",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"boundarySet": "boundary_set",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "boundary_set",
+											"orig": "boundary_set",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "callback",
+											"orig": "callback",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "format",
+											"orig": "format",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "centroid",
 									"exist": []any{
@@ -705,50 +723,11 @@ func MakeConfig() map[string]any {
 										"format",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"boundaries",
-									"{boundary_set}",
-									"centroid",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "boundary_set",
-											"orig": "boundary_set",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "callback",
-											"orig": "callback",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "format",
-											"orig": "format",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/shape",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"boundarySet": "boundary_set",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "boundaries",
@@ -760,6 +739,45 @@ func MakeConfig() map[string]any {
 										"lit": "shape",
 									},
 								},
+								"parts": []any{
+									"boundaries",
+									"{boundary_set}",
+									"shape",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"boundarySet": "boundary_set",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "boundary_set",
+											"orig": "boundary_set",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "callback",
+											"orig": "callback",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "format",
+											"orig": "format",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "shape",
 									"exist": []any{
@@ -768,50 +786,11 @@ func MakeConfig() map[string]any {
 										"format",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"boundaries",
-									"{boundary_set}",
-									"shape",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "boundary_set",
-											"orig": "boundary_set",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "callback",
-											"orig": "callback",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "format",
-											"orig": "format",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/simple_shape",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"boundarySet": "boundary_set",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "boundaries",
@@ -823,6 +802,45 @@ func MakeConfig() map[string]any {
 										"lit": "simple_shape",
 									},
 								},
+								"parts": []any{
+									"boundaries",
+									"{boundary_set}",
+									"simple_shape",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"boundarySet": "boundary_set",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "boundary_set",
+											"orig": "boundary_set",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "callback",
+											"orig": "callback",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "format",
+											"orig": "format",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "simple_shape",
 									"exist": []any{
@@ -830,44 +848,35 @@ func MakeConfig() map[string]any {
 										"callback",
 										"format",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"boundaries",
-									"{boundary_set}",
-									"simple_shape",
 								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"boundary",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
 			"boundary_set": map[string]any{
 				"fields": []any{
 					map[string]any{
 						"name": "domain",
+						"title": "Domain",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "url",
+						"title": "Url",
 						"type": "`$STRING`",
 					},
 				},
@@ -882,60 +891,68 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "callback",
-											"orig": "callback",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "domain",
-											"orig": "domain",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "format",
-											"orig": "format",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 20,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "name",
-											"orig": "name",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "offset",
-											"orig": "offset",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "pretty",
-											"orig": "pretty",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/boundary-sets/",
 								"segments": []any{
 									map[string]any{
 										"lit": "boundary-sets",
+									},
+								},
+								"parts": []any{
+									"boundary-sets",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "callback",
+											"orig": "callback",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "domain",
+											"orig": "domain",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "format",
+											"orig": "format",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 20,
+										},
+										map[string]any{
+											"name": "name",
+											"orig": "name",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "offset",
+											"orig": "offset",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+										map[string]any{
+											"name": "pretty",
+											"orig": "pretty",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -949,13 +966,6 @@ func MakeConfig() map[string]any {
 										"pretty",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"boundary-sets",
-								},
 							},
 						},
 					},
@@ -964,51 +974,59 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "boundary_set",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "callback",
-											"orig": "callback",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "format",
-											"orig": "format",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "pretty",
-											"orig": "pretty",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/boundary-sets/{boundarySet}/",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"boundarySet": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "boundary-sets",
 									},
 									map[string]any{
 										"var": "id",
+									},
+								},
+								"parts": []any{
+									"boundary-sets",
+									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"boundarySet": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "boundary_set",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "callback",
+											"orig": "callback",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "format",
+											"orig": "format",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "pretty",
+											"orig": "pretty",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -1018,14 +1036,6 @@ func MakeConfig() map[string]any {
 										"id",
 										"pretty",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"boundary-sets",
-									"{id}",
 								},
 							},
 						},
@@ -1039,10 +1049,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "meta",
+						"title": "Meta",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "objects",
+						"title": "Objects",
 						"type": "`$ARRAY`",
 					},
 				},
@@ -1053,48 +1065,56 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "callback",
-											"orig": "callback",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "format",
-											"orig": "format",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 20,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "offset",
-											"orig": "offset",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "pretty",
-											"orig": "pretty",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/candidates/",
 								"segments": []any{
 									map[string]any{
 										"lit": "candidates",
+									},
+								},
+								"parts": []any{
+									"candidates",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "callback",
+											"orig": "callback",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "format",
+											"orig": "format",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 20,
+										},
+										map[string]any{
+											"name": "offset",
+											"orig": "offset",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+										map[string]any{
+											"name": "pretty",
+											"orig": "pretty",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -1105,13 +1125,6 @@ func MakeConfig() map[string]any {
 										"offset",
 										"pretty",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"candidates",
 								},
 							},
 						},
@@ -1125,10 +1138,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "meta",
+						"title": "Meta",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "objects",
+						"title": "Objects",
 						"type": "`$ARRAY`",
 					},
 				},
@@ -1139,48 +1154,56 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "callback",
-											"orig": "callback",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "format",
-											"orig": "format",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 20,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "offset",
-											"orig": "offset",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "pretty",
-											"orig": "pretty",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/elections/",
 								"segments": []any{
 									map[string]any{
 										"lit": "elections",
+									},
+								},
+								"parts": []any{
+									"elections",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "callback",
+											"orig": "callback",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "format",
+											"orig": "format",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 20,
+										},
+										map[string]any{
+											"name": "offset",
+											"orig": "offset",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+										map[string]any{
+											"name": "pretty",
+											"orig": "pretty",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -1191,13 +1214,6 @@ func MakeConfig() map[string]any {
 										"offset",
 										"pretty",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"elections",
 								},
 							},
 						},
@@ -1211,42 +1227,50 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "boundaries_centroid",
-						"short": "Boundaries containing the postal code's centroid",
+						"title": "Boundaries Centroid",
 						"type": "`$ARRAY`",
+						"short": "Boundaries containing the postal code's centroid",
 					},
 					map[string]any{
 						"name": "boundaries_concordance",
-						"short": "Boundaries linked to postal code via official data",
+						"title": "Boundaries Concordance",
 						"type": "`$ARRAY`",
+						"short": "Boundaries linked to postal code via official data",
 					},
 					map[string]any{
 						"name": "centroid",
+						"title": "Centroid",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "city",
-						"short": "City name",
+						"title": "City",
 						"type": "`$STRING`",
+						"short": "City name",
 					},
 					map[string]any{
 						"name": "code",
-						"short": "The postal code",
+						"title": "Code",
 						"type": "`$STRING`",
+						"short": "The postal code",
 					},
 					map[string]any{
 						"name": "province",
-						"short": "Province code",
+						"title": "Province",
 						"type": "`$STRING`",
+						"short": "Province code",
 					},
 					map[string]any{
 						"name": "representatives_centroid",
-						"short": "Representatives for boundaries containing centroid",
+						"title": "Representatives Centroid",
 						"type": "`$ARRAY`",
+						"short": "Representatives for boundaries containing centroid",
 					},
 					map[string]any{
 						"name": "representatives_concordance",
-						"short": "Representatives for boundaries via concordance",
+						"title": "Representatives Concordance",
 						"type": "`$ARRAY`",
+						"short": "Representatives for boundaries via concordance",
 					},
 				},
 				"name": "postal_code",
@@ -1256,57 +1280,65 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "postal_code",
-											"orig": "postal_code",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "callback",
-											"orig": "callback",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "format",
-											"orig": "format",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "pretty",
-											"orig": "pretty",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "set",
-											"orig": "set",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/postcodes/{postalCode}/",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"postalCode": "postal_code",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "postcodes",
 									},
 									map[string]any{
 										"var": "postal_code",
+									},
+								},
+								"parts": []any{
+									"postcodes",
+									"{postal_code}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"postalCode": "postal_code",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "postal_code",
+											"orig": "postal_code",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "callback",
+											"orig": "callback",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "format",
+											"orig": "format",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "pretty",
+											"orig": "pretty",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "set",
+											"orig": "set",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -1318,227 +1350,241 @@ func MakeConfig() map[string]any {
 										"set",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"postcodes",
-									"{postal_code}",
-								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"postcode",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
-			"representatif": map[string]any{
+			"representative": map[string]any{
 				"fields": []any{
 					map[string]any{
 						"name": "district_id",
-						"short": "District identifier if available",
+						"title": "District Id",
 						"type": "`$STRING`",
+						"short": "District identifier if available",
 					},
 					map[string]any{
 						"name": "district_name",
+						"title": "District Name",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Name of the electoral district",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "elected_office",
+						"title": "Elected Office",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Type of office (e.g., MP, MLA, Mayor, Councillor, Alderman)",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "email",
 						"name": "email",
-						"short": "Email address",
+						"title": "Email",
 						"type": "`$STRING`",
+						"short": "Email address",
+						"format": "email",
 					},
 					map[string]any{
 						"name": "extra",
-						"short": "Additional data not covered by standard fields",
+						"title": "Extra",
 						"type": "`$OBJECT`",
+						"short": "Additional data not covered by standard fields",
 					},
 					map[string]any{
 						"name": "first_name",
-						"short": "First name",
+						"title": "First Name",
 						"type": "`$STRING`",
+						"short": "First name",
 					},
 					map[string]any{
 						"name": "gender",
-						"short": "Gender",
+						"title": "Gender",
 						"type": "`$STRING`",
+						"short": "Gender",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "last_name",
-						"short": "Last name",
+						"title": "Last Name",
 						"type": "`$STRING`",
+						"short": "Last name",
 					},
 					map[string]any{
 						"name": "meta",
+						"title": "Meta",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Full name of the representative",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "objects",
+						"title": "Objects",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "offices",
-						"short": "Contact information for representative's offices",
+						"title": "Offices",
 						"type": "`$ARRAY`",
+						"short": "Contact information for representative's offices",
 					},
 					map[string]any{
 						"name": "party_name",
-						"short": "Political party name",
+						"title": "Party Name",
 						"type": "`$STRING`",
+						"short": "Political party name",
 					},
 					map[string]any{
 						"name": "personal_url",
-						"short": "Personal website not on official legislature site",
+						"title": "Personal Url",
 						"type": "`$STRING`",
+						"short": "Personal website not on official legislature site",
 					},
 					map[string]any{
 						"name": "photo_url",
-						"short": "URL to representative's photo",
+						"title": "Photo Url",
 						"type": "`$STRING`",
+						"short": "URL to representative's photo",
 					},
 					map[string]any{
 						"name": "source_url",
-						"short": "URL where the data is scraped from",
+						"title": "Source Url",
 						"type": "`$STRING`",
+						"short": "URL where the data is scraped from",
 					},
 					map[string]any{
 						"name": "url",
-						"short": "Representative's page on official legislature site",
+						"title": "Url",
 						"type": "`$STRING`",
+						"short": "Representative's page on official legislature site",
 					},
 				},
 				"id": map[string]any{
 					"field": "id",
 					"name": "id",
 				},
-				"name": "representatif",
+				"name": "representative",
 				"op": map[string]any{
 					"list": map[string]any{
 						"input": "data",
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "callback",
-											"orig": "callback",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "district",
-											"orig": "district",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "district_name",
-											"orig": "district_name",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "elected_office",
-											"orig": "elected_office",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "first_name",
-											"orig": "first_name",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "format",
-											"orig": "format",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "gender",
-											"orig": "gender",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "last_name",
-											"orig": "last_name",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 20,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "name",
-											"orig": "name",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "offset",
-											"orig": "offset",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "party_name",
-											"orig": "party_name",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "point",
-											"orig": "point",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "pretty",
-											"orig": "pretty",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/representatives/",
 								"segments": []any{
 									map[string]any{
 										"lit": "representatives",
+									},
+								},
+								"parts": []any{
+									"representatives",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "callback",
+											"orig": "callback",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "district",
+											"orig": "district",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "district_name",
+											"orig": "district_name",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "elected_office",
+											"orig": "elected_office",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "first_name",
+											"orig": "first_name",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "format",
+											"orig": "format",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "gender",
+											"orig": "gender",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "last_name",
+											"orig": "last_name",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 20,
+										},
+										map[string]any{
+											"name": "name",
+											"orig": "name",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "offset",
+											"orig": "offset",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+										map[string]any{
+											"name": "party_name",
+											"orig": "party_name",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "point",
+											"orig": "point",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "pretty",
+											"orig": "pretty",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -1559,61 +1605,11 @@ func MakeConfig() map[string]any {
 										"pretty",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"representatives",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "boundary",
-											"orig": "boundary",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "param",
-											"name": "boundary_set",
-											"orig": "boundary_set",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "callback",
-											"orig": "callback",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "format",
-											"orig": "format",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "pretty",
-											"orig": "pretty",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/boundaries/{boundarySet}/{boundary}/representatives/",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"boundarySet": "boundary_set",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "boundaries",
@@ -1628,6 +1624,59 @@ func MakeConfig() map[string]any {
 										"lit": "representatives",
 									},
 								},
+								"parts": []any{
+									"boundaries",
+									"{boundary_set}",
+									"{boundary}",
+									"representatives",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"boundarySet": "boundary_set",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.objects`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "boundary",
+											"orig": "boundary",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+										map[string]any{
+											"name": "boundary_set",
+											"orig": "boundary_set",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "callback",
+											"orig": "callback",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "format",
+											"orig": "format",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "pretty",
+											"orig": "pretty",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"boundary",
@@ -1637,16 +1686,6 @@ func MakeConfig() map[string]any {
 										"pretty",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.objects`",
-								},
-								"parts": []any{
-									"boundaries",
-									"{boundary_set}",
-									"{boundary}",
-									"representatives",
-								},
 							},
 						},
 					},
@@ -1655,113 +1694,121 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "representative_set",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "callback",
-											"orig": "callback",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "district_name",
-											"orig": "district_name",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "elected_office",
-											"orig": "elected_office",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "first_name",
-											"orig": "first_name",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "format",
-											"orig": "format",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "gender",
-											"orig": "gender",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "last_name",
-											"orig": "last_name",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 20,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "name",
-											"orig": "name",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "offset",
-											"orig": "offset",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "party_name",
-											"orig": "party_name",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "point",
-											"orig": "point",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "pretty",
-											"orig": "pretty",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/representatives/{representativeSet}/",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"representativeSet": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "representatives",
 									},
 									map[string]any{
 										"var": "id",
+									},
+								},
+								"parts": []any{
+									"representatives",
+									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"representativeSet": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "representative_set",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "callback",
+											"orig": "callback",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "district_name",
+											"orig": "district_name",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "elected_office",
+											"orig": "elected_office",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "first_name",
+											"orig": "first_name",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "format",
+											"orig": "format",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "gender",
+											"orig": "gender",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "last_name",
+											"orig": "last_name",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 20,
+										},
+										map[string]any{
+											"name": "name",
+											"orig": "name",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "offset",
+											"orig": "offset",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+										map[string]any{
+											"name": "party_name",
+											"orig": "party_name",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "point",
+											"orig": "point",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "pretty",
+											"orig": "pretty",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -1782,14 +1829,6 @@ func MakeConfig() map[string]any {
 										"pretty",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"representatives",
-									"{id}",
-								},
 							},
 						},
 					},
@@ -1797,7 +1836,7 @@ func MakeConfig() map[string]any {
 				"relations": map[string]any{
 					"ancestors": []any{
 						[]any{
-							"boundary",
+							"$.main.kit.entity.boundary",
 						},
 					},
 				},
@@ -1806,14 +1845,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "url",
+						"title": "Url",
 						"type": "`$STRING`",
 					},
 				},
@@ -1828,48 +1870,56 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "callback",
-											"orig": "callback",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "format",
-											"orig": "format",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 20,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "offset",
-											"orig": "offset",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "pretty",
-											"orig": "pretty",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/representative-sets/",
 								"segments": []any{
 									map[string]any{
 										"lit": "representative-sets",
+									},
+								},
+								"parts": []any{
+									"representative-sets",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "callback",
+											"orig": "callback",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "format",
+											"orig": "format",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 20,
+										},
+										map[string]any{
+											"name": "offset",
+											"orig": "offset",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+										map[string]any{
+											"name": "pretty",
+											"orig": "pretty",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -1881,13 +1931,6 @@ func MakeConfig() map[string]any {
 										"pretty",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"representative-sets",
-								},
 							},
 						},
 					},
@@ -1896,51 +1939,59 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "representative_set",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "callback",
-											"orig": "callback",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "format",
-											"orig": "format",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "pretty",
-											"orig": "pretty",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/representative-sets/{representativeSet}/",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"representativeSet": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "representative-sets",
 									},
 									map[string]any{
 										"var": "id",
+									},
+								},
+								"parts": []any{
+									"representative-sets",
+									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"representativeSet": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "representative_set",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "callback",
+											"orig": "callback",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "format",
+											"orig": "format",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "pretty",
+											"orig": "pretty",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -1950,14 +2001,6 @@ func MakeConfig() map[string]any {
 										"id",
 										"pretty",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"representative-sets",
-									"{id}",
 								},
 							},
 						},

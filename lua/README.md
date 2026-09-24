@@ -43,18 +43,16 @@ local boundarys, err = client:Boundary():list()
 if err then error(err) end
 
 for _, item in ipairs(boundarys) do
-  print(item["id"], item["boundary_set_name"])
+  print(item["id"])
 end
 ```
 
-### 3. Load a postalcode
-
-PostalCode is nested under postal_code, so provide the `postal_code`.
+### 3. Load a boundary
 
 ```lua
-local postalcode, err = client:PostalCode():load({ postal_code = "example_postal_code" })
+local boundary, err = client:Boundary():load({ id = "example_id" })
 if err then error(err) end
-print(postalcode)
+print(boundary)
 ```
 
 
@@ -206,7 +204,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Candidate` | `(data) -> CandidateEntity` | Create a Candidate entity instance. |
 | `Election` | `(data) -> ElectionEntity` | Create an Election entity instance. |
 | `PostalCode` | `(data) -> PostalCodeEntity` | Create a PostalCode entity instance. |
-| `Representatif` | `(data) -> RepresentatifEntity` | Create a Representatif entity instance. |
+| `Representative` | `(data) -> RepresentativeEntity` | Create a Representative entity instance. |
 | `RepresentativeSet` | `(data) -> RepresentativeSetEntity` | Create a RepresentativeSet entity instance. |
 
 ### Entity interface
@@ -314,7 +312,7 @@ Operations: Load.
 
 API path: `/postcodes/{postalCode}/`
 
-#### Representatif
+#### Representative
 
 | Field | Description |
 | --- | --- |
@@ -506,9 +504,9 @@ local postal_code, err = client:PostalCode():load({ postal_code = "postal_code" 
 ```
 
 
-### Representatif
+### Representative
 
-Create an instance: `local representatif = client:Representatif(nil)`
+Create an instance: `local representative = client:Representative(nil)`
 
 #### Operations
 
@@ -543,13 +541,13 @@ Create an instance: `local representatif = client:Representatif(nil)`
 #### Example: Load
 
 ```lua
-local representatif, err = client:Representatif():load({ id = "representatif_id" })
+local representative, err = client:Representative():load({ id = "representative_id" })
 ```
 
 #### Example: List
 
 ```lua
-local representatifs, err = client:Representatif():list()
+local representatives, err = client:Representative():list()
 ```
 
 

@@ -19,7 +19,6 @@ import type {
   ElectionListMatch,
 } from '../RepresentOfficialsTypes'
 
-// TODO: needs Entity superclass
 class ElectionEntity extends RepresentOfficialsEntityBase<Election> {
 
   constructor(client: RepresentOfficialsSDK, entopts: any) {

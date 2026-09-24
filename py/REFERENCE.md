@@ -61,9 +61,9 @@ Create a new `ElectionEntity` instance. Pass `None` for no initial data.
 
 Create a new `PostalCodeEntity` instance. Pass `None` for no initial data.
 
-#### `Representatif(data=None)`
+#### `Representative(data=None)`
 
-Create a new `RepresentatifEntity` instance. Pass `None` for no initial data.
+Create a new `RepresentativeEntity` instance. Pass `None` for no initial data.
 
 #### `RepresentativeSet(data=None)`
 
@@ -399,10 +399,10 @@ Return the entity name.
 
 ---
 
-## RepresentatifEntity
+## RepresentativeEntity
 
 ```python
-representatif = client.Representatif()
+representative = client.Representative()
 ```
 
 ### Fields
@@ -435,9 +435,9 @@ representatif = client.Representatif()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Representatif().list()
-for representatif in results:
-    print(representatif)
+results = client.Representative().list()
+for representative in results:
+    print(representative)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -445,7 +445,7 @@ for representatif in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Representatif().load({"id": "representatif_id"})
+result = client.Representative().load({"id": "representative_id"})
 ```
 
 ### Common Methods
@@ -468,7 +468,7 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `RepresentatifEntity` instance with the same options.
+Create a new `RepresentativeEntity` instance with the same options.
 
 #### `get_name() -> str`
 

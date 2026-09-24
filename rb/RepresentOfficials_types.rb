@@ -2,8 +2,8 @@
 
 # Typed models for the RepresentOfficials SDK.
 #
-# GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-# params (op.<name>.points[].args.params[]). Member types come from the
+# GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+# params (op.<name>.points[].g.params[]). Member types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Ruby types are unenforced; these YARD
 # annotations document the shapes. Do not edit by hand.
@@ -348,7 +348,7 @@ PostalCodeLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Representatif entity data model.
+# Representative entity data model.
 #
 # @!attribute [rw] district_id
 #   @return [String, nil]
@@ -403,7 +403,7 @@ PostalCodeLoadMatch = Struct.new(
 #
 # @!attribute [rw] url
 #   @return [String, nil]
-Representatif = Struct.new(
+Representative = Struct.new(
   :district_id,
   :district_name,
   :elected_office,
@@ -425,7 +425,7 @@ Representatif = Struct.new(
   keyword_init: true
 )
 
-# Request payload for Representatif#load.
+# Request payload for Representative#load.
 #
 # @!attribute [rw] id
 #   @return [String]
@@ -468,7 +468,7 @@ Representatif = Struct.new(
 #
 # @!attribute [rw] pretty
 #   @return [Integer, nil]
-RepresentatifLoadMatch = Struct.new(
+RepresentativeLoadMatch = Struct.new(
   :id,
   :callback,
   :district_name,
@@ -486,7 +486,7 @@ RepresentatifLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Request payload for Representatif#list.
+# Request payload for Representative#list.
 #
 # @!attribute [rw] callback
 #   @return [String, nil]
@@ -529,7 +529,7 @@ RepresentatifLoadMatch = Struct.new(
 #
 # @!attribute [rw] pretty
 #   @return [Integer, nil]
-RepresentatifListMatch = Struct.new(
+RepresentativeListMatch = Struct.new(
   :callback,
   :district,
   :district_name,

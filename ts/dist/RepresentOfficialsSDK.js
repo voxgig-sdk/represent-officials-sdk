@@ -7,7 +7,7 @@ const BoundarySetEntity_1 = require("./entity/BoundarySetEntity");
 const CandidateEntity_1 = require("./entity/CandidateEntity");
 const ElectionEntity_1 = require("./entity/ElectionEntity");
 const PostalCodeEntity_1 = require("./entity/PostalCodeEntity");
-const RepresentatifEntity_1 = require("./entity/RepresentatifEntity");
+const RepresentativeEntity_1 = require("./entity/RepresentativeEntity");
 const RepresentativeSetEntity_1 = require("./entity/RepresentativeSetEntity");
 const node_util_1 = require("node:util");
 const Config_1 = require("./Config");
@@ -90,7 +90,6 @@ class RepresentOfficialsSDK {
             ctrl: fetchargs.ctrl || {},
         }, this._rootctx);
         const options = this._options;
-        // Build spec directly from SDK options + user-provided fetch args.
         const spec = {
             base: options.base,
             prefix: options.prefix,
@@ -104,14 +103,12 @@ class RepresentOfficialsSDK {
             step: 'start',
         };
         ctx.spec = spec;
-        // Merge user-provided headers over SDK defaults.
         if (fetchargs.headers) {
             const uheaders = fetchargs.headers;
             for (let key in uheaders) {
                 spec.headers[key] = uheaders[key];
             }
         }
-        // Apply SDK auth (apikey, auth prefix, etc.)
         const authResult = prepareAuth(ctx);
         if (authResult instanceof Error) {
             return authResult;
@@ -186,18 +183,6 @@ class RepresentOfficialsSDK {
             return { ok: false, err };
         }
     }
-    // Raw GraphQL access: the pressure valve that makes the generated
-    // surface's deliberate omissions (per-call selection sets, typed filter
-    // builders, batching, subscriptions) livable — the whole schema stays
-    // reachable.
-    //
-    // Thin wrapper over the same prepare/fetch path `direct` uses, with the
-    // one thing raw `direct` cannot do for GraphQL: a GraphQL failure rides
-    // HTTP 200 as a top-level `errors` array, so status alone would report a
-    // failed query as ok.
-    //
-    // NOTE: like `direct`, this bypasses the feature pipeline — no retry,
-    // ratelimit or paging features apply.
     async graphql(query, variables, ctrl) {
         const options = this._options;
         if (!options.allow.op.includes('graphql')) {
@@ -266,12 +251,12 @@ class RepresentOfficialsSDK {
         const self = this;
         return new PostalCodeEntity_1.PostalCodeEntity(self, entopts);
     }
-    // Entity access: `client.Representatif().list()` / `client.Representatif().load({ id })`.
+    // Entity access: `client.Representative().list()` / `client.Representative().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
-    Representatif(entopts) {
+    Representative(entopts) {
         const self = this;
-        return new RepresentatifEntity_1.RepresentatifEntity(self, entopts);
+        return new RepresentativeEntity_1.RepresentativeEntity(self, entopts);
     }
     // Entity access: `client.RepresentativeSet().list()` / `client.RepresentativeSet().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity

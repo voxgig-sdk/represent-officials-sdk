@@ -96,7 +96,7 @@ module RepresentOfficialsConfig
           "candidate" => {},
           "election" => {},
           "postal_code" => {},
-          "representatif" => {},
+          "representative" => {},
           "representative_set" => {},
         },
       },
@@ -105,34 +105,42 @@ module RepresentOfficialsConfig
           "fields" => [
             {
               "name" => "boundary_set_name",
+              "title" => "Boundary Set Name",
               "type" => "`$STRING`",
             },
             {
               "name" => "external_id",
+              "title" => "External Id",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "title" => "Id",
               "type" => "`$STRING`",
             },
             {
               "name" => "meta",
+              "title" => "Meta",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "metadata",
+              "title" => "Metadata",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "name",
+              "title" => "Name",
               "type" => "`$STRING`",
             },
             {
               "name" => "objects",
+              "title" => "Objects",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "url",
+              "title" => "Url",
               "type" => "`$STRING`",
             },
           ],
@@ -147,78 +155,6 @@ module RepresentOfficialsConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "callback",
-                        "orig" => "callback",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "contain",
-                        "orig" => "contain",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "external_id",
-                        "orig" => "external_id",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "format",
-                        "orig" => "format",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "intersect",
-                        "orig" => "intersect",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => 20,
-                        "kind" => "query",
-                        "name" => "limit",
-                        "orig" => "limit",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "name",
-                        "orig" => "name",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => 0,
-                        "kind" => "query",
-                        "name" => "offset",
-                        "orig" => "offset",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "pretty",
-                        "orig" => "pretty",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "set",
-                        "orig" => "set",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "touch",
-                        "orig" => "touch",
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/boundaries/",
@@ -227,6 +163,86 @@ module RepresentOfficialsConfig
                       "lit" => "boundaries",
                     },
                   ],
+                  "parts" => [
+                    "boundaries",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "callback",
+                        "orig" => "callback",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "contain",
+                        "orig" => "contain",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "external_id",
+                        "orig" => "external_id",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "format",
+                        "orig" => "format",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "intersect",
+                        "orig" => "intersect",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "limit",
+                        "orig" => "limit",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 20,
+                      },
+                      {
+                        "name" => "name",
+                        "orig" => "name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "offset",
+                        "orig" => "offset",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 0,
+                      },
+                      {
+                        "name" => "pretty",
+                        "orig" => "pretty",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "set",
+                        "orig" => "set",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "touch",
+                        "orig" => "touch",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "callback",
@@ -242,13 +258,6 @@ module RepresentOfficialsConfig
                       "touch",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "boundaries",
-                  ],
                 },
               ],
             },
@@ -257,77 +266,9 @@ module RepresentOfficialsConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "boundary_set",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "callback",
-                        "orig" => "callback",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "contain",
-                        "orig" => "contain",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "external_id",
-                        "orig" => "external_id",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "format",
-                        "orig" => "format",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => 20,
-                        "kind" => "query",
-                        "name" => "limit",
-                        "orig" => "limit",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "name",
-                        "orig" => "name",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => 0,
-                        "kind" => "query",
-                        "name" => "offset",
-                        "orig" => "offset",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "pretty",
-                        "orig" => "pretty",
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/boundaries/{boundarySet}/",
-                  "rename" => {
-                    "param" => {
-                      "boundarySet" => "id",
-                    },
-                  },
                   "segments" => [
                     {
                       "lit" => "boundaries",
@@ -336,6 +277,82 @@ module RepresentOfficialsConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "boundaries",
+                    "{id}",
+                  ],
+                  "rename" => {
+                    "param" => {
+                      "boundarySet" => "id",
+                    },
+                  },
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "boundary_set",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                    "query" => [
+                      {
+                        "name" => "callback",
+                        "orig" => "callback",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "contain",
+                        "orig" => "contain",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "external_id",
+                        "orig" => "external_id",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "format",
+                        "orig" => "format",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "limit",
+                        "orig" => "limit",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 20,
+                      },
+                      {
+                        "name" => "name",
+                        "orig" => "name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "offset",
+                        "orig" => "offset",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 0,
+                      },
+                      {
+                        "name" => "pretty",
+                        "orig" => "pretty",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "callback",
@@ -349,62 +366,11 @@ module RepresentOfficialsConfig
                       "pretty",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "boundaries",
-                    "{id}",
-                  ],
                 },
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "boundary",
-                        "orig" => "boundary",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "param",
-                        "name" => "boundary_set",
-                        "orig" => "boundary_set",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "callback",
-                        "orig" => "callback",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "format",
-                        "orig" => "format",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "pretty",
-                        "orig" => "pretty",
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/boundaries/{boundarySet}/{boundary}/",
-                  "rename" => {
-                    "param" => {
-                      "boundarySet" => "boundary_set",
-                    },
-                  },
                   "segments" => [
                     {
                       "lit" => "boundaries",
@@ -416,6 +382,58 @@ module RepresentOfficialsConfig
                       "var" => "boundary",
                     },
                   ],
+                  "parts" => [
+                    "boundaries",
+                    "{boundary_set}",
+                    "{boundary}",
+                  ],
+                  "rename" => {
+                    "param" => {
+                      "boundarySet" => "boundary_set",
+                    },
+                  },
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body.metadata`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "boundary",
+                        "orig" => "boundary",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                      {
+                        "name" => "boundary_set",
+                        "orig" => "boundary_set",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                    "query" => [
+                      {
+                        "name" => "callback",
+                        "orig" => "callback",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "format",
+                        "orig" => "format",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "pretty",
+                        "orig" => "pretty",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "boundary",
@@ -425,57 +443,11 @@ module RepresentOfficialsConfig
                       "pretty",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body.metadata`",
-                  },
-                  "parts" => [
-                    "boundaries",
-                    "{boundary_set}",
-                    "{boundary}",
-                  ],
                 },
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "boundary",
-                        "orig" => "boundary",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "param",
-                        "name" => "boundary_set",
-                        "orig" => "boundary_set",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "callback",
-                        "orig" => "callback",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "format",
-                        "orig" => "format",
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/boundaries/{boundarySet}/{boundary}/centroid",
-                  "rename" => {
-                    "param" => {
-                      "boundarySet" => "boundary_set",
-                    },
-                  },
                   "segments" => [
                     {
                       "lit" => "boundaries",
@@ -490,6 +462,53 @@ module RepresentOfficialsConfig
                       "lit" => "centroid",
                     },
                   ],
+                  "parts" => [
+                    "boundaries",
+                    "{boundary_set}",
+                    "{boundary}",
+                    "centroid",
+                  ],
+                  "rename" => {
+                    "param" => {
+                      "boundarySet" => "boundary_set",
+                    },
+                  },
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "boundary",
+                        "orig" => "boundary",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                      {
+                        "name" => "boundary_set",
+                        "orig" => "boundary_set",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                    "query" => [
+                      {
+                        "name" => "callback",
+                        "orig" => "callback",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "format",
+                        "orig" => "format",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "$action" => "centroid",
                     "exist" => [
@@ -499,58 +518,11 @@ module RepresentOfficialsConfig
                       "format",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "boundaries",
-                    "{boundary_set}",
-                    "{boundary}",
-                    "centroid",
-                  ],
                 },
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "boundary",
-                        "orig" => "boundary",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "param",
-                        "name" => "boundary_set",
-                        "orig" => "boundary_set",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "callback",
-                        "orig" => "callback",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "format",
-                        "orig" => "format",
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/boundaries/{boundarySet}/{boundary}/shape",
-                  "rename" => {
-                    "param" => {
-                      "boundarySet" => "boundary_set",
-                    },
-                  },
                   "segments" => [
                     {
                       "lit" => "boundaries",
@@ -565,6 +537,53 @@ module RepresentOfficialsConfig
                       "lit" => "shape",
                     },
                   ],
+                  "parts" => [
+                    "boundaries",
+                    "{boundary_set}",
+                    "{boundary}",
+                    "shape",
+                  ],
+                  "rename" => {
+                    "param" => {
+                      "boundarySet" => "boundary_set",
+                    },
+                  },
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "boundary",
+                        "orig" => "boundary",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                      {
+                        "name" => "boundary_set",
+                        "orig" => "boundary_set",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                    "query" => [
+                      {
+                        "name" => "callback",
+                        "orig" => "callback",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "format",
+                        "orig" => "format",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "$action" => "shape",
                     "exist" => [
@@ -574,58 +593,11 @@ module RepresentOfficialsConfig
                       "format",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "boundaries",
-                    "{boundary_set}",
-                    "{boundary}",
-                    "shape",
-                  ],
                 },
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "boundary",
-                        "orig" => "boundary",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "param",
-                        "name" => "boundary_set",
-                        "orig" => "boundary_set",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "callback",
-                        "orig" => "callback",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "format",
-                        "orig" => "format",
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/boundaries/{boundarySet}/{boundary}/simple_shape",
-                  "rename" => {
-                    "param" => {
-                      "boundarySet" => "boundary_set",
-                    },
-                  },
                   "segments" => [
                     {
                       "lit" => "boundaries",
@@ -640,6 +612,53 @@ module RepresentOfficialsConfig
                       "lit" => "simple_shape",
                     },
                   ],
+                  "parts" => [
+                    "boundaries",
+                    "{boundary_set}",
+                    "{boundary}",
+                    "simple_shape",
+                  ],
+                  "rename" => {
+                    "param" => {
+                      "boundarySet" => "boundary_set",
+                    },
+                  },
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "boundary",
+                        "orig" => "boundary",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                      {
+                        "name" => "boundary_set",
+                        "orig" => "boundary_set",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                    "query" => [
+                      {
+                        "name" => "callback",
+                        "orig" => "callback",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "format",
+                        "orig" => "format",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "$action" => "simple_shape",
                     "exist" => [
@@ -649,51 +668,11 @@ module RepresentOfficialsConfig
                       "format",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "boundaries",
-                    "{boundary_set}",
-                    "{boundary}",
-                    "simple_shape",
-                  ],
                 },
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "boundary_set",
-                        "orig" => "boundary_set",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "callback",
-                        "orig" => "callback",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "format",
-                        "orig" => "format",
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/boundaries/{boundarySet}/centroid",
-                  "rename" => {
-                    "param" => {
-                      "boundarySet" => "boundary_set",
-                    },
-                  },
                   "segments" => [
                     {
                       "lit" => "boundaries",
@@ -705,6 +684,45 @@ module RepresentOfficialsConfig
                       "lit" => "centroid",
                     },
                   ],
+                  "parts" => [
+                    "boundaries",
+                    "{boundary_set}",
+                    "centroid",
+                  ],
+                  "rename" => {
+                    "param" => {
+                      "boundarySet" => "boundary_set",
+                    },
+                  },
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "boundary_set",
+                        "orig" => "boundary_set",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                    "query" => [
+                      {
+                        "name" => "callback",
+                        "orig" => "callback",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "format",
+                        "orig" => "format",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "$action" => "centroid",
                     "exist" => [
@@ -713,50 +731,11 @@ module RepresentOfficialsConfig
                       "format",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "boundaries",
-                    "{boundary_set}",
-                    "centroid",
-                  ],
                 },
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "boundary_set",
-                        "orig" => "boundary_set",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "callback",
-                        "orig" => "callback",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "format",
-                        "orig" => "format",
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/boundaries/{boundarySet}/shape",
-                  "rename" => {
-                    "param" => {
-                      "boundarySet" => "boundary_set",
-                    },
-                  },
                   "segments" => [
                     {
                       "lit" => "boundaries",
@@ -768,6 +747,45 @@ module RepresentOfficialsConfig
                       "lit" => "shape",
                     },
                   ],
+                  "parts" => [
+                    "boundaries",
+                    "{boundary_set}",
+                    "shape",
+                  ],
+                  "rename" => {
+                    "param" => {
+                      "boundarySet" => "boundary_set",
+                    },
+                  },
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "boundary_set",
+                        "orig" => "boundary_set",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                    "query" => [
+                      {
+                        "name" => "callback",
+                        "orig" => "callback",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "format",
+                        "orig" => "format",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "$action" => "shape",
                     "exist" => [
@@ -776,50 +794,11 @@ module RepresentOfficialsConfig
                       "format",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "boundaries",
-                    "{boundary_set}",
-                    "shape",
-                  ],
                 },
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "boundary_set",
-                        "orig" => "boundary_set",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "callback",
-                        "orig" => "callback",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "format",
-                        "orig" => "format",
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/boundaries/{boundarySet}/simple_shape",
-                  "rename" => {
-                    "param" => {
-                      "boundarySet" => "boundary_set",
-                    },
-                  },
                   "segments" => [
                     {
                       "lit" => "boundaries",
@@ -831,6 +810,45 @@ module RepresentOfficialsConfig
                       "lit" => "simple_shape",
                     },
                   ],
+                  "parts" => [
+                    "boundaries",
+                    "{boundary_set}",
+                    "simple_shape",
+                  ],
+                  "rename" => {
+                    "param" => {
+                      "boundarySet" => "boundary_set",
+                    },
+                  },
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "boundary_set",
+                        "orig" => "boundary_set",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                    "query" => [
+                      {
+                        "name" => "callback",
+                        "orig" => "callback",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "format",
+                        "orig" => "format",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "$action" => "simple_shape",
                     "exist" => [
@@ -839,43 +857,34 @@ module RepresentOfficialsConfig
                       "format",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "boundaries",
-                    "{boundary_set}",
-                    "simple_shape",
-                  ],
                 },
               ],
             },
           },
           "relations" => {
-            "ancestors" => [
-              [
-                "boundary",
-              ],
-            ],
+            "ancestors" => [],
           },
         },
         "boundary_set" => {
           "fields" => [
             {
               "name" => "domain",
+              "title" => "Domain",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "title" => "Id",
               "type" => "`$STRING`",
             },
             {
               "name" => "name",
+              "title" => "Name",
               "type" => "`$STRING`",
             },
             {
               "name" => "url",
+              "title" => "Url",
               "type" => "`$STRING`",
             },
           ],
@@ -890,54 +899,6 @@ module RepresentOfficialsConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "callback",
-                        "orig" => "callback",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "domain",
-                        "orig" => "domain",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "format",
-                        "orig" => "format",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => 20,
-                        "kind" => "query",
-                        "name" => "limit",
-                        "orig" => "limit",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "name",
-                        "orig" => "name",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => 0,
-                        "kind" => "query",
-                        "name" => "offset",
-                        "orig" => "offset",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "pretty",
-                        "orig" => "pretty",
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/boundary-sets/",
@@ -946,6 +907,62 @@ module RepresentOfficialsConfig
                       "lit" => "boundary-sets",
                     },
                   ],
+                  "parts" => [
+                    "boundary-sets",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "callback",
+                        "orig" => "callback",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "domain",
+                        "orig" => "domain",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "format",
+                        "orig" => "format",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "limit",
+                        "orig" => "limit",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 20,
+                      },
+                      {
+                        "name" => "name",
+                        "orig" => "name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "offset",
+                        "orig" => "offset",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 0,
+                      },
+                      {
+                        "name" => "pretty",
+                        "orig" => "pretty",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "callback",
@@ -957,13 +974,6 @@ module RepresentOfficialsConfig
                       "pretty",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "boundary-sets",
-                  ],
                 },
               ],
             },
@@ -972,45 +982,9 @@ module RepresentOfficialsConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "boundary_set",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "callback",
-                        "orig" => "callback",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "format",
-                        "orig" => "format",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "pretty",
-                        "orig" => "pretty",
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/boundary-sets/{boundarySet}/",
-                  "rename" => {
-                    "param" => {
-                      "boundarySet" => "id",
-                    },
-                  },
                   "segments" => [
                     {
                       "lit" => "boundary-sets",
@@ -1019,6 +993,50 @@ module RepresentOfficialsConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "boundary-sets",
+                    "{id}",
+                  ],
+                  "rename" => {
+                    "param" => {
+                      "boundarySet" => "id",
+                    },
+                  },
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "boundary_set",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                    "query" => [
+                      {
+                        "name" => "callback",
+                        "orig" => "callback",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "format",
+                        "orig" => "format",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "pretty",
+                        "orig" => "pretty",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "callback",
@@ -1027,14 +1045,6 @@ module RepresentOfficialsConfig
                       "pretty",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "boundary-sets",
-                    "{id}",
-                  ],
                 },
               ],
             },
@@ -1047,10 +1057,12 @@ module RepresentOfficialsConfig
           "fields" => [
             {
               "name" => "meta",
+              "title" => "Meta",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "objects",
+              "title" => "Objects",
               "type" => "`$ARRAY`",
             },
           ],
@@ -1061,42 +1073,6 @@ module RepresentOfficialsConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "callback",
-                        "orig" => "callback",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "format",
-                        "orig" => "format",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => 20,
-                        "kind" => "query",
-                        "name" => "limit",
-                        "orig" => "limit",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "example" => 0,
-                        "kind" => "query",
-                        "name" => "offset",
-                        "orig" => "offset",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "pretty",
-                        "orig" => "pretty",
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/candidates/",
@@ -1105,6 +1081,50 @@ module RepresentOfficialsConfig
                       "lit" => "candidates",
                     },
                   ],
+                  "parts" => [
+                    "candidates",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "callback",
+                        "orig" => "callback",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "format",
+                        "orig" => "format",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "limit",
+                        "orig" => "limit",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 20,
+                      },
+                      {
+                        "name" => "offset",
+                        "orig" => "offset",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 0,
+                      },
+                      {
+                        "name" => "pretty",
+                        "orig" => "pretty",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "callback",
@@ -1114,13 +1134,6 @@ module RepresentOfficialsConfig
                       "pretty",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "candidates",
-                  ],
                 },
               ],
             },
@@ -1133,10 +1146,12 @@ module RepresentOfficialsConfig
           "fields" => [
             {
               "name" => "meta",
+              "title" => "Meta",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "objects",
+              "title" => "Objects",
               "type" => "`$ARRAY`",
             },
           ],
@@ -1147,42 +1162,6 @@ module RepresentOfficialsConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "callback",
-                        "orig" => "callback",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "format",
-                        "orig" => "format",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => 20,
-                        "kind" => "query",
-                        "name" => "limit",
-                        "orig" => "limit",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "example" => 0,
-                        "kind" => "query",
-                        "name" => "offset",
-                        "orig" => "offset",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "pretty",
-                        "orig" => "pretty",
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/elections/",
@@ -1191,6 +1170,50 @@ module RepresentOfficialsConfig
                       "lit" => "elections",
                     },
                   ],
+                  "parts" => [
+                    "elections",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "callback",
+                        "orig" => "callback",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "format",
+                        "orig" => "format",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "limit",
+                        "orig" => "limit",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 20,
+                      },
+                      {
+                        "name" => "offset",
+                        "orig" => "offset",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 0,
+                      },
+                      {
+                        "name" => "pretty",
+                        "orig" => "pretty",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "callback",
@@ -1200,13 +1223,6 @@ module RepresentOfficialsConfig
                       "pretty",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "elections",
-                  ],
                 },
               ],
             },
@@ -1219,42 +1235,50 @@ module RepresentOfficialsConfig
           "fields" => [
             {
               "name" => "boundaries_centroid",
-              "short" => "Boundaries containing the postal code's centroid",
+              "title" => "Boundaries Centroid",
               "type" => "`$ARRAY`",
+              "short" => "Boundaries containing the postal code's centroid",
             },
             {
               "name" => "boundaries_concordance",
-              "short" => "Boundaries linked to postal code via official data",
+              "title" => "Boundaries Concordance",
               "type" => "`$ARRAY`",
+              "short" => "Boundaries linked to postal code via official data",
             },
             {
               "name" => "centroid",
+              "title" => "Centroid",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "city",
-              "short" => "City name",
+              "title" => "City",
               "type" => "`$STRING`",
+              "short" => "City name",
             },
             {
               "name" => "code",
-              "short" => "The postal code",
+              "title" => "Code",
               "type" => "`$STRING`",
+              "short" => "The postal code",
             },
             {
               "name" => "province",
-              "short" => "Province code",
+              "title" => "Province",
               "type" => "`$STRING`",
+              "short" => "Province code",
             },
             {
               "name" => "representatives_centroid",
-              "short" => "Representatives for boundaries containing centroid",
+              "title" => "Representatives Centroid",
               "type" => "`$ARRAY`",
+              "short" => "Representatives for boundaries containing centroid",
             },
             {
               "name" => "representatives_concordance",
-              "short" => "Representatives for boundaries via concordance",
+              "title" => "Representatives Concordance",
               "type" => "`$ARRAY`",
+              "short" => "Representatives for boundaries via concordance",
             },
           ],
           "name" => "postal_code",
@@ -1264,51 +1288,9 @@ module RepresentOfficialsConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "postal_code",
-                        "orig" => "postal_code",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "callback",
-                        "orig" => "callback",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "format",
-                        "orig" => "format",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "pretty",
-                        "orig" => "pretty",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "set",
-                        "orig" => "set",
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/postcodes/{postalCode}/",
-                  "rename" => {
-                    "param" => {
-                      "postalCode" => "postal_code",
-                    },
-                  },
                   "segments" => [
                     {
                       "lit" => "postcodes",
@@ -1317,6 +1299,56 @@ module RepresentOfficialsConfig
                       "var" => "postal_code",
                     },
                   ],
+                  "parts" => [
+                    "postcodes",
+                    "{postal_code}",
+                  ],
+                  "rename" => {
+                    "param" => {
+                      "postalCode" => "postal_code",
+                    },
+                  },
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "postal_code",
+                        "orig" => "postal_code",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                    "query" => [
+                      {
+                        "name" => "callback",
+                        "orig" => "callback",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "format",
+                        "orig" => "format",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "pretty",
+                        "orig" => "pretty",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "set",
+                        "orig" => "set",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "callback",
@@ -1326,221 +1358,137 @@ module RepresentOfficialsConfig
                       "set",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "postcodes",
-                    "{postal_code}",
-                  ],
                 },
               ],
             },
           },
           "relations" => {
-            "ancestors" => [
-              [
-                "postcode",
-              ],
-            ],
+            "ancestors" => [],
           },
         },
-        "representatif" => {
+        "representative" => {
           "fields" => [
             {
               "name" => "district_id",
-              "short" => "District identifier if available",
+              "title" => "District Id",
               "type" => "`$STRING`",
+              "short" => "District identifier if available",
             },
             {
               "name" => "district_name",
+              "title" => "District Name",
+              "type" => "`$STRING`",
               "req" => true,
               "short" => "Name of the electoral district",
-              "type" => "`$STRING`",
             },
             {
               "name" => "elected_office",
+              "title" => "Elected Office",
+              "type" => "`$STRING`",
               "req" => true,
               "short" => "Type of office (e.g., MP, MLA, Mayor, Councillor, Alderman)",
-              "type" => "`$STRING`",
             },
             {
-              "format" => "email",
               "name" => "email",
-              "short" => "Email address",
+              "title" => "Email",
               "type" => "`$STRING`",
+              "short" => "Email address",
+              "format" => "email",
             },
             {
               "name" => "extra",
-              "short" => "Additional data not covered by standard fields",
+              "title" => "Extra",
               "type" => "`$OBJECT`",
+              "short" => "Additional data not covered by standard fields",
             },
             {
               "name" => "first_name",
-              "short" => "First name",
+              "title" => "First Name",
               "type" => "`$STRING`",
+              "short" => "First name",
             },
             {
               "name" => "gender",
-              "short" => "Gender",
+              "title" => "Gender",
               "type" => "`$STRING`",
+              "short" => "Gender",
             },
             {
               "name" => "id",
+              "title" => "Id",
               "type" => "`$STRING`",
             },
             {
               "name" => "last_name",
-              "short" => "Last name",
+              "title" => "Last Name",
               "type" => "`$STRING`",
+              "short" => "Last name",
             },
             {
               "name" => "meta",
+              "title" => "Meta",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "name",
+              "title" => "Name",
+              "type" => "`$STRING`",
               "req" => true,
               "short" => "Full name of the representative",
-              "type" => "`$STRING`",
             },
             {
               "name" => "objects",
+              "title" => "Objects",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "offices",
-              "short" => "Contact information for representative's offices",
+              "title" => "Offices",
               "type" => "`$ARRAY`",
+              "short" => "Contact information for representative's offices",
             },
             {
               "name" => "party_name",
-              "short" => "Political party name",
+              "title" => "Party Name",
               "type" => "`$STRING`",
+              "short" => "Political party name",
             },
             {
               "name" => "personal_url",
-              "short" => "Personal website not on official legislature site",
+              "title" => "Personal Url",
               "type" => "`$STRING`",
+              "short" => "Personal website not on official legislature site",
             },
             {
               "name" => "photo_url",
-              "short" => "URL to representative's photo",
+              "title" => "Photo Url",
               "type" => "`$STRING`",
+              "short" => "URL to representative's photo",
             },
             {
               "name" => "source_url",
-              "short" => "URL where the data is scraped from",
+              "title" => "Source Url",
               "type" => "`$STRING`",
+              "short" => "URL where the data is scraped from",
             },
             {
               "name" => "url",
-              "short" => "Representative's page on official legislature site",
+              "title" => "Url",
               "type" => "`$STRING`",
+              "short" => "Representative's page on official legislature site",
             },
           ],
           "id" => {
             "field" => "id",
             "name" => "id",
           },
-          "name" => "representatif",
+          "name" => "representative",
           "op" => {
             "list" => {
               "input" => "data",
               "name" => "list",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "callback",
-                        "orig" => "callback",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "district",
-                        "orig" => "district",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "district_name",
-                        "orig" => "district_name",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "elected_office",
-                        "orig" => "elected_office",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "first_name",
-                        "orig" => "first_name",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "format",
-                        "orig" => "format",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "gender",
-                        "orig" => "gender",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "last_name",
-                        "orig" => "last_name",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => 20,
-                        "kind" => "query",
-                        "name" => "limit",
-                        "orig" => "limit",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "name",
-                        "orig" => "name",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => 0,
-                        "kind" => "query",
-                        "name" => "offset",
-                        "orig" => "offset",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "party_name",
-                        "orig" => "party_name",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "point",
-                        "orig" => "point",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "pretty",
-                        "orig" => "pretty",
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/representatives/",
@@ -1549,6 +1497,104 @@ module RepresentOfficialsConfig
                       "lit" => "representatives",
                     },
                   ],
+                  "parts" => [
+                    "representatives",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "callback",
+                        "orig" => "callback",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "district",
+                        "orig" => "district",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "district_name",
+                        "orig" => "district_name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "elected_office",
+                        "orig" => "elected_office",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "first_name",
+                        "orig" => "first_name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "format",
+                        "orig" => "format",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "gender",
+                        "orig" => "gender",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "last_name",
+                        "orig" => "last_name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "limit",
+                        "orig" => "limit",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 20,
+                      },
+                      {
+                        "name" => "name",
+                        "orig" => "name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "offset",
+                        "orig" => "offset",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 0,
+                      },
+                      {
+                        "name" => "party_name",
+                        "orig" => "party_name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "point",
+                        "orig" => "point",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "pretty",
+                        "orig" => "pretty",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "callback",
@@ -1567,61 +1613,11 @@ module RepresentOfficialsConfig
                       "pretty",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "representatives",
-                  ],
                 },
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "boundary",
-                        "orig" => "boundary",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "param",
-                        "name" => "boundary_set",
-                        "orig" => "boundary_set",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "callback",
-                        "orig" => "callback",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "format",
-                        "orig" => "format",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "pretty",
-                        "orig" => "pretty",
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/boundaries/{boundarySet}/{boundary}/representatives/",
-                  "rename" => {
-                    "param" => {
-                      "boundarySet" => "boundary_set",
-                    },
-                  },
                   "segments" => [
                     {
                       "lit" => "boundaries",
@@ -1636,6 +1632,59 @@ module RepresentOfficialsConfig
                       "lit" => "representatives",
                     },
                   ],
+                  "parts" => [
+                    "boundaries",
+                    "{boundary_set}",
+                    "{boundary}",
+                    "representatives",
+                  ],
+                  "rename" => {
+                    "param" => {
+                      "boundarySet" => "boundary_set",
+                    },
+                  },
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body.objects`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "boundary",
+                        "orig" => "boundary",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                      {
+                        "name" => "boundary_set",
+                        "orig" => "boundary_set",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                    "query" => [
+                      {
+                        "name" => "callback",
+                        "orig" => "callback",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "format",
+                        "orig" => "format",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "pretty",
+                        "orig" => "pretty",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "boundary",
@@ -1645,16 +1694,6 @@ module RepresentOfficialsConfig
                       "pretty",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body.objects`",
-                  },
-                  "parts" => [
-                    "boundaries",
-                    "{boundary_set}",
-                    "{boundary}",
-                    "representatives",
-                  ],
                 },
               ],
             },
@@ -1663,107 +1702,9 @@ module RepresentOfficialsConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "representative_set",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "callback",
-                        "orig" => "callback",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "district_name",
-                        "orig" => "district_name",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "elected_office",
-                        "orig" => "elected_office",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "first_name",
-                        "orig" => "first_name",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "format",
-                        "orig" => "format",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "gender",
-                        "orig" => "gender",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "last_name",
-                        "orig" => "last_name",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => 20,
-                        "kind" => "query",
-                        "name" => "limit",
-                        "orig" => "limit",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "name",
-                        "orig" => "name",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => 0,
-                        "kind" => "query",
-                        "name" => "offset",
-                        "orig" => "offset",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "party_name",
-                        "orig" => "party_name",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "point",
-                        "orig" => "point",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "pretty",
-                        "orig" => "pretty",
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/representatives/{representativeSet}/",
-                  "rename" => {
-                    "param" => {
-                      "representativeSet" => "id",
-                    },
-                  },
                   "segments" => [
                     {
                       "lit" => "representatives",
@@ -1772,6 +1713,112 @@ module RepresentOfficialsConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "representatives",
+                    "{id}",
+                  ],
+                  "rename" => {
+                    "param" => {
+                      "representativeSet" => "id",
+                    },
+                  },
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "representative_set",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                    "query" => [
+                      {
+                        "name" => "callback",
+                        "orig" => "callback",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "district_name",
+                        "orig" => "district_name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "elected_office",
+                        "orig" => "elected_office",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "first_name",
+                        "orig" => "first_name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "format",
+                        "orig" => "format",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "gender",
+                        "orig" => "gender",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "last_name",
+                        "orig" => "last_name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "limit",
+                        "orig" => "limit",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 20,
+                      },
+                      {
+                        "name" => "name",
+                        "orig" => "name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "offset",
+                        "orig" => "offset",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 0,
+                      },
+                      {
+                        "name" => "party_name",
+                        "orig" => "party_name",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "point",
+                        "orig" => "point",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "pretty",
+                        "orig" => "pretty",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "callback",
@@ -1790,14 +1837,6 @@ module RepresentOfficialsConfig
                       "pretty",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "representatives",
-                    "{id}",
-                  ],
                 },
               ],
             },
@@ -1805,7 +1844,7 @@ module RepresentOfficialsConfig
           "relations" => {
             "ancestors" => [
               [
-                "boundary",
+                "$.main.kit.entity.boundary",
               ],
             ],
           },
@@ -1814,14 +1853,17 @@ module RepresentOfficialsConfig
           "fields" => [
             {
               "name" => "id",
+              "title" => "Id",
               "type" => "`$STRING`",
             },
             {
               "name" => "name",
+              "title" => "Name",
               "type" => "`$STRING`",
             },
             {
               "name" => "url",
+              "title" => "Url",
               "type" => "`$STRING`",
             },
           ],
@@ -1836,42 +1878,6 @@ module RepresentOfficialsConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "callback",
-                        "orig" => "callback",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "format",
-                        "orig" => "format",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => 20,
-                        "kind" => "query",
-                        "name" => "limit",
-                        "orig" => "limit",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "example" => 0,
-                        "kind" => "query",
-                        "name" => "offset",
-                        "orig" => "offset",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "pretty",
-                        "orig" => "pretty",
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/representative-sets/",
@@ -1880,6 +1886,50 @@ module RepresentOfficialsConfig
                       "lit" => "representative-sets",
                     },
                   ],
+                  "parts" => [
+                    "representative-sets",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "callback",
+                        "orig" => "callback",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "format",
+                        "orig" => "format",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "limit",
+                        "orig" => "limit",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 20,
+                      },
+                      {
+                        "name" => "offset",
+                        "orig" => "offset",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 0,
+                      },
+                      {
+                        "name" => "pretty",
+                        "orig" => "pretty",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "callback",
@@ -1889,13 +1939,6 @@ module RepresentOfficialsConfig
                       "pretty",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "representative-sets",
-                  ],
                 },
               ],
             },
@@ -1904,45 +1947,9 @@ module RepresentOfficialsConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "representative_set",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "callback",
-                        "orig" => "callback",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "format",
-                        "orig" => "format",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "pretty",
-                        "orig" => "pretty",
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/representative-sets/{representativeSet}/",
-                  "rename" => {
-                    "param" => {
-                      "representativeSet" => "id",
-                    },
-                  },
                   "segments" => [
                     {
                       "lit" => "representative-sets",
@@ -1951,6 +1958,50 @@ module RepresentOfficialsConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "representative-sets",
+                    "{id}",
+                  ],
+                  "rename" => {
+                    "param" => {
+                      "representativeSet" => "id",
+                    },
+                  },
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "representative_set",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                    "query" => [
+                      {
+                        "name" => "callback",
+                        "orig" => "callback",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "format",
+                        "orig" => "format",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "pretty",
+                        "orig" => "pretty",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "callback",
@@ -1959,14 +2010,6 @@ module RepresentOfficialsConfig
                       "pretty",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "representative-sets",
-                    "{id}",
-                  ],
                 },
               ],
             },

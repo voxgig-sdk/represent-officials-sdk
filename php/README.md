@@ -46,15 +46,13 @@ try {
 }
 ```
 
-### 3. Load a postalcode
-
-PostalCode is nested under postal_code, so provide the `postal_code`.
+### 3. Load a boundary
 
 ```php
 try {
-    // load() returns the ENTITY — call data_get() for the PostalCode record (throws on error).
-    $postalcode = $client->PostalCode()->load(["postal_code" => "example_postal_code"]);
-    print_r($postalcode->data_get());
+    // load() returns the ENTITY — call data_get() for the Boundary record (throws on error).
+    $boundary = $client->Boundary()->load(["id" => "example_id"]);
+    print_r($boundary->data_get());
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -230,7 +228,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `Candidate` | `($data): CandidateEntity` | Create a Candidate entity instance. |
 | `Election` | `($data): ElectionEntity` | Create an Election entity instance. |
 | `PostalCode` | `($data): PostalCodeEntity` | Create a PostalCode entity instance. |
-| `Representatif` | `($data): RepresentatifEntity` | Create a Representatif entity instance. |
+| `Representative` | `($data): RepresentativeEntity` | Create a Representative entity instance. |
 | `RepresentativeSet` | `($data): RepresentativeSetEntity` | Create a RepresentativeSet entity instance. |
 
 ### Entity interface
@@ -337,7 +335,7 @@ Operations: Load.
 
 API path: `/postcodes/{postalCode}/`
 
-#### Representatif
+#### Representative
 
 | Field | Description |
 | --- | --- |
@@ -536,9 +534,9 @@ $postal_code = $client->PostalCode()->load(["postal_code" => "postal_code"]);
 ```
 
 
-### Representatif
+### Representative
 
-Create an instance: `$representatif = $client->Representatif();`
+Create an instance: `$representative = $client->Representative();`
 
 #### Operations
 
@@ -573,15 +571,15 @@ Create an instance: `$representatif = $client->Representatif();`
 #### Example: Load
 
 ```php
-// load() returns the ENTITY — call data_get() for the Representatif record (throws on error).
-$representatif = $client->Representatif()->load(["id" => "representatif_id"]);
+// load() returns the ENTITY — call data_get() for the Representative record (throws on error).
+$representative = $client->Representative()->load(["id" => "representative_id"]);
 ```
 
 #### Example: List
 
 ```php
-// list() returns an array of Representatif records (throws on error).
-$representatifs = $client->Representatif()->list();
+// list() returns an array of Representative records (throws on error).
+$representatives = $client->Representative()->list();
 ```
 
 

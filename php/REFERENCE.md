@@ -61,9 +61,9 @@ Create a new `ElectionEntity` instance. Pass `null` for no initial data.
 
 Create a new `PostalCodeEntity` instance. Pass `null` for no initial data.
 
-#### `Representatif($data = null)`
+#### `Representative($data = null)`
 
-Create a new `RepresentatifEntity` instance. Pass `null` for no initial data.
+Create a new `RepresentativeEntity` instance. Pass `null` for no initial data.
 
 #### `RepresentativeSet($data = null)`
 
@@ -401,10 +401,10 @@ Return the entity name.
 
 ---
 
-## RepresentatifEntity
+## RepresentativeEntity
 
 ```php
-$representatif = $client->Representatif();
+$representative = $client->Representative();
 ```
 
 ### Fields
@@ -437,7 +437,7 @@ $representatif = $client->Representatif();
 List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Representatif()->list();
+$results = $client->Representative()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -445,7 +445,7 @@ $results = $client->Representatif()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Representatif()->load(["id" => "representatif_id"]);
+$result = $client->Representative()->load(["id" => "representative_id"]);
 ```
 
 ### Common Methods
@@ -466,9 +466,9 @@ Get the entity match criteria.
 
 Set the entity match criteria.
 
-#### `make(): RepresentatifEntity`
+#### `make(): RepresentativeEntity`
 
-Create a new `RepresentatifEntity` instance with the same client and
+Create a new `RepresentativeEntity` instance with the same client and
 options.
 
 #### `get_name(): string`

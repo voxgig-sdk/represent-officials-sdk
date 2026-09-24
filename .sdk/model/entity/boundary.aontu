@@ -1,0 +1,801 @@
+# Entity: boundary
+
+main: kit: entity: boundary: {
+
+  alias: field: {}
+
+  fields: {
+    boundary_set_name: {
+      h: "Boundary Set Name"
+      n: "boundary_set_name"
+      r: false
+      t: "`$STRING`"
+    }
+    external_id: {
+      h: "External Id"
+      n: "external_id"
+      r: false
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    meta: {
+      h: "Meta"
+      n: "meta"
+      r: false
+      t: "`$OBJECT`"
+    }
+    metadata: {
+      h: "Metadata"
+      n: "metadata"
+      r: false
+      t: "`$OBJECT`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    objects: {
+      h: "Objects"
+      n: "objects"
+      r: false
+      t: "`$ARRAY`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "boundary"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /boundaries/"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "callback"
+                or: "callback"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "contain"
+                or: "contain"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "external_id"
+                or: "external_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "format"
+                or: "format"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "intersect"
+                or: "intersect"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "name"
+                or: "name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 0
+                k: "query"
+                n: "offset"
+                or: "offset"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "pretty"
+                or: "pretty"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "set"
+                or: "set"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "touch"
+                or: "touch"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/boundaries/"
+          q: {
+            exist: [
+              "callback"
+              "contain"
+              "external_id"
+              "format"
+              "intersect"
+              "limit"
+              "name"
+              "offset"
+              "pretty"
+              "set"
+              "touch"
+            ]
+          }
+          s: [
+            {
+              lit: "boundaries"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /boundaries/{boundarySet}/"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "boundary_set"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "callback"
+                or: "callback"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "contain"
+                or: "contain"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "external_id"
+                or: "external_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "format"
+                or: "format"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "name"
+                or: "name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 0
+                k: "query"
+                n: "offset"
+                or: "offset"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "pretty"
+                or: "pretty"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/boundaries/{boundarySet}/"
+          q: {
+            exist: [
+              "callback"
+              "contain"
+              "external_id"
+              "format"
+              "id"
+              "limit"
+              "name"
+              "offset"
+              "pretty"
+            ]
+          }
+          r: {
+            param: {
+              boundarySet: "id"
+            }
+          }
+          s: [
+            {
+              lit: "boundaries"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /boundaries/{boundarySet}/{boundary}/"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "boundary"
+                or: "boundary"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "boundary_set"
+                or: "boundary_set"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "callback"
+                or: "callback"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "format"
+                or: "format"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "pretty"
+                or: "pretty"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/boundaries/{boundarySet}/{boundary}/"
+          q: {
+            exist: [
+              "boundary"
+              "boundary_set"
+              "callback"
+              "format"
+              "pretty"
+            ]
+          }
+          r: {
+            param: {
+              boundarySet: "boundary_set"
+            }
+          }
+          s: [
+            {
+              lit: "boundaries"
+            }
+            {
+              var: "boundary_set"
+            }
+            {
+              var: "boundary"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.metadata`"
+          }
+        }
+        {
+          co: {
+            id: "GET /boundaries/{boundarySet}/{boundary}/centroid"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "boundary"
+                or: "boundary"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "boundary_set"
+                or: "boundary_set"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "callback"
+                or: "callback"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "format"
+                or: "format"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/boundaries/{boundarySet}/{boundary}/centroid"
+          q: {
+            "$action": "centroid"
+            exist: [
+              "boundary"
+              "boundary_set"
+              "callback"
+              "format"
+            ]
+          }
+          r: {
+            param: {
+              boundarySet: "boundary_set"
+            }
+          }
+          s: [
+            {
+              lit: "boundaries"
+            }
+            {
+              var: "boundary_set"
+            }
+            {
+              var: "boundary"
+            }
+            {
+              lit: "centroid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /boundaries/{boundarySet}/{boundary}/shape"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "boundary"
+                or: "boundary"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "boundary_set"
+                or: "boundary_set"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "callback"
+                or: "callback"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "format"
+                or: "format"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/boundaries/{boundarySet}/{boundary}/shape"
+          q: {
+            "$action": "shape"
+            exist: [
+              "boundary"
+              "boundary_set"
+              "callback"
+              "format"
+            ]
+          }
+          r: {
+            param: {
+              boundarySet: "boundary_set"
+            }
+          }
+          s: [
+            {
+              lit: "boundaries"
+            }
+            {
+              var: "boundary_set"
+            }
+            {
+              var: "boundary"
+            }
+            {
+              lit: "shape"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /boundaries/{boundarySet}/{boundary}/simple_shape"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "boundary"
+                or: "boundary"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "boundary_set"
+                or: "boundary_set"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "callback"
+                or: "callback"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "format"
+                or: "format"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/boundaries/{boundarySet}/{boundary}/simple_shape"
+          q: {
+            "$action": "simple_shape"
+            exist: [
+              "boundary"
+              "boundary_set"
+              "callback"
+              "format"
+            ]
+          }
+          r: {
+            param: {
+              boundarySet: "boundary_set"
+            }
+          }
+          s: [
+            {
+              lit: "boundaries"
+            }
+            {
+              var: "boundary_set"
+            }
+            {
+              var: "boundary"
+            }
+            {
+              lit: "simple_shape"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /boundaries/{boundarySet}/centroid"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "boundary_set"
+                or: "boundary_set"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "callback"
+                or: "callback"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "format"
+                or: "format"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/boundaries/{boundarySet}/centroid"
+          q: {
+            "$action": "centroid"
+            exist: [
+              "boundary_set"
+              "callback"
+              "format"
+            ]
+          }
+          r: {
+            param: {
+              boundarySet: "boundary_set"
+            }
+          }
+          s: [
+            {
+              lit: "boundaries"
+            }
+            {
+              var: "boundary_set"
+            }
+            {
+              lit: "centroid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /boundaries/{boundarySet}/shape"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "boundary_set"
+                or: "boundary_set"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "callback"
+                or: "callback"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "format"
+                or: "format"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/boundaries/{boundarySet}/shape"
+          q: {
+            "$action": "shape"
+            exist: [
+              "boundary_set"
+              "callback"
+              "format"
+            ]
+          }
+          r: {
+            param: {
+              boundarySet: "boundary_set"
+            }
+          }
+          s: [
+            {
+              lit: "boundaries"
+            }
+            {
+              var: "boundary_set"
+            }
+            {
+              lit: "shape"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /boundaries/{boundarySet}/simple_shape"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "boundary_set"
+                or: "boundary_set"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "callback"
+                or: "callback"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "format"
+                or: "format"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/boundaries/{boundarySet}/simple_shape"
+          q: {
+            "$action": "simple_shape"
+            exist: [
+              "boundary_set"
+              "callback"
+              "format"
+            ]
+          }
+          r: {
+            param: {
+              boundarySet: "boundary_set"
+            }
+          }
+          s: [
+            {
+              lit: "boundaries"
+            }
+            {
+              var: "boundary_set"
+            }
+            {
+              lit: "simple_shape"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

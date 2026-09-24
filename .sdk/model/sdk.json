@@ -24,62 +24,136 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "boundary": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "boundary_set_name",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "boundary_set_name": {
+              "a": true,
+              "h": "Boundary Set Name",
+              "n": "boundary_set_name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "external_id",
-              "req": false,
-              "type": "`$STRING`"
+            "external_id": {
+              "a": true,
+              "h": "External Id",
+              "n": "external_id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "meta",
-              "req": false,
-              "type": "`$OBJECT`"
+            "meta": {
+              "a": true,
+              "h": "Meta",
+              "n": "meta",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "metadata",
-              "req": false,
-              "type": "`$OBJECT`"
+            "metadata": {
+              "a": true,
+              "h": "Metadata",
+              "n": "metadata",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "objects",
-              "req": false,
-              "type": "`$ARRAY`"
+            "objects": {
+              "a": true,
+              "h": "Objects",
+              "n": "objects",
+              "r": false,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "url",
-              "req": false,
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "h": "Url",
+              "n": "url",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -91,116 +165,110 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /boundaries/",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "callback",
-                        "orig": "callback",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "callback",
+                        "or": "callback",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "contain",
-                        "orig": "contain",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "contain",
+                        "or": "contain",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "external_id",
-                        "orig": "external_id",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "external_id",
+                        "or": "external_id",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "format",
-                        "orig": "format",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "format",
+                        "or": "format",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "intersect",
-                        "orig": "intersect",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "intersect",
+                        "or": "intersect",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": 20,
-                        "kind": "query",
-                        "name": "limit",
-                        "orig": "limit",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 20,
+                        "k": "query",
+                        "n": "limit",
+                        "or": "limit",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "name",
-                        "orig": "name",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "name",
+                        "or": "name",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": 0,
-                        "kind": "query",
-                        "name": "offset",
-                        "orig": "offset",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 0,
+                        "k": "query",
+                        "n": "offset",
+                        "or": "offset",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "pretty",
-                        "orig": "pretty",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "pretty",
+                        "or": "pretty",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "set",
-                        "orig": "set",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "set",
+                        "or": "set",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "touch",
-                        "orig": "touch",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "touch",
+                        "or": "touch",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /boundaries/",
-                    "json": "{\"operationId\":\"getBoundaries\",\"parameters\":[{\"description\":\"Number of results per page (default: 20)\",\"in\":\"query\",\"name\":\"limit\",\"schema\":{\"default\":20,\"type\":\"integer\"}},{\"description\":\"Offset for pagination\",\"in\":\"query\",\"name\":\"offset\",\"schema\":{\"default\":0,\"type\":\"integer\"}},{\"description\":\"Filter by boundary sets (comma-separated)\",\"in\":\"query\",\"name\":\"sets\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by boundary name\",\"in\":\"query\",\"name\":\"name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by external ID\",\"in\":\"query\",\"name\":\"external_id\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Find boundaries containing latitude,longitude (e.g., 45.524,-73.596)\",\"in\":\"query\",\"name\":\"contains\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Find boundaries that touch the specified boundary\",\"in\":\"query\",\"name\":\"touches\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Find boundaries that intersect the specified boundary\",\"in\":\"query\",\"name\":\"intersects\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"meta\":{\"properties\":{\"next\":{\"nullable\":true,\"type\":\"string\"},\"previous\":{\"nullable\":true,\"type\":\"string\"},\"total_count\":{\"type\":\"integer\"}},\"type\":\"object\"},\"objects\":{\"items\":{\"properties\":{\"boundary_set_name\":{\"type\":\"string\"},\"external_id\":{\"type\":\"string\"},\"metadata\":{\"type\":\"object\"},\"name\":{\"type\":\"string\"},\"url\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/boundaries/",
-                  "segments": [
-                    {
-                      "lit": "boundaries"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/boundaries/",
+                  "q": {
                     "exist": [
                       "callback",
                       "contain",
@@ -215,7 +283,13 @@
                       "touch"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "boundaries"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -227,110 +301,96 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /boundaries/{boundarySet}/",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "boundary_set",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "boundary_set",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "callback",
-                        "orig": "callback",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "callback",
+                        "or": "callback",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "contain",
-                        "orig": "contain",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "contain",
+                        "or": "contain",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "external_id",
-                        "orig": "external_id",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "external_id",
+                        "or": "external_id",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "format",
-                        "orig": "format",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "format",
+                        "or": "format",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": 20,
-                        "kind": "query",
-                        "name": "limit",
-                        "orig": "limit",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 20,
+                        "k": "query",
+                        "n": "limit",
+                        "or": "limit",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "name",
-                        "orig": "name",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "name",
+                        "or": "name",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": 0,
-                        "kind": "query",
-                        "name": "offset",
-                        "orig": "offset",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 0,
+                        "k": "query",
+                        "n": "offset",
+                        "or": "offset",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "pretty",
-                        "orig": "pretty",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "pretty",
+                        "or": "pretty",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /boundaries/{boundarySet}/",
-                    "json": "{\"operationId\":\"getBoundariesFromSet\",\"parameters\":[{\"description\":\"Boundary set identifier\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Number of results per page\",\"in\":\"query\",\"name\":\"limit\",\"schema\":{\"default\":20,\"type\":\"integer\"}},{\"description\":\"Offset for pagination\",\"in\":\"query\",\"name\":\"offset\",\"schema\":{\"default\":0,\"type\":\"integer\"}},{\"description\":\"Filter by boundary name\",\"in\":\"query\",\"name\":\"name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by external ID\",\"in\":\"query\",\"name\":\"external_id\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Find boundaries containing latitude,longitude\",\"in\":\"query\",\"name\":\"contains\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"meta\":{\"properties\":{\"next\":{\"nullable\":true,\"type\":\"string\"},\"previous\":{\"nullable\":true,\"type\":\"string\"},\"total_count\":{\"type\":\"integer\"}},\"type\":\"object\"},\"objects\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/boundaries/{boundarySet}/",
-                  "rename": {
-                    "param": {
-                      "boundarySet": "id"
-                    }
-                  },
-                  "segments": [
-                    {
-                      "lit": "boundaries"
-                    },
-                    {
-                      "var": "id"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/boundaries/{boundarySet}/",
+                  "q": {
                     "exist": [
                       "callback",
                       "contain",
@@ -343,85 +403,81 @@
                       "pretty"
                     ]
                   },
-                  "transform": {
+                  "r": {
+                    "param": {
+                      "boundarySet": "id"
+                    }
+                  },
+                  "s": [
+                    {
+                      "lit": "boundaries"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
                 },
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /boundaries/{boundarySet}/{boundary}/",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "boundary",
-                        "orig": "boundary",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "boundary",
+                        "or": "boundary",
+                        "r": true,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "boundary_set",
-                        "orig": "boundary_set",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "boundary_set",
+                        "or": "boundary_set",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "callback",
-                        "orig": "callback",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "callback",
+                        "or": "callback",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "format",
-                        "orig": "format",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "format",
+                        "or": "format",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "pretty",
-                        "orig": "pretty",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "pretty",
+                        "or": "pretty",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /boundaries/{boundarySet}/{boundary}/",
-                    "json": "{\"operationId\":\"getBoundary\",\"parameters\":[{\"description\":\"Boundary set identifier\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Boundary identifier\",\"in\":\"path\",\"name\":\"boundary\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"boundary_set_name\":{\"type\":\"string\"},\"external_id\":{\"type\":\"string\"},\"metadata\":{\"type\":\"object\"},\"name\":{\"type\":\"string\"},\"url\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/boundaries/{boundarySet}/{boundary}/",
-                  "rename": {
-                    "param": {
-                      "boundarySet": "boundary_set"
-                    }
-                  },
-                  "segments": [
-                    {
-                      "lit": "boundaries"
-                    },
-                    {
-                      "var": "boundary_set"
-                    },
-                    {
-                      "var": "boundary"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/boundaries/{boundarySet}/{boundary}/",
+                  "q": {
                     "exist": [
                       "boundary",
                       "boundary_set",
@@ -430,66 +486,90 @@
                       "pretty"
                     ]
                   },
-                  "transform": {
+                  "r": {
+                    "param": {
+                      "boundarySet": "boundary_set"
+                    }
+                  },
+                  "s": [
+                    {
+                      "lit": "boundaries"
+                    },
+                    {
+                      "var": "boundary_set"
+                    },
+                    {
+                      "var": "boundary"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.metadata`"
                   }
                 },
                 {
-                  "active": true,
-                  "args": {
-                    "params": [
-                      {
-                        "active": true,
-                        "kind": "param",
-                        "name": "boundary",
-                        "orig": "boundary",
-                        "reqd": true,
-                        "type": "`$STRING`"
-                      },
-                      {
-                        "active": true,
-                        "kind": "param",
-                        "name": "boundary_set",
-                        "orig": "boundary_set",
-                        "reqd": true,
-                        "type": "`$STRING`"
-                      }
-                    ],
-                    "query": [
-                      {
-                        "active": true,
-                        "kind": "query",
-                        "name": "callback",
-                        "orig": "callback",
-                        "reqd": false,
-                        "type": "`$STRING`"
-                      },
-                      {
-                        "active": true,
-                        "kind": "query",
-                        "name": "format",
-                        "orig": "format",
-                        "reqd": false,
-                        "type": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /boundaries/{boundarySet}/{boundary}/centroid",
-                    "json": "{\"operationId\":\"getBoundaryCentroid\",\"parameters\":[{\"description\":\"Boundary set identifier\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Boundary identifier\",\"in\":\"path\",\"name\":\"boundary\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"kml\",\"wkt\"],\"type\":\"string\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"GeoJSON Feature with Point geometry\",\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/boundaries/{boundarySet}/{boundary}/centroid",
-                  "rename": {
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "boundary",
+                        "or": "boundary",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "boundary_set",
+                        "or": "boundary_set",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "query": [
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "callback",
+                        "or": "callback",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "format",
+                        "or": "format",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/boundaries/{boundarySet}/{boundary}/centroid",
+                  "q": {
+                    "$action": "centroid",
+                    "exist": [
+                      "boundary",
+                      "boundary_set",
+                      "callback",
+                      "format"
+                    ]
+                  },
+                  "r": {
                     "param": {
                       "boundarySet": "boundary_set"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "boundaries"
                     },
@@ -503,75 +583,74 @@
                       "lit": "centroid"
                     }
                   ],
-                  "select": {
-                    "$action": "centroid",
-                    "exist": [
-                      "boundary",
-                      "boundary_set",
-                      "callback",
-                      "format"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
                 },
                 {
-                  "active": true,
-                  "args": {
-                    "params": [
-                      {
-                        "active": true,
-                        "kind": "param",
-                        "name": "boundary",
-                        "orig": "boundary",
-                        "reqd": true,
-                        "type": "`$STRING`"
-                      },
-                      {
-                        "active": true,
-                        "kind": "param",
-                        "name": "boundary_set",
-                        "orig": "boundary_set",
-                        "reqd": true,
-                        "type": "`$STRING`"
-                      }
-                    ],
-                    "query": [
-                      {
-                        "active": true,
-                        "kind": "query",
-                        "name": "callback",
-                        "orig": "callback",
-                        "reqd": false,
-                        "type": "`$STRING`"
-                      },
-                      {
-                        "active": true,
-                        "kind": "query",
-                        "name": "format",
-                        "orig": "format",
-                        "reqd": false,
-                        "type": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /boundaries/{boundarySet}/{boundary}/shape",
-                    "json": "{\"operationId\":\"getBoundaryShape\",\"parameters\":[{\"description\":\"Boundary set identifier\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Boundary identifier\",\"in\":\"path\",\"name\":\"boundary\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"kml\",\"wkt\"],\"type\":\"string\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"GeoJSON Feature\",\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/boundaries/{boundarySet}/{boundary}/shape",
-                  "rename": {
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "boundary",
+                        "or": "boundary",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "boundary_set",
+                        "or": "boundary_set",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "query": [
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "callback",
+                        "or": "callback",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "format",
+                        "or": "format",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/boundaries/{boundarySet}/{boundary}/shape",
+                  "q": {
+                    "$action": "shape",
+                    "exist": [
+                      "boundary",
+                      "boundary_set",
+                      "callback",
+                      "format"
+                    ]
+                  },
+                  "r": {
                     "param": {
                       "boundarySet": "boundary_set"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "boundaries"
                     },
@@ -585,8 +664,61 @@
                       "lit": "shape"
                     }
                   ],
-                  "select": {
-                    "$action": "shape",
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /boundaries/{boundarySet}/{boundary}/simple_shape",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "boundary",
+                        "or": "boundary",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "boundary_set",
+                        "or": "boundary_set",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "query": [
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "callback",
+                        "or": "callback",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "format",
+                        "or": "format",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/boundaries/{boundarySet}/{boundary}/simple_shape",
+                  "q": {
+                    "$action": "simple_shape",
                     "exist": [
                       "boundary",
                       "boundary_set",
@@ -594,66 +726,12 @@
                       "format"
                     ]
                   },
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "active": true,
-                  "args": {
-                    "params": [
-                      {
-                        "active": true,
-                        "kind": "param",
-                        "name": "boundary",
-                        "orig": "boundary",
-                        "reqd": true,
-                        "type": "`$STRING`"
-                      },
-                      {
-                        "active": true,
-                        "kind": "param",
-                        "name": "boundary_set",
-                        "orig": "boundary_set",
-                        "reqd": true,
-                        "type": "`$STRING`"
-                      }
-                    ],
-                    "query": [
-                      {
-                        "active": true,
-                        "kind": "query",
-                        "name": "callback",
-                        "orig": "callback",
-                        "reqd": false,
-                        "type": "`$STRING`"
-                      },
-                      {
-                        "active": true,
-                        "kind": "query",
-                        "name": "format",
-                        "orig": "format",
-                        "reqd": false,
-                        "type": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "contract": {
-                    "id": "GET /boundaries/{boundarySet}/{boundary}/simple_shape",
-                    "json": "{\"operationId\":\"getBoundarySimpleShape\",\"parameters\":[{\"description\":\"Boundary set identifier\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Boundary identifier\",\"in\":\"path\",\"name\":\"boundary\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"kml\",\"wkt\"],\"type\":\"string\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"GeoJSON Feature\",\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/boundaries/{boundarySet}/{boundary}/simple_shape",
-                  "rename": {
+                  "r": {
                     "param": {
                       "boundarySet": "boundary_set"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "boundaries"
                     },
@@ -667,67 +745,65 @@
                       "lit": "simple_shape"
                     }
                   ],
-                  "select": {
-                    "$action": "simple_shape",
-                    "exist": [
-                      "boundary",
-                      "boundary_set",
-                      "callback",
-                      "format"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
                 },
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /boundaries/{boundarySet}/centroid",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "boundary_set",
-                        "orig": "boundary_set",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "boundary_set",
+                        "or": "boundary_set",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "callback",
-                        "orig": "callback",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "callback",
+                        "or": "callback",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "format",
-                        "orig": "format",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "format",
+                        "or": "format",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /boundaries/{boundarySet}/centroid",
-                    "json": "{\"operationId\":\"getBoundarySetCentroids\",\"parameters\":[{\"description\":\"Boundary set identifier\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"kml\",\"wkt\"],\"type\":\"string\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"GeoJSON FeatureCollection\",\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/boundaries/{boundarySet}/centroid",
+                  "q": {
+                    "$action": "centroid",
+                    "exist": [
+                      "boundary_set",
+                      "callback",
+                      "format"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/boundaries/{boundarySet}/centroid",
-                  "rename": {
+                  "r": {
                     "param": {
                       "boundarySet": "boundary_set"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "boundaries"
                     },
@@ -738,66 +814,65 @@
                       "lit": "centroid"
                     }
                   ],
-                  "select": {
-                    "$action": "centroid",
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /boundaries/{boundarySet}/shape",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "boundary_set",
+                        "or": "boundary_set",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "query": [
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "callback",
+                        "or": "callback",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "format",
+                        "or": "format",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/boundaries/{boundarySet}/shape",
+                  "q": {
+                    "$action": "shape",
                     "exist": [
                       "boundary_set",
                       "callback",
                       "format"
                     ]
                   },
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "active": true,
-                  "args": {
-                    "params": [
-                      {
-                        "active": true,
-                        "kind": "param",
-                        "name": "boundary_set",
-                        "orig": "boundary_set",
-                        "reqd": true,
-                        "type": "`$STRING`"
-                      }
-                    ],
-                    "query": [
-                      {
-                        "active": true,
-                        "kind": "query",
-                        "name": "callback",
-                        "orig": "callback",
-                        "reqd": false,
-                        "type": "`$STRING`"
-                      },
-                      {
-                        "active": true,
-                        "kind": "query",
-                        "name": "format",
-                        "orig": "format",
-                        "reqd": false,
-                        "type": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "contract": {
-                    "id": "GET /boundaries/{boundarySet}/shape",
-                    "json": "{\"operationId\":\"getBoundarySetShapes\",\"parameters\":[{\"description\":\"Boundary set identifier\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"kml\",\"wkt\"],\"type\":\"string\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"GeoJSON FeatureCollection\",\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/boundaries/{boundarySet}/shape",
-                  "rename": {
+                  "r": {
                     "param": {
                       "boundarySet": "boundary_set"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "boundaries"
                     },
@@ -808,66 +883,65 @@
                       "lit": "shape"
                     }
                   ],
-                  "select": {
-                    "$action": "shape",
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /boundaries/{boundarySet}/simple_shape",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "boundary_set",
+                        "or": "boundary_set",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "query": [
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "callback",
+                        "or": "callback",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "format",
+                        "or": "format",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/boundaries/{boundarySet}/simple_shape",
+                  "q": {
+                    "$action": "simple_shape",
                     "exist": [
                       "boundary_set",
                       "callback",
                       "format"
                     ]
                   },
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "active": true,
-                  "args": {
-                    "params": [
-                      {
-                        "active": true,
-                        "kind": "param",
-                        "name": "boundary_set",
-                        "orig": "boundary_set",
-                        "reqd": true,
-                        "type": "`$STRING`"
-                      }
-                    ],
-                    "query": [
-                      {
-                        "active": true,
-                        "kind": "query",
-                        "name": "callback",
-                        "orig": "callback",
-                        "reqd": false,
-                        "type": "`$STRING`"
-                      },
-                      {
-                        "active": true,
-                        "kind": "query",
-                        "name": "format",
-                        "orig": "format",
-                        "reqd": false,
-                        "type": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "contract": {
-                    "id": "GET /boundaries/{boundarySet}/simple_shape",
-                    "json": "{\"operationId\":\"getBoundarySetSimpleShapes\",\"parameters\":[{\"description\":\"Boundary set identifier\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"kml\",\"wkt\"],\"type\":\"string\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"GeoJSON FeatureCollection\",\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/boundaries/{boundarySet}/simple_shape",
-                  "rename": {
+                  "r": {
                     "param": {
                       "boundarySet": "boundary_set"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "boundaries"
                     },
@@ -878,15 +952,7 @@
                       "lit": "simple_shape"
                     }
                   ],
-                  "select": {
-                    "$action": "simple_shape",
-                    "exist": [
-                      "boundary_set",
-                      "callback",
-                      "format"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -895,11 +961,7 @@
             }
           },
           "relations": {
-            "ancestors": [
-              [
-                "boundary"
-              ]
-            ]
+            "ancestors": []
           }
         },
         "boundary_set": {
@@ -907,32 +969,36 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "domain",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "domain": {
+              "a": true,
+              "h": "Domain",
+              "n": "domain",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "url",
-              "req": false,
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "h": "Url",
+              "n": "url",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -944,84 +1010,78 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /boundary-sets/",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "callback",
-                        "orig": "callback",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "callback",
+                        "or": "callback",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "domain",
-                        "orig": "domain",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "domain",
+                        "or": "domain",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "format",
-                        "orig": "format",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "format",
+                        "or": "format",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": 20,
-                        "kind": "query",
-                        "name": "limit",
-                        "orig": "limit",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 20,
+                        "k": "query",
+                        "n": "limit",
+                        "or": "limit",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "name",
-                        "orig": "name",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "name",
+                        "or": "name",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": 0,
-                        "kind": "query",
-                        "name": "offset",
-                        "orig": "offset",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 0,
+                        "k": "query",
+                        "n": "offset",
+                        "or": "offset",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "pretty",
-                        "orig": "pretty",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "pretty",
+                        "or": "pretty",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /boundary-sets/",
-                    "json": "{\"operationId\":\"getBoundarySets\",\"parameters\":[{\"description\":\"Number of results per page (default: 20)\",\"in\":\"query\",\"name\":\"limit\",\"schema\":{\"default\":20,\"type\":\"integer\"}},{\"description\":\"Offset for pagination\",\"in\":\"query\",\"name\":\"offset\",\"schema\":{\"default\":0,\"type\":\"integer\"}},{\"description\":\"Filter by boundary set name\",\"in\":\"query\",\"name\":\"name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by domain (e.g., Canada)\",\"in\":\"query\",\"name\":\"domain\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"meta\":{\"properties\":{\"next\":{\"nullable\":true,\"type\":\"string\"},\"previous\":{\"nullable\":true,\"type\":\"string\"},\"total_count\":{\"type\":\"integer\"}},\"type\":\"object\"},\"objects\":{\"items\":{\"properties\":{\"domain\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"url\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/boundary-sets/",
-                  "segments": [
-                    {
-                      "lit": "boundary-sets"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/boundary-sets/",
+                  "q": {
                     "exist": [
                       "callback",
                       "domain",
@@ -1032,7 +1092,13 @@
                       "pretty"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "boundary-sets"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1044,68 +1110,54 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /boundary-sets/{boundarySet}/",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "boundary_set",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "boundary_set",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "callback",
-                        "orig": "callback",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "callback",
+                        "or": "callback",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "format",
-                        "orig": "format",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "format",
+                        "or": "format",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "pretty",
-                        "orig": "pretty",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "pretty",
+                        "or": "pretty",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /boundary-sets/{boundarySet}/",
-                    "json": "{\"operationId\":\"getBoundarySet\",\"parameters\":[{\"description\":\"Boundary set identifier (e.g., federal-electoral-districts)\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"domain\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"url\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/boundary-sets/{boundarySet}/",
-                  "rename": {
-                    "param": {
-                      "boundarySet": "id"
-                    }
-                  },
-                  "segments": [
-                    {
-                      "lit": "boundary-sets"
-                    },
-                    {
-                      "var": "id"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/boundary-sets/{boundarySet}/",
+                  "q": {
                     "exist": [
                       "callback",
                       "format",
@@ -1113,7 +1165,20 @@
                       "pretty"
                     ]
                   },
-                  "transform": {
+                  "r": {
+                    "param": {
+                      "boundarySet": "id"
+                    }
+                  },
+                  "s": [
+                    {
+                      "lit": "boundary-sets"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1130,20 +1195,22 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "meta",
-              "req": false,
-              "type": "`$OBJECT`"
+          "fields": {
+            "meta": {
+              "a": true,
+              "h": "Meta",
+              "n": "meta",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "objects",
-              "req": false,
-              "type": "`$ARRAY`"
+            "objects": {
+              "a": true,
+              "h": "Objects",
+              "n": "objects",
+              "r": false,
+              "t": "`$ARRAY`"
             }
-          ],
+          },
           "name": "candidate",
           "op": {
             "list": {
@@ -1151,68 +1218,62 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /candidates/",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "callback",
-                        "orig": "callback",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "callback",
+                        "or": "callback",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "format",
-                        "orig": "format",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "format",
+                        "or": "format",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": 20,
-                        "kind": "query",
-                        "name": "limit",
-                        "orig": "limit",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 20,
+                        "k": "query",
+                        "n": "limit",
+                        "or": "limit",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "example": 0,
-                        "kind": "query",
-                        "name": "offset",
-                        "orig": "offset",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 0,
+                        "k": "query",
+                        "n": "offset",
+                        "or": "offset",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "pretty",
-                        "orig": "pretty",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "pretty",
+                        "or": "pretty",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /candidates/",
-                    "json": "{\"operationId\":\"getCandidates\",\"parameters\":[{\"description\":\"Number of results per page (default: 20)\",\"in\":\"query\",\"name\":\"limit\",\"schema\":{\"default\":20,\"type\":\"integer\"}},{\"description\":\"Offset for pagination\",\"in\":\"query\",\"name\":\"offset\",\"schema\":{\"default\":0,\"type\":\"integer\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"meta\":{\"properties\":{\"next\":{\"nullable\":true,\"type\":\"string\"},\"previous\":{\"nullable\":true,\"type\":\"string\"},\"total_count\":{\"type\":\"integer\"}},\"type\":\"object\"},\"objects\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/candidates/",
-                  "segments": [
-                    {
-                      "lit": "candidates"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/candidates/",
+                  "q": {
                     "exist": [
                       "callback",
                       "format",
@@ -1221,7 +1282,13 @@
                       "pretty"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "candidates"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1238,20 +1305,22 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "meta",
-              "req": false,
-              "type": "`$OBJECT`"
+          "fields": {
+            "meta": {
+              "a": true,
+              "h": "Meta",
+              "n": "meta",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "objects",
-              "req": false,
-              "type": "`$ARRAY`"
+            "objects": {
+              "a": true,
+              "h": "Objects",
+              "n": "objects",
+              "r": false,
+              "t": "`$ARRAY`"
             }
-          ],
+          },
           "name": "election",
           "op": {
             "list": {
@@ -1259,68 +1328,62 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /elections/",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "callback",
-                        "orig": "callback",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "callback",
+                        "or": "callback",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "format",
-                        "orig": "format",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "format",
+                        "or": "format",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": 20,
-                        "kind": "query",
-                        "name": "limit",
-                        "orig": "limit",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 20,
+                        "k": "query",
+                        "n": "limit",
+                        "or": "limit",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "example": 0,
-                        "kind": "query",
-                        "name": "offset",
-                        "orig": "offset",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 0,
+                        "k": "query",
+                        "n": "offset",
+                        "or": "offset",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "pretty",
-                        "orig": "pretty",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "pretty",
+                        "or": "pretty",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /elections/",
-                    "json": "{\"operationId\":\"getElections\",\"parameters\":[{\"description\":\"Number of results per page (default: 20)\",\"in\":\"query\",\"name\":\"limit\",\"schema\":{\"default\":20,\"type\":\"integer\"}},{\"description\":\"Offset for pagination\",\"in\":\"query\",\"name\":\"offset\",\"schema\":{\"default\":0,\"type\":\"integer\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"meta\":{\"properties\":{\"next\":{\"nullable\":true,\"type\":\"string\"},\"previous\":{\"nullable\":true,\"type\":\"string\"},\"total_count\":{\"type\":\"integer\"}},\"type\":\"object\"},\"objects\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/elections/",
-                  "segments": [
-                    {
-                      "lit": "elections"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/elections/",
+                  "q": {
                     "exist": [
                       "callback",
                       "format",
@@ -1329,7 +1392,13 @@
                       "pretty"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "elections"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1346,63 +1415,71 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "boundaries_centroid",
-              "req": false,
-              "short": "Boundaries containing the postal code's centroid",
-              "type": "`$ARRAY`"
+          "fields": {
+            "boundaries_centroid": {
+              "a": true,
+              "h": "Boundaries Centroid",
+              "n": "boundaries_centroid",
+              "r": false,
+              "sh": "Boundaries containing the postal code's centroid",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "boundaries_concordance",
-              "req": false,
-              "short": "Boundaries linked to postal code via official data",
-              "type": "`$ARRAY`"
+            "boundaries_concordance": {
+              "a": true,
+              "h": "Boundaries Concordance",
+              "n": "boundaries_concordance",
+              "r": false,
+              "sh": "Boundaries linked to postal code via official data",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "centroid",
-              "req": false,
-              "type": "`$OBJECT`"
+            "centroid": {
+              "a": true,
+              "h": "Centroid",
+              "n": "centroid",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "city",
-              "req": false,
-              "short": "City name",
-              "type": "`$STRING`"
+            "city": {
+              "a": true,
+              "h": "City",
+              "n": "city",
+              "r": false,
+              "sh": "City name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "code",
-              "req": false,
-              "short": "The postal code",
-              "type": "`$STRING`"
+            "code": {
+              "a": true,
+              "h": "Code",
+              "n": "code",
+              "r": false,
+              "sh": "The postal code",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "province",
-              "req": false,
-              "short": "Province code",
-              "type": "`$STRING`"
+            "province": {
+              "a": true,
+              "h": "Province",
+              "n": "province",
+              "r": false,
+              "sh": "Province code",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "representatives_centroid",
-              "req": false,
-              "short": "Representatives for boundaries containing centroid",
-              "type": "`$ARRAY`"
+            "representatives_centroid": {
+              "a": true,
+              "h": "Representatives Centroid",
+              "n": "representatives_centroid",
+              "r": false,
+              "sh": "Representatives for boundaries containing centroid",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "representatives_concordance",
-              "req": false,
-              "short": "Representatives for boundaries via concordance",
-              "type": "`$ARRAY`"
+            "representatives_concordance": {
+              "a": true,
+              "h": "Representatives Concordance",
+              "n": "representatives_concordance",
+              "r": false,
+              "sh": "Representatives for boundaries via concordance",
+              "t": "`$ARRAY`"
             }
-          ],
+          },
           "name": "postal_code",
           "op": {
             "load": {
@@ -1410,76 +1487,62 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /postcodes/{postalCode}/",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "postal_code",
-                        "orig": "postal_code",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "postal_code",
+                        "or": "postal_code",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "callback",
-                        "orig": "callback",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "callback",
+                        "or": "callback",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "format",
-                        "orig": "format",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "format",
+                        "or": "format",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "pretty",
-                        "orig": "pretty",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "pretty",
+                        "or": "pretty",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "set",
-                        "orig": "set",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "set",
+                        "or": "set",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /postcodes/{postalCode}/",
-                    "json": "{\"operationId\":\"getByPostalCode\",\"parameters\":[{\"description\":\"Canadian postal code in uppercase with no spaces (e.g., L5G4L3)\",\"in\":\"path\",\"name\":\"postalCode\",\"required\":true,\"schema\":{\"pattern\":\"^[A-Z][0-9][A-Z][0-9][A-Z][0-9]$\",\"type\":\"string\"}},{\"description\":\"Limit results to specific boundary sets (comma-separated)\",\"in\":\"query\",\"name\":\"sets\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"boundaries_centroid\":{\"description\":\"Boundaries containing the postal code's centroid\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"boundaries_concordance\":{\"description\":\"Boundaries linked to postal code via official data\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"centroid\":{\"properties\":{\"coordinates\":{\"items\":{\"type\":\"number\"},\"type\":\"array\"},\"type\":{\"type\":\"string\"}},\"type\":\"object\"},\"city\":{\"description\":\"City name\",\"type\":\"string\"},\"code\":{\"description\":\"The postal code\",\"type\":\"string\"},\"province\":{\"description\":\"Province code\",\"type\":\"string\"},\"representatives_centroid\":{\"description\":\"Representatives for boundaries containing centroid\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"representatives_concordance\":{\"description\":\"Representatives for boundaries via concordance\",\"items\":{\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"503\":{\"description\":\"Rate limit exceeded\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/postcodes/{postalCode}/",
-                  "rename": {
-                    "param": {
-                      "postalCode": "postal_code"
-                    }
-                  },
-                  "segments": [
-                    {
-                      "lit": "postcodes"
-                    },
-                    {
-                      "var": "postal_code"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/postcodes/{postalCode}/",
+                  "q": {
                     "exist": [
                       "callback",
                       "format",
@@ -1488,7 +1551,20 @@
                       "set"
                     ]
                   },
-                  "transform": {
+                  "r": {
+                    "param": {
+                      "postalCode": "postal_code"
+                    }
+                  },
+                  "s": [
+                    {
+                      "lit": "postcodes"
+                    },
+                    {
+                      "var": "postal_code"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1497,289 +1573,297 @@
             }
           },
           "relations": {
-            "ancestors": [
-              [
-                "postcode"
-              ]
-            ]
+            "ancestors": []
           }
         },
-        "representatif": {
+        "representative": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "district_id",
-              "req": false,
-              "short": "District identifier if available",
-              "type": "`$STRING`"
+          "fields": {
+            "district_id": {
+              "a": true,
+              "h": "District Id",
+              "n": "district_id",
+              "r": false,
+              "sh": "District identifier if available",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "district_name",
-              "req": true,
-              "short": "Name of the electoral district",
-              "type": "`$STRING`"
+            "district_name": {
+              "a": true,
+              "h": "District Name",
+              "n": "district_name",
+              "r": true,
+              "sh": "Name of the electoral district",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "elected_office",
-              "req": true,
-              "short": "Type of office (e.g., MP, MLA, Mayor, Councillor, Alderman)",
-              "type": "`$STRING`"
+            "elected_office": {
+              "a": true,
+              "h": "Elected Office",
+              "n": "elected_office",
+              "r": true,
+              "sh": "Type of office (e.g., MP, MLA, Mayor, Councillor, Alderman)",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "email",
-              "name": "email",
-              "req": false,
-              "short": "Email address",
-              "type": "`$STRING`"
+            "email": {
+              "a": true,
+              "fo": "email",
+              "h": "Email",
+              "n": "email",
+              "r": false,
+              "sh": "Email address",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "extra",
-              "req": false,
-              "short": "Additional data not covered by standard fields",
-              "type": "`$OBJECT`"
+            "extra": {
+              "a": true,
+              "h": "Extra",
+              "n": "extra",
+              "r": false,
+              "sh": "Additional data not covered by standard fields",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "first_name",
-              "req": false,
-              "short": "First name",
-              "type": "`$STRING`"
+            "first_name": {
+              "a": true,
+              "h": "First Name",
+              "n": "first_name",
+              "r": false,
+              "sh": "First name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "gender",
-              "req": false,
-              "short": "Gender",
-              "type": "`$STRING`"
+            "gender": {
+              "a": true,
+              "h": "Gender",
+              "n": "gender",
+              "r": false,
+              "sh": "Gender",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "last_name",
-              "req": false,
-              "short": "Last name",
-              "type": "`$STRING`"
+            "last_name": {
+              "a": true,
+              "h": "Last Name",
+              "n": "last_name",
+              "r": false,
+              "sh": "Last name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "meta",
-              "req": false,
-              "type": "`$OBJECT`"
+            "meta": {
+              "a": true,
+              "h": "Meta",
+              "n": "meta",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": true,
-              "short": "Full name of the representative",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": true,
+              "sh": "Full name of the representative",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "objects",
-              "req": false,
-              "type": "`$ARRAY`"
+            "objects": {
+              "a": true,
+              "h": "Objects",
+              "n": "objects",
+              "r": false,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "offices",
-              "req": false,
-              "short": "Contact information for representative's offices",
-              "type": "`$ARRAY`"
+            "offices": {
+              "a": true,
+              "h": "Offices",
+              "n": "offices",
+              "r": false,
+              "sh": "Contact information for representative's offices",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "party_name",
-              "req": false,
-              "short": "Political party name",
-              "type": "`$STRING`"
+            "party_name": {
+              "a": true,
+              "h": "Party Name",
+              "n": "party_name",
+              "r": false,
+              "sh": "Political party name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "personal_url",
-              "req": false,
-              "short": "Personal website not on official legislature site",
-              "type": "`$STRING`"
+            "personal_url": {
+              "a": true,
+              "h": "Personal Url",
+              "n": "personal_url",
+              "r": false,
+              "sh": "Personal website not on official legislature site",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "photo_url",
-              "req": false,
-              "short": "URL to representative's photo",
-              "type": "`$STRING`"
+            "photo_url": {
+              "a": true,
+              "h": "Photo Url",
+              "n": "photo_url",
+              "r": false,
+              "sh": "URL to representative's photo",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "source_url",
-              "req": false,
-              "short": "URL where the data is scraped from",
-              "type": "`$STRING`"
+            "source_url": {
+              "a": true,
+              "h": "Source Url",
+              "n": "source_url",
+              "r": false,
+              "sh": "URL where the data is scraped from",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "url",
-              "req": false,
-              "short": "Representative's page on official legislature site",
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "h": "Url",
+              "n": "url",
+              "r": false,
+              "sh": "Representative's page on official legislature site",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
           },
-          "name": "representatif",
+          "name": "representative",
           "op": {
             "list": {
               "input": "data",
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /representatives/",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "callback",
-                        "orig": "callback",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "callback",
+                        "or": "callback",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "district",
-                        "orig": "district",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "district",
+                        "or": "district",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "district_name",
-                        "orig": "district_name",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "district_name",
+                        "or": "district_name",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "elected_office",
-                        "orig": "elected_office",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "elected_office",
+                        "or": "elected_office",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "first_name",
-                        "orig": "first_name",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "first_name",
+                        "or": "first_name",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "format",
-                        "orig": "format",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "format",
+                        "or": "format",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "gender",
-                        "orig": "gender",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "gender",
+                        "or": "gender",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "last_name",
-                        "orig": "last_name",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "last_name",
+                        "or": "last_name",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": 20,
-                        "kind": "query",
-                        "name": "limit",
-                        "orig": "limit",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 20,
+                        "k": "query",
+                        "n": "limit",
+                        "or": "limit",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "name",
-                        "orig": "name",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "name",
+                        "or": "name",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": 0,
-                        "kind": "query",
-                        "name": "offset",
-                        "orig": "offset",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 0,
+                        "k": "query",
+                        "n": "offset",
+                        "or": "offset",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "party_name",
-                        "orig": "party_name",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "party_name",
+                        "or": "party_name",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "point",
-                        "orig": "point",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "point",
+                        "or": "point",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "pretty",
-                        "orig": "pretty",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "pretty",
+                        "or": "pretty",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /representatives/",
-                    "json": "{\"operationId\":\"getRepresentatives\",\"parameters\":[{\"description\":\"Number of results per page (default: 20)\",\"in\":\"query\",\"name\":\"limit\",\"schema\":{\"default\":20,\"type\":\"integer\"}},{\"description\":\"Offset for pagination\",\"in\":\"query\",\"name\":\"offset\",\"schema\":{\"default\":0,\"type\":\"integer\"}},{\"description\":\"Find representatives by latitude,longitude (e.g., 45.524,-73.596)\",\"in\":\"query\",\"name\":\"point\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by districts (comma-separated)\",\"in\":\"query\",\"name\":\"districts\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by representative name\",\"in\":\"query\",\"name\":\"name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by first name\",\"in\":\"query\",\"name\":\"first_name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by last name\",\"in\":\"query\",\"name\":\"last_name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by gender (M or F)\",\"in\":\"query\",\"name\":\"gender\",\"schema\":{\"enum\":[\"M\",\"F\"],\"type\":\"string\"}},{\"description\":\"Filter by district name\",\"in\":\"query\",\"name\":\"district_name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by elected office (e.g., MP, MLA, Mayor, Councillor)\",\"in\":\"query\",\"name\":\"elected_office\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by party name\",\"in\":\"query\",\"name\":\"party_name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"meta\":{\"properties\":{\"next\":{\"nullable\":true,\"type\":\"string\"},\"previous\":{\"nullable\":true,\"type\":\"string\"},\"total_count\":{\"type\":\"integer\"}},\"type\":\"object\"},\"objects\":{\"items\":{\"properties\":{\"district_id\":{\"description\":\"District identifier if available\",\"type\":\"string\"},\"district_name\":{\"description\":\"Name of the electoral district\",\"type\":\"string\"},\"elected_office\":{\"description\":\"Type of office (e.g., MP, MLA, Mayor, Councillor, Alderman)\",\"type\":\"string\"},\"email\":{\"description\":\"Email address\",\"format\":\"email\",\"type\":\"string\"},\"extra\":{\"description\":\"Additional data not covered by standard fields\",\"type\":\"object\"},\"first_name\":{\"description\":\"First name\",\"type\":\"string\"},\"gender\":{\"description\":\"Gender\",\"enum\":[\"M\",\"F\"],\"type\":\"string\"},\"last_name\":{\"description\":\"Last name\",\"type\":\"string\"},\"name\":{\"description\":\"Full name of the representative\",\"type\":\"string\"},\"offices\":{\"description\":\"Contact information for representative's offices\",\"items\":{\"properties\":{\"fax\":{\"description\":\"Fax number\",\"type\":\"string\"},\"postal\":{\"description\":\"Mailing address\",\"type\":\"string\"},\"tel\":{\"description\":\"Telephone number\",\"type\":\"string\"},\"type\":{\"description\":\"Office type (e.g., constituency, legislature)\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"party_name\":{\"description\":\"Political party name\",\"type\":\"string\"},\"personal_url\":{\"description\":\"Personal website not on official legislature site\",\"type\":\"string\"},\"photo_url\":{\"description\":\"URL to representative's photo\",\"type\":\"string\"},\"source_url\":{\"description\":\"URL where the data is scraped from\",\"type\":\"string\"},\"url\":{\"description\":\"Representative's page on official legislature site\",\"type\":\"string\"}},\"required\":[\"name\",\"district_name\",\"elected_office\"],\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/representatives/",
-                  "segments": [
-                    {
-                      "lit": "representatives"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/representatives/",
+                  "q": {
                     "exist": [
                       "callback",
                       "district",
@@ -1797,74 +1881,88 @@
                       "pretty"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "representatives"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
                 },
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /boundaries/{boundarySet}/{boundary}/representatives/",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "boundary",
-                        "orig": "boundary",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "boundary",
+                        "or": "boundary",
+                        "r": true,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "boundary_set",
-                        "orig": "boundary_set",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "boundary_set",
+                        "or": "boundary_set",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "callback",
-                        "orig": "callback",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "callback",
+                        "or": "callback",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "format",
-                        "orig": "format",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "format",
+                        "or": "format",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "pretty",
-                        "orig": "pretty",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "pretty",
+                        "or": "pretty",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /boundaries/{boundarySet}/{boundary}/representatives/",
-                    "json": "{\"operationId\":\"getBoundaryRepresentatives\",\"parameters\":[{\"description\":\"Boundary set identifier\",\"in\":\"path\",\"name\":\"boundarySet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Boundary identifier\",\"in\":\"path\",\"name\":\"boundary\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"objects\":{\"items\":{\"properties\":{\"district_id\":{\"description\":\"District identifier if available\",\"type\":\"string\"},\"district_name\":{\"description\":\"Name of the electoral district\",\"type\":\"string\"},\"elected_office\":{\"description\":\"Type of office (e.g., MP, MLA, Mayor, Councillor, Alderman)\",\"type\":\"string\"},\"email\":{\"description\":\"Email address\",\"format\":\"email\",\"type\":\"string\"},\"extra\":{\"description\":\"Additional data not covered by standard fields\",\"type\":\"object\"},\"first_name\":{\"description\":\"First name\",\"type\":\"string\"},\"gender\":{\"description\":\"Gender\",\"enum\":[\"M\",\"F\"],\"type\":\"string\"},\"last_name\":{\"description\":\"Last name\",\"type\":\"string\"},\"name\":{\"description\":\"Full name of the representative\",\"type\":\"string\"},\"offices\":{\"description\":\"Contact information for representative's offices\",\"items\":{\"properties\":{\"fax\":{\"description\":\"Fax number\",\"type\":\"string\"},\"postal\":{\"description\":\"Mailing address\",\"type\":\"string\"},\"tel\":{\"description\":\"Telephone number\",\"type\":\"string\"},\"type\":{\"description\":\"Office type (e.g., constituency, legislature)\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"party_name\":{\"description\":\"Political party name\",\"type\":\"string\"},\"personal_url\":{\"description\":\"Personal website not on official legislature site\",\"type\":\"string\"},\"photo_url\":{\"description\":\"URL to representative's photo\",\"type\":\"string\"},\"source_url\":{\"description\":\"URL where the data is scraped from\",\"type\":\"string\"},\"url\":{\"description\":\"Representative's page on official legislature site\",\"type\":\"string\"}},\"required\":[\"name\",\"district_name\",\"elected_office\"],\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/boundaries/{boundarySet}/{boundary}/representatives/",
+                  "q": {
+                    "exist": [
+                      "boundary",
+                      "boundary_set",
+                      "callback",
+                      "format",
+                      "pretty"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/boundaries/{boundarySet}/{boundary}/representatives/",
-                  "rename": {
+                  "r": {
                     "param": {
                       "boundarySet": "boundary_set"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "boundaries"
                     },
@@ -1878,16 +1976,7 @@
                       "lit": "representatives"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "boundary",
-                      "boundary_set",
-                      "callback",
-                      "format",
-                      "pretty"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.objects`"
                   }
@@ -1899,150 +1988,136 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /representatives/{representativeSet}/",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "representative_set",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "representative_set",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "callback",
-                        "orig": "callback",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "callback",
+                        "or": "callback",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "district_name",
-                        "orig": "district_name",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "district_name",
+                        "or": "district_name",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "elected_office",
-                        "orig": "elected_office",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "elected_office",
+                        "or": "elected_office",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "first_name",
-                        "orig": "first_name",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "first_name",
+                        "or": "first_name",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "format",
-                        "orig": "format",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "format",
+                        "or": "format",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "gender",
-                        "orig": "gender",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "gender",
+                        "or": "gender",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "last_name",
-                        "orig": "last_name",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "last_name",
+                        "or": "last_name",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": 20,
-                        "kind": "query",
-                        "name": "limit",
-                        "orig": "limit",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 20,
+                        "k": "query",
+                        "n": "limit",
+                        "or": "limit",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "name",
-                        "orig": "name",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "name",
+                        "or": "name",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": 0,
-                        "kind": "query",
-                        "name": "offset",
-                        "orig": "offset",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 0,
+                        "k": "query",
+                        "n": "offset",
+                        "or": "offset",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "party_name",
-                        "orig": "party_name",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "party_name",
+                        "or": "party_name",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "point",
-                        "orig": "point",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "point",
+                        "or": "point",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "pretty",
-                        "orig": "pretty",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "pretty",
+                        "or": "pretty",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /representatives/{representativeSet}/",
-                    "json": "{\"operationId\":\"getRepresentativesFromSet\",\"parameters\":[{\"description\":\"Representative set identifier (e.g., house-of-commons)\",\"in\":\"path\",\"name\":\"representativeSet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Number of results per page\",\"in\":\"query\",\"name\":\"limit\",\"schema\":{\"default\":20,\"type\":\"integer\"}},{\"description\":\"Offset for pagination\",\"in\":\"query\",\"name\":\"offset\",\"schema\":{\"default\":0,\"type\":\"integer\"}},{\"description\":\"Find representatives by latitude,longitude\",\"in\":\"query\",\"name\":\"point\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by representative name\",\"in\":\"query\",\"name\":\"name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by first name\",\"in\":\"query\",\"name\":\"first_name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by last name\",\"in\":\"query\",\"name\":\"last_name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by gender\",\"in\":\"query\",\"name\":\"gender\",\"schema\":{\"enum\":[\"M\",\"F\"],\"type\":\"string\"}},{\"description\":\"Filter by district name\",\"in\":\"query\",\"name\":\"district_name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by elected office\",\"in\":\"query\",\"name\":\"elected_office\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter by party name\",\"in\":\"query\",\"name\":\"party_name\",\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"meta\":{\"properties\":{\"next\":{\"nullable\":true,\"type\":\"string\"},\"previous\":{\"nullable\":true,\"type\":\"string\"},\"total_count\":{\"type\":\"integer\"}},\"type\":\"object\"},\"objects\":{\"items\":{\"properties\":{\"district_id\":{\"description\":\"District identifier if available\",\"type\":\"string\"},\"district_name\":{\"description\":\"Name of the electoral district\",\"type\":\"string\"},\"elected_office\":{\"description\":\"Type of office (e.g., MP, MLA, Mayor, Councillor, Alderman)\",\"type\":\"string\"},\"email\":{\"description\":\"Email address\",\"format\":\"email\",\"type\":\"string\"},\"extra\":{\"description\":\"Additional data not covered by standard fields\",\"type\":\"object\"},\"first_name\":{\"description\":\"First name\",\"type\":\"string\"},\"gender\":{\"description\":\"Gender\",\"enum\":[\"M\",\"F\"],\"type\":\"string\"},\"last_name\":{\"description\":\"Last name\",\"type\":\"string\"},\"name\":{\"description\":\"Full name of the representative\",\"type\":\"string\"},\"offices\":{\"description\":\"Contact information for representative's offices\",\"items\":{\"properties\":{\"fax\":{\"description\":\"Fax number\",\"type\":\"string\"},\"postal\":{\"description\":\"Mailing address\",\"type\":\"string\"},\"tel\":{\"description\":\"Telephone number\",\"type\":\"string\"},\"type\":{\"description\":\"Office type (e.g., constituency, legislature)\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"party_name\":{\"description\":\"Political party name\",\"type\":\"string\"},\"personal_url\":{\"description\":\"Personal website not on official legislature site\",\"type\":\"string\"},\"photo_url\":{\"description\":\"URL to representative's photo\",\"type\":\"string\"},\"source_url\":{\"description\":\"URL where the data is scraped from\",\"type\":\"string\"},\"url\":{\"description\":\"Representative's page on official legislature site\",\"type\":\"string\"}},\"required\":[\"name\",\"district_name\",\"elected_office\"],\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/representatives/{representativeSet}/",
-                  "rename": {
-                    "param": {
-                      "representativeSet": "id"
-                    }
-                  },
-                  "segments": [
-                    {
-                      "lit": "representatives"
-                    },
-                    {
-                      "var": "id"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/representatives/{representativeSet}/",
+                  "q": {
                     "exist": [
                       "callback",
                       "district_name",
@@ -2060,7 +2135,20 @@
                       "pretty"
                     ]
                   },
-                  "transform": {
+                  "r": {
+                    "param": {
+                      "representativeSet": "id"
+                    }
+                  },
+                  "s": [
+                    {
+                      "lit": "representatives"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -2071,7 +2159,7 @@
           "relations": {
             "ancestors": [
               [
-                "boundary"
+                "$.main.kit.entity.boundary"
               ]
             ]
           }
@@ -2081,26 +2169,29 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "url",
-              "req": false,
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "h": "Url",
+              "n": "url",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -2112,68 +2203,62 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /representative-sets/",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "callback",
-                        "orig": "callback",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "callback",
+                        "or": "callback",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "format",
-                        "orig": "format",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "format",
+                        "or": "format",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": 20,
-                        "kind": "query",
-                        "name": "limit",
-                        "orig": "limit",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 20,
+                        "k": "query",
+                        "n": "limit",
+                        "or": "limit",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "example": 0,
-                        "kind": "query",
-                        "name": "offset",
-                        "orig": "offset",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 0,
+                        "k": "query",
+                        "n": "offset",
+                        "or": "offset",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "pretty",
-                        "orig": "pretty",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "pretty",
+                        "or": "pretty",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /representative-sets/",
-                    "json": "{\"operationId\":\"getRepresentativeSets\",\"parameters\":[{\"description\":\"Number of results per page (default: 20)\",\"in\":\"query\",\"name\":\"limit\",\"schema\":{\"default\":20,\"type\":\"integer\"}},{\"description\":\"Offset for pagination\",\"in\":\"query\",\"name\":\"offset\",\"schema\":{\"default\":0,\"type\":\"integer\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"meta\":{\"properties\":{\"next\":{\"nullable\":true,\"type\":\"string\"},\"previous\":{\"nullable\":true,\"type\":\"string\"},\"total_count\":{\"type\":\"integer\"}},\"type\":\"object\"},\"objects\":{\"items\":{\"properties\":{\"name\":{\"type\":\"string\"},\"url\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/representative-sets/",
-                  "segments": [
-                    {
-                      "lit": "representative-sets"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/representative-sets/",
+                  "q": {
                     "exist": [
                       "callback",
                       "format",
@@ -2182,7 +2267,13 @@
                       "pretty"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "representative-sets"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -2194,68 +2285,54 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /representative-sets/{representativeSet}/",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "representative_set",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "representative_set",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "callback",
-                        "orig": "callback",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "callback",
+                        "or": "callback",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "format",
-                        "orig": "format",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "format",
+                        "or": "format",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "pretty",
-                        "orig": "pretty",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "pretty",
+                        "or": "pretty",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /representative-sets/{representativeSet}/",
-                    "json": "{\"operationId\":\"getRepresentativeSet\",\"parameters\":[{\"description\":\"Representative set identifier (e.g., ontario-legislature)\",\"in\":\"path\",\"name\":\"representativeSet\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format\",\"in\":\"query\",\"name\":\"format\",\"schema\":{\"enum\":[\"json\",\"apibrowser\"],\"type\":\"string\"}},{\"description\":\"Pretty print JSON output\",\"in\":\"query\",\"name\":\"pretty\",\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"name\":{\"type\":\"string\"},\"url\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/representative-sets/{representativeSet}/",
-                  "rename": {
-                    "param": {
-                      "representativeSet": "id"
-                    }
-                  },
-                  "segments": [
-                    {
-                      "lit": "representative-sets"
-                    },
-                    {
-                      "var": "id"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/representative-sets/{representativeSet}/",
+                  "q": {
                     "exist": [
                       "callback",
                       "format",
@@ -2263,7 +2340,20 @@
                       "pretty"
                     ]
                   },
-                  "transform": {
+                  "r": {
+                    "param": {
+                      "representativeSet": "id"
+                    }
+                  },
+                  "s": [
+                    {
+                      "lit": "representative-sets"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -2692,13 +2782,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2708,19 +2798,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "boundary_ref01",
                 "srcdatavar": "boundary_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "boundary01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2740,13 +2830,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2756,19 +2846,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "boundary_set_ref01",
                 "srcdatavar": "boundary_set_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "boundary_set01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2788,13 +2878,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2814,13 +2904,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2840,19 +2930,19 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "postal_code_ref01",
                 "srcdatavar": "postal_code_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "postal_code01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2863,51 +2953,51 @@
             }
           ]
         },
-        "BasicRepresentatifFlow": {
+        "BasicRepresentativeFlow": {
           "active": true,
-          "entity": "representatif",
-          "key$": "BasicRepresentatifFlow",
+          "entity": "representative",
+          "key$": "BasicRepresentativeFlow",
           "kind": "basic",
-          "name": "BasicRepresentatifFlow",
+          "name": "BasicRepresentativeFlow",
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {
                 "boundary": "boundary01",
                 "boundary_set": "boundary_set01"
               },
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
-                    "ref": "representatif_ref01"
+                    "ref": "representative_ref01"
                   }
                 }
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "representatif_ref01",
-                "srcdatavar": "representatif_ref01_data",
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "representative_ref01",
+                "srcdatavar": "representative_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
-                "id": "representatif01"
+              "m": {
+                "id": "representative01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
-                    "mark": "Mark01-representatif_ref01"
+                    "mark": "Mark01-representative_ref01"
                   }
                 }
               ]
@@ -2923,13 +3013,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2939,19 +3029,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "representative_set_ref01",
                 "srcdatavar": "representative_set_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "representative_set01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {

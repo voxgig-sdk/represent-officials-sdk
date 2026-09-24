@@ -174,7 +174,7 @@ Meta-commands use the `/` prefix (everything else on a line is evaluated as boru
 
 The 7 entities this SDK exposes (any is valid as `<entity>`):
 
-boundary boundary_set candidate election postal_code representatif representative_set
+boundary boundary_set candidate election postal_code representative representative_set
 
 ## Explanation
 

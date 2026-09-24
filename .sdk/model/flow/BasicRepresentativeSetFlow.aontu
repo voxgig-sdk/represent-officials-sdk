@@ -1,0 +1,44 @@
+# BasicRepresentativeSetFlow
+
+main: kit: flow: BasicRepresentativeSetFlow:
+{
+  entity: "representative_set",
+  kind: "basic",
+  name: "BasicRepresentativeSetFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "representative_set_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "representative_set_ref01",
+        srcdatavar: "representative_set_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "representative_set01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-representative_set_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRepresentativeSetFlow"
+}

@@ -48,7 +48,7 @@ class ReadmeExamplesTest < Minitest::Test
     "Candidate" => "candidate",
     "Election" => "election",
     "PostalCode" => "postal_code",
-    "Representatif" => "representatif",
+    "Representative" => "representative",
     "RepresentativeSet" => "representative_set",
   }
 

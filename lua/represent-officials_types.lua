@@ -1,7 +1,7 @@
 -- Typed models for the RepresentOfficials SDK (LuaLS annotations).
 --
--- GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
--- params (op.<name>.points[].args.params[]). Field/param types come from the
+-- GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+-- params (op.<name>.points[].g.params[]). Field/param types come from the
 -- canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 -- @voxgig/apidef VALID_CANON). Annotations only — no runtime effect. Do not
 -- edit by hand.
@@ -100,7 +100,7 @@
 ---@field pretty? number
 ---@field set? string
 
----@class Representatif
+---@class Representative
 ---@field district_id? string
 ---@field district_name string
 ---@field elected_office string
@@ -120,7 +120,7 @@
 ---@field source_url? string
 ---@field url? string
 
----@class RepresentatifLoadMatch
+---@class RepresentativeLoadMatch
 ---@field id string
 ---@field callback? string
 ---@field district_name? string
@@ -136,7 +136,7 @@
 ---@field point? string
 ---@field pretty? number
 
----@class RepresentatifListMatch
+---@class RepresentativeListMatch
 ---@field callback? string
 ---@field district? string
 ---@field district_name? string

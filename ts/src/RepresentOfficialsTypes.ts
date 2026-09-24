@@ -1,7 +1,7 @@
 // Typed models for the RepresentOfficials SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
@@ -117,7 +117,7 @@ export interface PostalCodeLoadMatch {
   set?: string
 }
 
-export interface Representatif {
+export interface Representative {
   district_id?: string
   district_name: string
   elected_office: string
@@ -138,7 +138,7 @@ export interface Representatif {
   url?: string
 }
 
-export interface RepresentatifLoadMatch {
+export interface RepresentativeLoadMatch {
   id: string
   callback?: string
   district_name?: string
@@ -155,7 +155,7 @@ export interface RepresentatifLoadMatch {
   pretty?: number
 }
 
-export interface RepresentatifListMatch {
+export interface RepresentativeListMatch {
   callback?: string
   district?: string
   district_name?: string

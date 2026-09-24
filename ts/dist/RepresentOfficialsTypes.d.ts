@@ -94,7 +94,7 @@ export interface PostalCodeLoadMatch {
     pretty?: number;
     set?: string;
 }
-export interface Representatif {
+export interface Representative {
     district_id?: string;
     district_name: string;
     elected_office: string;
@@ -114,7 +114,7 @@ export interface Representatif {
     source_url?: string;
     url?: string;
 }
-export interface RepresentatifLoadMatch {
+export interface RepresentativeLoadMatch {
     id: string;
     callback?: string;
     district_name?: string;
@@ -130,7 +130,7 @@ export interface RepresentatifLoadMatch {
     point?: string;
     pretty?: number;
 }
-export interface RepresentatifListMatch {
+export interface RepresentativeListMatch {
     callback?: string;
     district?: string;
     district_name?: string;

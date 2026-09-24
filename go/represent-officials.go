@@ -56,8 +56,8 @@ func init() {
 	core.NewPostalCodeEntityFunc = func(client *core.RepresentOfficialsSDK, entopts map[string]any) core.RepresentOfficialsEntity {
 		return entity.NewPostalCodeEntity(client, entopts)
 	}
-	core.NewRepresentatifEntityFunc = func(client *core.RepresentOfficialsSDK, entopts map[string]any) core.RepresentOfficialsEntity {
-		return entity.NewRepresentatifEntity(client, entopts)
+	core.NewRepresentativeEntityFunc = func(client *core.RepresentOfficialsSDK, entopts map[string]any) core.RepresentOfficialsEntity {
+		return entity.NewRepresentativeEntity(client, entopts)
 	}
 	core.NewRepresentativeSetEntityFunc = func(client *core.RepresentOfficialsSDK, entopts map[string]any) core.RepresentOfficialsEntity {
 		return entity.NewRepresentativeSetEntity(client, entopts)

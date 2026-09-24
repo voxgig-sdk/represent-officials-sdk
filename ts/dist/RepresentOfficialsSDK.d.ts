@@ -3,7 +3,7 @@ import { BoundarySetEntity } from './entity/BoundarySetEntity';
 import { CandidateEntity } from './entity/CandidateEntity';
 import { ElectionEntity } from './entity/ElectionEntity';
 import { PostalCodeEntity } from './entity/PostalCodeEntity';
-import { RepresentatifEntity } from './entity/RepresentatifEntity';
+import { RepresentativeEntity } from './entity/RepresentativeEntity';
 import { RepresentativeSetEntity } from './entity/RepresentativeSetEntity';
 export type * from './RepresentOfficialsTypes';
 import { inspect } from 'node:util';
@@ -55,7 +55,7 @@ declare class RepresentOfficialsSDK {
     Candidate(entopts?: Record<string, any>): CandidateEntity;
     Election(entopts?: Record<string, any>): ElectionEntity;
     PostalCode(entopts?: Record<string, any>): PostalCodeEntity;
-    Representatif(entopts?: Record<string, any>): RepresentatifEntity;
+    Representative(entopts?: Record<string, any>): RepresentativeEntity;
     RepresentativeSet(entopts?: Record<string, any>): RepresentativeSetEntity;
     static test(testoptsarg?: any, sdkoptsarg?: any): RepresentOfficialsSDK;
     tester(testopts?: any, sdkopts?: any): RepresentOfficialsSDK;

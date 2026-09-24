@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 // Typed models for the RepresentOfficials SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 //
@@ -142,8 +142,8 @@ class PostalCodeLoadMatch
     public ?string $set = null;
 }
 
-/** Representatif entity data model. */
-class Representatif
+/** Representative entity data model. */
+class Representative
 {
     public ?string $district_id = null;
     public string $district_name;
@@ -165,8 +165,8 @@ class Representatif
     public ?string $url = null;
 }
 
-/** Request payload for Representatif#load. */
-class RepresentatifLoadMatch
+/** Request payload for Representative#load. */
+class RepresentativeLoadMatch
 {
     public string $id;
     public ?string $callback = null;
@@ -184,8 +184,8 @@ class RepresentatifLoadMatch
     public ?int $pretty = null;
 }
 
-/** Request payload for Representatif#list. */
-class RepresentatifListMatch
+/** Request payload for Representative#list. */
+class RepresentativeListMatch
 {
     public ?string $callback = null;
     public ?string $district = null;

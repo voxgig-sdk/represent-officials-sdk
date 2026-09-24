@@ -47,17 +47,14 @@ for (const boundary of boundarys) {
 }
 ```
 
-### 3. Load a postalcode
+### 3. Load a boundary
 
-PostalCode is nested under postal_code, so provide the `postal_code`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
-  const postalcode = await client.PostalCode().load({
-    postal_code: 'example_postal_code',
-  })
-  console.log(postalcode)
+  const boundary = await client.Boundary().load({ id: 'example_id' })
+  console.log(boundary)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -243,7 +240,7 @@ new RepresentOfficialsSDK(options?: {
 | `Candidate(data?)` | `CandidateEntity` | Create a Candidate entity instance. |
 | `Election(data?)` | `ElectionEntity` | Create an Election entity instance. |
 | `PostalCode(data?)` | `PostalCodeEntity` | Create a PostalCode entity instance. |
-| `Representatif(data?)` | `RepresentatifEntity` | Create a Representatif entity instance. |
+| `Representative(data?)` | `RepresentativeEntity` | Create a Representative entity instance. |
 | `RepresentativeSet(data?)` | `RepresentativeSetEntity` | Create a RepresentativeSet entity instance. |
 | `tester(testopts?, sdkopts?)` | `RepresentOfficialsSDK` | Create a test-mode client instance. |
 
@@ -381,7 +378,7 @@ Operations: load.
 
 API path: `/postcodes/{postalCode}/`
 
-#### Representatif
+#### Representative
 
 | Field | Description |
 | --- | --- |
@@ -573,9 +570,9 @@ const postal_code = await client.PostalCode().load({ postal_code: 'postal_code' 
 ```
 
 
-### Representatif
+### Representative
 
-Create an instance: `const representatif = client.Representatif()`
+Create an instance: `const representative = client.Representative()`
 
 #### Operations
 
@@ -610,13 +607,13 @@ Create an instance: `const representatif = client.Representatif()`
 #### Example: Load
 
 ```ts
-const representatif = await client.Representatif().load({ id: 'representatif_id' })
+const representative = await client.Representative().load({ id: 'representative_id' })
 ```
 
 #### Example: List
 
 ```ts
-const representatifs = await client.Representatif().list()
+const representatives = await client.Representative().list()
 ```
 
 
