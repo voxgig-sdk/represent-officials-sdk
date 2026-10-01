@@ -83,7 +83,7 @@ main: kit: entity: boundary: {
               {
                 k: "query"
                 n: "contain"
-                or: "contain"
+                or: "contains"
                 r: false
                 t: "`$STRING`"
               }
@@ -104,7 +104,7 @@ main: kit: entity: boundary: {
               {
                 k: "query"
                 n: "intersect"
-                or: "intersect"
+                or: "intersects"
                 r: false
                 t: "`$STRING`"
               }
@@ -141,14 +141,14 @@ main: kit: entity: boundary: {
               {
                 k: "query"
                 n: "set"
-                or: "set"
+                or: "sets"
                 r: false
                 t: "`$STRING`"
               }
               {
                 k: "query"
                 n: "touch"
-                or: "touch"
+                or: "touches"
                 r: false
                 t: "`$STRING`"
               }
@@ -178,7 +178,7 @@ main: kit: entity: boundary: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.objects`"
           }
         }
       ]
@@ -197,7 +197,7 @@ main: kit: entity: boundary: {
               {
                 k: "param"
                 n: "id"
-                or: "boundary_set"
+                or: "boundarySet"
                 r: true
                 t: "`$STRING`"
               }
@@ -213,7 +213,7 @@ main: kit: entity: boundary: {
               {
                 k: "query"
                 n: "contain"
-                or: "contain"
+                or: "contains"
                 r: false
                 t: "`$STRING`"
               }
@@ -314,7 +314,7 @@ main: kit: entity: boundary: {
               {
                 k: "param"
                 n: "boundary_set"
-                or: "boundary_set"
+                or: "boundarySet"
                 r: true
                 t: "`$STRING`"
               }
@@ -372,7 +372,7 @@ main: kit: entity: boundary: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.metadata`"
+            res: "`body`"
           }
         }
         {
@@ -393,7 +393,7 @@ main: kit: entity: boundary: {
               {
                 k: "param"
                 n: "boundary_set"
-                or: "boundary_set"
+                or: "boundarySet"
                 r: true
                 t: "`$STRING`"
               }
@@ -468,7 +468,7 @@ main: kit: entity: boundary: {
               {
                 k: "param"
                 n: "boundary_set"
-                or: "boundary_set"
+                or: "boundarySet"
                 r: true
                 t: "`$STRING`"
               }
@@ -543,7 +543,7 @@ main: kit: entity: boundary: {
               {
                 k: "param"
                 n: "boundary_set"
-                or: "boundary_set"
+                or: "boundarySet"
                 r: true
                 t: "`$STRING`"
               }
@@ -611,7 +611,7 @@ main: kit: entity: boundary: {
               {
                 k: "param"
                 n: "boundary_set"
-                or: "boundary_set"
+                or: "boundarySet"
                 r: true
                 t: "`$STRING`"
               }
@@ -675,7 +675,7 @@ main: kit: entity: boundary: {
               {
                 k: "param"
                 n: "boundary_set"
-                or: "boundary_set"
+                or: "boundarySet"
                 r: true
                 t: "`$STRING`"
               }
@@ -739,7 +739,7 @@ main: kit: entity: boundary: {
               {
                 k: "param"
                 n: "boundary_set"
-                or: "boundary_set"
+                or: "boundarySet"
                 r: true
                 t: "`$STRING`"
               }

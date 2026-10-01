@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 RepresentOfficialsUtility::setRegistrar(function (RepresentOfficialsUtility $u): void {
     $u->clean = [RepresentOfficialsClean::class, 'call'];
+    $u->clean_add = [RepresentOfficialsClean::class, 'add'];
+    $u->clean_explain = [RepresentOfficialsDone::class, 'clean_explain'];
     $u->done = [RepresentOfficialsDone::class, 'call'];
     $u->make_error = [RepresentOfficialsMakeError::class, 'call'];
     $u->feature_add = [RepresentOfficialsFeatureAdd::class, 'call'];

@@ -100,7 +100,7 @@ main: kit: entity: representative_set: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.objects`"
           }
         }
       ]
@@ -119,7 +119,7 @@ main: kit: entity: representative_set: {
               {
                 k: "param"
                 n: "id"
-                or: "representative_set"
+                or: "representativeSet"
                 r: true
                 t: "`$STRING`"
               }

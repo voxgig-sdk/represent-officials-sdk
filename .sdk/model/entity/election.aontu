@@ -89,7 +89,7 @@ main: kit: entity: election: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.objects`"
           }
         }
       ]

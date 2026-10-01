@@ -122,7 +122,7 @@ main: kit: entity: boundary_set: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.objects`"
           }
         }
       ]
@@ -141,7 +141,7 @@ main: kit: entity: boundary_set: {
               {
                 k: "param"
                 n: "id"
-                or: "boundary_set"
+                or: "boundarySet"
                 r: true
                 t: "`$STRING`"
               }

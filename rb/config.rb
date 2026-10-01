@@ -169,7 +169,7 @@ module RepresentOfficialsConfig
                   "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.objects`",
                   },
                   "args" => {
                     "query" => [
@@ -181,7 +181,7 @@ module RepresentOfficialsConfig
                       },
                       {
                         "name" => "contain",
-                        "orig" => "contain",
+                        "orig" => "contains",
                         "type" => "`$STRING`",
                         "kind" => "query",
                       },
@@ -199,7 +199,7 @@ module RepresentOfficialsConfig
                       },
                       {
                         "name" => "intersect",
-                        "orig" => "intersect",
+                        "orig" => "intersects",
                         "type" => "`$STRING`",
                         "kind" => "query",
                       },
@@ -231,13 +231,13 @@ module RepresentOfficialsConfig
                       },
                       {
                         "name" => "set",
-                        "orig" => "set",
+                        "orig" => "sets",
                         "type" => "`$STRING`",
                         "kind" => "query",
                       },
                       {
                         "name" => "touch",
-                        "orig" => "touch",
+                        "orig" => "touches",
                         "type" => "`$STRING`",
                         "kind" => "query",
                       },
@@ -294,7 +294,7 @@ module RepresentOfficialsConfig
                     "params" => [
                       {
                         "name" => "id",
-                        "orig" => "boundary_set",
+                        "orig" => "boundarySet",
                         "type" => "`$STRING`",
                         "kind" => "param",
                         "reqd" => true,
@@ -309,7 +309,7 @@ module RepresentOfficialsConfig
                       },
                       {
                         "name" => "contain",
-                        "orig" => "contain",
+                        "orig" => "contains",
                         "type" => "`$STRING`",
                         "kind" => "query",
                       },
@@ -394,7 +394,7 @@ module RepresentOfficialsConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body.metadata`",
+                    "res" => "`body`",
                   },
                   "args" => {
                     "params" => [
@@ -407,7 +407,7 @@ module RepresentOfficialsConfig
                       },
                       {
                         "name" => "boundary_set",
-                        "orig" => "boundary_set",
+                        "orig" => "boundarySet",
                         "type" => "`$STRING`",
                         "kind" => "param",
                         "reqd" => true,
@@ -488,7 +488,7 @@ module RepresentOfficialsConfig
                       },
                       {
                         "name" => "boundary_set",
-                        "orig" => "boundary_set",
+                        "orig" => "boundarySet",
                         "type" => "`$STRING`",
                         "kind" => "param",
                         "reqd" => true,
@@ -563,7 +563,7 @@ module RepresentOfficialsConfig
                       },
                       {
                         "name" => "boundary_set",
-                        "orig" => "boundary_set",
+                        "orig" => "boundarySet",
                         "type" => "`$STRING`",
                         "kind" => "param",
                         "reqd" => true,
@@ -638,7 +638,7 @@ module RepresentOfficialsConfig
                       },
                       {
                         "name" => "boundary_set",
-                        "orig" => "boundary_set",
+                        "orig" => "boundarySet",
                         "type" => "`$STRING`",
                         "kind" => "param",
                         "reqd" => true,
@@ -702,7 +702,7 @@ module RepresentOfficialsConfig
                     "params" => [
                       {
                         "name" => "boundary_set",
-                        "orig" => "boundary_set",
+                        "orig" => "boundarySet",
                         "type" => "`$STRING`",
                         "kind" => "param",
                         "reqd" => true,
@@ -765,7 +765,7 @@ module RepresentOfficialsConfig
                     "params" => [
                       {
                         "name" => "boundary_set",
-                        "orig" => "boundary_set",
+                        "orig" => "boundarySet",
                         "type" => "`$STRING`",
                         "kind" => "param",
                         "reqd" => true,
@@ -828,7 +828,7 @@ module RepresentOfficialsConfig
                     "params" => [
                       {
                         "name" => "boundary_set",
-                        "orig" => "boundary_set",
+                        "orig" => "boundarySet",
                         "type" => "`$STRING`",
                         "kind" => "param",
                         "reqd" => true,
@@ -913,7 +913,7 @@ module RepresentOfficialsConfig
                   "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.objects`",
                   },
                   "args" => {
                     "query" => [
@@ -1010,7 +1010,7 @@ module RepresentOfficialsConfig
                     "params" => [
                       {
                         "name" => "id",
-                        "orig" => "boundary_set",
+                        "orig" => "boundarySet",
                         "type" => "`$STRING`",
                         "kind" => "param",
                         "reqd" => true,
@@ -1087,7 +1087,7 @@ module RepresentOfficialsConfig
                   "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.objects`",
                   },
                   "args" => {
                     "query" => [
@@ -1176,7 +1176,7 @@ module RepresentOfficialsConfig
                   "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.objects`",
                   },
                   "args" => {
                     "query" => [
@@ -1316,7 +1316,7 @@ module RepresentOfficialsConfig
                     "params" => [
                       {
                         "name" => "postal_code",
-                        "orig" => "postal_code",
+                        "orig" => "postalCode",
                         "type" => "`$STRING`",
                         "kind" => "param",
                         "reqd" => true,
@@ -1343,7 +1343,7 @@ module RepresentOfficialsConfig
                       },
                       {
                         "name" => "set",
-                        "orig" => "set",
+                        "orig" => "sets",
                         "type" => "`$STRING`",
                         "kind" => "query",
                       },
@@ -1503,7 +1503,7 @@ module RepresentOfficialsConfig
                   "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.objects`",
                   },
                   "args" => {
                     "query" => [
@@ -1515,7 +1515,7 @@ module RepresentOfficialsConfig
                       },
                       {
                         "name" => "district",
-                        "orig" => "district",
+                        "orig" => "districts",
                         "type" => "`$STRING`",
                         "kind" => "query",
                       },
@@ -1658,7 +1658,7 @@ module RepresentOfficialsConfig
                       },
                       {
                         "name" => "boundary_set",
-                        "orig" => "boundary_set",
+                        "orig" => "boundarySet",
                         "type" => "`$STRING`",
                         "kind" => "param",
                         "reqd" => true,
@@ -1730,7 +1730,7 @@ module RepresentOfficialsConfig
                     "params" => [
                       {
                         "name" => "id",
-                        "orig" => "representative_set",
+                        "orig" => "representativeSet",
                         "type" => "`$STRING`",
                         "kind" => "param",
                         "reqd" => true,
@@ -1892,7 +1892,7 @@ module RepresentOfficialsConfig
                   "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.objects`",
                   },
                   "args" => {
                     "query" => [
@@ -1975,7 +1975,7 @@ module RepresentOfficialsConfig
                     "params" => [
                       {
                         "name" => "id",
-                        "orig" => "representative_set",
+                        "orig" => "representativeSet",
                         "type" => "`$STRING`",
                         "kind" => "param",
                         "reqd" => true,

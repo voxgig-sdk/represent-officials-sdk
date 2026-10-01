@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 RepresentOfficialsUtility.registrar = ->(u) {
   u.clean = RepresentOfficialsUtilities::Clean
+  u.clean_add = RepresentOfficialsUtilities::CleanAdd
+  u.clean_explain = RepresentOfficialsUtilities::CleanExplain
   u.done = RepresentOfficialsUtilities::Done
   u.make_error = RepresentOfficialsUtilities::MakeError
   u.feature_add = RepresentOfficialsUtilities::FeatureAdd

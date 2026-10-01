@@ -161,7 +161,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.objects`",
 								},
 								"args": map[string]any{
 									"query": []any{
@@ -173,7 +173,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "contain",
-											"orig": "contain",
+											"orig": "contains",
 											"type": "`$STRING`",
 											"kind": "query",
 										},
@@ -191,7 +191,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "intersect",
-											"orig": "intersect",
+											"orig": "intersects",
 											"type": "`$STRING`",
 											"kind": "query",
 										},
@@ -223,13 +223,13 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "set",
-											"orig": "set",
+											"orig": "sets",
 											"type": "`$STRING`",
 											"kind": "query",
 										},
 										map[string]any{
 											"name": "touch",
-											"orig": "touch",
+											"orig": "touches",
 											"type": "`$STRING`",
 											"kind": "query",
 										},
@@ -286,7 +286,7 @@ func MakeConfig() map[string]any {
 									"params": []any{
 										map[string]any{
 											"name": "id",
-											"orig": "boundary_set",
+											"orig": "boundarySet",
 											"type": "`$STRING`",
 											"kind": "param",
 											"reqd": true,
@@ -301,7 +301,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "contain",
-											"orig": "contain",
+											"orig": "contains",
 											"type": "`$STRING`",
 											"kind": "query",
 										},
@@ -386,7 +386,7 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body.metadata`",
+									"res": "`body`",
 								},
 								"args": map[string]any{
 									"params": []any{
@@ -399,7 +399,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "boundary_set",
-											"orig": "boundary_set",
+											"orig": "boundarySet",
 											"type": "`$STRING`",
 											"kind": "param",
 											"reqd": true,
@@ -480,7 +480,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "boundary_set",
-											"orig": "boundary_set",
+											"orig": "boundarySet",
 											"type": "`$STRING`",
 											"kind": "param",
 											"reqd": true,
@@ -555,7 +555,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "boundary_set",
-											"orig": "boundary_set",
+											"orig": "boundarySet",
 											"type": "`$STRING`",
 											"kind": "param",
 											"reqd": true,
@@ -630,7 +630,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "boundary_set",
-											"orig": "boundary_set",
+											"orig": "boundarySet",
 											"type": "`$STRING`",
 											"kind": "param",
 											"reqd": true,
@@ -694,7 +694,7 @@ func MakeConfig() map[string]any {
 									"params": []any{
 										map[string]any{
 											"name": "boundary_set",
-											"orig": "boundary_set",
+											"orig": "boundarySet",
 											"type": "`$STRING`",
 											"kind": "param",
 											"reqd": true,
@@ -757,7 +757,7 @@ func MakeConfig() map[string]any {
 									"params": []any{
 										map[string]any{
 											"name": "boundary_set",
-											"orig": "boundary_set",
+											"orig": "boundarySet",
 											"type": "`$STRING`",
 											"kind": "param",
 											"reqd": true,
@@ -820,7 +820,7 @@ func MakeConfig() map[string]any {
 									"params": []any{
 										map[string]any{
 											"name": "boundary_set",
-											"orig": "boundary_set",
+											"orig": "boundarySet",
 											"type": "`$STRING`",
 											"kind": "param",
 											"reqd": true,
@@ -905,7 +905,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.objects`",
 								},
 								"args": map[string]any{
 									"query": []any{
@@ -1002,7 +1002,7 @@ func MakeConfig() map[string]any {
 									"params": []any{
 										map[string]any{
 											"name": "id",
-											"orig": "boundary_set",
+											"orig": "boundarySet",
 											"type": "`$STRING`",
 											"kind": "param",
 											"reqd": true,
@@ -1079,7 +1079,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.objects`",
 								},
 								"args": map[string]any{
 									"query": []any{
@@ -1168,7 +1168,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.objects`",
 								},
 								"args": map[string]any{
 									"query": []any{
@@ -1308,7 +1308,7 @@ func MakeConfig() map[string]any {
 									"params": []any{
 										map[string]any{
 											"name": "postal_code",
-											"orig": "postal_code",
+											"orig": "postalCode",
 											"type": "`$STRING`",
 											"kind": "param",
 											"reqd": true,
@@ -1335,7 +1335,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "set",
-											"orig": "set",
+											"orig": "sets",
 											"type": "`$STRING`",
 											"kind": "query",
 										},
@@ -1495,7 +1495,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.objects`",
 								},
 								"args": map[string]any{
 									"query": []any{
@@ -1507,7 +1507,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "district",
-											"orig": "district",
+											"orig": "districts",
 											"type": "`$STRING`",
 											"kind": "query",
 										},
@@ -1650,7 +1650,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "boundary_set",
-											"orig": "boundary_set",
+											"orig": "boundarySet",
 											"type": "`$STRING`",
 											"kind": "param",
 											"reqd": true,
@@ -1722,7 +1722,7 @@ func MakeConfig() map[string]any {
 									"params": []any{
 										map[string]any{
 											"name": "id",
-											"orig": "representative_set",
+											"orig": "representativeSet",
 											"type": "`$STRING`",
 											"kind": "param",
 											"reqd": true,
@@ -1884,7 +1884,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.objects`",
 								},
 								"args": map[string]any{
 									"query": []any{
@@ -1967,7 +1967,7 @@ func MakeConfig() map[string]any {
 									"params": []any{
 										map[string]any{
 											"name": "id",
-											"orig": "representative_set",
+											"orig": "representativeSet",
 											"type": "`$STRING`",
 											"kind": "param",
 											"reqd": true,

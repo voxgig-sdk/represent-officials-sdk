@@ -157,7 +157,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.objects`",
                 },
                 ["args"] = {
                   ["query"] = {
@@ -169,7 +169,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "contain",
-                      ["orig"] = "contain",
+                      ["orig"] = "contains",
                       ["type"] = "`$STRING`",
                       ["kind"] = "query",
                     },
@@ -187,7 +187,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "intersect",
-                      ["orig"] = "intersect",
+                      ["orig"] = "intersects",
                       ["type"] = "`$STRING`",
                       ["kind"] = "query",
                     },
@@ -219,13 +219,13 @@ local function make_config()
                     },
                     {
                       ["name"] = "set",
-                      ["orig"] = "set",
+                      ["orig"] = "sets",
                       ["type"] = "`$STRING`",
                       ["kind"] = "query",
                     },
                     {
                       ["name"] = "touch",
-                      ["orig"] = "touch",
+                      ["orig"] = "touches",
                       ["type"] = "`$STRING`",
                       ["kind"] = "query",
                     },
@@ -282,7 +282,7 @@ local function make_config()
                   ["params"] = {
                     {
                       ["name"] = "id",
-                      ["orig"] = "boundary_set",
+                      ["orig"] = "boundarySet",
                       ["type"] = "`$STRING`",
                       ["kind"] = "param",
                       ["reqd"] = true,
@@ -297,7 +297,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "contain",
-                      ["orig"] = "contain",
+                      ["orig"] = "contains",
                       ["type"] = "`$STRING`",
                       ["kind"] = "query",
                     },
@@ -382,7 +382,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body.metadata`",
+                  ["res"] = "`body`",
                 },
                 ["args"] = {
                   ["params"] = {
@@ -395,7 +395,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "boundary_set",
-                      ["orig"] = "boundary_set",
+                      ["orig"] = "boundarySet",
                       ["type"] = "`$STRING`",
                       ["kind"] = "param",
                       ["reqd"] = true,
@@ -476,7 +476,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "boundary_set",
-                      ["orig"] = "boundary_set",
+                      ["orig"] = "boundarySet",
                       ["type"] = "`$STRING`",
                       ["kind"] = "param",
                       ["reqd"] = true,
@@ -551,7 +551,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "boundary_set",
-                      ["orig"] = "boundary_set",
+                      ["orig"] = "boundarySet",
                       ["type"] = "`$STRING`",
                       ["kind"] = "param",
                       ["reqd"] = true,
@@ -626,7 +626,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "boundary_set",
-                      ["orig"] = "boundary_set",
+                      ["orig"] = "boundarySet",
                       ["type"] = "`$STRING`",
                       ["kind"] = "param",
                       ["reqd"] = true,
@@ -690,7 +690,7 @@ local function make_config()
                   ["params"] = {
                     {
                       ["name"] = "boundary_set",
-                      ["orig"] = "boundary_set",
+                      ["orig"] = "boundarySet",
                       ["type"] = "`$STRING`",
                       ["kind"] = "param",
                       ["reqd"] = true,
@@ -753,7 +753,7 @@ local function make_config()
                   ["params"] = {
                     {
                       ["name"] = "boundary_set",
-                      ["orig"] = "boundary_set",
+                      ["orig"] = "boundarySet",
                       ["type"] = "`$STRING`",
                       ["kind"] = "param",
                       ["reqd"] = true,
@@ -816,7 +816,7 @@ local function make_config()
                   ["params"] = {
                     {
                       ["name"] = "boundary_set",
-                      ["orig"] = "boundary_set",
+                      ["orig"] = "boundarySet",
                       ["type"] = "`$STRING`",
                       ["kind"] = "param",
                       ["reqd"] = true,
@@ -901,7 +901,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.objects`",
                 },
                 ["args"] = {
                   ["query"] = {
@@ -998,7 +998,7 @@ local function make_config()
                   ["params"] = {
                     {
                       ["name"] = "id",
-                      ["orig"] = "boundary_set",
+                      ["orig"] = "boundarySet",
                       ["type"] = "`$STRING`",
                       ["kind"] = "param",
                       ["reqd"] = true,
@@ -1075,7 +1075,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.objects`",
                 },
                 ["args"] = {
                   ["query"] = {
@@ -1164,7 +1164,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.objects`",
                 },
                 ["args"] = {
                   ["query"] = {
@@ -1304,7 +1304,7 @@ local function make_config()
                   ["params"] = {
                     {
                       ["name"] = "postal_code",
-                      ["orig"] = "postal_code",
+                      ["orig"] = "postalCode",
                       ["type"] = "`$STRING`",
                       ["kind"] = "param",
                       ["reqd"] = true,
@@ -1331,7 +1331,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "set",
-                      ["orig"] = "set",
+                      ["orig"] = "sets",
                       ["type"] = "`$STRING`",
                       ["kind"] = "query",
                     },
@@ -1491,7 +1491,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.objects`",
                 },
                 ["args"] = {
                   ["query"] = {
@@ -1503,7 +1503,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "district",
-                      ["orig"] = "district",
+                      ["orig"] = "districts",
                       ["type"] = "`$STRING`",
                       ["kind"] = "query",
                     },
@@ -1646,7 +1646,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "boundary_set",
-                      ["orig"] = "boundary_set",
+                      ["orig"] = "boundarySet",
                       ["type"] = "`$STRING`",
                       ["kind"] = "param",
                       ["reqd"] = true,
@@ -1718,7 +1718,7 @@ local function make_config()
                   ["params"] = {
                     {
                       ["name"] = "id",
-                      ["orig"] = "representative_set",
+                      ["orig"] = "representativeSet",
                       ["type"] = "`$STRING`",
                       ["kind"] = "param",
                       ["reqd"] = true,
@@ -1880,7 +1880,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.objects`",
                 },
                 ["args"] = {
                   ["query"] = {
@@ -1963,7 +1963,7 @@ local function make_config()
                   ["params"] = {
                     {
                       ["name"] = "id",
-                      ["orig"] = "representative_set",
+                      ["orig"] = "representativeSet",
                       ["type"] = "`$STRING`",
                       ["kind"] = "param",
                       ["reqd"] = true,

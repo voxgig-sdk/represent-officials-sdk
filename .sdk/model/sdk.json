@@ -185,7 +185,7 @@
                         "a": true,
                         "k": "query",
                         "n": "contain",
-                        "or": "contain",
+                        "or": "contains",
                         "r": false,
                         "t": "`$STRING`"
                       },
@@ -209,7 +209,7 @@
                         "a": true,
                         "k": "query",
                         "n": "intersect",
-                        "or": "intersect",
+                        "or": "intersects",
                         "r": false,
                         "t": "`$STRING`"
                       },
@@ -251,7 +251,7 @@
                         "a": true,
                         "k": "query",
                         "n": "set",
-                        "or": "set",
+                        "or": "sets",
                         "r": false,
                         "t": "`$STRING`"
                       },
@@ -259,7 +259,7 @@
                         "a": true,
                         "k": "query",
                         "n": "touch",
-                        "or": "touch",
+                        "or": "touches",
                         "r": false,
                         "t": "`$STRING`"
                       }
@@ -291,7 +291,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.objects`"
                   }
                 }
               ]
@@ -313,7 +313,7 @@
                         "a": true,
                         "k": "param",
                         "n": "id",
-                        "or": "boundary_set",
+                        "or": "boundarySet",
                         "r": true,
                         "t": "`$STRING`"
                       }
@@ -331,7 +331,7 @@
                         "a": true,
                         "k": "query",
                         "n": "contain",
-                        "or": "contain",
+                        "or": "contains",
                         "r": false,
                         "t": "`$STRING`"
                       },
@@ -442,7 +442,7 @@
                         "a": true,
                         "k": "param",
                         "n": "boundary_set",
-                        "or": "boundary_set",
+                        "or": "boundarySet",
                         "r": true,
                         "t": "`$STRING`"
                       }
@@ -504,7 +504,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body.metadata`"
+                    "res": "`body`"
                   }
                 },
                 {
@@ -528,7 +528,7 @@
                         "a": true,
                         "k": "param",
                         "n": "boundary_set",
-                        "or": "boundary_set",
+                        "or": "boundarySet",
                         "r": true,
                         "t": "`$STRING`"
                       }
@@ -609,7 +609,7 @@
                         "a": true,
                         "k": "param",
                         "n": "boundary_set",
-                        "or": "boundary_set",
+                        "or": "boundarySet",
                         "r": true,
                         "t": "`$STRING`"
                       }
@@ -690,7 +690,7 @@
                         "a": true,
                         "k": "param",
                         "n": "boundary_set",
-                        "or": "boundary_set",
+                        "or": "boundarySet",
                         "r": true,
                         "t": "`$STRING`"
                       }
@@ -763,7 +763,7 @@
                         "a": true,
                         "k": "param",
                         "n": "boundary_set",
-                        "or": "boundary_set",
+                        "or": "boundarySet",
                         "r": true,
                         "t": "`$STRING`"
                       }
@@ -832,7 +832,7 @@
                         "a": true,
                         "k": "param",
                         "n": "boundary_set",
-                        "or": "boundary_set",
+                        "or": "boundarySet",
                         "r": true,
                         "t": "`$STRING`"
                       }
@@ -901,7 +901,7 @@
                         "a": true,
                         "k": "param",
                         "n": "boundary_set",
-                        "or": "boundary_set",
+                        "or": "boundarySet",
                         "r": true,
                         "t": "`$STRING`"
                       }
@@ -1100,7 +1100,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.objects`"
                   }
                 }
               ]
@@ -1122,7 +1122,7 @@
                         "a": true,
                         "k": "param",
                         "n": "id",
-                        "or": "boundary_set",
+                        "or": "boundarySet",
                         "r": true,
                         "t": "`$STRING`"
                       }
@@ -1290,7 +1290,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.objects`"
                   }
                 }
               ]
@@ -1400,7 +1400,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.objects`"
                   }
                 }
               ]
@@ -1499,7 +1499,7 @@
                         "a": true,
                         "k": "param",
                         "n": "postal_code",
-                        "or": "postal_code",
+                        "or": "postalCode",
                         "r": true,
                         "t": "`$STRING`"
                       }
@@ -1533,7 +1533,7 @@
                         "a": true,
                         "k": "query",
                         "n": "set",
-                        "or": "set",
+                        "or": "sets",
                         "r": false,
                         "t": "`$STRING`"
                       }
@@ -1756,7 +1756,7 @@
                         "a": true,
                         "k": "query",
                         "n": "district",
-                        "or": "district",
+                        "or": "districts",
                         "r": false,
                         "t": "`$STRING`"
                       },
@@ -1889,7 +1889,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.objects`"
                   }
                 },
                 {
@@ -1913,7 +1913,7 @@
                         "a": true,
                         "k": "param",
                         "n": "boundary_set",
-                        "or": "boundary_set",
+                        "or": "boundarySet",
                         "r": true,
                         "t": "`$STRING`"
                       }
@@ -2000,7 +2000,7 @@
                         "a": true,
                         "k": "param",
                         "n": "id",
-                        "or": "representative_set",
+                        "or": "representativeSet",
                         "r": true,
                         "t": "`$STRING`"
                       }
@@ -2275,7 +2275,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.objects`"
                   }
                 }
               ]
@@ -2297,7 +2297,7 @@
                         "a": true,
                         "k": "param",
                         "n": "id",
-                        "or": "representative_set",
+                        "or": "representativeSet",
                         "r": true,
                         "t": "`$STRING`"
                       }
@@ -3091,7 +3091,12 @@
         },
         "base": "http://localhost:8000",
         "clean": {
-          "keys": "key,token,id"
+          "active": true,
+          "hint": "0",
+          "keys": "key,secret,token,password,passwd,authorization,cookie,credential,signature",
+          "mask": "[redacted]",
+          "min": "4",
+          "values": ""
         },
         "entity": {
           "`$CHILD`": {

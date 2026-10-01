@@ -159,7 +159,7 @@ main: kit: entity: representative: {
               {
                 k: "query"
                 n: "district"
-                or: "district"
+                or: "districts"
                 r: false
                 t: "`$STRING`"
               }
@@ -278,7 +278,7 @@ main: kit: entity: representative: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.objects`"
           }
         }
         {
@@ -299,7 +299,7 @@ main: kit: entity: representative: {
               {
                 k: "param"
                 n: "boundary_set"
-                or: "boundary_set"
+                or: "boundarySet"
                 r: true
                 t: "`$STRING`"
               }
@@ -379,7 +379,7 @@ main: kit: entity: representative: {
               {
                 k: "param"
                 n: "id"
-                or: "representative_set"
+                or: "representativeSet"
                 r: true
                 t: "`$STRING`"
               }

@@ -78,7 +78,7 @@ main: kit: entity: postal_code: {
               {
                 k: "param"
                 n: "postal_code"
-                or: "postal_code"
+                or: "postalCode"
                 r: true
                 t: "`$STRING`"
               }
@@ -108,7 +108,7 @@ main: kit: entity: postal_code: {
               {
                 k: "query"
                 n: "set"
-                or: "set"
+                or: "sets"
                 r: false
                 t: "`$STRING`"
               }
