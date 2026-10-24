@@ -143,6 +143,89 @@ main: kit: entity: representative: {
       points: [
         {
           co: {
+            id: "GET /boundaries/{boundarySet}/{boundary}/representatives/"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "boundary"
+                or: "boundary"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "boundary_set"
+                or: "boundarySet"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "callback"
+                or: "callback"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "format"
+                or: "format"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "pretty"
+                or: "pretty"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/boundaries/{boundarySet}/{boundary}/representatives/"
+          q: {
+            exist: [
+              "boundary"
+              "boundary_set"
+            ]
+          }
+          r: {
+            param: {
+              boundarySet: "boundary_set"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "boundaries"
+            }
+            {
+              var: "boundary_set"
+            }
+            {
+              var: "boundary"
+            }
+            {
+              lit: "representatives"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.objects`"
+          }
+        }
+        {
+          co: {
             id: "GET /representatives/"
             source: "openapi3"
             version: 2
@@ -253,107 +336,11 @@ main: kit: entity: representative: {
           }
           m: "GET"
           o: "/representatives/"
-          q: {
-            exist: [
-              "callback"
-              "district"
-              "district_name"
-              "elected_office"
-              "first_name"
-              "format"
-              "gender"
-              "last_name"
-              "limit"
-              "name"
-              "offset"
-              "party_name"
-              "point"
-              "pretty"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
-            {
-              lit: "representatives"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body.objects`"
-          }
-        }
-        {
-          co: {
-            id: "GET /boundaries/{boundarySet}/{boundary}/representatives/"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "boundary"
-                or: "boundary"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "boundary_set"
-                or: "boundarySet"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-            query: [
-              {
-                k: "query"
-                n: "callback"
-                or: "callback"
-                r: false
-                t: "`$STRING`"
-              }
-              {
-                k: "query"
-                n: "format"
-                or: "format"
-                r: false
-                t: "`$STRING`"
-              }
-              {
-                k: "query"
-                n: "pretty"
-                or: "pretty"
-                r: false
-                t: "`$INTEGER`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/boundaries/{boundarySet}/{boundary}/representatives/"
-          q: {
-            exist: [
-              "boundary"
-              "boundary_set"
-              "callback"
-              "format"
-              "pretty"
-            ]
-          }
-          r: {
-            param: {
-              boundarySet: "boundary_set"
-            }
-          }
-          s: [
-            {
-              lit: "boundaries"
-            }
-            {
-              var: "boundary_set"
-            }
-            {
-              var: "boundary"
-            }
             {
               lit: "representatives"
             }
@@ -484,26 +471,17 @@ main: kit: entity: representative: {
           o: "/representatives/{representativeSet}/"
           q: {
             exist: [
-              "callback"
-              "district_name"
-              "elected_office"
-              "first_name"
-              "format"
-              "gender"
               "id"
-              "last_name"
-              "limit"
-              "name"
-              "offset"
-              "party_name"
-              "point"
-              "pretty"
             ]
           }
           r: {
             param: {
               representativeSet: "id"
             }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

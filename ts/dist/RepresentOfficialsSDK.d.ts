@@ -13,6 +13,19 @@ import { RepresentOfficialsEntityBase } from './RepresentOfficialsEntityBase';
 import { Utility } from './utility/Utility';
 import { BaseFeature } from './feature/base/BaseFeature';
 declare const stdutil: Utility;
+type DirectResult = {
+    ok: false;
+    err: any;
+    status?: undefined;
+    headers?: undefined;
+    data?: undefined;
+} | {
+    ok: boolean;
+    status: number;
+    headers: any;
+    data: any;
+    err?: any;
+};
 declare class RepresentOfficialsSDK {
     _mode: string;
     _options: any;
@@ -23,32 +36,8 @@ declare class RepresentOfficialsSDK {
     options(): any;
     utility(): any;
     prepare(fetchargs?: any): Promise<any>;
-    direct(fetchargs?: any): Promise<Error | {
-        ok: boolean;
-        err: any;
-        status?: undefined;
-        headers?: undefined;
-        data?: undefined;
-    } | {
-        ok: boolean;
-        status: number;
-        headers: any;
-        data: any;
-        err?: undefined;
-    }>;
-    _rawRequest(fetchargs?: any): Promise<Error | {
-        ok: boolean;
-        err: any;
-        status?: undefined;
-        headers?: undefined;
-        data?: undefined;
-    } | {
-        ok: boolean;
-        status: number;
-        headers: any;
-        data: any;
-        err?: undefined;
-    }>;
+    direct(fetchargs?: any): Promise<DirectResult>;
+    _rawRequest(fetchargs?: any): Promise<DirectResult>;
     graphql(query: string, variables?: any, ctrl?: any): Promise<any>;
     Boundary(entopts?: Record<string, any>): BoundaryEntity;
     BoundarySet(entopts?: Record<string, any>): BoundarySetEntity;
@@ -67,3 +56,4 @@ declare class RepresentOfficialsSDK {
 }
 declare const SDK: typeof RepresentOfficialsSDK;
 export { stdutil, config, BaseFeature, RepresentOfficialsEntityBase, RepresentOfficialsSDK, SDK, };
+export type { DirectResult };

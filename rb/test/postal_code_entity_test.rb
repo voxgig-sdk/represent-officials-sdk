@@ -6,28 +6,40 @@ require_relative "../RepresentOfficials_sdk"
 require_relative "runner"
 
 class PostalCodeEntityTest < Minitest::Test
+  # main.kit.test.live.strict is true (the default is true): a live
+  # request that fails, or a live test missing an input it needs,
+  # fails the test.
+  # An account with no record for a test to read skips it either way.
+  LIVE_STRICT = true
+
   def test_create_instance
     testsdk = RepresentOfficialsSDK.test(nil, nil)
     ent = testsdk.PostalCode(nil)
     assert !ent.nil?
   end
 
+  def test_validate
+    cfg = RepresentOfficialsConfig.shared_config
+    unless cfg["feature"].is_a?(Hash) && cfg["feature"].key?("validate")
+      skip("feature not present in this SDK: validate")
+    end
+    client = RepresentOfficialsSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
+    err = assert_raises(StandardError) do
+      client.PostalCode(nil).load({ "postal_code" => 1 }, nil)
+    end
+    assert_equal "validate_failed", err.code
+  end
+
   def test_basic_flow
     setup = postal_code_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["load"].each do |_op|
+    [].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "postal_code." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
         return
       end
-    end
-    # The basic flow consumes synthetic IDs from the fixture. In live mode
-    # without an *_ENTID env override, those IDs hit the live API and 4xx.
-    if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set REPRESENT_OFFICIALS_TEST_POSTAL_CODE_ENTID JSON to run live"
-      return
     end
     client = setup[:client]
 
@@ -39,12 +51,6 @@ class PostalCodeEntityTest < Minitest::Test
       postal_code_ref01_data = Helpers.to_map(postal_code_ref01_data_raw[0][1])
     end
 
-    # LOAD
-    postal_code_ref01_ent = client.PostalCode(nil)
-    postal_code_ref01_match_dt0 = {}
-    postal_code_ref01_data_dt0_loaded = postal_code_ref01_ent.load(postal_code_ref01_match_dt0, nil)
-    assert !postal_code_ref01_data_dt0_loaded.nil?
-
   end
 end
 
@@ -52,7 +58,7 @@ def postal_code_basic_setup(extra)
   Runner.load_env_local
 
   entity_data_file = File.join(__dir__, "..", "..", ".sdk", "test", "entity", "postal_code", "PostalCodeTestData.json")
-  entity_data_source = File.read(entity_data_file)
+  entity_data_source = File.read(entity_data_file, encoding: "UTF-8")
   entity_data = JSON.parse(entity_data_source)
 
   options = {}
@@ -71,9 +77,8 @@ def postal_code_basic_setup(extra)
     }
   )
 
-  # Detect ENTID env override before envOverride consumes it. When live
-  # mode is on without a real override, the basic test runs against synthetic
-  # IDs from the fixture and 4xx's. Surface this so the test can skip.
+  # Whether *_ENTID supplied the idmap, read before env_override consumes
+  # it: without it, the ids a live flow binds are the fixture's synthetic ones.
   entid_env_raw = ENV["REPRESENT_OFFICIALS_TEST_POSTAL_CODE_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 

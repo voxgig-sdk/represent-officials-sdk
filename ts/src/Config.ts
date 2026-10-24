@@ -102,6 +102,7 @@ class Config {
       },
       "optspec": {
         "clearTimer": "`$FUNCTION`",
+        "now": "`$FUNCTION`",
         "setTimer": "`$FUNCTION`"
       },
       "strict": false,
@@ -234,7 +235,8 @@ class Config {
                     "name": "external_id",
                     "orig": "external_id",
                     "type": "`$STRING`",
-                    "kind": "query"
+                    "kind": "query",
+                    "field": true
                   },
                   {
                     "name": "format",
@@ -259,7 +261,8 @@ class Config {
                     "name": "name",
                     "orig": "name",
                     "type": "`$STRING`",
-                    "kind": "query"
+                    "kind": "query",
+                    "field": true
                   },
                   {
                     "name": "offset",
@@ -288,20 +291,10 @@ class Config {
                   }
                 ]
               },
-              "select": {
-                "exist": [
-                  "callback",
-                  "contain",
-                  "external_id",
-                  "format",
-                  "intersect",
-                  "limit",
-                  "name",
-                  "offset",
-                  "pretty",
-                  "set",
-                  "touch"
-                ]
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -310,108 +303,6 @@ class Config {
           "input": "data",
           "name": "load",
           "points": [
-            {
-              "kind": "http",
-              "method": "GET",
-              "orig": "/boundaries/{boundarySet}/",
-              "segments": [
-                {
-                  "lit": "boundaries"
-                },
-                {
-                  "var": "id"
-                }
-              ],
-              "parts": [
-                "boundaries",
-                "{id}"
-              ],
-              "rename": {
-                "param": {
-                  "boundarySet": "id"
-                }
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "args": {
-                "params": [
-                  {
-                    "name": "id",
-                    "orig": "boundarySet",
-                    "type": "`$STRING`",
-                    "kind": "param",
-                    "reqd": true
-                  }
-                ],
-                "query": [
-                  {
-                    "name": "callback",
-                    "orig": "callback",
-                    "type": "`$STRING`",
-                    "kind": "query"
-                  },
-                  {
-                    "name": "contain",
-                    "orig": "contains",
-                    "type": "`$STRING`",
-                    "kind": "query"
-                  },
-                  {
-                    "name": "external_id",
-                    "orig": "external_id",
-                    "type": "`$STRING`",
-                    "kind": "query"
-                  },
-                  {
-                    "name": "format",
-                    "orig": "format",
-                    "type": "`$STRING`",
-                    "kind": "query"
-                  },
-                  {
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`",
-                    "kind": "query",
-                    "example": 20
-                  },
-                  {
-                    "name": "name",
-                    "orig": "name",
-                    "type": "`$STRING`",
-                    "kind": "query"
-                  },
-                  {
-                    "name": "offset",
-                    "orig": "offset",
-                    "type": "`$INTEGER`",
-                    "kind": "query",
-                    "example": 0
-                  },
-                  {
-                    "name": "pretty",
-                    "orig": "pretty",
-                    "type": "`$INTEGER`",
-                    "kind": "query"
-                  }
-                ]
-              },
-              "select": {
-                "exist": [
-                  "callback",
-                  "contain",
-                  "external_id",
-                  "format",
-                  "id",
-                  "limit",
-                  "name",
-                  "offset",
-                  "pretty"
-                ]
-              }
-            },
             {
               "kind": "http",
               "method": "GET",
@@ -482,11 +373,12 @@ class Config {
               "select": {
                 "exist": [
                   "boundary",
-                  "boundary_set",
-                  "callback",
-                  "format",
-                  "pretty"
+                  "boundary_set"
                 ]
+              },
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             },
             {
@@ -558,10 +450,12 @@ class Config {
                 "$action": "centroid",
                 "exist": [
                   "boundary",
-                  "boundary_set",
-                  "callback",
-                  "format"
+                  "boundary_set"
                 ]
+              },
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             },
             {
@@ -633,10 +527,12 @@ class Config {
                 "$action": "shape",
                 "exist": [
                   "boundary",
-                  "boundary_set",
-                  "callback",
-                  "format"
+                  "boundary_set"
                 ]
+              },
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             },
             {
@@ -708,10 +604,12 @@ class Config {
                 "$action": "simple_shape",
                 "exist": [
                   "boundary",
-                  "boundary_set",
-                  "callback",
-                  "format"
+                  "boundary_set"
                 ]
+              },
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             },
             {
@@ -771,10 +669,12 @@ class Config {
               "select": {
                 "$action": "centroid",
                 "exist": [
-                  "boundary_set",
-                  "callback",
-                  "format"
+                  "boundary_set"
                 ]
+              },
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             },
             {
@@ -834,10 +734,12 @@ class Config {
               "select": {
                 "$action": "shape",
                 "exist": [
-                  "boundary_set",
-                  "callback",
-                  "format"
+                  "boundary_set"
                 ]
+              },
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             },
             {
@@ -897,10 +799,112 @@ class Config {
               "select": {
                 "$action": "simple_shape",
                 "exist": [
-                  "boundary_set",
-                  "callback",
-                  "format"
+                  "boundary_set"
                 ]
+              },
+              "response": {
+                "kind": "json",
+                "media": "application/json"
+              }
+            },
+            {
+              "kind": "http",
+              "method": "GET",
+              "orig": "/boundaries/{boundarySet}/",
+              "segments": [
+                {
+                  "lit": "boundaries"
+                },
+                {
+                  "var": "id"
+                }
+              ],
+              "parts": [
+                "boundaries",
+                "{id}"
+              ],
+              "rename": {
+                "param": {
+                  "boundarySet": "id"
+                }
+              },
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "boundarySet",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "callback",
+                    "orig": "callback",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "contain",
+                    "orig": "contains",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "external_id",
+                    "orig": "external_id",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "field": true
+                  },
+                  {
+                    "name": "format",
+                    "orig": "format",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 20
+                  },
+                  {
+                    "name": "name",
+                    "orig": "name",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "field": true
+                  },
+                  {
+                    "name": "offset",
+                    "orig": "offset",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 0
+                  },
+                  {
+                    "name": "pretty",
+                    "orig": "pretty",
+                    "type": "`$INTEGER`",
+                    "kind": "query"
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              },
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -972,7 +976,8 @@ class Config {
                     "name": "domain",
                     "orig": "domain",
                     "type": "`$STRING`",
-                    "kind": "query"
+                    "kind": "query",
+                    "field": true
                   },
                   {
                     "name": "format",
@@ -991,7 +996,8 @@ class Config {
                     "name": "name",
                     "orig": "name",
                     "type": "`$STRING`",
-                    "kind": "query"
+                    "kind": "query",
+                    "field": true
                   },
                   {
                     "name": "offset",
@@ -1008,16 +1014,10 @@ class Config {
                   }
                 ]
               },
-              "select": {
-                "exist": [
-                  "callback",
-                  "domain",
-                  "format",
-                  "limit",
-                  "name",
-                  "offset",
-                  "pretty"
-                ]
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -1084,11 +1084,12 @@ class Config {
               },
               "select": {
                 "exist": [
-                  "callback",
-                  "format",
-                  "id",
-                  "pretty"
+                  "id"
                 ]
+              },
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -1170,14 +1171,10 @@ class Config {
                   }
                 ]
               },
-              "select": {
-                "exist": [
-                  "callback",
-                  "format",
-                  "limit",
-                  "offset",
-                  "pretty"
-                ]
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -1259,14 +1256,10 @@ class Config {
                   }
                 ]
               },
-              "select": {
-                "exist": [
-                  "callback",
-                  "format",
-                  "limit",
-                  "offset",
-                  "pretty"
-                ]
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -1396,12 +1389,12 @@ class Config {
               },
               "select": {
                 "exist": [
-                  "callback",
-                  "format",
-                  "postal_code",
-                  "pretty",
-                  "set"
+                  "postal_code"
                 ]
+              },
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -1536,132 +1529,6 @@ class Config {
             {
               "kind": "http",
               "method": "GET",
-              "orig": "/representatives/",
-              "segments": [
-                {
-                  "lit": "representatives"
-                }
-              ],
-              "parts": [
-                "representatives"
-              ],
-              "rename": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body.objects`"
-              },
-              "args": {
-                "query": [
-                  {
-                    "name": "callback",
-                    "orig": "callback",
-                    "type": "`$STRING`",
-                    "kind": "query"
-                  },
-                  {
-                    "name": "district",
-                    "orig": "districts",
-                    "type": "`$STRING`",
-                    "kind": "query"
-                  },
-                  {
-                    "name": "district_name",
-                    "orig": "district_name",
-                    "type": "`$STRING`",
-                    "kind": "query"
-                  },
-                  {
-                    "name": "elected_office",
-                    "orig": "elected_office",
-                    "type": "`$STRING`",
-                    "kind": "query"
-                  },
-                  {
-                    "name": "first_name",
-                    "orig": "first_name",
-                    "type": "`$STRING`",
-                    "kind": "query"
-                  },
-                  {
-                    "name": "format",
-                    "orig": "format",
-                    "type": "`$STRING`",
-                    "kind": "query"
-                  },
-                  {
-                    "name": "gender",
-                    "orig": "gender",
-                    "type": "`$STRING`",
-                    "kind": "query"
-                  },
-                  {
-                    "name": "last_name",
-                    "orig": "last_name",
-                    "type": "`$STRING`",
-                    "kind": "query"
-                  },
-                  {
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`",
-                    "kind": "query",
-                    "example": 20
-                  },
-                  {
-                    "name": "name",
-                    "orig": "name",
-                    "type": "`$STRING`",
-                    "kind": "query"
-                  },
-                  {
-                    "name": "offset",
-                    "orig": "offset",
-                    "type": "`$INTEGER`",
-                    "kind": "query",
-                    "example": 0
-                  },
-                  {
-                    "name": "party_name",
-                    "orig": "party_name",
-                    "type": "`$STRING`",
-                    "kind": "query"
-                  },
-                  {
-                    "name": "point",
-                    "orig": "point",
-                    "type": "`$STRING`",
-                    "kind": "query"
-                  },
-                  {
-                    "name": "pretty",
-                    "orig": "pretty",
-                    "type": "`$INTEGER`",
-                    "kind": "query"
-                  }
-                ]
-              },
-              "select": {
-                "exist": [
-                  "callback",
-                  "district",
-                  "district_name",
-                  "elected_office",
-                  "first_name",
-                  "format",
-                  "gender",
-                  "last_name",
-                  "limit",
-                  "name",
-                  "offset",
-                  "party_name",
-                  "point",
-                  "pretty"
-                ]
-              }
-            },
-            {
-              "kind": "http",
-              "method": "GET",
               "orig": "/boundaries/{boundarySet}/{boundary}/representatives/",
               "segments": [
                 {
@@ -1733,11 +1600,132 @@ class Config {
               "select": {
                 "exist": [
                   "boundary",
-                  "boundary_set",
-                  "callback",
-                  "format",
-                  "pretty"
+                  "boundary_set"
                 ]
+              },
+              "response": {
+                "kind": "json",
+                "media": "application/json"
+              }
+            },
+            {
+              "kind": "http",
+              "method": "GET",
+              "orig": "/representatives/",
+              "segments": [
+                {
+                  "lit": "representatives"
+                }
+              ],
+              "parts": [
+                "representatives"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body.objects`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "callback",
+                    "orig": "callback",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "district",
+                    "orig": "districts",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "district_name",
+                    "orig": "district_name",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "field": true
+                  },
+                  {
+                    "name": "elected_office",
+                    "orig": "elected_office",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "field": true
+                  },
+                  {
+                    "name": "first_name",
+                    "orig": "first_name",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "field": true
+                  },
+                  {
+                    "name": "format",
+                    "orig": "format",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "gender",
+                    "orig": "gender",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "field": true
+                  },
+                  {
+                    "name": "last_name",
+                    "orig": "last_name",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "field": true
+                  },
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 20
+                  },
+                  {
+                    "name": "name",
+                    "orig": "name",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "field": true
+                  },
+                  {
+                    "name": "offset",
+                    "orig": "offset",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 0
+                  },
+                  {
+                    "name": "party_name",
+                    "orig": "party_name",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "field": true
+                  },
+                  {
+                    "name": "point",
+                    "orig": "point",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "pretty",
+                    "orig": "pretty",
+                    "type": "`$INTEGER`",
+                    "kind": "query"
+                  }
+                ]
+              },
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -1792,19 +1780,22 @@ class Config {
                     "name": "district_name",
                     "orig": "district_name",
                     "type": "`$STRING`",
-                    "kind": "query"
+                    "kind": "query",
+                    "field": true
                   },
                   {
                     "name": "elected_office",
                     "orig": "elected_office",
                     "type": "`$STRING`",
-                    "kind": "query"
+                    "kind": "query",
+                    "field": true
                   },
                   {
                     "name": "first_name",
                     "orig": "first_name",
                     "type": "`$STRING`",
-                    "kind": "query"
+                    "kind": "query",
+                    "field": true
                   },
                   {
                     "name": "format",
@@ -1816,13 +1807,15 @@ class Config {
                     "name": "gender",
                     "orig": "gender",
                     "type": "`$STRING`",
-                    "kind": "query"
+                    "kind": "query",
+                    "field": true
                   },
                   {
                     "name": "last_name",
                     "orig": "last_name",
                     "type": "`$STRING`",
-                    "kind": "query"
+                    "kind": "query",
+                    "field": true
                   },
                   {
                     "name": "limit",
@@ -1835,7 +1828,8 @@ class Config {
                     "name": "name",
                     "orig": "name",
                     "type": "`$STRING`",
-                    "kind": "query"
+                    "kind": "query",
+                    "field": true
                   },
                   {
                     "name": "offset",
@@ -1848,7 +1842,8 @@ class Config {
                     "name": "party_name",
                     "orig": "party_name",
                     "type": "`$STRING`",
-                    "kind": "query"
+                    "kind": "query",
+                    "field": true
                   },
                   {
                     "name": "point",
@@ -1866,21 +1861,12 @@ class Config {
               },
               "select": {
                 "exist": [
-                  "callback",
-                  "district_name",
-                  "elected_office",
-                  "first_name",
-                  "format",
-                  "gender",
-                  "id",
-                  "last_name",
-                  "limit",
-                  "name",
-                  "offset",
-                  "party_name",
-                  "point",
-                  "pretty"
+                  "id"
                 ]
+              },
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -1975,14 +1961,10 @@ class Config {
                   }
                 ]
               },
-              "select": {
-                "exist": [
-                  "callback",
-                  "format",
-                  "limit",
-                  "offset",
-                  "pretty"
-                ]
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -2049,11 +2031,12 @@ class Config {
               },
               "select": {
                 "exist": [
-                  "callback",
-                  "format",
-                  "id",
-                  "pretty"
+                  "id"
                 ]
+              },
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]

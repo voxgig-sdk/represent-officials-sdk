@@ -104,16 +104,9 @@ main: kit: entity: boundary_set: {
           }
           m: "GET"
           o: "/boundary-sets/"
-          q: {
-            exist: [
-              "callback"
-              "domain"
-              "format"
-              "limit"
-              "name"
-              "offset"
-              "pretty"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -174,16 +167,17 @@ main: kit: entity: boundary_set: {
           o: "/boundary-sets/{boundarySet}/"
           q: {
             exist: [
-              "callback"
-              "format"
               "id"
-              "pretty"
             ]
           }
           r: {
             param: {
               boundarySet: "id"
             }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

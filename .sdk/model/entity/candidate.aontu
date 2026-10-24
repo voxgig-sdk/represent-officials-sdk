@@ -73,14 +73,9 @@ main: kit: entity: candidate: {
           }
           m: "GET"
           o: "/candidates/"
-          q: {
-            exist: [
-              "callback"
-              "format"
-              "limit"
-              "offset"
-              "pretty"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

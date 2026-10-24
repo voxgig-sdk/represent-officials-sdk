@@ -84,14 +84,9 @@ main: kit: entity: representative_set: {
           }
           m: "GET"
           o: "/representative-sets/"
-          q: {
-            exist: [
-              "callback"
-              "format"
-              "limit"
-              "offset"
-              "pretty"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -152,16 +147,17 @@ main: kit: entity: representative_set: {
           o: "/representative-sets/{representativeSet}/"
           q: {
             exist: [
-              "callback"
-              "format"
               "id"
-              "pretty"
             ]
           }
           r: {
             param: {
               representativeSet: "id"
             }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

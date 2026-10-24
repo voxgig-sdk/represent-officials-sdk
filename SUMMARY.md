@@ -77,7 +77,6 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | Entity | SDK operation | HTTP route | Authentication |
 | --- | --- | --- | --- |
 | Boundary | `list` | `GET /boundaries/` | See reference |
-| Boundary | `load` | `GET /boundaries/{boundarySet}/` | See reference |
 | Boundary | `load` | `GET /boundaries/{boundarySet}/{boundary}/` | See reference |
 | Boundary | `load` | `GET /boundaries/{boundarySet}/{boundary}/centroid` | See reference |
 | Boundary | `load` | `GET /boundaries/{boundarySet}/{boundary}/shape` | See reference |
@@ -85,13 +84,14 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | Boundary | `load` | `GET /boundaries/{boundarySet}/centroid` | See reference |
 | Boundary | `load` | `GET /boundaries/{boundarySet}/shape` | See reference |
 | Boundary | `load` | `GET /boundaries/{boundarySet}/simple_shape` | See reference |
+| Boundary | `load` | `GET /boundaries/{boundarySet}/` | See reference |
 | BoundarySet | `list` | `GET /boundary-sets/` | See reference |
 | BoundarySet | `load` | `GET /boundary-sets/{boundarySet}/` | See reference |
 | Candidate | `list` | `GET /candidates/` | See reference |
 | Election | `list` | `GET /elections/` | See reference |
 | PostalCode | `load` | `GET /postcodes/{postalCode}/` | See reference |
-| Representative | `list` | `GET /representatives/` | See reference |
 | Representative | `list` | `GET /boundaries/{boundarySet}/{boundary}/representatives/` | See reference |
+| Representative | `list` | `GET /representatives/` | See reference |
 | Representative | `load` | `GET /representatives/{representativeSet}/` | See reference |
 | RepresentativeSet | `list` | `GET /representative-sets/` | See reference |
 | RepresentativeSet | `load` | `GET /representative-sets/{representativeSet}/` | See reference |

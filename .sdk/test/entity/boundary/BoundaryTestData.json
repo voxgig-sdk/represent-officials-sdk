@@ -58,11 +58,6 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /boundaries/{boundarySet}/": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
     "GET /boundaries/{boundarySet}/{boundary}/": {
       "provenance": "operation-contract",
       "version": 2,
@@ -94,6 +89,11 @@
       "source": "openapi3"
     },
     "GET /boundaries/{boundarySet}/simple_shape": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /boundaries/{boundarySet}/": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

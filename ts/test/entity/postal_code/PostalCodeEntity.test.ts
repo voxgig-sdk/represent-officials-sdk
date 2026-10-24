@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { RepresentOfficialsSDK, BaseFeature, stdutil } from '../../..'
+import { RepresentOfficialsSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,17 +41,29 @@ describe('PostalCodeEntity', async () => {
   })
 
 
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = RepresentOfficialsSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.PostalCode().load({"postal_code":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.REPRESENT_OFFICIALS_TEST_LIVE
-    for (const op of ['load']) {
+    for (const op of []) {
       if (!live && maybeSkipControl(t, 'entityOp', 'postal_code.' + op, live)) return
     }
 
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"boundaries_centroid":{"a":true,"h":"Boundaries Centroid","n":"boundaries_centroid","r":false,"sh":"Boundaries containing the postal code's centroid","t":"`$ARRAY`","key$":"boundaries_centroid","index$":0},"boundaries_concordance":{"a":true,"h":"Boundaries Concordance","n":"boundaries_concordance","r":false,"sh":"Boundaries linked to postal code via official data","t":"`$ARRAY`","key$":"boundaries_concordance","index$":1},"centroid":{"a":true,"h":"Centroid","n":"centroid","r":false,"t":"`$OBJECT`","key$":"centroid","index$":2},"city":{"a":true,"h":"City","n":"city","r":false,"sh":"City name","t":"`$STRING`","key$":"city","index$":3},"code":{"a":true,"h":"Code","n":"code","r":false,"sh":"The postal code","t":"`$STRING`","key$":"code","index$":4},"province":{"a":true,"h":"Province","n":"province","r":false,"sh":"Province code","t":"`$STRING`","key$":"province","index$":5},"representatives_centroid":{"a":true,"h":"Representatives Centroid","n":"representatives_centroid","r":false,"sh":"Representatives for boundaries containing centroid","t":"`$ARRAY`","key$":"representatives_centroid","index$":6},"representatives_concordance":{"a":true,"h":"Representatives Concordance","n":"representatives_concordance","r":false,"sh":"Representatives for boundaries via concordance","t":"`$ARRAY`","key$":"representatives_concordance","index$":7}},"name":"postal_code","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /postcodes/{postalCode}/","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"postal_code","or":"postalCode","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"k":"query","n":"callback","or":"callback","r":false,"t":"`$STRING`","index$":0},{"a":true,"k":"query","n":"format","or":"format","r":false,"t":"`$STRING`","index$":1},{"a":true,"k":"query","n":"pretty","or":"pretty","r":false,"t":"`$INTEGER`","index$":2},{"a":true,"k":"query","n":"set","or":"sets","r":false,"t":"`$STRING`","index$":3}]},"k":"http","m":"GET","o":"/postcodes/{postalCode}/","q":{"exist":["callback","format","postal_code","pretty","set"]},"r":{"param":{"postalCode":"postal_code"}},"s":[{"lit":"postcodes"},{"var":"postal_code"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"postal_code","name__orig":"postal_code","Name":"PostalCode","name_":"postal_code","name-":"postal-code","NAME":"POSTAL_CODE","index$":4}, {"active":true,"entity":"postal_code","key$":"BasicPostalCodeFlow","kind":"basic","name":"BasicPostalCodeFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"postal_code_ref01","srcdatavar":"postal_code_ref01_data","suffix":"_dt0"},"m":{"id":"postal_code01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-postal_code_ref01"}}],"index$":0}]}, 'PostalCode', {"GET /postcodes/{postalCode}/":{"protocol":"http","parameters":[{"name":"postalCode","in":"path","required":true,"description":"Canadian postal code in uppercase with no spaces (e.g., L5G4L3)","schema":{"type":"string","pattern":"^[A-Z][0-9][A-Z][0-9][A-Z][0-9]$"},"index$":0},{"name":"sets","in":"query","description":"Limit results to specific boundary sets (comma-separated)","schema":{"type":"string"},"index$":1},{"name":"format","in":"query","description":"Output format","schema":{"type":"string","enum":["json","apibrowser"]},"index$":2},{"name":"pretty","in":"query","description":"Pretty print JSON output","schema":{"type":"integer","enum":[0,1]},"index$":3},{"name":"callback","in":"query","description":"JSONP callback function name","schema":{"type":"string"},"index$":4}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"boundaries_centroid":{"a":true,"h":"Boundaries Centroid","n":"boundaries_centroid","r":false,"sh":"Boundaries containing the postal code's centroid","t":"`$ARRAY`","key$":"boundaries_centroid","index$":0},"boundaries_concordance":{"a":true,"h":"Boundaries Concordance","n":"boundaries_concordance","r":false,"sh":"Boundaries linked to postal code via official data","t":"`$ARRAY`","key$":"boundaries_concordance","index$":1},"centroid":{"a":true,"h":"Centroid","n":"centroid","r":false,"t":"`$OBJECT`","key$":"centroid","index$":2},"city":{"a":true,"h":"City","n":"city","r":false,"sh":"City name","t":"`$STRING`","key$":"city","index$":3},"code":{"a":true,"h":"Code","n":"code","r":false,"sh":"The postal code","t":"`$STRING`","key$":"code","index$":4},"province":{"a":true,"h":"Province","n":"province","r":false,"sh":"Province code","t":"`$STRING`","key$":"province","index$":5},"representatives_centroid":{"a":true,"h":"Representatives Centroid","n":"representatives_centroid","r":false,"sh":"Representatives for boundaries containing centroid","t":"`$ARRAY`","key$":"representatives_centroid","index$":6},"representatives_concordance":{"a":true,"h":"Representatives Concordance","n":"representatives_concordance","r":false,"sh":"Representatives for boundaries via concordance","t":"`$ARRAY`","key$":"representatives_concordance","index$":7}},"name":"postal_code","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /postcodes/{postalCode}/","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"postal_code","or":"postalCode","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"k":"query","n":"callback","or":"callback","r":false,"t":"`$STRING`","index$":0},{"a":true,"k":"query","n":"format","or":"format","r":false,"t":"`$STRING`","index$":1},{"a":true,"k":"query","n":"pretty","or":"pretty","r":false,"t":"`$INTEGER`","index$":2},{"a":true,"k":"query","n":"set","or":"sets","r":false,"t":"`$STRING`","index$":3}]},"k":"http","m":"GET","o":"/postcodes/{postalCode}/","q":{"exist":["postal_code"]},"r":{"param":{"postalCode":"postal_code"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"postcodes"},{"var":"postal_code"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"postal_code","name__orig":"postal_code","Name":"PostalCode","name_":"postal_code","name-":"postal-code","NAME":"POSTAL_CODE","index$":4}, {"active":true,"entity":"postal_code","key$":"BasicPostalCodeFlow","kind":"basic","name":"BasicPostalCodeFlow","param":{},"step":[{"a":false,"d":{},"i":{"ref":"postal_code_ref01","srcdatavar":"postal_code_ref01_data","suffix":"_dt0"},"m":{"id":"postal_code01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-postal_code_ref01"}}],"unreachable":true}]}, 'PostalCode', {"GET /postcodes/{postalCode}/":{"protocol":"http","parameters":[{"name":"postalCode","in":"path","required":true,"description":"Canadian postal code in uppercase with no spaces (e.g., L5G4L3)","schema":{"type":"string","pattern":"^[A-Z][0-9][A-Z][0-9][A-Z][0-9]$"},"index$":0},{"name":"sets","in":"query","description":"Limit results to specific boundary sets (comma-separated)","schema":{"type":"string"},"index$":1},{"name":"format","in":"query","description":"Output format","schema":{"type":"string","enum":["json","apibrowser"]},"index$":2},{"name":"pretty","in":"query","description":"Pretty print JSON output","schema":{"type":"integer","enum":[0,1]},"index$":3},{"name":"callback","in":"query","description":"JSONP callback function name","schema":{"type":"string"},"index$":4}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -61,15 +73,16 @@ describe('PostalCodeEntity', async () => {
 
     let postal_code_ref01_data = Object.values(setup.data.existing.postal_code)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
-    const postal_code_ref01_ent = client.PostalCode()
-
-
   })
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

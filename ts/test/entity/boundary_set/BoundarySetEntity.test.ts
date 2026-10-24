@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { RepresentOfficialsSDK, BaseFeature, stdutil } from '../../..'
+import { RepresentOfficialsSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('BoundarySetEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('boundary_set hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of RepresentOfficialsSDK.test(offline).BoundarySet().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of RepresentOfficialsSDK.test(offline).BoundarySet()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = RepresentOfficialsSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.BoundarySet().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of RepresentOfficialsSDK.test().BoundarySet().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new RepresentOfficialsSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.BoundarySet().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.BoundarySet().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = RepresentOfficialsSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.BoundarySet().list({"callback":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.REPRESENT_OFFICIALS_TEST_LIVE
@@ -51,7 +109,7 @@ describe('BoundarySetEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"domain":{"a":true,"h":"Domain","n":"domain","r":false,"t":"`$STRING`","key$":"domain","index$":0},"id":{"a":true,"h":"Id","n":"id","r":false,"t":"`$STRING`","key$":"id","index$":1},"name":{"a":true,"h":"Name","n":"name","r":false,"t":"`$STRING`","key$":"name","index$":2},"url":{"a":true,"h":"Url","n":"url","r":false,"t":"`$STRING`","key$":"url","index$":3}},"id":{"field":"id","name":"id"},"name":"boundary_set","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /boundary-sets/","source":"openapi3","version":2},"g":{"query":[{"a":true,"k":"query","n":"callback","or":"callback","r":false,"t":"`$STRING`","index$":0},{"a":true,"k":"query","n":"domain","or":"domain","r":false,"t":"`$STRING`","index$":1},{"a":true,"k":"query","n":"format","or":"format","r":false,"t":"`$STRING`","index$":2},{"a":true,"ex":20,"k":"query","n":"limit","or":"limit","r":false,"t":"`$INTEGER`","index$":3},{"a":true,"k":"query","n":"name","or":"name","r":false,"t":"`$STRING`","index$":4},{"a":true,"ex":0,"k":"query","n":"offset","or":"offset","r":false,"t":"`$INTEGER`","index$":5},{"a":true,"k":"query","n":"pretty","or":"pretty","r":false,"t":"`$INTEGER`","index$":6}]},"k":"http","m":"GET","o":"/boundary-sets/","q":{"exist":["callback","domain","format","limit","name","offset","pretty"]},"r":{},"s":[{"lit":"boundary-sets"}],"t":{"req":"`reqdata`","res":"`body.objects`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /boundary-sets/{boundarySet}/","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"boundarySet","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"k":"query","n":"callback","or":"callback","r":false,"t":"`$STRING`","index$":0},{"a":true,"k":"query","n":"format","or":"format","r":false,"t":"`$STRING`","index$":1},{"a":true,"k":"query","n":"pretty","or":"pretty","r":false,"t":"`$INTEGER`","index$":2}]},"k":"http","m":"GET","o":"/boundary-sets/{boundarySet}/","q":{"exist":["callback","format","id","pretty"]},"r":{"param":{"boundarySet":"id"}},"s":[{"lit":"boundary-sets"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"boundary_set","name__orig":"boundary_set","Name":"BoundarySet","name_":"boundary_set","name-":"boundary-set","NAME":"BOUNDARY_SET","index$":1}, {"active":true,"entity":"boundary_set","key$":"BasicBoundarySetFlow","kind":"basic","name":"BasicBoundarySetFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"boundary_set_ref01"}}],"index$":0},{"a":true,"d":{},"i":{"ref":"boundary_set_ref01","srcdatavar":"boundary_set_ref01_data","suffix":"_dt0"},"m":{"id":"boundary_set01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-boundary_set_ref01"}}],"index$":1}]}, 'BoundarySet', {"GET /boundary-sets/":{"protocol":"http","parameters":[{"name":"limit","in":"query","description":"Number of results per page (default: 20)","schema":{"type":"integer","default":20},"index$":0},{"name":"offset","in":"query","description":"Offset for pagination","schema":{"type":"integer","default":0},"index$":1},{"name":"name","in":"query","description":"Filter by boundary set name","schema":{"type":"string"},"index$":2},{"name":"domain","in":"query","description":"Filter by domain (e.g., Canada)","schema":{"type":"string"},"index$":3},{"name":"format","in":"query","description":"Output format","schema":{"type":"string","enum":["json","apibrowser"]},"index$":4},{"name":"pretty","in":"query","description":"Pretty print JSON output","schema":{"type":"integer","enum":[0,1]},"index$":5},{"name":"callback","in":"query","description":"JSONP callback function name","schema":{"type":"string"},"index$":6}]},"GET /boundary-sets/{boundarySet}/":{"protocol":"http","parameters":[{"name":"boundarySet","in":"path","required":true,"description":"Boundary set identifier (e.g., federal-electoral-districts)","schema":{"type":"string"},"index$":0},{"name":"format","in":"query","description":"Output format","schema":{"type":"string","enum":["json","apibrowser"]},"index$":1},{"name":"pretty","in":"query","description":"Pretty print JSON output","schema":{"type":"integer","enum":[0,1]},"index$":2},{"name":"callback","in":"query","description":"JSONP callback function name","schema":{"type":"string"},"index$":3}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"domain":{"a":true,"h":"Domain","n":"domain","r":false,"t":"`$STRING`","key$":"domain","index$":0},"id":{"a":true,"h":"Id","n":"id","r":false,"t":"`$STRING`","key$":"id","index$":1},"name":{"a":true,"h":"Name","n":"name","r":false,"t":"`$STRING`","key$":"name","index$":2},"url":{"a":true,"h":"Url","n":"url","r":false,"t":"`$STRING`","key$":"url","index$":3}},"id":{"field":"id","name":"id"},"name":"boundary_set","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /boundary-sets/","source":"openapi3","version":2},"g":{"query":[{"a":true,"k":"query","n":"callback","or":"callback","r":false,"t":"`$STRING`","index$":0},{"a":true,"k":"query","n":"domain","or":"domain","r":false,"t":"`$STRING`","index$":1},{"a":true,"k":"query","n":"format","or":"format","r":false,"t":"`$STRING`","index$":2},{"a":true,"ex":20,"k":"query","n":"limit","or":"limit","r":false,"t":"`$INTEGER`","index$":3},{"a":true,"k":"query","n":"name","or":"name","r":false,"t":"`$STRING`","index$":4},{"a":true,"ex":0,"k":"query","n":"offset","or":"offset","r":false,"t":"`$INTEGER`","index$":5},{"a":true,"k":"query","n":"pretty","or":"pretty","r":false,"t":"`$INTEGER`","index$":6}]},"k":"http","m":"GET","o":"/boundary-sets/","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"boundary-sets"}],"t":{"req":"`reqdata`","res":"`body.objects`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /boundary-sets/{boundarySet}/","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"boundarySet","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"k":"query","n":"callback","or":"callback","r":false,"t":"`$STRING`","index$":0},{"a":true,"k":"query","n":"format","or":"format","r":false,"t":"`$STRING`","index$":1},{"a":true,"k":"query","n":"pretty","or":"pretty","r":false,"t":"`$INTEGER`","index$":2}]},"k":"http","m":"GET","o":"/boundary-sets/{boundarySet}/","q":{"exist":["id"]},"r":{"param":{"boundarySet":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"boundary-sets"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"boundary_set","name__orig":"boundary_set","Name":"BoundarySet","name_":"boundary_set","name-":"boundary-set","NAME":"BOUNDARY_SET","index$":1}, {"active":true,"entity":"boundary_set","key$":"BasicBoundarySetFlow","kind":"basic","name":"BasicBoundarySetFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"boundary_set_ref01"}}],"index$":0},{"a":true,"d":{},"i":{"ref":"boundary_set_ref01","srcdatavar":"boundary_set_ref01_data","suffix":"_dt0"},"m":{"id":"boundary_set01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-boundary_set_ref01"}}],"index$":1}]}, 'BoundarySet', {"GET /boundary-sets/":{"protocol":"http","parameters":[{"name":"limit","in":"query","description":"Number of results per page (default: 20)","schema":{"type":"integer","default":20},"index$":0},{"name":"offset","in":"query","description":"Offset for pagination","schema":{"type":"integer","default":0},"index$":1},{"name":"name","in":"query","description":"Filter by boundary set name","schema":{"type":"string"},"index$":2},{"name":"domain","in":"query","description":"Filter by domain (e.g., Canada)","schema":{"type":"string"},"index$":3},{"name":"format","in":"query","description":"Output format","schema":{"type":"string","enum":["json","apibrowser"]},"index$":4},{"name":"pretty","in":"query","description":"Pretty print JSON output","schema":{"type":"integer","enum":[0,1]},"index$":5},{"name":"callback","in":"query","description":"JSONP callback function name","schema":{"type":"string"},"index$":6}]},"GET /boundary-sets/{boundarySet}/":{"protocol":"http","parameters":[{"name":"boundarySet","in":"path","required":true,"description":"Boundary set identifier (e.g., federal-electoral-districts)","schema":{"type":"string"},"index$":0},{"name":"format","in":"query","description":"Output format","schema":{"type":"string","enum":["json","apibrowser"]},"index$":1},{"name":"pretty","in":"query","description":"Pretty print JSON output","schema":{"type":"integer","enum":[0,1]},"index$":2},{"name":"callback","in":"query","description":"JSONP callback function name","schema":{"type":"string"},"index$":3}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -79,6 +137,12 @@ describe('BoundarySetEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

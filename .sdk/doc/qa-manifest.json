@@ -3,5 +3,22 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Additional data not covered by standard fields",
+      "Boundaries containing the postal code&#39;s centroid",
+      "Boundaries linked to postal code via official data",
+      "City name",
+      "District identifier if available",
+      "Email address",
+      "Name of the electoral district",
+      "Production server",
+      "Province code",
+      "Successful response",
+      "The postal code",
+      "This API provides access to information about elected officials and electoral districts in Canada. Users can find representatives based on postal codes or geographical coordinates, retrieve boundary sets, and explore details about elections and candidates.",
+      "Type of office (for example, MP, MLA, Mayor, Councillor, Alderman)"
+    ]
+  }
 }

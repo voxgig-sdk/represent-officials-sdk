@@ -73,14 +73,9 @@ main: kit: entity: election: {
           }
           m: "GET"
           o: "/elections/"
-          q: {
-            exist: [
-              "callback"
-              "format"
-              "limit"
-              "offset"
-              "pretty"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

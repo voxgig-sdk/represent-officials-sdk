@@ -93,12 +93,12 @@
     }
   },
   "requests": {
-    "GET /representatives/": {
+    "GET /boundaries/{boundarySet}/{boundary}/representatives/": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /boundaries/{boundarySet}/{boundary}/representatives/": {
+    "GET /representatives/": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

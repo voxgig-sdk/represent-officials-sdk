@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/represent-officials-sdk/releases)), or
+GitHub release tag (`rb/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/represent-officials-sdk/tags)), or
 from a clone:
 
 ```bash
@@ -43,10 +43,11 @@ client = RepresentOfficialsSDK.new
 
 ```ruby
 begin
-  # list returns an Array of Boundary records — iterate directly.
+  # list returns an Array of Boundary entities, one per record; data_get reads the record.
   boundarys = client.Boundary.list
   boundarys.each do |item|
-    puts "#{item["id"]} #{item["boundary_set_name"]}"
+    record = item.data_get
+    puts "#{record["id"]} #{record["boundary_set_name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -59,7 +60,7 @@ end
 begin
   # load returns the ENTITY — call data_get for the Boundary record (raises on error).
   boundary = client.Boundary.load({ "id" => "example_id" })
-  puts boundary
+  puts boundary.data_get
 rescue => err
   warn "load failed: #{err}"
 end
@@ -140,13 +141,13 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
 client = RepresentOfficialsSDK.test({
-  "entity" => { "boundaryset" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "boundary_set" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the ENTITY (raises on error);
-# call data_get for the mock record.
-boundaryset = client.BoundarySet.list()
-puts boundaryset
+# list returns an Array of BoundarySet entities, one per mock record (raises on
+# error); data_get reads each record.
+boundarysets = client.BoundarySet.list()
+boundarysets.each { |item| puts item.data_get }
 ```
 
 ### Use a custom fetch function
@@ -236,8 +237,8 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
-| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all). Raises on error. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria, and return it. Raises on error. |
+| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all), one per record. Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -247,9 +248,10 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the result data directly. On failure they
-raise a `RepresentOfficialsError` (a `StandardError` subclass), so wrap
-calls in `begin`/`rescue` where you need to handle errors.
+Entity operations return the entity, and `list` an `Array` of entities, one
+per record; an entity's `data_get` reads its record. On failure they raise a
+`RepresentOfficialsError` (a `StandardError` subclass), so wrap calls in
+`begin`/`rescue` where you need to handle errors.
 
 The `direct` escape hatch is the exception: it never raises and instead
 returns a result `Hash` with these keys:
@@ -358,7 +360,7 @@ API path: `/postcodes/{postalCode}/`
 
 Operations: List, Load.
 
-API path: `/representatives/`
+API path: `/boundaries/{boundarySet}/{boundary}/representatives/`
 
 #### RepresentativeSet
 
@@ -411,8 +413,9 @@ boundary = client.Boundary.load({ "id" => "boundary_id" })
 #### Example: List
 
 ```ruby
-# list returns an Array of Boundary records (raises on error).
+# list returns an Array of Boundary entities, one per record (raises on error).
 boundarys = client.Boundary.list
+boundarys.each { |item| puts item.data_get }
 ```
 
 
@@ -446,8 +449,9 @@ boundary_set = client.BoundarySet.load({ "id" => "boundary_set_id" })
 #### Example: List
 
 ```ruby
-# list returns an Array of BoundarySet records (raises on error).
+# list returns an Array of BoundarySet entities, one per record (raises on error).
 boundary_sets = client.BoundarySet.list
+boundary_sets.each { |item| puts item.data_get }
 ```
 
 
@@ -471,8 +475,9 @@ Create an instance: `candidate = client.Candidate`
 #### Example: List
 
 ```ruby
-# list returns an Array of Candidate records (raises on error).
+# list returns an Array of Candidate entities, one per record (raises on error).
 candidates = client.Candidate.list
+candidates.each { |item| puts item.data_get }
 ```
 
 
@@ -496,8 +501,9 @@ Create an instance: `election = client.Election`
 #### Example: List
 
 ```ruby
-# list returns an Array of Election records (raises on error).
+# list returns an Array of Election entities, one per record (raises on error).
 elections = client.Election.list
+elections.each { |item| puts item.data_get }
 ```
 
 
@@ -576,8 +582,9 @@ representative = client.Representative.load({ "id" => "representative_id" })
 #### Example: List
 
 ```ruby
-# list returns an Array of Representative records (raises on error).
+# list returns an Array of Representative entities, one per record (raises on error).
 representatives = client.Representative.list
+representatives.each { |item| puts item.data_get }
 ```
 
 
@@ -610,8 +617,9 @@ representative_set = client.RepresentativeSet.load({ "id" => "representative_set
 #### Example: List
 
 ```ruby
-# list returns an Array of RepresentativeSet records (raises on error).
+# list returns an Array of RepresentativeSet entities, one per record (raises on error).
 representative_sets = client.RepresentativeSet.list
+representative_sets.each { |item| puts item.data_get }
 ```
 
 ## Features

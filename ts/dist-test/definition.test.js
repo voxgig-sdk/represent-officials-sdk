@@ -21,14 +21,18 @@ const PLAN = [
             "external_id": "v1",
             "format": "v1",
             "intersect": "v1",
-            "limit": "v1",
+            "limit": 20,
             "name": "v1",
-            "offset": "v1",
+            "offset": 0,
             "pretty": "v1",
             "set": "v1",
             "touch": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "limit",
             "offset",
@@ -42,6 +46,52 @@ const PLAN = [
             "pretty",
             "callback"
         ],
+        "queryArgs": [
+            {
+                "name": "callback",
+                "wire": "callback"
+            },
+            {
+                "name": "contain",
+                "wire": "contains"
+            },
+            {
+                "name": "external_id",
+                "wire": "external_id"
+            },
+            {
+                "name": "format",
+                "wire": "format"
+            },
+            {
+                "name": "intersect",
+                "wire": "intersects"
+            },
+            {
+                "name": "limit",
+                "wire": "limit"
+            },
+            {
+                "name": "name",
+                "wire": "name"
+            },
+            {
+                "name": "offset",
+                "wire": "offset"
+            },
+            {
+                "name": "pretty",
+                "wire": "pretty"
+            },
+            {
+                "name": "set",
+                "wire": "sets"
+            },
+            {
+                "name": "touch",
+                "wire": "touches"
+            }
+        ],
         "auth": null,
         "status": 200,
         "sample": {
@@ -53,59 +103,11 @@ const PLAN = [
             "objects": [
                 {
                     "boundary_set_name": "x",
+                    "name": "x",
                     "external_id": "x",
                     "metadata": {},
-                    "name": "x",
                     "url": "x"
                 }
-            ]
-        },
-        "idField": "id"
-    },
-    {
-        "entity": "boundary",
-        "accessor": "Boundary",
-        "op": "load",
-        "method": "GET",
-        "path": "/boundaries/{boundarySet}/",
-        "args": [
-            {
-                "name": "id",
-                "wire": "boundarySet",
-                "value": "p1"
-            }
-        ],
-        "select": {
-            "callback": "v1",
-            "contain": "v1",
-            "external_id": "v1",
-            "format": "v1",
-            "limit": "v1",
-            "name": "v1",
-            "offset": "v1",
-            "pretty": "v1"
-        },
-        "headers": [],
-        "query": [
-            "limit",
-            "offset",
-            "name",
-            "external_id",
-            "contains",
-            "format",
-            "pretty",
-            "callback"
-        ],
-        "auth": null,
-        "status": 200,
-        "sample": {
-            "meta": {
-                "next": "x",
-                "previous": "x",
-                "total_count": 1
-            },
-            "objects": [
-                {}
             ]
         },
         "idField": "id"
@@ -134,10 +136,28 @@ const PLAN = [
             "pretty": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "format",
             "pretty",
             "callback"
+        ],
+        "queryArgs": [
+            {
+                "name": "callback",
+                "wire": "callback"
+            },
+            {
+                "name": "format",
+                "wire": "format"
+            },
+            {
+                "name": "pretty",
+                "wire": "pretty"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -174,9 +194,23 @@ const PLAN = [
             "format": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "format",
             "callback"
+        ],
+        "queryArgs": [
+            {
+                "name": "callback",
+                "wire": "callback"
+            },
+            {
+                "name": "format",
+                "wire": "format"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -207,9 +241,23 @@ const PLAN = [
             "format": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "format",
             "callback"
+        ],
+        "queryArgs": [
+            {
+                "name": "callback",
+                "wire": "callback"
+            },
+            {
+                "name": "format",
+                "wire": "format"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -240,9 +288,23 @@ const PLAN = [
             "format": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "format",
             "callback"
+        ],
+        "queryArgs": [
+            {
+                "name": "callback",
+                "wire": "callback"
+            },
+            {
+                "name": "format",
+                "wire": "format"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -268,9 +330,23 @@ const PLAN = [
             "format": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "format",
             "callback"
+        ],
+        "queryArgs": [
+            {
+                "name": "callback",
+                "wire": "callback"
+            },
+            {
+                "name": "format",
+                "wire": "format"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -296,9 +372,23 @@ const PLAN = [
             "format": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "format",
             "callback"
+        ],
+        "queryArgs": [
+            {
+                "name": "callback",
+                "wire": "callback"
+            },
+            {
+                "name": "format",
+                "wire": "format"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -324,13 +414,113 @@ const PLAN = [
             "format": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "format",
             "callback"
         ],
+        "queryArgs": [
+            {
+                "name": "callback",
+                "wire": "callback"
+            },
+            {
+                "name": "format",
+                "wire": "format"
+            }
+        ],
         "auth": null,
         "status": 200,
         "sample": {},
+        "idField": "id"
+    },
+    {
+        "entity": "boundary",
+        "accessor": "Boundary",
+        "op": "load",
+        "method": "GET",
+        "path": "/boundaries/{boundarySet}/",
+        "args": [
+            {
+                "name": "id",
+                "wire": "boundarySet",
+                "value": "p1"
+            }
+        ],
+        "select": {
+            "callback": "v1",
+            "contain": "v1",
+            "external_id": "v1",
+            "format": "v1",
+            "limit": 20,
+            "name": "v1",
+            "offset": 0,
+            "pretty": "v1"
+        },
+        "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [
+            "limit",
+            "offset",
+            "name",
+            "external_id",
+            "contains",
+            "format",
+            "pretty",
+            "callback"
+        ],
+        "queryArgs": [
+            {
+                "name": "callback",
+                "wire": "callback"
+            },
+            {
+                "name": "contain",
+                "wire": "contains"
+            },
+            {
+                "name": "external_id",
+                "wire": "external_id"
+            },
+            {
+                "name": "format",
+                "wire": "format"
+            },
+            {
+                "name": "limit",
+                "wire": "limit"
+            },
+            {
+                "name": "name",
+                "wire": "name"
+            },
+            {
+                "name": "offset",
+                "wire": "offset"
+            },
+            {
+                "name": "pretty",
+                "wire": "pretty"
+            }
+        ],
+        "auth": null,
+        "status": 200,
+        "sample": {
+            "meta": {
+                "next": "x",
+                "previous": "x",
+                "total_count": 1
+            },
+            "objects": [
+                {}
+            ]
+        },
         "idField": "id"
     },
     {
@@ -344,12 +534,16 @@ const PLAN = [
             "callback": "v1",
             "domain": "v1",
             "format": "v1",
-            "limit": "v1",
+            "limit": 20,
             "name": "v1",
-            "offset": "v1",
+            "offset": 0,
             "pretty": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "limit",
             "offset",
@@ -358,6 +552,36 @@ const PLAN = [
             "format",
             "pretty",
             "callback"
+        ],
+        "queryArgs": [
+            {
+                "name": "callback",
+                "wire": "callback"
+            },
+            {
+                "name": "domain",
+                "wire": "domain"
+            },
+            {
+                "name": "format",
+                "wire": "format"
+            },
+            {
+                "name": "limit",
+                "wire": "limit"
+            },
+            {
+                "name": "name",
+                "wire": "name"
+            },
+            {
+                "name": "offset",
+                "wire": "offset"
+            },
+            {
+                "name": "pretty",
+                "wire": "pretty"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -369,8 +593,8 @@ const PLAN = [
             },
             "objects": [
                 {
-                    "domain": "x",
                     "name": "x",
+                    "domain": "x",
                     "url": "x"
                 }
             ]
@@ -396,10 +620,28 @@ const PLAN = [
             "pretty": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "format",
             "pretty",
             "callback"
+        ],
+        "queryArgs": [
+            {
+                "name": "callback",
+                "wire": "callback"
+            },
+            {
+                "name": "format",
+                "wire": "format"
+            },
+            {
+                "name": "pretty",
+                "wire": "pretty"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -420,17 +662,43 @@ const PLAN = [
         "select": {
             "callback": "v1",
             "format": "v1",
-            "limit": "v1",
-            "offset": "v1",
+            "limit": 20,
+            "offset": 0,
             "pretty": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "limit",
             "offset",
             "format",
             "pretty",
             "callback"
+        ],
+        "queryArgs": [
+            {
+                "name": "callback",
+                "wire": "callback"
+            },
+            {
+                "name": "format",
+                "wire": "format"
+            },
+            {
+                "name": "limit",
+                "wire": "limit"
+            },
+            {
+                "name": "offset",
+                "wire": "offset"
+            },
+            {
+                "name": "pretty",
+                "wire": "pretty"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -456,17 +724,43 @@ const PLAN = [
         "select": {
             "callback": "v1",
             "format": "v1",
-            "limit": "v1",
-            "offset": "v1",
+            "limit": 20,
+            "offset": 0,
             "pretty": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "limit",
             "offset",
             "format",
             "pretty",
             "callback"
+        ],
+        "queryArgs": [
+            {
+                "name": "callback",
+                "wire": "callback"
+            },
+            {
+                "name": "format",
+                "wire": "format"
+            },
+            {
+                "name": "limit",
+                "wire": "limit"
+            },
+            {
+                "name": "offset",
+                "wire": "offset"
+            },
+            {
+                "name": "pretty",
+                "wire": "pretty"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -502,11 +796,33 @@ const PLAN = [
             "set": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "sets",
             "format",
             "pretty",
             "callback"
+        ],
+        "queryArgs": [
+            {
+                "name": "callback",
+                "wire": "callback"
+            },
+            {
+                "name": "format",
+                "wire": "format"
+            },
+            {
+                "name": "pretty",
+                "wire": "pretty"
+            },
+            {
+                "name": "set",
+                "wire": "sets"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -540,83 +856,6 @@ const PLAN = [
         "accessor": "Representative",
         "op": "list",
         "method": "GET",
-        "path": "/representatives/",
-        "args": [],
-        "select": {
-            "callback": "v1",
-            "district": "v1",
-            "district_name": "v1",
-            "elected_office": "v1",
-            "first_name": "v1",
-            "format": "v1",
-            "gender": "v1",
-            "last_name": "v1",
-            "limit": "v1",
-            "name": "v1",
-            "offset": "v1",
-            "party_name": "v1",
-            "point": "v1",
-            "pretty": "v1"
-        },
-        "headers": [],
-        "query": [
-            "limit",
-            "offset",
-            "point",
-            "districts",
-            "name",
-            "first_name",
-            "last_name",
-            "gender",
-            "district_name",
-            "elected_office",
-            "party_name",
-            "format",
-            "pretty",
-            "callback"
-        ],
-        "auth": null,
-        "status": 200,
-        "sample": {
-            "meta": {
-                "next": "x",
-                "previous": "x",
-                "total_count": 1
-            },
-            "objects": [
-                {
-                    "district_id": "x",
-                    "district_name": "x",
-                    "elected_office": "x",
-                    "email": "x",
-                    "extra": {},
-                    "first_name": "x",
-                    "gender": "M",
-                    "last_name": "x",
-                    "name": "x",
-                    "offices": [
-                        {
-                            "fax": "x",
-                            "postal": "x",
-                            "tel": "x",
-                            "type": "x"
-                        }
-                    ],
-                    "party_name": "x",
-                    "personal_url": "x",
-                    "photo_url": "x",
-                    "source_url": "x",
-                    "url": "x"
-                }
-            ]
-        },
-        "idField": "id"
-    },
-    {
-        "entity": "representative",
-        "accessor": "Representative",
-        "op": "list",
-        "method": "GET",
         "path": "/boundaries/{boundarySet}/{boundary}/representatives/",
         "args": [
             {
@@ -636,38 +875,56 @@ const PLAN = [
             "pretty": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "format",
             "pretty",
             "callback"
+        ],
+        "queryArgs": [
+            {
+                "name": "callback",
+                "wire": "callback"
+            },
+            {
+                "name": "format",
+                "wire": "format"
+            },
+            {
+                "name": "pretty",
+                "wire": "pretty"
+            }
         ],
         "auth": null,
         "status": 200,
         "sample": {
             "objects": [
                 {
-                    "district_id": "x",
+                    "name": "x",
                     "district_name": "x",
                     "elected_office": "x",
-                    "email": "x",
-                    "extra": {},
+                    "source_url": "x",
                     "first_name": "x",
-                    "gender": "M",
                     "last_name": "x",
-                    "name": "x",
+                    "party_name": "x",
+                    "email": "x",
+                    "url": "x",
+                    "photo_url": "x",
+                    "personal_url": "x",
+                    "district_id": "x",
+                    "gender": "M",
                     "offices": [
                         {
-                            "fax": "x",
                             "postal": "x",
                             "tel": "x",
+                            "fax": "x",
                             "type": "x"
                         }
                     ],
-                    "party_name": "x",
-                    "personal_url": "x",
-                    "photo_url": "x",
-                    "source_url": "x",
-                    "url": "x"
+                    "extra": {}
                 }
             ]
         },
@@ -676,36 +933,36 @@ const PLAN = [
     {
         "entity": "representative",
         "accessor": "Representative",
-        "op": "load",
+        "op": "list",
         "method": "GET",
-        "path": "/representatives/{representativeSet}/",
-        "args": [
-            {
-                "name": "id",
-                "wire": "representativeSet",
-                "value": "p1"
-            }
-        ],
+        "path": "/representatives/",
+        "args": [],
         "select": {
             "callback": "v1",
+            "district": "v1",
             "district_name": "v1",
             "elected_office": "v1",
             "first_name": "v1",
             "format": "v1",
             "gender": "v1",
             "last_name": "v1",
-            "limit": "v1",
+            "limit": 20,
             "name": "v1",
-            "offset": "v1",
+            "offset": 0,
             "party_name": "v1",
             "point": "v1",
             "pretty": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "limit",
             "offset",
             "point",
+            "districts",
             "name",
             "first_name",
             "last_name",
@@ -716,6 +973,64 @@ const PLAN = [
             "format",
             "pretty",
             "callback"
+        ],
+        "queryArgs": [
+            {
+                "name": "callback",
+                "wire": "callback"
+            },
+            {
+                "name": "district",
+                "wire": "districts"
+            },
+            {
+                "name": "district_name",
+                "wire": "district_name"
+            },
+            {
+                "name": "elected_office",
+                "wire": "elected_office"
+            },
+            {
+                "name": "first_name",
+                "wire": "first_name"
+            },
+            {
+                "name": "format",
+                "wire": "format"
+            },
+            {
+                "name": "gender",
+                "wire": "gender"
+            },
+            {
+                "name": "last_name",
+                "wire": "last_name"
+            },
+            {
+                "name": "limit",
+                "wire": "limit"
+            },
+            {
+                "name": "name",
+                "wire": "name"
+            },
+            {
+                "name": "offset",
+                "wire": "offset"
+            },
+            {
+                "name": "party_name",
+                "wire": "party_name"
+            },
+            {
+                "name": "point",
+                "wire": "point"
+            },
+            {
+                "name": "pretty",
+                "wire": "pretty"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -742,9 +1057,148 @@ const PLAN = [
                     "gender": "M",
                     "offices": [
                         {
-                            "fax": "x",
                             "postal": "x",
                             "tel": "x",
+                            "fax": "x",
+                            "type": "x"
+                        }
+                    ],
+                    "extra": {}
+                }
+            ]
+        },
+        "idField": "id"
+    },
+    {
+        "entity": "representative",
+        "accessor": "Representative",
+        "op": "load",
+        "method": "GET",
+        "path": "/representatives/{representativeSet}/",
+        "args": [
+            {
+                "name": "id",
+                "wire": "representativeSet",
+                "value": "p1"
+            }
+        ],
+        "select": {
+            "callback": "v1",
+            "district_name": "v1",
+            "elected_office": "v1",
+            "first_name": "v1",
+            "format": "v1",
+            "gender": "v1",
+            "last_name": "v1",
+            "limit": 20,
+            "name": "v1",
+            "offset": 0,
+            "party_name": "v1",
+            "point": "v1",
+            "pretty": "v1"
+        },
+        "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [
+            "limit",
+            "offset",
+            "point",
+            "name",
+            "first_name",
+            "last_name",
+            "gender",
+            "district_name",
+            "elected_office",
+            "party_name",
+            "format",
+            "pretty",
+            "callback"
+        ],
+        "queryArgs": [
+            {
+                "name": "callback",
+                "wire": "callback"
+            },
+            {
+                "name": "district_name",
+                "wire": "district_name"
+            },
+            {
+                "name": "elected_office",
+                "wire": "elected_office"
+            },
+            {
+                "name": "first_name",
+                "wire": "first_name"
+            },
+            {
+                "name": "format",
+                "wire": "format"
+            },
+            {
+                "name": "gender",
+                "wire": "gender"
+            },
+            {
+                "name": "last_name",
+                "wire": "last_name"
+            },
+            {
+                "name": "limit",
+                "wire": "limit"
+            },
+            {
+                "name": "name",
+                "wire": "name"
+            },
+            {
+                "name": "offset",
+                "wire": "offset"
+            },
+            {
+                "name": "party_name",
+                "wire": "party_name"
+            },
+            {
+                "name": "point",
+                "wire": "point"
+            },
+            {
+                "name": "pretty",
+                "wire": "pretty"
+            }
+        ],
+        "auth": null,
+        "status": 200,
+        "sample": {
+            "meta": {
+                "next": "x",
+                "previous": "x",
+                "total_count": 1
+            },
+            "objects": [
+                {
+                    "name": "x",
+                    "district_name": "x",
+                    "elected_office": "x",
+                    "source_url": "x",
+                    "first_name": "x",
+                    "last_name": "x",
+                    "party_name": "x",
+                    "email": "x",
+                    "url": "x",
+                    "photo_url": "x",
+                    "personal_url": "x",
+                    "district_id": "x",
+                    "gender": "M",
+                    "offices": [
+                        {
+                            "postal": "x",
+                            "tel": "x",
+                            "fax": "x",
                             "type": "x"
                         }
                     ],
@@ -764,17 +1218,43 @@ const PLAN = [
         "select": {
             "callback": "v1",
             "format": "v1",
-            "limit": "v1",
-            "offset": "v1",
+            "limit": 20,
+            "offset": 0,
             "pretty": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "limit",
             "offset",
             "format",
             "pretty",
             "callback"
+        ],
+        "queryArgs": [
+            {
+                "name": "callback",
+                "wire": "callback"
+            },
+            {
+                "name": "format",
+                "wire": "format"
+            },
+            {
+                "name": "limit",
+                "wire": "limit"
+            },
+            {
+                "name": "offset",
+                "wire": "offset"
+            },
+            {
+                "name": "pretty",
+                "wire": "pretty"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -812,10 +1292,28 @@ const PLAN = [
             "pretty": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "format",
             "pretty",
             "callback"
+        ],
+        "queryArgs": [
+            {
+                "name": "callback",
+                "wire": "callback"
+            },
+            {
+                "name": "format",
+                "wire": "format"
+            },
+            {
+                "name": "pretty",
+                "wire": "pretty"
+            }
         ],
         "auth": null,
         "status": 200,

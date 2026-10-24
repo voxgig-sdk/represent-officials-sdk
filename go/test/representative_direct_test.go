@@ -10,6 +10,12 @@ import (
 	"github.com/voxgig-sdk/represent-officials-sdk/go/core"
 )
 
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const representativeDirectLiveStrict = true
+
 func TestRepresentativeDirect(t *testing.T) {
 	t.Run("direct-list-representative", func(t *testing.T) {
 		setup := representativeDirectSetup([]any{
@@ -27,28 +33,42 @@ func TestRepresentativeDirect(t *testing.T) {
 			t.Skip(_reason)
 			return
 		}
+		if setup.live {
+			for _, _liveKey := range []string{"boundary01", "boundary_set01"} {
+				if v := setup.idmap[_liveKey]; v == nil {
+					liveMiss(t, representativeDirectLiveStrict, "Live test blocked: needs %s via REPRESENT_OFFICIALS_TEST_REPRESENTATIVE_ENTID", _liveKey)
+					return
+				}
+			}
+		}
 		client := setup.client
 
+		params := map[string]any{}
+		if setup.live {
+			params["boundary"] = setup.idmap["boundary01"]
+		} else {
+			params["boundary"] = "direct01"
+		}
+		if setup.live {
+			params["boundary_set"] = setup.idmap["boundary_set01"]
+		} else {
+			params["boundary_set"] = "direct02"
+		}
 
 		result, err := client.Direct(map[string]any{
-			"path":   "representatives",
+			"path":   "boundaries/{boundary_set}/{boundary}/representatives",
 			"method": "GET",
-			"params": map[string]any{},
+			"params": params,
 		})
 		if setup.live {
-			// Live-mode leniency is a model decision
-			// (main.kit.test.live.strict): synthetic IDs 4xx constantly
-			// against an arbitrary public API, so the default SKIPS here.
-			// A project that owns its test server sets strict and FAILS.
 			if err != nil {
-				t.Fatalf("list call failed (likely synthetic IDs against live API): %v", err)
+				liveMiss(t, representativeDirectLiveStrict, "Live list failed: %v", err)
 			}
-			if result["ok"] != true {
-				t.Fatalf("list call not ok (likely synthetic IDs against live API): %v", result)
+			if status := core.ToInt(result["status"]); result["ok"] != true || status < 200 || status >= 300 {
+				liveMiss(t, representativeDirectLiveStrict, "Live list failed: %s", liveDescribe(result))
 			}
-			status := core.ToInt(result["status"])
-			if status < 200 || status >= 300 {
-				t.Fatalf("expected 2xx status, got %v", result["status"])
+			if _, ok := liveList(result["data"]); !ok {
+				liveMiss(t, representativeDirectLiveStrict, "Live list returned no list: %s", liveDescribe(result))
 			}
 		} else {
 			if err != nil {
@@ -74,6 +94,20 @@ func TestRepresentativeDirect(t *testing.T) {
 			if len(*setup.calls) != 1 {
 				t.Fatalf("expected 1 call, got %d", len(*setup.calls))
 			}
+			call := (*setup.calls)[0]
+			if initMap, ok := call["init"].(map[string]any); ok {
+				if initMap["method"] != "GET" {
+					t.Fatalf("expected method GET, got %v", initMap["method"])
+				}
+			}
+			if url, ok := call["url"].(string); ok {
+				if !strings.Contains(url, "direct01") {
+					t.Fatalf("expected url to contain direct01, got %v", url)
+				}
+				if !strings.Contains(url, "direct02") {
+					t.Fatalf("expected url to contain direct02, got %v", url)
+				}
+			}
 		}
 	})
 
@@ -90,30 +124,44 @@ func TestRepresentativeDirect(t *testing.T) {
 			t.Skip(_reason)
 			return
 		}
+		if setup.live {
+			for _, _liveKey := range []string{"boundary01", "boundary_set01"} {
+				if v := setup.idmap[_liveKey]; v == nil {
+					liveMiss(t, representativeDirectLiveStrict, "Live test blocked: needs %s via REPRESENT_OFFICIALS_TEST_REPRESENTATIVE_ENTID", _liveKey)
+					return
+				}
+			}
+		}
 		client := setup.client
 
 		params := map[string]any{}
 		query := map[string]any{}
 		if setup.live {
 			listParams := map[string]any{}
+			listParams["boundary"] = setup.idmap["boundary01"]
+			listParams["boundary_set"] = setup.idmap["boundary_set01"]
 			listResult, listErr := client.Direct(map[string]any{
-				"path":   "representatives",
+				"path":   "boundaries/{boundary_set}/{boundary}/representatives",
 				"method": "GET",
 				"params": listParams,
 			})
 			if listErr != nil {
-				t.Fatalf("list call failed (likely synthetic IDs against live API): %v", listErr)
+				liveMiss(t, representativeDirectLiveStrict, "Live list discovery failed: %v", listErr)
 			}
 			if listResult["ok"] != true {
-				t.Fatalf("list call not ok (likely synthetic IDs against live API): %v", listResult)
+				liveMiss(t, representativeDirectLiveStrict, "Live list discovery failed: %s", liveDescribe(listResult))
 			}
-
-			// Get first entity ID from list
-			listData, _ := listResult["data"].([]any)
+			listData, listOk := liveList(listResult["data"])
+			if !listOk {
+				liveMiss(t, representativeDirectLiveStrict, "Live list discovery returned no list: %s", liveDescribe(listResult))
+			}
 			if len(listData) == 0 {
-				t.Skip("no entities to load in live mode")
+				liveEmpty(t, "The account has no representative record to load")
 			}
 			firstEnt := core.ToMapAny(listData[0])
+			if firstEnt["id"] == nil {
+				liveMiss(t, representativeDirectLiveStrict, "Live load blocked: discovery returned no usable identity")
+			}
 			params["id"] = firstEnt["id"]
 		} else {
 			params["id"] = "direct01"
@@ -126,19 +174,14 @@ func TestRepresentativeDirect(t *testing.T) {
 			"query":  query,
 		})
 		if setup.live {
-			// Live mode is lenient: synthetic IDs frequently 4xx. Skip
-			// rather than fail when the load endpoint isn't reachable with
-			// the IDs we can construct from setup.idmap — unless the model
-			// sets main.kit.test.live.strict.
 			if err != nil {
-				t.Fatalf("load call failed (likely synthetic IDs against live API): %v", err)
+				liveMiss(t, representativeDirectLiveStrict, "Live load failed: %v", err)
 			}
-			if result["ok"] != true {
-				t.Fatalf("load call not ok (likely synthetic IDs against live API): %v", result)
+			if status := core.ToInt(result["status"]); result["ok"] != true || status < 200 || status >= 300 {
+				liveMiss(t, representativeDirectLiveStrict, "Live load failed: %s", liveDescribe(result))
 			}
-			status := core.ToInt(result["status"])
-			if status < 200 || status >= 300 {
-				t.Fatalf("expected 2xx status, got %v", result["status"])
+			if result["data"] == nil {
+				liveMiss(t, representativeDirectLiveStrict, "Live load returned no data: %s", liveDescribe(result))
 			}
 		} else {
 			if err != nil {

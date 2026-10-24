@@ -93,6 +93,7 @@ class RepresentOfficialsConfig
           ],
           'optspec' => [
             'clearTimer' => '`$FUNCTION`',
+            'now' => '`$FUNCTION`',
             'setTimer' => '`$FUNCTION`',
           ],
           'strict' => false,
@@ -204,6 +205,7 @@ class RepresentOfficialsConfig
                         'orig' => 'external_id',
                         'type' => '`$STRING`',
                         'kind' => 'query',
+                        'field' => true,
                       ],
                       [
                         'name' => 'format',
@@ -229,6 +231,7 @@ class RepresentOfficialsConfig
                         'orig' => 'name',
                         'type' => '`$STRING`',
                         'kind' => 'query',
+                        'field' => true,
                       ],
                       [
                         'name' => 'offset',
@@ -257,20 +260,10 @@ class RepresentOfficialsConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'callback',
-                      'contain',
-                      'external_id',
-                      'format',
-                      'intersect',
-                      'limit',
-                      'name',
-                      'offset',
-                      'pretty',
-                      'set',
-                      'touch',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -279,108 +272,6 @@ class RepresentOfficialsConfig
               'input' => 'data',
               'name' => 'load',
               'points' => [
-                [
-                  'kind' => 'http',
-                  'method' => 'GET',
-                  'orig' => '/boundaries/{boundarySet}/',
-                  'segments' => [
-                    [
-                      'lit' => 'boundaries',
-                    ],
-                    [
-                      'var' => 'id',
-                    ],
-                  ],
-                  'parts' => [
-                    'boundaries',
-                    '{id}',
-                  ],
-                  'rename' => [
-                    'param' => [
-                      'boundarySet' => 'id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'args' => [
-                    'params' => [
-                      [
-                        'name' => 'id',
-                        'orig' => 'boundarySet',
-                        'type' => '`$STRING`',
-                        'kind' => 'param',
-                        'reqd' => true,
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'name' => 'callback',
-                        'orig' => 'callback',
-                        'type' => '`$STRING`',
-                        'kind' => 'query',
-                      ],
-                      [
-                        'name' => 'contain',
-                        'orig' => 'contains',
-                        'type' => '`$STRING`',
-                        'kind' => 'query',
-                      ],
-                      [
-                        'name' => 'external_id',
-                        'orig' => 'external_id',
-                        'type' => '`$STRING`',
-                        'kind' => 'query',
-                      ],
-                      [
-                        'name' => 'format',
-                        'orig' => 'format',
-                        'type' => '`$STRING`',
-                        'kind' => 'query',
-                      ],
-                      [
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                        'kind' => 'query',
-                        'example' => 20,
-                      ],
-                      [
-                        'name' => 'name',
-                        'orig' => 'name',
-                        'type' => '`$STRING`',
-                        'kind' => 'query',
-                      ],
-                      [
-                        'name' => 'offset',
-                        'orig' => 'offset',
-                        'type' => '`$INTEGER`',
-                        'kind' => 'query',
-                        'example' => 0,
-                      ],
-                      [
-                        'name' => 'pretty',
-                        'orig' => 'pretty',
-                        'type' => '`$INTEGER`',
-                        'kind' => 'query',
-                      ],
-                    ],
-                  ],
-                  'select' => [
-                    'exist' => [
-                      'callback',
-                      'contain',
-                      'external_id',
-                      'format',
-                      'id',
-                      'limit',
-                      'name',
-                      'offset',
-                      'pretty',
-                    ],
-                  ],
-                ],
                 [
                   'kind' => 'http',
                   'method' => 'GET',
@@ -452,10 +343,11 @@ class RepresentOfficialsConfig
                     'exist' => [
                       'boundary',
                       'boundary_set',
-                      'callback',
-                      'format',
-                      'pretty',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
                 [
@@ -528,9 +420,11 @@ class RepresentOfficialsConfig
                     'exist' => [
                       'boundary',
                       'boundary_set',
-                      'callback',
-                      'format',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
                 [
@@ -603,9 +497,11 @@ class RepresentOfficialsConfig
                     'exist' => [
                       'boundary',
                       'boundary_set',
-                      'callback',
-                      'format',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
                 [
@@ -678,9 +574,11 @@ class RepresentOfficialsConfig
                     'exist' => [
                       'boundary',
                       'boundary_set',
-                      'callback',
-                      'format',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
                 [
@@ -741,9 +639,11 @@ class RepresentOfficialsConfig
                     '$action' => 'centroid',
                     'exist' => [
                       'boundary_set',
-                      'callback',
-                      'format',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
                 [
@@ -804,9 +704,11 @@ class RepresentOfficialsConfig
                     '$action' => 'shape',
                     'exist' => [
                       'boundary_set',
-                      'callback',
-                      'format',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
                 [
@@ -867,9 +769,111 @@ class RepresentOfficialsConfig
                     '$action' => 'simple_shape',
                     'exist' => [
                       'boundary_set',
-                      'callback',
-                      'format',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
+                  ],
+                ],
+                [
+                  'kind' => 'http',
+                  'method' => 'GET',
+                  'orig' => '/boundaries/{boundarySet}/',
+                  'segments' => [
+                    [
+                      'lit' => 'boundaries',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
+                  ],
+                  'parts' => [
+                    'boundaries',
+                    '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'boundarySet' => 'id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'boundarySet',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'callback',
+                        'orig' => 'callback',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'contain',
+                        'orig' => 'contains',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'external_id',
+                        'orig' => 'external_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'field' => true,
+                      ],
+                      [
+                        'name' => 'format',
+                        'orig' => 'format',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 20,
+                      ],
+                      [
+                        'name' => 'name',
+                        'orig' => 'name',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'field' => true,
+                      ],
+                      [
+                        'name' => 'offset',
+                        'orig' => 'offset',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                      [
+                        'name' => 'pretty',
+                        'orig' => 'pretty',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -942,6 +946,7 @@ class RepresentOfficialsConfig
                         'orig' => 'domain',
                         'type' => '`$STRING`',
                         'kind' => 'query',
+                        'field' => true,
                       ],
                       [
                         'name' => 'format',
@@ -961,6 +966,7 @@ class RepresentOfficialsConfig
                         'orig' => 'name',
                         'type' => '`$STRING`',
                         'kind' => 'query',
+                        'field' => true,
                       ],
                       [
                         'name' => 'offset',
@@ -977,16 +983,10 @@ class RepresentOfficialsConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'callback',
-                      'domain',
-                      'format',
-                      'limit',
-                      'name',
-                      'offset',
-                      'pretty',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -1053,11 +1053,12 @@ class RepresentOfficialsConfig
                   ],
                   'select' => [
                     'exist' => [
-                      'callback',
-                      'format',
                       'id',
-                      'pretty',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -1139,14 +1140,10 @@ class RepresentOfficialsConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'callback',
-                      'format',
-                      'limit',
-                      'offset',
-                      'pretty',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -1228,14 +1225,10 @@ class RepresentOfficialsConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'callback',
-                      'format',
-                      'limit',
-                      'offset',
-                      'pretty',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -1365,12 +1358,12 @@ class RepresentOfficialsConfig
                   ],
                   'select' => [
                     'exist' => [
-                      'callback',
-                      'format',
                       'postal_code',
-                      'pretty',
-                      'set',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -1505,132 +1498,6 @@ class RepresentOfficialsConfig
                 [
                   'kind' => 'http',
                   'method' => 'GET',
-                  'orig' => '/representatives/',
-                  'segments' => [
-                    [
-                      'lit' => 'representatives',
-                    ],
-                  ],
-                  'parts' => [
-                    'representatives',
-                  ],
-                  'rename' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.objects`',
-                  ],
-                  'args' => [
-                    'query' => [
-                      [
-                        'name' => 'callback',
-                        'orig' => 'callback',
-                        'type' => '`$STRING`',
-                        'kind' => 'query',
-                      ],
-                      [
-                        'name' => 'district',
-                        'orig' => 'districts',
-                        'type' => '`$STRING`',
-                        'kind' => 'query',
-                      ],
-                      [
-                        'name' => 'district_name',
-                        'orig' => 'district_name',
-                        'type' => '`$STRING`',
-                        'kind' => 'query',
-                      ],
-                      [
-                        'name' => 'elected_office',
-                        'orig' => 'elected_office',
-                        'type' => '`$STRING`',
-                        'kind' => 'query',
-                      ],
-                      [
-                        'name' => 'first_name',
-                        'orig' => 'first_name',
-                        'type' => '`$STRING`',
-                        'kind' => 'query',
-                      ],
-                      [
-                        'name' => 'format',
-                        'orig' => 'format',
-                        'type' => '`$STRING`',
-                        'kind' => 'query',
-                      ],
-                      [
-                        'name' => 'gender',
-                        'orig' => 'gender',
-                        'type' => '`$STRING`',
-                        'kind' => 'query',
-                      ],
-                      [
-                        'name' => 'last_name',
-                        'orig' => 'last_name',
-                        'type' => '`$STRING`',
-                        'kind' => 'query',
-                      ],
-                      [
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                        'kind' => 'query',
-                        'example' => 20,
-                      ],
-                      [
-                        'name' => 'name',
-                        'orig' => 'name',
-                        'type' => '`$STRING`',
-                        'kind' => 'query',
-                      ],
-                      [
-                        'name' => 'offset',
-                        'orig' => 'offset',
-                        'type' => '`$INTEGER`',
-                        'kind' => 'query',
-                        'example' => 0,
-                      ],
-                      [
-                        'name' => 'party_name',
-                        'orig' => 'party_name',
-                        'type' => '`$STRING`',
-                        'kind' => 'query',
-                      ],
-                      [
-                        'name' => 'point',
-                        'orig' => 'point',
-                        'type' => '`$STRING`',
-                        'kind' => 'query',
-                      ],
-                      [
-                        'name' => 'pretty',
-                        'orig' => 'pretty',
-                        'type' => '`$INTEGER`',
-                        'kind' => 'query',
-                      ],
-                    ],
-                  ],
-                  'select' => [
-                    'exist' => [
-                      'callback',
-                      'district',
-                      'district_name',
-                      'elected_office',
-                      'first_name',
-                      'format',
-                      'gender',
-                      'last_name',
-                      'limit',
-                      'name',
-                      'offset',
-                      'party_name',
-                      'point',
-                      'pretty',
-                    ],
-                  ],
-                ],
-                [
-                  'kind' => 'http',
-                  'method' => 'GET',
                   'orig' => '/boundaries/{boundarySet}/{boundary}/representatives/',
                   'segments' => [
                     [
@@ -1703,10 +1570,131 @@ class RepresentOfficialsConfig
                     'exist' => [
                       'boundary',
                       'boundary_set',
-                      'callback',
-                      'format',
-                      'pretty',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
+                  ],
+                ],
+                [
+                  'kind' => 'http',
+                  'method' => 'GET',
+                  'orig' => '/representatives/',
+                  'segments' => [
+                    [
+                      'lit' => 'representatives',
+                    ],
+                  ],
+                  'parts' => [
+                    'representatives',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.objects`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'callback',
+                        'orig' => 'callback',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'district',
+                        'orig' => 'districts',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'district_name',
+                        'orig' => 'district_name',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'field' => true,
+                      ],
+                      [
+                        'name' => 'elected_office',
+                        'orig' => 'elected_office',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'field' => true,
+                      ],
+                      [
+                        'name' => 'first_name',
+                        'orig' => 'first_name',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'field' => true,
+                      ],
+                      [
+                        'name' => 'format',
+                        'orig' => 'format',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'gender',
+                        'orig' => 'gender',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'field' => true,
+                      ],
+                      [
+                        'name' => 'last_name',
+                        'orig' => 'last_name',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'field' => true,
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 20,
+                      ],
+                      [
+                        'name' => 'name',
+                        'orig' => 'name',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'field' => true,
+                      ],
+                      [
+                        'name' => 'offset',
+                        'orig' => 'offset',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                      [
+                        'name' => 'party_name',
+                        'orig' => 'party_name',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'field' => true,
+                      ],
+                      [
+                        'name' => 'point',
+                        'orig' => 'point',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'pretty',
+                        'orig' => 'pretty',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -1762,18 +1750,21 @@ class RepresentOfficialsConfig
                         'orig' => 'district_name',
                         'type' => '`$STRING`',
                         'kind' => 'query',
+                        'field' => true,
                       ],
                       [
                         'name' => 'elected_office',
                         'orig' => 'elected_office',
                         'type' => '`$STRING`',
                         'kind' => 'query',
+                        'field' => true,
                       ],
                       [
                         'name' => 'first_name',
                         'orig' => 'first_name',
                         'type' => '`$STRING`',
                         'kind' => 'query',
+                        'field' => true,
                       ],
                       [
                         'name' => 'format',
@@ -1786,12 +1777,14 @@ class RepresentOfficialsConfig
                         'orig' => 'gender',
                         'type' => '`$STRING`',
                         'kind' => 'query',
+                        'field' => true,
                       ],
                       [
                         'name' => 'last_name',
                         'orig' => 'last_name',
                         'type' => '`$STRING`',
                         'kind' => 'query',
+                        'field' => true,
                       ],
                       [
                         'name' => 'limit',
@@ -1805,6 +1798,7 @@ class RepresentOfficialsConfig
                         'orig' => 'name',
                         'type' => '`$STRING`',
                         'kind' => 'query',
+                        'field' => true,
                       ],
                       [
                         'name' => 'offset',
@@ -1818,6 +1812,7 @@ class RepresentOfficialsConfig
                         'orig' => 'party_name',
                         'type' => '`$STRING`',
                         'kind' => 'query',
+                        'field' => true,
                       ],
                       [
                         'name' => 'point',
@@ -1835,21 +1830,12 @@ class RepresentOfficialsConfig
                   ],
                   'select' => [
                     'exist' => [
-                      'callback',
-                      'district_name',
-                      'elected_office',
-                      'first_name',
-                      'format',
-                      'gender',
                       'id',
-                      'last_name',
-                      'limit',
-                      'name',
-                      'offset',
-                      'party_name',
-                      'point',
-                      'pretty',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -1944,14 +1930,10 @@ class RepresentOfficialsConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'callback',
-                      'format',
-                      'limit',
-                      'offset',
-                      'pretty',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -2018,11 +2000,12 @@ class RepresentOfficialsConfig
                   ],
                   'select' => [
                     'exist' => [
-                      'callback',
-                      'format',
                       'id',
-                      'pretty',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],

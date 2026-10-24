@@ -118,17 +118,17 @@ main: kit: entity: postal_code: {
           o: "/postcodes/{postalCode}/"
           q: {
             exist: [
-              "callback"
-              "format"
               "postal_code"
-              "pretty"
-              "set"
             ]
           }
           r: {
             param: {
               postalCode: "postal_code"
             }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

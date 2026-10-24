@@ -7,11 +7,6 @@ main: kit: flow: BasicRepresentativeFlow:
   name: "BasicRepresentativeFlow",
   step: [
     {
-      m: {
-        boundary: "boundary01",
-        boundary_set: "boundary_set01"
-      }
-
       o: "list",
       v: [
         {

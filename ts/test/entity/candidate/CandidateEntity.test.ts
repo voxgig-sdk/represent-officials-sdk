@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { RepresentOfficialsSDK, BaseFeature, stdutil } from '../../..'
+import { RepresentOfficialsSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('CandidateEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('candidate hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of RepresentOfficialsSDK.test(offline).Candidate().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of RepresentOfficialsSDK.test(offline).Candidate()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = RepresentOfficialsSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.Candidate().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of RepresentOfficialsSDK.test().Candidate().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new RepresentOfficialsSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.Candidate().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.Candidate().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = RepresentOfficialsSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.Candidate().list({"callback":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.REPRESENT_OFFICIALS_TEST_LIVE
@@ -51,7 +109,7 @@ describe('CandidateEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"meta":{"a":true,"h":"Meta","n":"meta","r":false,"t":"`$OBJECT`","key$":"meta","index$":0},"objects":{"a":true,"h":"Objects","n":"objects","r":false,"t":"`$ARRAY`","key$":"objects","index$":1}},"name":"candidate","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /candidates/","source":"openapi3","version":2},"g":{"query":[{"a":true,"k":"query","n":"callback","or":"callback","r":false,"t":"`$STRING`","index$":0},{"a":true,"k":"query","n":"format","or":"format","r":false,"t":"`$STRING`","index$":1},{"a":true,"ex":20,"k":"query","n":"limit","or":"limit","r":false,"t":"`$INTEGER`","index$":2},{"a":true,"ex":0,"k":"query","n":"offset","or":"offset","r":false,"t":"`$INTEGER`","index$":3},{"a":true,"k":"query","n":"pretty","or":"pretty","r":false,"t":"`$INTEGER`","index$":4}]},"k":"http","m":"GET","o":"/candidates/","q":{"exist":["callback","format","limit","offset","pretty"]},"r":{},"s":[{"lit":"candidates"}],"t":{"req":"`reqdata`","res":"`body.objects`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"candidate","name__orig":"candidate","Name":"Candidate","name_":"candidate","name-":"candidate","NAME":"CANDIDATE","index$":2}, {"active":true,"entity":"candidate","key$":"BasicCandidateFlow","kind":"basic","name":"BasicCandidateFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"candidate_ref01"}}],"index$":0}]}, 'Candidate', {"GET /candidates/":{"protocol":"http","parameters":[{"name":"limit","in":"query","description":"Number of results per page (default: 20)","schema":{"type":"integer","default":20},"index$":0},{"name":"offset","in":"query","description":"Offset for pagination","schema":{"type":"integer","default":0},"index$":1},{"name":"format","in":"query","description":"Output format","schema":{"type":"string","enum":["json","apibrowser"]},"index$":2},{"name":"pretty","in":"query","description":"Pretty print JSON output","schema":{"type":"integer","enum":[0,1]},"index$":3},{"name":"callback","in":"query","description":"JSONP callback function name","schema":{"type":"string"},"index$":4}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"meta":{"a":true,"h":"Meta","n":"meta","r":false,"t":"`$OBJECT`","key$":"meta","index$":0},"objects":{"a":true,"h":"Objects","n":"objects","r":false,"t":"`$ARRAY`","key$":"objects","index$":1}},"name":"candidate","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /candidates/","source":"openapi3","version":2},"g":{"query":[{"a":true,"k":"query","n":"callback","or":"callback","r":false,"t":"`$STRING`","index$":0},{"a":true,"k":"query","n":"format","or":"format","r":false,"t":"`$STRING`","index$":1},{"a":true,"ex":20,"k":"query","n":"limit","or":"limit","r":false,"t":"`$INTEGER`","index$":2},{"a":true,"ex":0,"k":"query","n":"offset","or":"offset","r":false,"t":"`$INTEGER`","index$":3},{"a":true,"k":"query","n":"pretty","or":"pretty","r":false,"t":"`$INTEGER`","index$":4}]},"k":"http","m":"GET","o":"/candidates/","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"candidates"}],"t":{"req":"`reqdata`","res":"`body.objects`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"candidate","name__orig":"candidate","Name":"Candidate","name_":"candidate","name-":"candidate","NAME":"CANDIDATE","index$":2}, {"active":true,"entity":"candidate","key$":"BasicCandidateFlow","kind":"basic","name":"BasicCandidateFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"candidate_ref01"}}],"index$":0}]}, 'Candidate', {"GET /candidates/":{"protocol":"http","parameters":[{"name":"limit","in":"query","description":"Number of results per page (default: 20)","schema":{"type":"integer","default":20},"index$":0},{"name":"offset","in":"query","description":"Offset for pagination","schema":{"type":"integer","default":0},"index$":1},{"name":"format","in":"query","description":"Output format","schema":{"type":"string","enum":["json","apibrowser"]},"index$":2},{"name":"pretty","in":"query","description":"Pretty print JSON output","schema":{"type":"integer","enum":[0,1]},"index$":3},{"name":"callback","in":"query","description":"JSONP callback function name","schema":{"type":"string"},"index$":4}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +130,12 @@ describe('CandidateEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options
